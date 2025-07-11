@@ -93,6 +93,11 @@ html[data-theme="dark"] .company-logo {
     font-weight: bold;
 }
 
+.job-title h3 {
+    margin: unset;
+    font-size: 1rem;
+}
+
 .company {
     color: var(--subtext);
 }
@@ -104,6 +109,16 @@ html[data-theme="dark"] .company-logo {
 
 .description {
     margin-top: 0.3rem;
+}
+
+.description h4 {
+    margin: unset;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.3em;
+}
+
+.description ul {
+    margin-block-start: unset;
 }
 
 ul {
