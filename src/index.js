@@ -13,12 +13,18 @@ function toggleTheme() {
     const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
     html.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
+    changeToggleThemeText(newTheme);
 }
 
-// On page load, use saved theme
 (function () {
     const saved = localStorage.getItem("theme");
     if (saved) {
         document.documentElement.setAttribute("data-theme", saved);
+        changeToggleThemeText(saved);
     }
 })();
+
+function changeToggleThemeText(theme) {
+    const toggleBtn = document.querySelector('.toggle-theme');
+    toggleBtn.textContent = theme === "dark" ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
