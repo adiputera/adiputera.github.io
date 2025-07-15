@@ -172,3 +172,20 @@ footer {
         gap: 0.5rem;
     }
 }
+
+@media print {
+
+    /* Hide toggle theme button and footer in print */
+    .toggle-theme,
+    footer {
+        display: none !important;
+    }
+
+    /* Override dark theme colors for print */
+    html[data-theme="dark"] {
+        --bg: white;
+        --text: black;
+        --card: #f9f9f9;
+        --border: #ccc;
+    }
+}
