@@ -141,7 +141,8 @@ footer {
     margin-top: 3rem;
 }
 
-.toggle-theme {
+.toggle-theme,
+.button {
     background: none;
     border: 1px solid var(--border);
     padding: 0.3rem 0.6rem;
@@ -152,8 +153,15 @@ footer {
     color: var(--text);
 }
 
-.toggle-theme:hover {
+.toggle-theme:hover,
+.button:hover {
     background: var(--card);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    background-color: var(--border);
+    color: var(--text);
 }
 
 @media (max-width: 600px) {
