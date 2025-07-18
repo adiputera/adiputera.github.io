@@ -57,21 +57,39 @@ function updateNotifyUI() {
 
 function askNotificationPermission() {
     if (!("Notification" in window)) {
-        notifyButton.textContent = "❌ Notifications are not supported in this browser";
+        notifyButton.textContent = "❌ Notifications not supported in this browser";
         notifyButton.disabled = true;
         return;
     }
 
-    Notification.requestPermission().then(permission => {
+    Notification.requestPermission();
+    waitForNotificationPermission();
+}
+
+function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
+    const start = Date.now();
+
+    const interval = setInterval(() => {
+        const permission = Notification.permission;
+
         if (permission === "granted") {
             new Notification("✅ You're subscribed!", {
                 body: "You’ll be notified when Yusuf is open to new roles.",
                 icon: "images/avatar.png",
                 badge: "images/monogram-ya.png"
             });
+            updateNotifyUI();
+            clearInterval(interval);
+        } else if (permission === "denied") {
+            updateNotifyUI();
+            clearInterval(interval);
+        } else if (Date.now() - start >= maxWait) {
+            // Still 'default' after 5 seconds — give up
+            updateNotifyUI();
+            clearInterval(interval);
         }
-        updateNotifyUI();
-    });
+    }, intervalTime);
 }
+
 
 document.addEventListener("DOMContentLoaded", updateNotifyUI);
