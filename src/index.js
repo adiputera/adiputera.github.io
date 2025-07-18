@@ -75,8 +75,8 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
         if (permission === "granted") {
             new Notification("✅ You're subscribed!", {
                 body: "You’ll be notified when Yusuf is open to new roles.",
-                icon: "images/avatar.png",
-                badge: "images/monogram-ya.png"
+                icon: "images/512.png",
+                badge: "images/badge.png"
             });
             updateNotifyUI();
             clearInterval(interval);
