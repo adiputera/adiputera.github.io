@@ -1,10 +1,8 @@
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").then(registration => {
-        console.log("ServiceWorker successfully registered!");
-        console.log(registration);
+        reg.update();
     }).catch(error => {
-        console.log("ServiceWorker registration failed!");
-        console.log(error);
+        console.error("Service Worker registration failed:", error);
     });
 }
 
@@ -31,9 +29,27 @@ function changeToggleThemeText(theme) {
 
 const notifyButton = document.getElementById("notify-btn");
 
+function isIos() {
+    return /iphone|ipad|ipod/i.test(navigator.userAgent);
+}
+
+function isInStandaloneMode() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
 function updateNotifyUI() {
-    if (Notification.permission === "granted") {
+    const permission = Notification.permission;
+
+    if (permission === "granted") {
         notifyButton.textContent = "✅ You're already subscribed!";
+        notifyButton.disabled = true;
+        notifyButton.style.cursor = "default";
+    } else if (isIos() && !isInStandaloneMode()) {
+        notifyButton.textContent = "ℹ️ On iOS, add to home screen to enable notifications";
+        notifyButton.disabled = true;
+        notifyButton.style.cursor = "default";
+    } else if (permission === "denied") {
+        notifyButton.textContent = "❌ Notifications are blocked by your browser";
         notifyButton.disabled = true;
         notifyButton.style.cursor = "default";
     }
@@ -41,7 +57,8 @@ function updateNotifyUI() {
 
 function askNotificationPermission() {
     if (!("Notification" in window)) {
-        alert("This browser does not support notifications.");
+        notifyButton.textContent = "❌ Notifications are not supported in this browser";
+        notifyButton.disabled = true;
         return;
     }
 
@@ -57,5 +74,4 @@ function askNotificationPermission() {
     });
 }
 
-// On page load
 document.addEventListener("DOMContentLoaded", updateNotifyUI);

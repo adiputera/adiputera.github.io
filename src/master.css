@@ -185,7 +185,8 @@ footer {
 
     /* Hide toggle theme button and footer in print */
     .toggle-theme,
-    footer {
+    footer,
+    .hide-for-print {
         display: none !important;
     }
 
