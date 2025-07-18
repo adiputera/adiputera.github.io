@@ -56,15 +56,17 @@ function updateNotifyUI() {
 }
 
 function askNotificationPermission() {
+    notifyButton.disabled = true;
+
     if (!("Notification" in window)) {
         notifyButton.textContent = "❌ Notifications not supported in this browser";
-        notifyButton.disabled = true;
         return;
     }
 
     Notification.requestPermission();
     waitForNotificationPermission();
 }
+
 
 function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
     const start = Date.now();
@@ -73,10 +75,12 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
         const permission = Notification.permission;
 
         if (permission === "granted") {
-            new Notification("✅ You're subscribed!", {
-                body: "You’ll be notified when Yusuf is open to new roles.",
-                icon: "images/512.png",
-                badge: "images/badge.png"
+            navigator.serviceWorker.ready.then(reg => {
+                reg.showNotification("✅ You're subscribed!", {
+                    body: "You’ll be notified when Yusuf is open to new roles.",
+                    icon: "images/512.png",
+                    badge: "images/badge.png"
+                });
             });
             updateNotifyUI();
             clearInterval(interval);
@@ -84,12 +88,10 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
             updateNotifyUI();
             clearInterval(interval);
         } else if (Date.now() - start >= maxWait) {
-            // Still 'default' after 5 seconds — give up
             updateNotifyUI();
             clearInterval(interval);
         }
     }, intervalTime);
 }
-
 
 document.addEventListener("DOMContentLoaded", updateNotifyUI);
