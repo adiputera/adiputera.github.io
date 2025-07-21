@@ -26,7 +26,7 @@ self.addEventListener('push', function (event) {
         title: "Hello!",
         body: "You have a new notification!",
         icon: "/images/128.png",
-        image: "/images/512.png",
+        image: "",
         badge: "/images/badge.png",
         data: {},
         actions: []
