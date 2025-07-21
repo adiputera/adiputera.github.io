@@ -54,20 +54,16 @@ self.addEventListener('push', function (event) {
     );
 });
 
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', function (event) {
     event.notification.close();
 
     const url = event.notification.data?.url;
 
-    if ((!event.action || event.action === 'open_url') && url) {
-        event.waitUntil(clients.openWindow(url));
-    }
-
-    if (event.action === 'open_url' && url) {
-        event.waitUntil(clients.openWindow(url));
-    }
-
     if (event.action === 'dismiss') {
         return;
+    }
+
+    if ((!event.action || event.action === 'open_url') && url) {
+        event.waitUntil(clients.openWindow(url));
     }
 });
