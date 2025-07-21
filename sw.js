@@ -27,7 +27,9 @@ self.addEventListener('push', function (event) {
         body: "You have a new notification!",
         icon: "/images/128.png",
         image: "/images/512.png",
-        badge: "/images/badge.png"
+        badge: "/images/badge.png",
+        data: {},
+        actions: []
     };
 
     if (event.data) {
@@ -46,6 +48,26 @@ self.addEventListener('push', function (event) {
             icon: data.icon,
             image: data.image,
             badge: data.badge,
+            data: data.data,
+            actions: data.actions
         })
     );
+});
+
+self.addEventListener('notificationclick', function(event) {
+    event.notification.close();
+
+    const url = event.notification.data?.url;
+
+    if ((!event.action || event.action === 'open_url') && url) {
+        event.waitUntil(clients.openWindow(url));
+    }
+
+    if (event.action === 'open_url' && url) {
+        event.waitUntil(clients.openWindow(url));
+    }
+
+    if (event.action === 'dismiss') {
+        return;
+    }
 });

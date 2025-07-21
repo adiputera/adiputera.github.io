@@ -67,6 +67,7 @@ function askNotificationPermission() {
     waitForNotificationPermission();
 }
 
+const vapidPublicKey = "BDQm2phIYp4W1xoVrwisbYBDp-GbT5_kbBjEYQXtoFnsftS_kr05oXD6yBTr9nYIyAu2p6kgAp4VMm8J01IRLII";
 
 function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
     const start = Date.now();
@@ -75,15 +76,47 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
         const permission = Notification.permission;
 
         if (permission === "granted") {
-            navigator.serviceWorker.ready.then(reg => {
-                reg.showNotification("✅ You're subscribed!", {
-                    body: "You’ll be notified when Yusuf is open to new roles.",
-                    icon: "images/512.png",
-                    badge: "images/badge.png"
+            navigator.serviceWorker.getRegistration().then(registration => {
+                if (!registration) {
+                    return navigator.serviceWorker.register("sw.js");
+                }
+                return registration;
+            }).then(registration => {
+                if (!registration) {
+                    console.error("Service Worker registration failed.");
+                    updateNotifyUI();
+                    clearInterval(interval);
+                    return;
+                }
+                registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+                }).then(subscription => {
+                    if (!subscription) {
+                        console.error("Failed to subscribe to push notifications.");
+                        return;
+                    }
+                    fetch('https://neon-bombolone-54f610.netlify.app/api/save-subscription', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(subscription)
+                    });
+                    registration.showNotification("✅ You're subscribed!", {
+                        body: "You’ll be notified when Yusuf is open to new roles.",
+                        icon: "images/512.png",
+                        badge: "images/badge.png"
+                    });
+                    updateNotifyUI();
+                }).catch(error => {
+                    console.error("Failed to subscribe:", error);
+                    updateNotifyUI();
                 });
+                clearInterval(interval);
+            }).catch(error => {
+                console.error("Service Worker registration not found:", error);
+                updateNotifyUI();
+                clearInterval(interval);
             });
-            updateNotifyUI();
-            clearInterval(interval);
         } else if (permission === "denied") {
             updateNotifyUI();
             clearInterval(interval);
@@ -92,6 +125,13 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
             clearInterval(interval);
         }
     }, intervalTime);
+}
+
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const raw = atob(base64);
+    return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
 }
 
 document.addEventListener("DOMContentLoaded", updateNotifyUI);
