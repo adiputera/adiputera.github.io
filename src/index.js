@@ -102,7 +102,7 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
                         body: JSON.stringify(subscription)
                     });
                     registration.showNotification("✅ You're subscribed!", {
-                        body: "You’ll be notified when Yusuf is open to new roles.",
+                        body: "I don't expect anyone would press that button, but you’ll be notified when I'm open to new roles.",
                         icon: "images/512.png",
                         badge: "images/badge.png"
                     });
