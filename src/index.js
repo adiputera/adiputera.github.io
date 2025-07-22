@@ -96,7 +96,7 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
                         console.error("Failed to subscribe to push notifications.");
                         return;
                     }
-                    fetch('https://neon-bombolone-54f610.netlify.app/api/save-subscription', {
+                    fetch('https://neon-bombolone-54f610.netlify.app/api/subscribe', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(subscription)
