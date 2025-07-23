@@ -65,6 +65,8 @@ function updateNotifyUI() {
     }
 }
 
+const vapidPublicKey = "BDQm2phIYp4W1xoVrwisbYBDp-GbT5_kbBjEYQXtoFnsftS_kr05oXD6yBTr9nYIyAu2p6kgAp4VMm8J01IRLII";
+
 function askNotificationPermission() {
     notifyButton.disabled = true;
 
@@ -73,18 +75,8 @@ function askNotificationPermission() {
         return;
     }
 
-    Notification.requestPermission();
-    waitForNotificationPermission();
-}
-
-const vapidPublicKey = "BDQm2phIYp4W1xoVrwisbYBDp-GbT5_kbBjEYQXtoFnsftS_kr05oXD6yBTr9nYIyAu2p6kgAp4VMm8J01IRLII";
-
-function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
-    const start = Date.now();
-
-    const interval = setInterval(() => {
-        const permission = Notification.permission;
-
+    notifyButton.textContent = "🔄 Subscribing...";
+    Notification.requestPermission().then(permission => {
         if (permission === "granted") {
             navigator.serviceWorker.getRegistration().then(registration => {
                 if (!registration) {
@@ -95,7 +87,6 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
                 if (!registration) {
                     console.error("Service Worker registration failed.");
                     updateNotifyUI();
-                    clearInterval(interval);
                     return;
                 }
                 registration.pushManager.subscribe({
@@ -121,20 +112,14 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
                     console.error("Failed to subscribe:", error);
                     updateNotifyUI();
                 });
-                clearInterval(interval);
             }).catch(error => {
                 console.error("Service Worker registration not found:", error);
                 updateNotifyUI();
-                clearInterval(interval);
             });
-        } else if (permission === "denied") {
+        } else if (permission === "denied" || permission === "default") {
             updateNotifyUI();
-            clearInterval(interval);
-        } else if (Date.now() - start >= maxWait) {
-            updateNotifyUI();
-            clearInterval(interval);
         }
-    }, intervalTime);
+    });
 }
 
 function urlBase64ToUint8Array(base64String) {
