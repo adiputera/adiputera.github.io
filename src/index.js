@@ -38,14 +38,24 @@ function isInStandaloneMode() {
 }
 
 function updateNotifyUI() {
+    const isIosDevice = isIos();
+    const isStandalone = isInStandaloneMode();
+
+    if (typeof Notification === "undefined") {
+        if (isIosDevice && !isStandalone) {
+            notifyButton.textContent = "ℹ️ Add to Home Screen to enable notifications on iOS";
+        } else {
+            notifyButton.textContent = "⚠️ Notifications not supported on this browser";
+        }
+        notifyButton.disabled = true;
+        notifyButton.style.cursor = "default";
+        return;
+    }
+
     const permission = Notification.permission;
 
     if (permission === "granted") {
         notifyButton.textContent = "✅ You're already subscribed!";
-        notifyButton.disabled = true;
-        notifyButton.style.cursor = "default";
-    } else if (isIos() && !isInStandaloneMode()) {
-        notifyButton.textContent = "ℹ️ On iOS, add to home screen to enable notifications";
         notifyButton.disabled = true;
         notifyButton.style.cursor = "default";
     } else if (permission === "denied") {
