@@ -1,5 +1,5 @@
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").then(reg => {
+    navigator.serviceWorker.register("/sw.js").then(reg => {
         reg.update();
     }).catch(error => {
         console.error("Service Worker registration failed:", error);
@@ -78,7 +78,7 @@ function waitForNotificationPermission(maxWait = 5000, intervalTime = 500) {
         if (permission === "granted") {
             navigator.serviceWorker.getRegistration().then(registration => {
                 if (!registration) {
-                    return navigator.serviceWorker.register("sw.js");
+                    return navigator.serviceWorker.register("/sw.js");
                 }
                 return registration;
             }).then(registration => {
