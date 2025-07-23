@@ -38,15 +38,8 @@ function isInStandaloneMode() {
 }
 
 function updateNotifyUI() {
-    const isIosDevice = isIos();
-    const isStandalone = isInStandaloneMode();
-
-    if (typeof Notification === "undefined") {
-        if (isIosDevice && !isStandalone) {
-            notifyButton.textContent = "ℹ️ Add to Home Screen to enable notifications on iOS";
-        } else {
-            notifyButton.textContent = "⚠️ Notifications not supported on this browser";
-        }
+    if (typeof Notification === "undefined" || isIos()) {
+        notifyButton.textContent = "⚠️ Notifications not supported on this browser";
         notifyButton.disabled = true;
         notifyButton.style.cursor = "default";
         return;
