@@ -1,8 +1,8 @@
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js").then(reg => {
-        reg.update();
-    }).catch(error => {
-        console.error("Service Worker registration failed:", error);
+    navigator.serviceWorker.register("/sw.js").then(reg =>
+        reg.update()
+    ).catch(error => {
+        console.debug("Service Worker registration failed:", error);
     });
 }
 
