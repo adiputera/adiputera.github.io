@@ -10,44 +10,47 @@
 
 ## Summary
 
-Yusuf is an experienced Java & SAP Hybris Commerce/SAP Commerce developer, with skills in developing OCC API, searching using flexible search, hot folder configuration, data modeling, cronjob, 3rd party integration using REST API, customizing promotion conditions, and backoffice customization. Also know git, Spring Boot, Spring MVC framework, and Azure Function App.
+Yusuf is an experienced Java & SAP Hybris Commerce/SAP Commerce developer, with skills in developing OCC API, searching using flexible search, hot folder configuration, data modeling, cronjob, and 3rd party integration using REST API. Also experienced in customizing promotion conditions, backoffice customization, and asynchronous processing using Kafka. Proficient in Git, Spring Boot, Spring MVC framework, and Azure Function App.
 
-As a lead engineer, Yusuf has responsibilities for creating man-days estimation, creating development timelines, involving in project planning, reviewing code, analyzing and breaking down user stories to technical tasks, mentoring and coaching team members, lower environment deployment, preparing release notes that contains commit ID, list of features that will be deployed, as well post-deployment steps. He must also be ready to debug and check the server's log using SSH when the QA team finds some bugs/errors.
+As a lead engineer, Yusuf has responsibilities for creating man-days estimation, creating development timelines, involving in project planning, reviewing code, analyzing and breaking down user stories into technical tasks, mentoring and coaching team members, lower environment deployment, and preparing release notes that contain commit IDs, a list of features to be deployed, and post-deployment steps. He must also be ready to debug and check the server logs using SSH when the QA team finds some bugs or errors.
 
-Yusuf has been involved in some SAP Hybris Commerce/SAP Commerce projects in Astra, namely seva.id otomotif, seva.id property, seva.id marketplace, astra-daihatsu.id, auto2000.co.id, and most recently motorkux.id.
+Yusuf has been involved in several SAP Hybris Commerce/SAP Commerce projects under Astra Group, namely seva.id otomotif, seva.id property, seva.id marketplace, astra-daihatsu.id, auto2000.co.id, and most recently motorkux.id.
 
-In the motorkux.id project, Yusuf led the development team to build SAP Hybris Commerce/SAP Commerce from scratch, was involved in the analysis phase, and the development phase, until going live in June 2022, and after going live, led development in enriching features of the website based on requirements from a business analyst.
+In the motorkux.id project, Yusuf led the development team to build SAP Hybris Commerce/SAP Commerce from scratch, was involved in the analysis and development phases, until going live in June 2022. After going live, he continued leading development to enrich website features based on business analyst requirements.
 
-Yusuf is also created a image resizer proxy to resize images on the fly, using Azure Function App and Node.js, which is used by motorkux.id, auto2000.co.id, and astra-daihatsu.id.
+Yusuf also created an image resizer proxy to resize images on the fly using Azure Function App and Node.js, which is used by motorkux.id, auto2000.co.id, and astra-daihatsu.id.
 
 Yusuf is also responsible for database migration for all seva projects, from SAP Hana to MySQL, by writing code to migrate data automatically.
 
-Yusuf also handles version upgrades of several SAP Hybris Commerce/SAP Commerce projects, seva.id marketplace from 6.6 to 2011, seva.id otomotif from 6.6 to 2011, auto2000.co.id from 19.05 to 2011, astra-daihatsu.id from 19.05 to 2011, motorkux.id from 21.05 to 22.05.
+Yusuf also handles version upgrades of several SAP Hybris Commerce/SAP Commerce projects, including seva.id marketplace from 6.6 to 2011, seva.id otomotif from 6.6 to 2011, auto2000.co.id from 19.05 to 2011, astra-daihatsu.id from 19.05 to 2011, and motorkux.id from 21.05 to 22.05.
 
-In development, Yusuf and the team use an agile sprint-based methodology.
+Recently, Yusuf has also been involved in SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation to enable unified customer data and marketing automation across the SAP CX ecosystem.
+
+In development, Yusuf and the team use an agile, sprint-based methodology.
 
 ---
 
 ## Key Achievements
 
-- Led the development team that successfully built and launched motorkux.id (2021-now)
-- Led the development team that successfully built and launched seva.id marketplace (2019-2021)
-- Part of a development team that successfully built and launched seva.id property (2018-2019) 
+- Led the development team that successfully built and launched motorkux.id (2021–now)
+- Led the development team that successfully built and launched seva.id marketplace (2019–2021)
+- Part of a development team that successfully built and launched seva.id property (2018–2019)
+- Recently involved in SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation (2025)
 - Successfully developed image resizer proxy (2024)
 - Successfully developed payload validator on the fly, using Drools (2025)
-- Successfully creating custom promotion conditions (location-based quota without having to use coupons) (2023) 
-- Successfully created a cronjob to migrate the database from SAP Hana to MySQL for various Hybris projects (2019-2020) 
-- Upgrade SAP Commerce Version for various Hybris projects (2020-2022) 
-- Set up CI/CD on Jenkins and Azure DevOps for various Hybris projects (2018-2022) 
-- Successfully in implementing lazy loading of CMS content slot in a page 
-- Successfully in implementing lazy loading of CMS component 
-- Successfully in improving the performance of the JSP storefront (PSI score >90 on desktop, >65 on mobile) 
+- Successfully created custom promotion conditions (location-based quota without having to use coupons) (2023)
+- Successfully created a cronjob to migrate the database from SAP Hana to MySQL for various Hybris projects (2019–2020)
+- Upgraded SAP Commerce versions for various Hybris projects (2020–2022)
+- Set up CI/CD on Jenkins and Azure DevOps for various Hybris projects (2018–2022)
+- Successfully implemented lazy loading of CMS content slot in a page
+- Successfully implemented lazy loading of CMS components
+- Successfully improved the performance of the JSP storefront (PSI score >90 on desktop, >65 on mobile)
 
 ---
 
 ## Skills
 
-Java • SAP Hybris Commerce • Spring MVC • Spring Boot • Azure Function App • REST API • Git • jQuery • JavaScript • HTML
+Java • SAP Hybris Commerce • Spring MVC • Spring Boot • Azure Function App • REST API • Git • jQuery • JavaScript • HTML • Drools • Solr • Kafka • SAP Customer Data Platform (SAP CDP) • SAP Emarsys
 
 ---
 

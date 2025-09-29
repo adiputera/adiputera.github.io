@@ -2,7 +2,7 @@ self.addEventListener("install", e => {
     self.skipWaiting();
     e.waitUntil(
         caches.open("static").then(cache => {
-            return cache.addAll(["./images/astra.svg", "./src/master.min.css?v=1", "./src/index.min.js?v=1"]);
+            return cache.addAll(["./images/astra.svg", "./src/master.min.css?v=202508171010", "./src/index.min.js?v=202508171010"]);
         })
     );
 });
