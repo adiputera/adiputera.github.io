@@ -181,6 +181,75 @@ footer {
     }
 }
 
+.faq-section {
+    margin-top: 3rem;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:not(.open) .faq-answer {
+    display: none;
+}
+
+.faq-question {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1rem;
+    color: var(--text-strong);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    color: var(--text-strong);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.faq-question::after {
+    content: "−";
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.faq-question::after {
+    content: "−";
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.faq-item:not(.open) .faq-question::after {
+    content: "+";
+}
+
+.faq-item:not(.open) .faq-question::after {
+    content: "+";
+}
+
+.faq-answer {
+    padding: 0 1rem 1rem;
+    color: var(--text);
+    line-height: 1.5;
+    display: block;
+}
+
+.faq-subtitle {
+    margin-top: 2.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-strong);
+    border-left: 4px solid var(--accent, #005baa);
+    padding-left: 0.5rem;
+}
+
 @media print {
 
     /* Hide toggle theme button and footer in print */
