@@ -43,7 +43,8 @@ header h1 {
 .title {
     font-size: 1.2rem;
     color: var(--subtext);
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
+    font-weight: normal;
 }
 
 .summary,
@@ -52,7 +53,7 @@ header h1 {
     line-height: 1.6;
 }
 
-h2 {
+h2:not(.title) {
     border-bottom: 1px solid var(--border);
     padding-bottom: 0.3rem;
     margin-top: 2rem;
