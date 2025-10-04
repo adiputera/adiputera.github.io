@@ -251,6 +251,12 @@ footer {
     padding-left: 0.5rem;
 }
 
+.normal-text {
+    font-weight: normal;
+    font-size: 1rem;
+    margin: unset
+}
+
 @media print {
 
     /* Hide toggle theme button and footer in print */
