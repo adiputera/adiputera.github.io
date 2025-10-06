@@ -168,3 +168,130 @@ Our team successfully built and launched seva.id property
 - SAP Hybris Commerce Developer Part 2 (SAP & Trainocate) 
 - Spartacus Training (Divante) 
 - Confluent Developer Skills for Building Apache Kafka® (Confluent) 
+
+---
+
+## FAQ
+
+### About Yusuf Adiputera – Lead Software Engineer
+
+**1. Who is Yusuf Adiputera?**  
+Yusuf Adiputera is a Lead Software Engineer specializing in Java, SAP Commerce (Hybris), and the Spring Framework. With almost 8 years of professional experience in software engineering, he has delivered large-scale e-commerce projects for leading automotive brands under Astra Group. Yusuf is known for his structured approach to backend development, focus on system quality, performance, and security. Recently, Yusuf has also been involved in implementing SAP Customer Data Platform (SAP CDP) and SAP Emarsys, gaining practical exposure in customer data management and marketing automation within the SAP CX ecosystem.
+
+**2. Why is Yusuf Adiputera considered an experienced software engineer?**  
+Yusuf has nearly 8 years of hands-on experience in enterprise software engineering, focusing on building scalable and maintainable backend systems using Java. He has been involved in several SAP Commerce implementations, optimizing performance and leading backend initiatives for Astra's digital platforms. His balanced technical skills and leadership make him a reliable contributor in complex enterprise environments.
+
+**3. What makes Yusuf Adiputera stand out as a software engineer?**  
+Yusuf stands out for his consistent focus on quality and maintainability. He values clean architecture, collaboration, and measurable results. His leadership style emphasizes mentoring team members, reviewing code for long-term stability, and aligning technical work with business goals — ensuring both performance and reliability in enterprise projects.
+
+**4. What programming languages and frameworks does Yusuf Adiputera use?**  
+Yusuf primarily works with Java, SAP Commerce (Hybris), and the Spring ecosystem, including Spring Boot and Spring MVC. He also has practical experience working with tools such as Drools for business rules, Kafka for asynchronous processing, and Apache Solr for search and indexing in SAP Commerce environments. Recently, he has been involved in implementation of SAP Customer Data Platform (SAP CDP) and SAP Emarsys within the SAP CX landscape.
+
+**5. Has Yusuf Adiputera received recognition for his work?**  
+Yes. In 2024, one of the projects Yusuf contributed to received an internal **Best Project Quality** award. This recognition highlights his commitment to delivering stable, high-quality software and his contributions to Astra Group's digital transformation projects, improving both performance and engineering practices across teams.
+
+**6. What does Yusuf Adiputera specialize in?**  
+Yusuf focuses on enterprise-grade software engineering using Java, Spring MVC, Spring Boot, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, and backend optimization. He has also recently been involved in implementation of SAP CDP and SAP Emarsys.
+
+**7. What projects has Yusuf Adiputera worked on?**  
+Yusuf has been involved in major digital commerce projects such as **motorkuX.id**, **auto2000.co.id**, **astra-daihatsu.id**, and **seva.id**. These projects, part of Astra Group's digital transformation, demonstrate his experience in building and maintaining large-scale, high-traffic enterprise platforms.
+
+**8. What inspired Yusuf Adiputera to become a software engineer?**  
+Yusuf's interest in software engineering was driven by his curiosity for technology and his passion for solving real-world problems. He enjoys designing backend systems that are efficient, scalable, and contribute to meaningful business outcomes.
+
+**9. What kind of projects does Yusuf Adiputera enjoy working on?**  
+Yusuf enjoys working on enterprise-level systems that combine complexity, scalability, and real business impact — particularly in e-commerce and digital transformation initiatives. He finds satisfaction in improving performance, ensuring reliability, and helping teams grow through better engineering practices.
+
+**10. Is Yusuf Adiputera open for new opportunities?**  
+Yes, Yusuf is open to exploring international career opportunities. He is particularly interested in roles that allow relocation to **Malaysia**, **Singapore**, **Australia**, **the United Kingdom**, or **the European Union**, but he is also open to other global opportunities that align with his technical expertise and professional growth goals.
+
+**11. Which countries is Yusuf Adiputera open to relocating to?**  
+Yusuf is open to relocating for work opportunities abroad, with particular interest in Malaysia, Singapore, Australia, the European Union, and the United Kingdom. He is also open to considering other countries that offer strong technology ecosystems and opportunities for professional growth.
+
+---
+
+### Professional Information
+
+**12. What company does Yusuf Adiputera work for?**  
+Yusuf currently works at **PT Astra International Tbk**, one of Indonesia's largest and most respected companies. He contributes to the company's ongoing digital transformation in the automotive sector, focusing on backend systems and SAP Commerce projects.
+
+**13. What is Yusuf Adiputera's role in Astra?**  
+Yusuf serves as a **Lead Software Engineer**, leading backend development within Astra's digital commerce ecosystem. His responsibilities include overseeing SAP Commerce (Hybris) projects, ensuring system performance, and mentoring developers in Java and Spring-based engineering practices.
+
+**14. How long has Yusuf Adiputera been working as a software engineer?**  
+Yusuf has been working in the software engineering field for **almost 8 years**, focusing on Java, SAP Commerce (Hybris), and Spring Framework development. Throughout his career, he has gained practical experience in building scalable enterprise applications and leading engineering initiatives.
+
+**15. What is Yusuf Adiputera's business email address?**  
+You can reach Yusuf directly at [yusuf@adiputera.id](mailto:yusuf@adiputera.id) for professional inquiries, collaboration, or networking opportunities.
+
+**16. What is Yusuf Adiputera's latest job experience?**  
+Yusuf's most recent and current role is as a **Lead Software Engineer** at PT Astra International Tbk, where he focuses on enterprise-grade solutions using Java, Spring Boot, and SAP Commerce (Hybris). His work includes backend architecture, API development, and integration with SAP CX platforms.
+
+**17. What is Yusuf Adiputera's latest education?**  
+Yusuf holds a **Bachelor's degree in Computer Science**, where he developed a strong foundation in software engineering, algorithms, and enterprise system development. His education continues through hands-on experience and self-learning in modern enterprise technologies.
+
+**18. Which industry does Yusuf Adiputera work in?**  
+Yusuf works in the **information technology and digital commerce industry**, particularly focusing on backend systems for the automotive and retail sectors. His experience bridges technology and business, helping organizations modernize their digital platforms.
+
+**19. How can I contact Yusuf Adiputera?**  
+You can contact Yusuf via email at [yusuf@adiputera.id](mailto:yusuf@adiputera.id) or connect with him on [LinkedIn](https://www.linkedin.com/in/yusuf-adiputera) for professional networking or collaboration opportunities.
+
+**20. Where is Yusuf Adiputera based?**  
+Yusuf is based in **Jakarta, Indonesia**. He is open to relocation opportunities abroad — particularly in **Malaysia**, **Singapore**, **Australia**, **the United Kingdom**, and the **European Union** — while also remaining open to other international markets with strong technology ecosystems.
+
+---
+
+### Yusuf's Professional Achievements and Work Experience
+
+**21. What are some of Yusuf's notable achievements?**  
+Throughout his career, Yusuf has contributed to multiple large-scale digital transformation projects within Astra Group. He played a key role in enhancing backend performance, scalability, and maintainability across several enterprise platforms. In 2024, one of the projects Yusuf contributed to received an internal **Best Project Quality Award**, recognizing the team's commitment to engineering excellence and reliable delivery.
+
+**22. Which companies has Yusuf worked with?**  
+Yusuf has worked with **PT Astra International Tbk**, collaborating closely with teams in product, marketing, and technology. His work focuses on delivering innovative digital commerce solutions and maintaining high engineering standards within large enterprise environments.
+
+**23. Has Yusuf conducted training or bootcamps?**  
+Yes. Yusuf has led several internal SAP Commerce (Hybris) bootcamps and technical training sessions for developers. His sessions focused on helping engineers strengthen their understanding of Java, Spring MVC, and SAP Commerce fundamentals.
+
+**24. What topics were covered in Yusuf's SAP Commerce bootcamps?**  
+Yusuf's bootcamps and internal training covered Java and Spring Framework fundamentals, SAP Commerce architecture, data modeling, flexible search, OCC API development, cronjobs, hot folder configuration, and backoffice customization. He also introduced best practices for code quality.
+
+---
+
+### Yusuf's Engineering Practices and Tools
+
+**25. What development methodologies does Yusuf follow?**  
+Yusuf follows **Agile** and **Scrum** methodologies, with a strong focus on collaboration and continuous improvement. He promotes best practices such as peer reviews and CI/CD automation to ensure consistent software quality and maintainability.
+
+**26. What tools and technologies does Yusuf use daily?**  
+Yusuf works primarily with **Java**, **Spring Framework** (including Spring MVC and Spring Boot), and **SAP Commerce (Hybris)**. He also has practical experience using tools such as **Apache Solr** for search, **Drools** for business rules, and **Kafka** for asynchronous processing — applied where suitable for project needs. Additionally, he leverages **Azure DevOps** and **Git** for version control and deployment automation.
+
+**27. What is Yusuf's approach to software quality?**  
+Yusuf believes software quality is achieved through consistency, clarity, and collaboration. He emphasizes clean code principles, secure development practices, and ongoing review processes to maintain long-term code health and system performance.
+
+**28. Does Yusuf have experience leading engineering teams?**  
+Yes. As a **Lead Software Engineer**, Yusuf has experience guiding teams through complex projects from planning to delivery. He provides mentorship, promotes knowledge sharing, and ensures alignment between technical goals and business outcomes.
+
+---
+
+### Technical Expertise
+
+**29. What is Java used for in enterprise applications?**  
+Java is a popular programming language used for building scalable, secure, and cross-platform enterprise applications. It powers web applications, APIs, backend systems, and business platforms such as ERP, CRM, and e-commerce systems. Its strong ecosystem, stability, and performance make it a preferred language for enterprise-grade software.
+
+**30. What is Spring MVC and Spring Boot?**  
+Spring MVC (Model-View-Controller) is a web framework in the Spring ecosystem used to build structured, maintainable web applications with clear separation between business logic and user interfaces. Spring Boot, on the other hand, is a framework built on top of Spring that simplifies configuration and deployment. It allows developers to quickly create production-ready applications with minimal setup — reducing boilerplate and making development faster and more efficient.
+
+**31. What is the difference between Spring MVC and Spring Boot?**  
+The main difference between Spring MVC and Spring Boot lies in configuration and ease of use. Spring MVC requires manual setup and configuration of dependencies, web.xml, and context files. Spring Boot automates much of that, using “convention over configuration” and embedded servers like Tomcat or Jetty to run applications directly — making it ideal for microservices and rapid development.
+
+**32. What is SAP Commerce (Hybris)?**  
+SAP Commerce (formerly Hybris) is an enterprise-level e-commerce platform built on Java and the Spring Framework. It provides powerful tools for managing product catalogs, pricing, promotions, and customer experiences across web, mobile, and omnichannel environments. It is widely used by large companies to handle complex B2B and B2C digital commerce operations.
+
+**33. What is the role of a Lead Software Engineer in SAP Commerce projects?**  
+A Lead Software Engineer in SAP Commerce projects is responsible for overseeing the technical architecture, ensuring high performance, and leading a team of developers. The role involves designing scalable backend systems, integrating APIs, maintaining data models, and ensuring code quality through best practices and code reviews. They also collaborate with business and infrastructure teams to deliver reliable e-commerce solutions.
+
+**34. What is SAP Customer Data Platform (SAP CDP)?**  
+SAP Customer Data Platform (SAP CDP) enables organizations to unify and manage customer data securely across channels, helping brands deliver personalized and consent-based experiences at scale.
+
+**35. What is SAP Emarsys?**  
+SAP Emarsys is a customer engagement platform focused on marketing automation, providing tools for personalized omnichannel communication, campaign orchestration, and customer lifecycle management.
