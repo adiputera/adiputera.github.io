@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+
 Disallow: /README.md
+
 Sitemap: https://adiputera.github.io/sitemap.xml
+Sitemap: https://adiputera.github.io/sitemap.txt
