@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202510041010" />
-    <link rel="preload" as="style" href="src/index.min.js?v=202510041010" />
-
-    <link rel="alternate" href="https://adiputera.github.io/faq-id" hreflang="id" />
-    <link rel="alternate" href="https://adiputera.github.io/faq" hreflang="en" />
+    <link rel="preload" as="style" href="src/master.min.css?v=202511011300" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202511011300" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,10 +20,13 @@
 
     <link rel="icon" href="favicon.ico" />
     <link rel="canonical" href="https://adiputera.github.io/faq" />
+    <link rel="alternate" hreflang="en" href="https://adiputera.github.io/faq" />
+    <link rel="alternate" hreflang="id" href="https://adiputera.github.io/faq-id" />
+    <link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/faq" />
     <link rel="apple-touch-icon" href="images/192.png">
     <link rel="apple-touch-startup-image" href="images/512.png">
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202510041010" />
+    <link rel="stylesheet" href="src/master.min.css?v=202511011300" />
 
     <meta name="jobtitle"
         content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
@@ -136,6 +136,27 @@
                 { "@type": "Language", "name": "English" },
                 { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
                 { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://adiputera.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "FAQ",
+                    "item": "https://adiputera.github.io/faq"
+                }
             ]
         }
     </script>
@@ -536,6 +557,23 @@
 
 <body>
     <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li class="breadcrumb-current">FAQ</li>
+                </ol>
+            </nav>
+            <div class="language-switcher">
+                <span>🌐</span>
+                <a href="/faq" class="active">EN</a>
+                <a href="/faq-id">ID</a>
+            </div>
+        </div>
+
         <header>
             <button class="toggle-theme button" onclick="toggleTheme()">🌙 Dark Mode</button>
             <h1>FAQs – Yusuf Adiputera, Lead Software Engineer</h1>
@@ -1189,7 +1227,7 @@
             &copy; 2025 Yusuf Adiputera. All rights reserved.
         </footer>
     </div>
-    <script src="src/index.min.js?v=202510041010" defer></script>
+    <script src="src/index.min.js?v=202511011300" defer></script>
 </body>
 
 </html>

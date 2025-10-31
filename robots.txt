@@ -1,7 +1,14 @@
 User-agent: *
 Allow: /
 
+# Disallow documentation and source files
 Disallow: /README.md
+Disallow: /CLAUDE.md
+Disallow: /SEO_RECOMMENDATIONS.md
+Disallow: /src/
 
+# Sitemap
 Sitemap: https://adiputera.github.io/sitemap.xml
-Sitemap: https://adiputera.github.io/sitemap.txt
+
+# Crawl delay for politeness (optional)
+Crawl-delay: 1

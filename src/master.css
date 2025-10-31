@@ -167,6 +167,7 @@ footer {
 
 @media (max-width: 600px) {
     .resume {
+        margin-top: 1.5em;
         padding: 1.5rem;
     }
 
@@ -210,6 +211,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    --webkit-user-select: none;
     color: var(--text-strong);
     font-size: 1rem;
     font-weight: 600;
@@ -255,6 +257,90 @@ footer {
     font-weight: normal;
     font-size: 1rem;
     margin: unset
+}
+
+/* Top navigation container */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+/* Breadcrumb navigation */
+.breadcrumb {
+    padding: 10px 0;
+    margin: 0;
+    font-size: 14px;
+    color: var(--subtext);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.breadcrumb li {
+    display: inline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.breadcrumb a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: var(--subtext);
+    flex-shrink: 0;
+}
+
+.breadcrumb-current {
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Language switcher */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+.language-switcher span {
+    margin-right: 5px;
+}
+
+.language-switcher a {
+    margin-right: 10px;
+}
+
+.language-switcher a:last-child {
+    margin-right: 0;
+}
+
+.language-switcher a.active {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 @media print {
