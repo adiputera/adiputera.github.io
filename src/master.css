@@ -343,6 +343,37 @@ footer {
     text-decoration: underline;
 }
 
+/* Connect with me section */
+.connect-heading {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.connect-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.connect-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--link);
+}
+
+.connect-link svg {
+    color: var(--text);
+}
+
+.connect-link:hover {
+    text-decoration: underline;
+}
+
 @media print {
 
     /* Hide toggle theme button and footer in print */
