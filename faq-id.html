@@ -83,7 +83,8 @@
             "worksFor": {
                 "@type": "Organization",
                 "name": "PT Astra International Tbk",
-                "sameAs": "https://www.astra.co.id/"
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
             },
             "email": "mailto:yusuf@adiputera.id",
             "sameAs": [
@@ -118,18 +119,85 @@
             "alumniOf": [
                 {
                     "@type": "CollegeOrUniversity",
-                    "name": "Universitas Diponegoro"
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
                 },
                 {
-                    "@type": "CollegeOrUniversity",
-                    "name": "SMA Negeri 1 Pekalongan"
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
                 }
             ],
-            "hasOccupation": {
-                "@type": "Occupation",
-                "name": "Lead Software Engineer",
-                "skills": ["Java", "SAP Commerce (Hybris)", "Spring Boot", "Spring MVC"]
-            },
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
             "knowsLanguage": [
                 { "@type": "Language", "name": "English" },
                 { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
