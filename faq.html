@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202511011301" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202511011301" />
+    <link rel="preload" as="style" href="src/master.min.css?v=202602271447" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202602271447" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-005WBSEVCP');
@@ -36,7 +36,7 @@
     <link rel="apple-touch-icon" href="images/192.png">
     <link rel="apple-touch-startup-image" href="images/512.png">
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202511011301" />
+    <link rel="stylesheet" href="src/master.min.css?v=202602271447" />
 
     <meta name="jobtitle"
         content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
@@ -80,6 +80,7 @@
         {
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
             "name": "Yusuf Adiputera",
             "givenName": "Yusuf",
             "additionalName": "Fahmi",
@@ -107,14 +108,15 @@
                 "https://about.me/adiputera",
                 "https://github.com/adiputera",
                 "https://stackoverflow.com/users/3603194/adiputera",
-                "https://profile.sap.com/u/adiputera"
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
             ],
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jakarta",
                 "addressCountry": "ID"
             },
-            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. With recent exposure to SAP Customer Data Platform (SAP CDP), SAP Emarsys, and SAP S/4HANA ABAP.",
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Focused on enterprise system performance and high-reliability integrations using REST and SOAP.",
             "knowsAbout": [
                 "Java",
                 "Spring Framework",
@@ -126,7 +128,11 @@
                 "SAP S/4HANA ABAP",
                 "Kafka",
                 "Drools",
-                "Apache Solr"
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
             ],
             "nationality": {
                 "@type": "Country",
@@ -247,6 +253,14 @@
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
+            "name": "FAQs | Yusuf Adiputera – Lead Software Engineer",
+            "description": "FAQ about Yusuf Adiputera, a Lead Software Engineer with 8 years of experience in Java, SAP Commerce (Hybris), Spring MVC, and Spring Boot.",
+            "author": {
+                "@type": "Person",
+                "@id": "https://adiputera.github.io/#person",
+                "name": "Yusuf Adiputera"
+            },
+            "inLanguage": "en",
             "mainEntity": [
                 {
                     "@type": "Question",
@@ -631,6 +645,118 @@
                         "@type": "Answer",
                         "text": "Yes. Yusuf Adiputera is the professional name used by Yusuf Fahmi Adiputera. Both refer to the same person. He is also known as Yusuf Fahmi or Yusuf F. Adiputera."
                     }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why do enterprise companies still use Java in 2026?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Enterprise companies continue to rely on Java because of its unmatched stability, backward compatibility, and robust ecosystem. Frameworks like Spring Boot allow Java to easily power modern, highly scalable microservices while maintaining the security required by financial and corporate institutions."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How hard is it to learn SAP Commerce (Hybris)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Learning SAP Commerce has a steep learning curve because it requires strong foundational knowledge of Java and the Spring Framework. However, experienced Java developers can transition smoothly by understanding its core architecture, data modeling, and flexible search capabilities."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the most important skill for a Lead Software Engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Beyond technical mastery of languages like Java, the most important skills for a Lead Software Engineer are system design, problem-solving, and team mentorship. A lead must balance writing clean, scalable code with guiding the engineering team to align with business objectives."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Go (Golang): Which is faster and better for backend?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Go is generally faster at startup and beats Java in memory consumption, making it excellent for lightweight microservices and serverless functions. However, with the introduction of Virtual Threads in Java 21+, Java has caught up significantly in terms of concurrent performance and throughput. Java also continues to excel in massive, long-running enterprise applications and complex transaction processing, benefiting from decades of ecosystem maturity."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Node.js: What are the differences in backend development?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Node.js relies on an asynchronous, event-driven, single-threaded architecture, making it great for real-time applications (like chat apps) and I/O heavy workloads. Java uses a multi-threaded architecture (and now virtual threads in Java 21+), which makes it far better equipped for CPU-intensive tasks and heavy data processing typical in enterprise and financial software."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Python: Which should I choose for enterprise backends?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Python is unbeatable for data science, AI, and rapid prototyping due to its simplicity. However, Java is significantly faster at runtime, strictly typed, and designed for massive concurrency, making it the industry standard for scalable, large-scale enterprise backend development and e-commerce platforms."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How hard is it to learn Java in 2026?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Java has a moderate learning curve. Because it is strictly typed and object-oriented, beginners must understand concepts like classes, inheritance, and memory management (Garbage Collection) early on. However, its explicit syntax builds incredibly strong software engineering fundamentals that carry over to almost any other language."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How hard is it to learn the Spring Framework (Spring Boot)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Once you have a strong grasp of core Java, Spring Boot is relatively easy to pick up because it heavily uses 'convention over configuration.' The hardest part is understanding underlying Spring concepts like Dependency Injection (DI), Inversion of Control (IoC), and the various annotations. Once those click, building REST APIs becomes very fast."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is Object-Oriented Programming (OOP)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Object-Oriented Programming (OOP) is a programming paradigm based on the concept of 'objects,' which contain data (attributes) and code (methods). In languages like Java, OOP helps organize complex software design by modeling real-world entities, making code more modular, reusable, and easier to maintain."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What are the 4 main pillars of OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The four main pillars of Object-Oriented Programming are Encapsulation, Inheritance, Polymorphism, and Abstraction. Together, these principles allow developers to build secure, scalable, and highly reusable code architectures."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is Encapsulation in OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Encapsulation is the practice of bundling data (variables) and the methods that operate on that data into a single unit (class), while restricting direct access to some of the object's components. In Java, this is usually achieved by making variables private and providing public getter/setter methods. It protects the integrity of the data."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is Inheritance in OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Inheritance is an OOP mechanism where a new class (child) derives properties and behaviors from an existing class (parent). This heavily promotes code reusability. For example, a 'Car' class can inherit common attributes like 'speed' and methods like 'brake()' from a broader 'Vehicle' class without needing to rewrite them."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is Polymorphism in OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Polymorphism means 'many forms.' It allows objects of different classes to be treated as objects of a common superclass. For example, a 'draw()' method could behave differently depending on whether it's called on a 'Circle' object or a 'Square' object, even though both inherit from a 'Shape' parent class."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is Abstraction in OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Abstraction involves hiding complex implementation details and showing only the essential features of an object. In Java, this is often implemented using abstract classes or interfaces. It reduces complexity by allowing developers to interact with a simple interface without needing to understand the intricate code powering it under the hood."
+                    }
                 }
             ]
         }
@@ -657,7 +783,8 @@
         </div>
 
         <header>
-            <button class="toggle-theme button" onclick="toggleTheme()" aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
+            <button class="toggle-theme button" onclick="toggleTheme()"
+                aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
             <h1>FAQs – Yusuf Adiputera, Lead Software Engineer</h1>
             <h2 class="title">
                 Frequently Asked Questions about Yusuf Adiputera and his work in Java, SAP Commerce (Hybris), and
@@ -841,7 +968,8 @@
                         <h4 class="faq-question">Is Yusuf Adiputera the same as Yusuf Fahmi Adiputera?
                         </h4>
                         <div class="faq-answer">
-                            <p>Yes. Yusuf Adiputera is the professional name used by Yusuf Fahmi Adiputera. Both refer to the same person. He is also known as Yusuf Fahmi or Yusuf F. Adiputera.</p>
+                            <p>Yes. Yusuf Adiputera is the professional name used by Yusuf Fahmi Adiputera. Both refer
+                                to the same person. He is also known as Yusuf Fahmi or Yusuf F. Adiputera.</p>
                         </div>
                     </div>
 
@@ -984,7 +1112,8 @@
                             <p>You can contact Yusuf via email at <a
                                     href="mailto:yusuf@adiputera.id">yusuf@adiputera.id</a>
                                 or connect with him on <a href="https://www.linkedin.com/in/yusuf-adiputera"
-                                    target="_blank" rel="noopener noreferrer">LinkedIn</a> for professional networking or
+                                    target="_blank" rel="noopener noreferrer">LinkedIn</a> for professional networking
+                                or
                                 collaboration opportunities.
                             </p>
                         </div>
@@ -1303,6 +1432,167 @@
                         </div>
                     </div>
                 </section>
+
+                <h3 class="faq-subtitle">Industry Insights & Career Growth</h3>
+                <section id="industry-insights" class="faq-subsection">
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Why do enterprise companies still use Java in 2026?</h4>
+                        <div class="faq-answer">
+                            <p>Enterprise companies continue to rely on Java because of its unmatched stability,
+                                backward compatibility, and robust ecosystem. Frameworks like Spring Boot allow Java
+                                to easily power modern, highly scalable microservices while maintaining the security
+                                required by financial and corporate institutions.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">How hard is it to learn SAP Commerce (Hybris)?</h4>
+                        <div class="faq-answer">
+                            <p>Learning SAP Commerce has a steep learning curve because it requires strong foundational
+                                knowledge of Java and the Spring Framework. However, experienced Java developers can
+                                transition smoothly by understanding its core architecture, data modeling, and flexible
+                                search capabilities.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What is the most important skill for a Lead Software Engineer?</h4>
+                        <div class="faq-answer">
+                            <p>Beyond technical mastery of languages like Java, the most important skills for a Lead
+                                Software Engineer are system design, problem-solving, and team mentorship. A lead must
+                                balance writing clean, scalable code with guiding the engineering team to align with
+                                business objectives.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Java vs Go (Golang): Which is faster and better for backend?</h4>
+                        <div class="faq-answer">
+                            <p>Go is generally faster at startup and beats Java in memory consumption, making it
+                                excellent for lightweight microservices and serverless functions. However, with the
+                                introduction of Virtual Threads in Java 21+, Java has caught up significantly in terms
+                                of concurrent performance and throughput. Java also continues to excel in massive,
+                                long-running enterprise applications and complex transaction processing, benefiting
+                                from decades of ecosystem maturity.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Java vs Node.js: What are the differences in backend development?</h4>
+                        <div class="faq-answer">
+                            <p>Node.js relies on an asynchronous, event-driven, single-threaded architecture, making
+                                it great for real-time applications (like chat apps) and I/O heavy workloads. Java uses
+                                a multi-threaded architecture (and now virtual threads in Java 21+), which makes it far
+                                better equipped for CPU-intensive tasks and heavy data processing typical in enterprise
+                                and financial software.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Java vs Python: Which should I choose for enterprise backends?</h4>
+                        <div class="faq-answer">
+                            <p>Python is unbeatable for data science, AI, and rapid prototyping due to its simplicity.
+                                However, Java is significantly faster at runtime, strictly typed, and designed for
+                                massive concurrency, making it the industry standard for scalable, large-scale
+                                enterprise backend development and e-commerce platforms.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">How hard is it to learn Java in 2026?</h4>
+                        <div class="faq-answer">
+                            <p>Java has a moderate learning curve. Because it is strictly typed and object-oriented,
+                                beginners must understand concepts like classes, inheritance, and memory management
+                                (Garbage Collection) early on. However, its explicit syntax builds incredibly strong
+                                software engineering fundamentals that carry over to almost any other language.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">How hard is it to learn the Spring Framework (Spring Boot)?</h4>
+                        <div class="faq-answer">
+                            <p>Once you have a strong grasp of core Java, Spring Boot is relatively easy to pick up
+                                because it heavily uses "convention over configuration." The hardest part is
+                                understanding
+                                underlying Spring concepts like Dependency Injection (DI), Inversion of Control (IoC),
+                                and the various annotations. Once those click, building REST APIs becomes very fast.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <h3 class="faq-subtitle">Software Engineering Fundamentals</h3>
+                <section id="software-engineering-fundamentals" class="faq-subsection">
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What is Object-Oriented Programming (OOP)?</h4>
+                        <div class="faq-answer">
+                            <p>Object-Oriented Programming (OOP) is a programming paradigm based on the concept of
+                                "objects," which contain data (attributes) and code (methods). In languages like Java,
+                                OOP helps organize complex software design by modeling real-world entities, making code
+                                more modular, reusable, and easier to maintain.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What are the 4 main pillars of OOP?</h4>
+                        <div class="faq-answer">
+                            <p>The four main pillars of Object-Oriented Programming are <strong>Encapsulation</strong>,
+                                <strong>Inheritance</strong>, <strong>Polymorphism</strong>, and
+                                <strong>Abstraction</strong>.
+                                Together, these principles allow developers to build secure, scalable, and highly
+                                reusable code architectures.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What is Encapsulation in OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Encapsulation is the practice of bundling data (variables) and the methods that operate
+                                on that data into a single unit (class), while restricting direct access to some of the
+                                object's components. In Java, this is usually achieved by making variables
+                                <code>private</code>
+                                and providing <code>public</code> getter/setter methods. It protects the integrity of
+                                the data.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What is Inheritance in OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Inheritance is an OOP mechanism where a new class (child) derives properties and
+                                behaviors from an existing class (parent). This heavily promotes code reusability. For
+                                example, a <code>Car</code> class can inherit common attributes like <code>speed</code>
+                                and methods like <code>brake()</code> from a broader <code>Vehicle</code> class without
+                                needing to rewrite them.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What is Polymorphism in OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Polymorphism means "many forms." It allows objects of different classes to be treated as
+                                objects of a common superclass. For example, a <code>draw()</code> method could behave
+                                differently depending on whether it's called on a <code>Circle</code> object or a
+                                <code>Square</code> object, even though both inherit from a <code>Shape</code> parent
+                                class.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">What is Abstraction in OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Abstraction involves hiding complex implementation details and showing only the essential
+                                features of an object. In Java, this is often implemented using abstract classes or
+                                interfaces. It reduces complexity by allowing developers to interact with a simple
+                                interface without needing to understand the intricate code powering it under the hood.
+                            </p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem;">Want to see how I apply these principles? View my <a
+                            href="/skills">Detailed Technical Expertise</a>.</p>
+                </section>
             </section>
         </main>
 
@@ -1310,7 +1600,7 @@
             &copy; 2025 Yusuf Adiputera. All rights reserved.
         </footer>
     </div>
-    <script src="src/index.min.js?v=202511011301" defer></script>
+    <script src="src/index.min.js?v=202602271447" defer></script>
 </body>
 
 </html>

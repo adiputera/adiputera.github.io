@@ -2,3 +2,5 @@ https://adiputera.github.io
 https://adiputera.github.io/id
 https://adiputera.github.io/faq
 https://adiputera.github.io/faq-id
+https://adiputera.github.io/skills
+https://adiputera.github.io/skills-id

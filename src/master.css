@@ -40,6 +40,15 @@ header h1 {
     margin: 0;
 }
 
+.main-heading {
+    margin: 0;
+}
+
+header h1 span.title {
+    display: block;
+    margin-top: 0.5rem;
+}
+
 .title {
     font-size: 1.2rem;
     color: var(--subtext);
@@ -59,6 +68,28 @@ h2:not(.title) {
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.2rem;
+}
+
+.contact-heading {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.skills-group {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+.skills-item {
+    margin-bottom: 0.5rem;
+}
+
+.tech-stack {
+    margin-top: 1rem;
 }
 
 .job {
@@ -372,6 +403,80 @@ footer {
 
 .connect-link:hover {
     text-decoration: underline;
+}
+
+/* Article Styles */
+.article-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.article-list li {
+    margin-bottom: 1.5rem;
+}
+
+.article-list h3 {
+    margin-bottom: 0.3rem;
+}
+
+.article-snippet {
+    margin-top: 0;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+
+/* Skills Styles */
+.skills-hero {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.skill-level {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background: var(--border);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 1rem;
 }
 
 @media print {

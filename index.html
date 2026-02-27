@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202511011301" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202511011301" />
+    <link rel="preload" as="style" href="src/master.min.css?v=202602271447" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202602271447" />
     <link rel="preload" as="image" href="images/astra.svg" />
 
     <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="images/192.png">
     <link rel="apple-touch-startup-image" href="images/512.png">
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202511011301" />
+    <link rel="stylesheet" href="src/master.min.css?v=202602271447" />
 
     <meta name="jobtitle"
         content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
@@ -77,6 +77,7 @@
         {
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
             "name": "Yusuf Adiputera",
             "givenName": "Yusuf",
             "additionalName": "Fahmi",
@@ -104,14 +105,15 @@
                 "https://about.me/adiputera",
                 "https://github.com/adiputera",
                 "https://stackoverflow.com/users/3603194/adiputera",
-                "https://profile.sap.com/u/adiputera"
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
             ],
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jakarta",
                 "addressCountry": "ID"
             },
-            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. With recent exposure to SAP Customer Data Platform (SAP CDP), SAP Emarsys, and SAP S/4HANA ABAP.",
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in enterprise system performance and high-reliability integrations using REST and SOAP.",
             "knowsAbout": [
                 "Java",
                 "Spring Framework",
@@ -123,7 +125,11 @@
                 "SAP S/4HANA ABAP",
                 "Kafka",
                 "Drools",
-                "Apache Solr"
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
             ],
             "nationality": {
                 "@type": "Country",
@@ -222,12 +228,13 @@
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "WebSite",
+            "@type": ["WebSite", "ProfilePage"],
             "name": "Yusuf Adiputera - Lead Software Engineer",
             "url": "https://adiputera.github.io/",
             "description": "Professional portfolio of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce",
             "author": {
                 "@type": "Person",
+                "@id": "https://adiputera.github.io/#person",
                 "name": "Yusuf Adiputera"
             },
             "inLanguage": ["en", "id"]
@@ -352,14 +359,17 @@
         </div>
 
         <header>
-            <button class="toggle-theme button" onclick="toggleTheme()"
+            <button class="button hide-for-print" onclick="window.print()" aria-label="Print or save resume as PDF"
+                style="margin-right: 10px;">🖨️ Print Resume</button>
+            <button class="toggle-theme button hide-for-print" onclick="toggleTheme()"
                 aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
-            <h1>Yusuf Adiputera</h1>
-            <h2 class="title">
-                Lead Software Engineer specialized in Java, SAP Commerce (Hybris), and Spring Framework
-            </h2>
+            <h1 class="main-heading">
+                Yusuf Adiputera
+                <span class="title">Lead Software Engineer specialized in
+                    Java, SAP Commerce (Hybris), and Spring Framework</span>
+            </h1>
 
-            <h2>Contact</h2>
+            <h2 class="contact-heading">Contact</h2>
             <p>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                     style="vertical-align: middle; margin-right: 8px;">
@@ -378,7 +388,7 @@
                     rel="noopener noreferrer">linkedin.com/in/yusuf-adiputera</a>
             </p>
 
-            <h3 class="connect-heading hide-for-print">Connect with me</h3>
+            <h2 class="connect-heading hide-for-print">Connect with me</h2>
             <div class="connect-links hide-for-print">
                 <a href="https://github.com/adiputera" target="_blank" rel="noopener noreferrer" title="GitHub"
                     class="connect-link">
@@ -416,7 +426,7 @@
         </header>
 
         <main>
-            <h2>Summary</h2>
+            <h2 id="summary">Summary</h2>
 
             <div class="summary">
                 <p>
@@ -475,27 +485,34 @@
                 <li>Set up CI/CD on Jenkins and Azure DevOps for various Hybris projects (2018–2022)</li>
                 <li>Successfully implemented lazy loading of CMS content slot in a page</li>
                 <li>Successfully implemented lazy loading of CMS components</li>
-                <li>Successfully improved the performance of the JSP storefront (PSI score &gt;90 on desktop, &gt;65 on
-                    mobile)</li>
+                <li>Successfully improved the performance of the JSP storefront</li>
             </ul>
 
 
-            <h2>Skills</h2>
-            Java • SAP Hybris Commerce • Spring MVC • Spring Boot • Azure Function App • REST API • Git • jQuery •
-            JavaScript • HTML • Drools • Solr • Kafka • SAP Customer Data Platform (SAP CDP) • SAP Emarsys •
-            SAP S/4HANA ABAP
+            <h2 id="skills">Skills</h2>
+            <p class="hide-for-print" style="margin-bottom: 1rem;"><a href="/skills">View detailed technical expertise &
+                    technologies &rarr;</a></p>
+            <ul class="skills-group">
+                <li class="skills-item"><strong>Languages:</strong> Java, JavaScript, HTML</li>
+                <li class="skills-item"><strong>Frameworks & Platforms:</strong> SAP Commerce (Hybris), Spring Boot,
+                    Spring MVC, jQuery, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Emarsys, SAP
+                    S/4HANA ABAP</li>
+                <li class="skills-item"><strong>Architecture & Integration:</strong> Microservices, REST API</li>
+                <li class="skills-item"><strong>Tools & Infrastructure:</strong> Kafka, Apache Solr, Drools,
+                    Git</li>
+            </ul>
 
-            <h2>Experience</h2>
+            <h2 id="experience">Experience</h2>
 
             <div class="job">
-                <img src="images/astra.svg" alt="Astra Logo" title="Astra Logo" class="company-logo" loading="lazy"
-                    width="50" height="50" />
+                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
+                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
+                    height="50" />
                 <div class="job-details">
                     <div class="job-header">
                         <div>
                             <div class="job-title">
-                                <h3>Lead Software Engineer - SAP Hybris Commerce - Java - Spring MVC - Spring Boot -
-                                    Drools</h3>
+                                <h3>Lead Software Engineer</h3>
                             </div>
                             <div class="company">PT Astra International Tbk</div>
                         </div>
@@ -539,6 +556,7 @@
                             <li>Implemented flexible rule model not tightly coupled to domain objects.</li>
                             <li>Delivered as core platform capability for SAP Commerce modernization and future service
                                 architecture.</li>
+                            <li>Developed payload validator on the fly, using Drools (2025).</li>
                         </ul>
 
                         <h4>Performance & Scalability Engineering</h4>
@@ -552,6 +570,7 @@
                             <li>Built image resizer proxy reducing payload size up to 80% and improving page load
                                 performance.</li>
                             <li>Improved JSP storefront performance.</li>
+                            <li>Developed image resizer proxy (2024).</li>
                         </ul>
 
                         <h4>SAP Commerce Platform Engineering</h4>
@@ -564,7 +583,7 @@
                                 </ul>
                             </li>
                             <li>Developed custom promotion engine supporting location-based quota without coupon
-                                dependency.</li>
+                                dependency (2023).</li>
                             <li>Implemented employee role expiration mechanism for enterprise access control.</li>
                         </ul>
 
@@ -593,34 +612,37 @@
             </div>
 
             <div class="job">
-                <img src="images/astra.svg" alt="Astra Logo" title="Astra Logo" class="company-logo" loading="lazy"
-                    width="50" height="50" />
+                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
+                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
+                    height="50" />
                 <div class="job-details">
                     <div class="job-header">
                         <div>
                             <div class="job-title">
-                                <h3>Bootcamp Trainer - SAP Hybris Commerce - Java Spring MVC</h3>
+                                <h3>Bootcamp Trainer</h3>
                             </div>
                             <div class="company">PT Astra International Tbk</div>
                         </div>
                         <div class="duration">Nov 2021 – Dec 2022</div>
                     </div>
                     <div class="description">
-                        Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP
-                        Commerce/Hybris
-                        fundamentals.
+                        <p>Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP
+                            Commerce/Hybris fundamentals.</p>
+                        <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring MVC, SAP Commerce
+                            (Hybris)</p>
                     </div>
                 </div>
             </div>
 
             <div class="job">
-                <img src="images/astra.svg" alt="Astra Logo" title="Astra Logo" class="company-logo" loading="lazy"
-                    width="50" height="50" />
+                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
+                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
+                    height="50" />
                 <div class="job-details">
                     <div class="job-header">
                         <div>
                             <div class="job-title">
-                                <h3>Lead Software Developer - SAP Hybris Commerce - Java Spring MVC</h3>
+                                <h3>Lead Software Developer</h3>
                             </div>
                             <div class="company">PT Astra International Tbk</div>
                         </div>
@@ -634,34 +656,32 @@
 
                         <h4>Responsibilities:</h4>
                         <ul>
-                            <li>Maintain coding standards document </li>
-                            <li>Enforcing coding standards through code review and knowledge sharing </li>
-                            <li>Project planning </li>
-                            <li>Man-days estimation </li>
-                            <li>Create a development timeline </li>
-                            <li>Breakdown story into smaller tasks for sprint planning </li>
-                            <li>Features development </li>
-                            <li>Bugfix </li>
-                            <li>Deployment to a lower environment </li>
-                            <li>Preparing release notes </li>
-                            <li>Set up CI/CD using Azure DevOps & Jenkins </li>
-                            <li>Set up Jenkins build job to do deployment </li>
-                            <li>Set up Azure DevOps Pipeline for applying the patch </li>
-                            <li>SAP Hybris Commerce/SAP Commerce version upgrade </li>
-                            <li>SAP Hybris Commerce/SAP Commerce version patching </li>
+                            <li>Maintained coding standards documentation and enforced quality through code reviews and
+                                knowledge sharing sessions for the development team.</li>
+                            <li>Led project planning, including man-days estimation, development timelines, and breaking
+                                down user stories into smaller tasks for sprint planning.</li>
+                            <li>Developed new features and resolved critical production bugs to ensure platform
+                                stability and continuous delivery.</li>
+                            <li>Managed deployment to lower environments and prepared comprehensive release notes.</li>
+                            <li>Set up and maintained CI/CD pipelines using Azure DevOps and Jenkins, automating build,
+                                deployment, and patch application processes.</li>
+                            <li>Led SAP Hybris Commerce/SAP Commerce version upgrades and patch applications.</li>
                         </ul>
+                        <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java,
+                            Spring MVC, Azure DevOps, Jenkins, MySQL</p>
                     </div>
                 </div>
             </div>
 
             <div class="job">
-                <img src="images/astra.svg" alt="Astra Logo" title="Astra Logo" class="company-logo" loading="lazy"
-                    width="50" height="50" />
+                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
+                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
+                    height="50" />
                 <div class="job-details">
                     <div class="job-header">
                         <div>
                             <div class="job-title">
-                                <h3>Tech Lead - SAP Hybris Commerce - Java Spring MVC & DevOps Engineer</h3>
+                                <h3>Tech Lead & DevOps Engineer</h3>
                             </div>
                             <div class="company">PT Astra International Tbk (via PT Xsis Mitra Utama)</div>
                         </div>
@@ -674,19 +694,21 @@
 
                         <h4>Responsibilities:</h4>
                         <ul>
-                            <li>3rd party integration </li>
-                            <li>Parent site integration </li>
-                            <li>Deployment to Dev, QA, and Pre-Prod environment (manually, and then using Jenkins) </li>
-                            <li>Set up CI/CD using Azure DevOps & Jenkins </li>
-                            <li>Set up Jenkins build job to do deployment </li>
-                            <li>Preparing release notes </li>
-                            <li>Production deployment team </li>
-                            <li>Code reviewer </li>
-                            <li>Tracing bugs </li>
-                            <li>Bug fixes </li>
-                            <li>Database migration </li>
-                            <li>Features development</li>
+                            <li>Integrated 3rd-party REST/SOAP APIs and parent site services to support marketplace and
+                                automotive operations.</li>
+                            <li>Transitioned manual deployment processes to automated CI/CD pipelines using Azure DevOps
+                                and Jenkins for Dev, QA, and Pre-Prod environments.</li>
+                            <li>Served on the production deployment team, ensuring smooth and reliable releases with
+                                comprehensive release notes.</li>
+                            <li>Conducted code reviews to maintain high code quality and architectural standards.</li>
+                            <li>Traced and resolved complex bugs to maintain high availability for e-commerce traffic.
+                            </li>
+                            <li>Executed complex database migrations, including seamless migration from SAP HANA to
+                                Aurora MySQL.</li>
+                            <li>Developed scalable features to meet business requirements.</li>
                         </ul>
+                        <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java,
+                            Spring MVC, Jenkins, Azure DevOps, SAP HANA, Aurora MySQL</p>
                     </div>
                 </div>
             </div>
@@ -698,7 +720,7 @@
                     <div class="job-header">
                         <div>
                             <div class="job-title">
-                                <h3>Software Developer - SAP Hybris Commerce - Java Spring MVC</h3>
+                                <h3>Software Developer</h3>
                             </div>
                             <div class="company">PT Astra International Tbk (via PT Xsis Mitra Utama)</div>
                         </div>
@@ -710,17 +732,28 @@
 
                         <h4>Responsibility: </h4>
                         <ul>
-                            <li>3rd party integration </li>
-                            <li>Parent site integration </li>
-                            <li>Bug fixes </li>
-                            <li>Features development </li>
-                            <li>Social media login </li>
+                            <li>Integrated 3rd-party APIs and parent site resources to build core functionalities and
+                                content delivery.</li>
+                            <li>Developed and maintained core e-commerce features, actively resolving bugs and
+                                optimizing existing codebase for property marketplace.</li>
+                            <li>Implemented social media login integration (OAuth) to streamline user onboarding and
+                                authentication.</li>
                         </ul>
+                        <p style="margin-top: 1rem;"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java,
+                            Spring MVC, REST/SOAP APIs, OAuth</p>
                     </div>
                 </div>
             </div>
 
-            <h2>Courses</h2>
+            <h2 id="education">Education</h2>
+            <ul>
+                <li>
+                    <h3 class="normal-text"><strong>Bachelor's Degree in Computer Science</strong><br>Universitas
+                        Diponegoro (Semarang, Indonesia)</h3>
+                </li>
+            </ul>
+
+            <h2 id="courses">Courses</h2>
             <ul>
                 <li>
                     <h3 class="normal-text">Oracle Academy Java Fundamentals (Oracle)</h3>
@@ -745,48 +778,60 @@
                 </li>
             </ul>
 
-            <h2>Technical Articles</h2>
-            <ul>
+            <h2 id="articles">Technical Articles</h2>
+            <ul class="article-list">
                 <li><a href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943"
                         target="_blank" rel="noopener noreferrer">
-                        <h3 class="normal-text">How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA
-                            and Eclipse – SAP Community (September 2022)</h3>
-                    </a></li>
+                        <h3 class="normal-text">How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse</h3>
+                    </a>
+                    <p class="article-snippet">A deep-dive tutorial explaining how developers can configure and attach
+                        remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce
+                        (On-Premise) server issues.</p>
+                </li>
                 <li><a href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198"
                         target="_blank" rel="noopener noreferrer">
-                        <h3 class="normal-text">How to Enable Image Upload in Backoffice WYSIWYG editor – SAP Community
-                            (November 2023)</h3>
-                    </a></li>
+                        <h3 class="normal-text">How to Enable Image Upload in Backoffice WYSIWYG editor</h3>
+                    </a>
+                    <p class="article-snippet">Step-by-step configuration guide on extending the default SAP Commerce
+                        Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG
+                        tool.</p>
+                </li>
                 <li><a href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050"
                         target="_blank" rel="noopener noreferrer">
-                        <h3 class="normal-text">How to install additional plugins to Backoffice's WYSIWYG editor – SAP
-                            Community (November 2023)</h3>
-                    </a></li>
+                        <h3 class="normal-text">How to install additional plugins to Backoffice's WYSIWYG editor</h3>
+                    </a>
+                    <p class="article-snippet">A technical exploration on advanced CKEditor customization within the SAP
+                        Commerce framework, detailing how to inject custom JavaScript plugins into the Backoffice
+                        environment.</p>
+                </li>
                 <li><a href="https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/"
                         target="_blank" rel="noopener noreferrer">
                         <h3 class="normal-text">SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt
-                            Error) – LinkedIn (August 2025)</h3>
-                    </a></li>
+                            Error)</h3>
+                    </a>
+                    <p class="article-snippet">An architectural breakdown of a Single Sign-On (SSO) limitation
+                        encountered using Spring Security and BCrypt in SAP Commerce, alongside the implemented
+                        encryption bypass solution.</p>
+                </li>
             </ul>
 
             <section id="faq" class="faq-section hide-for-print">
                 <h2>Frequently Asked Questions</h2>
 
-                <p>For more information, visit the <a href="/faq"
-                        title="Frequently Asked Questions about Yusuf Adiputera">FAQ page (English)</a>.</p>
+                <p>For more information, read <a href="/faq">Yusuf Adiputera's Frequently Asked Questions</a>.</p>
 
-                <p>Untuk informasi lebih lanjut, kunjungi <a href="/faq-id"
-                        title="Pertanyaan Umum tentang Yusuf Adiputera">halaman Pertanyaan Umum (Bahasa Indonesia)</a>.
+                <p>Untuk informasi lebih lanjut, kunjungi <a href="/faq-id">halaman Pertanyaan Umum Yusuf Adiputera</a>.
                 </p>
             </section>
 
         </main>
 
         <footer>
-            &copy; 2025 Yusuf Adiputera. All rights reserved.
+            &copy; <span id="current-year">2026</span> Yusuf Adiputera. All rights reserved.
+            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
         </footer>
     </div>
-    <script src="src/index.min.js?v=202511011301" defer></script>
+    <script src="src/index.min.js?v=202602271447" defer></script>
 </body>
 
 </html>

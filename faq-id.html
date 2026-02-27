@@ -2,8 +2,8 @@
 <html lang="id">
 
 <head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202511011301" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202511011301" />
+    <link rel="preload" as="style" href="src/master.min.css?v=202602271447" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202602271447" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-005WBSEVCP');
@@ -36,7 +36,7 @@
     <link rel="apple-touch-icon" href="images/192.png">
     <link rel="apple-touch-startup-image" href="images/512.png">
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202511011301" />
+    <link rel="stylesheet" href="src/master.min.css?v=202602271447" />
 
     <meta name="jobtitle"
         content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
@@ -78,6 +78,7 @@
         {
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
             "name": "Yusuf Adiputera",
             "givenName": "Yusuf",
             "additionalName": "Fahmi",
@@ -105,14 +106,15 @@
                 "https://about.me/adiputera",
                 "https://github.com/adiputera",
                 "https://stackoverflow.com/users/3603194/adiputera",
-                "https://profile.sap.com/u/adiputera"
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
             ],
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jakarta",
                 "addressCountry": "ID"
             },
-            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. With recent exposure to SAP Customer Data Platform (SAP CDP), SAP Emarsys, and SAP S/4HANA ABAP.",
+            "description": "Yusuf Adiputera adalah Lead Software Engineer dengan keahlian dalam Java, SAP Commerce (Hybris), Spring Boot, dan Spring MVC. Berpengalaman dalam performa sistem enterprise dan integrasi dengan reliabilitas tinggi menggunakan REST dan SOAP.",
             "knowsAbout": [
                 "Java",
                 "Spring Framework",
@@ -124,7 +126,11 @@
                 "SAP S/4HANA ABAP",
                 "Kafka",
                 "Drools",
-                "Apache Solr"
+                "Apache Solr",
+                "Integrasi REST & SOAP",
+                "Optimasi Performa",
+                "Redis & Ehcache",
+                "Azure Function App"
             ],
             "nationality": {
                 "@type": "Country",
@@ -245,6 +251,14 @@
         {
             "@context": "https://schema.org",
             "@type": "FAQPage",
+            "name": "Pertanyaan Umum (FAQ) | Yusuf Adiputera – Lead Software Engineer",
+            "description": "Pertanyaan umum seputar Yusuf Adiputera, Lead Software Engineer dengan 8 tahun pengalaman di Java, SAP Commerce (Hybris), Spring MVC, dan Spring Boot.",
+            "author": {
+                "@type": "Person",
+                "@id": "https://adiputera.github.io/#person",
+                "name": "Yusuf Adiputera"
+            },
+            "inLanguage": "id",
             "mainEntity": [
                 {
                     "@type": "Question",
@@ -629,8 +643,119 @@
                         "@type": "Answer",
                         "text": "Ya. Yusuf Adiputera adalah nama profesional yang digunakan oleh Yusuf Fahmi Adiputera. Keduanya merujuk pada orang yang sama. Ia juga dikenal sebagai Yusuf Fahmi atau Yusuf F. Adiputera."
                     }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mengapa perusahaan skala enterprise masih menggunakan Java di tahun 2026?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Perusahaan skala enterprise terus mengandalkan Java karena stabilitas, backward compatibility, dan ekosistemnya yang sangat kuat. Framework seperti Spring Boot memungkinkan Java untuk dengan mudah mendayagunakan microservices modern yang sangat skalabel dengan tetap menjaga standar keamanan yang diwajibkan oleh institusi keuangan dan korporasi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Seberapa sulit mempelajari SAP Commerce (Hybris)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Mempelajari SAP Commerce memiliki kurva pembelajaran yang cukup tajam karena membutuhkan dasar pengetahuan yang kuat tentang Java dan Spring Framework. Namun, developer Java berpengalaman bisa beradaptasi dengan lancar jika memahami arsitektur intinya, pemodelan data, serta kapabilitas flexible search."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa kemampuan terpenting yang harus dimiliki seorang Lead Software Engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Selain penguasaan teknis atas bahasa seperti Java, keterampilan terpenting bagi seorang Lead Software Engineer adalah desain sistem, pemecahan masalah, dan mentoring tim. Seorang lead harus mampu menyeimbangkan penulisan kode yang bersih dan scalable dengan kemampuannya membimbing tim engineering agar selaras dengan tujuan bisnis."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Go (Golang): Mana yang lebih cepat dan lebih baik untuk backend?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Go umumnya lebih cepat saat startup dan mengungguli Java dalam konsumsi memori, menjadikannya pilihan luar biasa untuk microservices ringan dan fungsi serverless. Namun, dengan hadirnya Virtual Threads di Java 21+, Java telah menyusul performa dan throughput secara signifikan untuk proses konkuren. Java juga terus unggul dalam aplikasi skala enterprise yang masif, proses transaksi yang rumit, dan diuntungkan dari ekosistem yang telah matang selama puluhan tahun."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Node.js: Apa perbedaannya dalam pengembangan backend?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Node.js menggunakan arsitektur event-driven, single-thread asinkron, yang sangat cocok untuk aplikasi real-time (seperti aplikasi chat) dan beban kerja I/O yang berat. Java menggunakan arsitektur multi-thread (dan sekarang virtual thread di Java 21+), yang membuatnya jauh lebih siap untuk tugas intensif CPU dan pemrosesan data berat yang lazim ditemukan di aplikasi tingkat perusahaan dan perangkat lunak perbankan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Python: Mana yang harus dipilih untuk backend tingkat perusahaan (enterprise)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Python tidak tertandingi untuk data science, AI, dan rapid prototyping karena kesederhanaannya. Di sisi lain, Java memiliki runtime yang jauh lebih cepat, tipe data ketat, dan dirancang untuk konkurensi (concurrency) massal, menjadikannya standar industri untuk pengembangan backend skala besar dan platform e-commerce tingkat perusahaan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Seberapa sulit mempelajari Java di tahun 2026?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Java memiliki tingkat kesulitan belajar menengah. Karena merupakan bahasa yang diketik ketat (strictly typed) dan berorientasi objek murni (OOP), pemula harus memahami konsep seperti class, pewarisan (inheritance), dan manajemen memori (Garbage Collection) sejak awal. Meski begitu, sintaksisnya yang eksplisit akan membangun dasar-dasar software engineering yang sangat kuat dan dapat diterapkan ke hampir semua bahasa pemrograman lainnya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Seberapa sulit mempelajari Spring Framework (Spring Boot)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Begitu Anda memahami konsep dasar Java dengan kuat, mempelajari Spring Boot relatif mudah karena seringnya menggunakan pendekatan 'convention over configuration'. Bagian tersulit bagi pemula adalah memahami konsep Spring yang mendasarinya yakni Dependency Injection (DI) dan Inversion of Control (IoC), serta berbagai penggunaaan anotasi. Setelah Anda memahaminya, membuat REST API berskala produksi akan menjadi sangat cepat."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Pemrograman Berorientasi Objek (OOP)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Pemrograman Berorientasi Objek (OOP) adalah paradigma pemrograman yang berpusat pada konsep 'objek', yang dapat berisi data (atribut/properti) dan kode (metode/fungsi). Dalam bahasa seperti Java, OOP membantu mengatur desain perangkat lunak yang kompleks dengan memodelkan entitas dunia nyata, membuat kode lebih modular, dapat digunakan kembali (reusable), dan mudah dipelihara."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa saja 4 pilar utama dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Empat pilar utama Pemrograman Berorientasi Objek adalah Encapsulation (Enkapsulasi), Inheritance (Pewarisan), Polymorphism (Polimorfisme), dan Abstraction (Abstraksi). Bersama-sama, prinsip-prinsip ini memungkinkan developer untuk membangun arsitektur kode yang aman, skalabel, dan sangat dapat digunakan kembali."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Encapsulation (Enkapsulasi) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Encapsulation adalah praktik membungkus data (variabel) dan metode yang beroperasi pada data tersebut ke dalam satu unit (class), serta membatasi akses langsung ke beberapa komponen objek. Dalam Java, hal ini biasanya dicapai dengan membuat variabel menjadi private dan menyediakan metode public berupa getter dan setter. Tujuannya adalah melindungi integritas data."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Inheritance (Pewarisan) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Inheritance adalah mekanisme OOP di mana sebuah class baru (child/subclass) mewarisi properti dan perilaku (metode) dari class yang sudah ada (parent/superclass). Hal ini mendorong penggunaan ulang kode. Contohnya, class 'Mobil' dapat mewarisi atribut umum seperti 'kecepatan' dan metode seperti 'rem()' dari class 'Kendaraan' yang lebih luas tanpa perlu menulis ulang kodenya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Polymorphism (Polimorfisme) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Polymorphism berarti 'banyak bentuk'. Dalam OOP, konsep ini memungkinkan objek dari berbagai class diperlakukan sebagai objek dari superclass yang sama. Misalnya, metode 'gambar()' dapat berperilaku berbeda tergantung apakah ia dipanggil pada objek 'Lingkaran' atau objek 'Persegi', meskipun keduanya mewarisi class 'Bentuk'."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Abstraction (Abstraksi) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Abstraction melibatkan penyembunyian detail implementasi yang kompleks dan hanya menampilkan fitur-fitur penting dari sebuah objek. Dalam Java, hal ini sering diimplementasikan menggunakan abstract class atau interface. Konsep ini mengurangi kompleksitas sistem karena pengembang dapat berinteraksi dengan antarmuka yang sederhana tanpa perlu memahami kerumitan kode di baliknya."
+                    }
                 }
-
             ]
         }
     </script>
@@ -656,7 +781,8 @@
         </div>
 
         <header>
-            <button class="toggle-theme button" onclick="toggleTheme()" aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
+            <button class="toggle-theme button" onclick="toggleTheme()"
+                aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
             <h1>Pertanyaan Umum – Yusuf Adiputera, Lead Software Engineer</h1>
             <h2 class="title">
                 Pertanyaan seputar Yusuf Adiputera dan pekerjaannya di bidang Java, SAP Commerce (Hybris), dan
@@ -835,7 +961,9 @@
                     <div class="faq-item open">
                         <h4 class="faq-question">Apakah Yusuf Adiputera dan Yusuf Fahmi Adiputera orang yang sama?</h4>
                         <div class="faq-answer">
-                            <p>Ya. Yusuf Adiputera adalah nama profesional yang digunakan oleh Yusuf Fahmi Adiputera. Keduanya merujuk pada orang yang sama. Ia juga dikenal sebagai Yusuf Fahmi atau Yusuf F. Adiputera.</p>
+                            <p>Ya. Yusuf Adiputera adalah nama profesional yang digunakan oleh Yusuf Fahmi Adiputera.
+                                Keduanya merujuk pada orang yang sama. Ia juga dikenal sebagai Yusuf Fahmi atau Yusuf F.
+                                Adiputera.</p>
                         </div>
                     </div>
 
@@ -1310,6 +1438,179 @@
                         </div>
                     </div>
                 </section>
+
+                <h3 class="faq-subtitle">Wawasan Industri & Perkembangan Karier</h3>
+                <section id="industry-insights" class="faq-subsection">
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Mengapa perusahaan skala enterprise masih menggunakan Java di tahun
+                            2026?</h4>
+                        <div class="faq-answer">
+                            <p>Perusahaan skala enterprise terus mengandalkan Java karena stabilitas, backward
+                                compatibility, dan ekosistemnya yang sangat kuat. Framework seperti Spring Boot
+                                memungkinkan Java untuk dengan mudah mendayagunakan microservices modern yang sangat
+                                skalabel dengan tetap menjaga standar keamanan yang diwajibkan oleh institusi
+                                keuangan dan korporasi.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Seberapa sulit mempelajari SAP Commerce (Hybris)?</h4>
+                        <div class="faq-answer">
+                            <p>Mempelajari SAP Commerce memiliki kurva pembelajaran yang cukup tajam karena membutuhkan
+                                dasar pengetahuan yang kuat tentang Java dan Spring Framework. Namun, developer Java
+                                berpengalaman bisa beradaptasi dengan lancar jika memahami arsitektur intinya, pemodelan
+                                data, serta kapabilitas flexible search.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa kemampuan terpenting yang harus dimiliki seorang Lead Software
+                            Engineer?</h4>
+                        <div class="faq-answer">
+                            <p>Selain penguasaan teknis atas bahasa seperti Java, keterampilan terpenting bagi seorang
+                                Lead Software Engineer adalah desain sistem, pemecahan masalah, dan mentoring tim.
+                                Seorang lead harus mampu menyeimbangkan penulisan kode yang bersih dan scalable dengan
+                                kemampuannya membimbing tim engineering agar selaras dengan tujuan bisnis.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Java vs Go (Golang): Mana yang lebih cepat dan lebih baik untuk
+                            backend?</h4>
+                        <div class="faq-answer">
+                            <p>Go umumnya lebih cepat saat startup dan mengungguli Java dalam konsumsi memori,
+                                menjadikannya
+                                pilihan luar biasa untuk microservices ringan dan fungsi serverless. Namun, dengan
+                                hadirnya
+                                Virtual Threads di Java 21+, Java telah menyusul performa dan throughput secara
+                                signifikan untuk proses konkuren. Java juga terus unggul dalam aplikasi skala enterprise
+                                yang masif, proses transaksi yang rumit, dan diuntungkan dari ekosistem yang telah
+                                matang selama puluhan tahun.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Java vs Node.js: Apa perbedaannya dalam pengembangan backend?</h4>
+                        <div class="faq-answer">
+                            <p>Node.js menggunakan arsitektur event-driven, single-thread asinkron, yang sangat cocok
+                                untuk aplikasi real-time (seperti aplikasi chat) dan beban kerja I/O yang berat. Java
+                                menggunakan arsitektur multi-thread (dan sekarang virtual thread di Java 21+), yang
+                                membuatnya jauh lebih siap untuk tugas intensif CPU dan pemrosesan data berat yang lazim
+                                ditemukan di aplikasi tingkat perusahaan dan perangkat lunak perbankan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Java vs Python: Mana yang harus dipilih untuk backend tingkat
+                            perusahaan (enterprise)?</h4>
+                        <div class="faq-answer">
+                            <p>Python tidak tertandingi untuk data science, AI, dan rapid prototyping karena
+                                kesederhanaannya. Di sisi lain, Java memiliki runtime yang jauh lebih cepat, tipe data
+                                ketat, dan dirancang untuk konkurensi (concurrency) massal, menjadikannya standar
+                                industri untuk pengembangan backend skala besar dan platform e-commerce tingkat
+                                perusahaan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Seberapa sulit mempelajari Java di tahun 2026?</h4>
+                        <div class="faq-answer">
+                            <p>Java memiliki tingkat kesulitan belajar menengah. Karena merupakan bahasa yang diketik
+                                ketat (strictly typed) dan berorientasi objek murni (OOP), pemula harus memahami konsep
+                                seperti class, pewarisan (inheritance), dan manajemen memori (Garbage Collection) sejak
+                                awal. Meski begitu, sintaksisnya yang eksplisit akan membangun dasar-dasar software
+                                engineering yang sangat kuat dan dapat diterapkan ke hampir semua bahasa pemrograman
+                                lainnya.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Seberapa sulit mempelajari Spring Framework (Spring Boot)?</h4>
+                        <div class="faq-answer">
+                            <p>Begitu Anda memahami konsep dasar Java dengan kuat, mempelajari Spring Boot relatif mudah
+                                karena seringnya menggunakan pendekatan "convention over configuration". Bagian tersulit
+                                bagi pemula adalah memahami konsep Spring yang mendasarinya yakni Dependency Injection
+                                (DI) dan Inversion of Control (IoC), serta berbagai penggunaaan anotasi. Setelah Anda
+                                memahaminya, membuat REST API berskala produksi akan menjadi sangat cepat.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <h3 class="faq-subtitle">Dasar-Dasar Software Engineering</h3>
+                <section id="software-engineering-fundamentals" class="faq-subsection">
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa itu Pemrograman Berorientasi Objek (OOP)?</h4>
+                        <div class="faq-answer">
+                            <p>Pemrograman Berorientasi Objek (OOP) adalah paradigma pemrograman yang berpusat pada
+                                konsep "objek", yang dapat berisi data (atribut/properti) dan kode (metode/fungsi).
+                                Dalam bahasa seperti Java, OOP membantu mengatur desain perangkat lunak yang kompleks
+                                dengan memodelkan entitas dunia nyata, membuat kode lebih modular, dapat digunakan
+                                kembali (reusable), dan mudah dipelihara.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa saja 4 pilar utama dalam OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Empat pilar utama Pemrograman Berorientasi Objek adalah <strong>Encapsulation
+                                    (Enkapsulasi)</strong>, <strong>Inheritance (Pewarisan)</strong>,
+                                <strong>Polymorphism
+                                    (Polimorfisme)</strong>, dan <strong>Abstraction (Abstraksi)</strong>. Bersama-sama,
+                                prinsip-prinsip ini memungkinkan developer untuk membangun arsitektur kode yang aman,
+                                skalabel, dan sangat dapat digunakan kembali.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa itu Encapsulation (Enkapsulasi) dalam OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Encapsulation adalah praktik membungkus data (variabel) dan metode yang beroperasi pada
+                                data tersebut ke dalam satu unit (class), serta membatasi akses langsung ke beberapa
+                                komponen objek. Dalam Java, hal ini biasanya dicapai dengan membuat variabel menjadi
+                                <code>private</code> dan menyediakan metode <code>public</code> berupa getter dan
+                                setter.
+                                Tujuannya adalah melindungi integritas data.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa itu Inheritance (Pewarisan) dalam OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Inheritance adalah mekanisme OOP di mana sebuah class baru (child/subclass) mewarisi
+                                properti dan perilaku (metode) dari class yang sudah ada (parent/superclass). Hal ini
+                                mendorong penggunaan ulang kode. Contohnya, class <code>Mobil</code> dapat mewarisi
+                                atribut umum seperti <code>kecepatan</code> dan metode seperti <code>rem()</code> dari
+                                class <code>Kendaraan</code> yang lebih luas tanpa perlu menulis ulang kodenya.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa itu Polymorphism (Polimorfisme) dalam OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Polymorphism berarti "banyak bentuk". Dalam OOP, konsep ini memungkinkan objek dari
+                                berbagai class diperlakukan sebagai objek dari superclass yang sama. Misalnya, metode
+                                <code>gambar()</code> dapat berperilaku berbeda tergantung apakah ia dipanggil pada
+                                objek <code>Lingkaran</code> atau objek <code>Persegi</code>, meskipun keduanya mewarisi
+                                class <code>Bentuk</code>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item open">
+                        <h4 class="faq-question">Apa itu Abstraction (Abstraksi) dalam OOP?</h4>
+                        <div class="faq-answer">
+                            <p>Abstraction melibatkan penyembunyian detail implementasi yang kompleks dan hanya
+                                menampilkan fitur-fitur penting dari sebuah objek. Dalam Java, hal ini sering
+                                diimplementasikan menggunakan abstract class atau interface. Konsep ini mengurangi
+                                kompleksitas sistem karena pengembang dapat berinteraksi dengan antarmuka yang sederhana
+                                tanpa perlu memahami kerumitan kode di baliknya.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem;">Ingin melihat bagaimana saya menerapkan prinsip-prinsip ini? Lihat <a
+                            href="/skills-id">Keahlian Teknis Terperinci</a> saya.</p>
+                </section>
             </section>
         </main>
 
@@ -1317,7 +1618,7 @@
             &copy; 2025 Yusuf Adiputera. All rights reserved.
         </footer>
     </div>
-    <script src="src/index.min.js?v=202511011301" defer></script>
+    <script src="src/index.min.js?v=202602271447" defer></script>
 </body>
 
 </html>
