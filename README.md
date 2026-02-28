@@ -1,7 +1,7 @@
 
 # Yusuf Adiputera
 
-**Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC**  
+**Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework**  
 📧 yusuf@adiputera.id  
 🔗 [LinkedIn](https://www.linkedin.com/in/yusuf-adiputera)  
 🌐 [Website](https://adiputera.github.io)
@@ -10,23 +10,19 @@
 
 ## Summary
 
-Yusuf is an experienced Java & SAP Hybris Commerce/SAP Commerce developer, with skills in developing OCC API, searching using flexible search, hot folder configuration, data modeling, cronjob, and 3rd party integration using REST API. Also experienced in customizing promotion conditions, backoffice customization, and asynchronous processing using Kafka. Proficient in Git, Spring Boot, Spring MVC framework, and Azure Function App.
+Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed systems, and SAP Commerce (Hybris) architecture, with more than 8 years of professional experience in building scalable, high-performance systems within the SAP ecosystem.
 
-As a lead engineer, Yusuf has responsibilities for creating man-days estimation, creating development timelines, involving in project planning, reviewing code, analyzing and breaking down user stories into technical tasks, mentoring and coaching team members, lower environment deployment, and preparing release notes that contain commit IDs, a list of features to be deployed, and post-deployment steps. He must also be ready to debug and check the server logs using SSH when the QA team finds some bugs or errors.
+He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes SAP Commerce development, Spring-based microservices architecture, secure Role-Based Access Control (RBAC), and enterprise system integration across the SAP CX landscape.
 
-Yusuf has been involved in several SAP Hybris Commerce/SAP Commerce projects under Astra Group, namely seva.id otomotif, seva.id property, seva.id marketplace, astra-daihatsu.id, auto2000.co.id, and most recently motorkux.id.
+Yusuf has led multiple large-scale SAP Commerce implementations and platform upgrades across Astra Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He led the end-to-end development of motorkux.id from analysis through production launch and continues to drive platform evolution based on business and technical requirements.
 
-In the motorkux.id project, Yusuf led the development team to build SAP Hybris Commerce/SAP Commerce from scratch, was involved in the analysis and development phases, until going live in June 2022. After going live, he continued leading development to enrich website features based on business analyst requirements.
+He is currently leading a strategic modernization initiative to migrate SAP Commerce into a Spring Boot–based microservices architecture, designing core system architecture and reusable platform capabilities including a dynamic rules engine (rules-as-a-service) and scalable service foundation.
 
-Yusuf also created an image resizer proxy to resize images on the fly using Azure Function App and Node.js, which is used by motorkux.id, auto2000.co.id, and astra-daihatsu.id.
+His work emphasizes performance and scalability engineering, including full-page caching architecture, storefront optimization, and infrastructure improvements enabling the platform to handle significant traffic spikes with high reliability.
 
-Yusuf is also responsible for database migration for all seva projects, from SAP Hana to MySQL, by writing code to migrate data automatically.
+Yusuf also contributes to enterprise integration initiatives including SAP Customer Data Platform (CDP), SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA, supporting unified customer data, marketing automation, and ERP integration.
 
-Yusuf also handles version upgrades of several SAP Hybris Commerce/SAP Commerce projects, including seva.id marketplace from 6.6 to 2011, seva.id otomotif from 6.6 to 2011, auto2000.co.id from 19.05 to 2011, astra-daihatsu.id from 19.05 to 2011, and motorkux.id from 21.05 to 22.05.
-
-Recently, Yusuf has also been involved in SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation to enable unified customer data and marketing automation across the SAP CX ecosystem.
-
-In development, Yusuf and the team use an agile, sprint-based methodology.
+He is passionate about building maintainable systems, mentoring engineering teams, and designing scalable architectures that support long-term business growth.
 
 ---
 
@@ -35,7 +31,9 @@ In development, Yusuf and the team use an agile, sprint-based methodology.
 - Led the development team that successfully built and launched motorkux.id (2021–now)
 - Led the development team that successfully built and launched seva.id marketplace (2019–2021)
 - Part of a development team that successfully built and launched seva.id property (2018–2019)
-- Recently involved in SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation (2025)
+- Won internal "Best Project Development Quality" award (2024)
+- Recently involved in SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) implementation (2025)
+- Recently involved in SAP S/4HANA ABAP development (2026)
 - Successfully developed image resizer proxy (2024)
 - Successfully developed payload validator on the fly, using Drools (2025)
 - Successfully created custom promotion conditions (location-based quota without having to use coupons) (2023)
@@ -44,49 +42,72 @@ In development, Yusuf and the team use an agile, sprint-based methodology.
 - Set up CI/CD on Jenkins and Azure DevOps for various Hybris projects (2018–2022)
 - Successfully implemented lazy loading of CMS content slot in a page
 - Successfully implemented lazy loading of CMS components
-- Successfully improved the performance of the JSP storefront (PSI score >90 on desktop, >65 on mobile)
+- Successfully improved the performance of the JSP storefront
 
 ---
 
 ## Skills
 
-Java • SAP Hybris Commerce • Spring MVC • Spring Boot • Azure Function App • REST API • Git • jQuery • JavaScript • HTML • Drools • Solr • Kafka • SAP Customer Data Platform (SAP CDP) • SAP Emarsys
+Java • SAP Commerce (Hybris) • Spring Boot • Spring MVC • Spring Framework • jQuery • Azure Function App • SAP Customer Data Platform (SAP CDP) • SAP Engagement Cloud (formerly SAP Emarsys) • SAP S/4HANA ABAP • REST API • Git • Kafka • Apache Solr • Drools
 
 ---
 
 ## Work Experience
 
-### Lead Software Engineer - SAP Hybris Commerce - Java - Spring MVC - Spring Boot - Drools  
+### Lead Software Engineer
 **PT Astra International Tbk**  
 *Feb 2021 – Present*
-#### Key Achievements:
-- Successfully led the development team in developing motorkux.id from the analysis and development phases until going live in June 2022. 
-- Successfully upgraded the SAP Hybris Commerce/SAP Commerce version of seva.id marketplace and seva.id otomotif from the 6.6 version to 20.11, and then applied the new patch version, auto2000, and Astra-Daihatsu from 19.05 to 20.11. 
-- Successfully upgrading SAP Hybris Commerce/SAP Commerce version of motorkux.id from version 2105 to version 2205
-- Successfully creating custom promotion conditions (location-based quota without having to use coupons) 
-- Successfully developed employee role expiration
-- Successfully in implementing lazy loading of CMS content slot in a page
-- Successfully in implementing lazy loading of CMS component
-- Successfully developed image resizer proxy
-- Successfully in improving the performance of the JSP storefront (PSI score >90 on desktop, >65 on mobile)
-- Recently involved in SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation (2025)
 
-### Responsibilities:
-- Maintain coding standards document 
-- Enforcing coding standards through code review and knowledge sharing 
-- Project planning 
-- Man-days estimation> 
-- Create a development timeline 
-- Breakdown story into smaller tasks for sprint planning 
-- Features development 
-- Bugfix 
-- Deployment to a lower environment 
-- Preparing release notes 
-- Set up CI/CD using Azure DevOps & Jenkins 
-- Set up Jenkins build job to do deployment 
-- Set up Azure DevOps Pipeline for applying the patch 
-- SAP Hybris Commerce/SAP Commerce version upgrade 
-- SAP Hybris Commerce/SAP Commerce version patching 
+Lead architecture and delivery of enterprise-scale SAP Commerce (Hybris) e-commerce platforms, focusing on system scalability, platform modernization, and enterprise integration. Responsible for engineering leadership, core system design, and long-term platform evolution across multiple business domains.
+
+#### Engineering Leadership
+- Led a team of up to 12 engineers delivering enterprise e-commerce platforms from analysis through production (motorkux.id go-live June 2022).
+- Owned end-to-end delivery including architecture design, project planning, sprint execution, and release management.
+- Established coding standards and enforced engineering quality through code reviews, technical mentoring, and knowledge sharing.
+- Coordinated cross-team collaboration across product, infrastructure, and enterprise integration teams.
+- Won internal “Best Project Development Quality” award (2024).
+
+#### Platform Modernization & Architecture (on going)
+- Leading enterprise modernization initiative to migrate SAP Commerce platform to Spring Boot–based microservices architecture.
+- Designed core system architecture supporting multiple business domains and supervising 3 parallel rewrite projects.
+- Defined service boundaries, architecture standards, and implementation guidelines.
+- Designed secure Role-Based Access Control (RBAC) model for service authorization and resource protection.
+
+#### Rule Engine Platform (Rules-as-a-Service)
+- Designed dynamic rule engine using Drools enabling client-defined conditions and actions without code deployment.
+- Built reusable rules platform decoupling business logic from application services.
+- Implemented flexible rule model not tightly coupled to domain objects.
+- Delivered as core platform capability for SAP Commerce modernization and future service architecture.
+- Developed payload validator on the fly, using Drools (2025).
+
+#### Performance & Scalability Engineering
+- Designed and implemented full-page caching architecture (EHCache), reducing page load time from ~2s to sub-second response.
+- Improved platform resilience enabling system to handle more than 3× traffic spikes without downtime.
+- Optimized storefront performance through CMS lazy loading strategy and rendering optimization.
+- Built image resizer proxy reducing payload size up to 80% and improving page load performance.
+- Improved JSP storefront performance.
+- Developed image resizer proxy (2024).
+
+#### SAP Commerce Platform Engineering
+- Led multiple SAP Commerce platform upgrades across enterprise systems:
+    - seva.id marketplace & otomotif (6.6 → 20.11)
+    - auto2000 & Astra-Daihatsu (19.05 → 20.11)
+    - motorkux.id (2105 → 2205)
+- Developed custom promotion engine supporting location-based quota without coupon dependency (2023).
+- Implemented employee role expiration mechanism for enterprise access control.
+
+#### Enterprise Integration
+- Contributed to SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) implementation for customer data and marketing automation.
+- Supporting SAP S/4HANA integration initiatives and expanding ABAP expertise for ERP integration.
+
+#### Core Responsibilities
+- Architecture design and system evolution planning
+- Project planning and delivery management
+- Engineering standards governance and code review
+- Platform upgrade and deployment strategy
+- Performance optimization and scalability improvements
+
+**Technology Stack:** SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices Architecture, Drools, EHCache, JSP, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA.
 
 ---
 ### Bootcamp Trainer  
@@ -186,22 +207,22 @@ Our team successfully built and launched seva.id property
 ### About Yusuf Adiputera – Lead Software Engineer
 
 **1. Who is Yusuf Adiputera?**
-Yusuf Adiputera (full name: Yusuf Fahmi Adiputera) is a Lead Software Engineer specializing in Java, SAP Commerce (Hybris), and the Spring Framework. With almost 8 years of professional experience in software engineering, he has delivered large-scale e-commerce projects for leading automotive brands under Astra Group. He is known for his structured approach to backend development, focus on system quality, performance, and security. Recently, Yusuf has also been involved in implementing SAP Customer Data Platform (SAP CDP) and SAP Emarsys, gaining practical exposure in customer data management and marketing automation within the SAP CX ecosystem.
+Yusuf Adiputera (full name: Yusuf Fahmi Adiputera) is a Lead Software Engineer specializing in Java, SAP Commerce (Hybris), and the Spring Framework. With more than 8 years of professional experience in software engineering, he has delivered large-scale e-commerce projects for leading automotive brands under Astra Group. He is known for his structured approach to backend development, focus on system quality, performance, and security. Recently, Yusuf has also been involved in implementing SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys), gaining practical exposure in customer data management and marketing automation within the SAP CX ecosystem.
 
 **2. Why is Yusuf Adiputera considered an experienced software engineer?**  
-Yusuf has nearly 8 years of hands-on experience in enterprise software engineering, focusing on building scalable and maintainable backend systems using Java. He has been involved in several SAP Commerce implementations, optimizing performance and leading backend initiatives for Astra's digital platforms. His balanced technical skills and leadership make him a reliable contributor in complex enterprise environments.
+Yusuf has more than 8 years of hands-on experience in enterprise software engineering, focusing on building scalable and maintainable backend systems using Java. He has been involved in several SAP Commerce implementations, optimizing performance and leading backend initiatives for Astra's digital platforms. His balanced technical skills and leadership make him a reliable contributor in complex enterprise environments.
 
 **3. What makes Yusuf Adiputera stand out as a software engineer?**  
 Yusuf stands out for his consistent focus on quality and maintainability. He values clean architecture, collaboration, and measurable results. His leadership style emphasizes mentoring team members, reviewing code for long-term stability, and aligning technical work with business goals — ensuring both performance and reliability in enterprise projects.
 
 **4. What programming languages and frameworks does Yusuf Adiputera use?**
-Yusuf primarily works with Java, SAP Commerce (Hybris), and the Spring ecosystem, including Spring Boot and Spring MVC. He also has practical experience with Drools for business rules, Kafka for asynchronous processing, and Apache Solr for search and indexing in SAP Commerce environments. Recently, he has been involved in implementing SAP Customer Data Platform (SAP CDP) and SAP Emarsys within the SAP CX landscape.
+Yusuf primarily works with Java, SAP Commerce (Hybris), and the Spring ecosystem, including Spring Boot and Spring MVC. He also has practical experience with Drools for business rules, Kafka for asynchronous processing, and Apache Solr for search and indexing in SAP Commerce environments. Recently, he has been involved in implementing SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) within the SAP CX landscape.
 
 **5. Has Yusuf Adiputera received recognition for his work?**
 Yes. In 2024, one of the projects Yusuf contributed to received an internal **Best Project Quality** award, highlighting his commitment to delivering stable, high-quality software and his contributions to Astra Group's digital transformation projects.
 
 **6. What does Yusuf Adiputera specialize in?**
-Yusuf focuses on enterprise-grade software engineering using Java, Spring MVC, Spring Boot, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, and backend optimization. He has also recently been involved in implementing SAP CDP and SAP Emarsys.
+Yusuf focuses on enterprise-grade software engineering using Java, Spring MVC, Spring Boot, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, and backend optimization. He has also recently been involved in implementing SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys).
 
 **7. What projects has Yusuf Adiputera worked on?**
 Yusuf has been involved in major digital commerce projects such as **motorkuX.id**, **auto2000.co.id**, **astra-daihatsu.id**, and **seva.id** — all part of Astra Group's digital transformation initiatives, demonstrating his experience in building and maintaining large-scale enterprise platforms.
@@ -241,7 +262,7 @@ Yusuf currently works at **PT Astra International Tbk**, one of Indonesia's larg
 Yusuf serves as a **Lead Software Engineer**, leading backend development within Astra's digital commerce ecosystem. His responsibilities include overseeing SAP Commerce (Hybris) projects, ensuring system performance, and mentoring developers in Java and Spring-based engineering practices.
 
 **18. How long has Yusuf Adiputera been working as a software engineer?**
-Yusuf has been working in the software engineering field for **almost 8 years**, focusing on Java, SAP Commerce (Hybris), and Spring Framework development.
+Yusuf has been working in the software engineering field for **more than 8 years**, focusing on Java, SAP Commerce (Hybris), and Spring Framework development.
 
 **19. What is Yusuf Adiputera's business email address?**
 You can reach Yusuf directly at [yusuf@adiputera.id](mailto:yusuf@adiputera.id) for professional inquiries, collaboration, or networking opportunities.
@@ -347,4 +368,10 @@ A Lead Software Engineer oversees technical architecture, ensures performance, a
 SAP Customer Data Platform (SAP CDP) enables organizations to unify and manage customer data securely across channels, helping deliver personalized and consent-based experiences at scale.
 
 **48. What is SAP Emarsys?**
-SAP Emarsys is a customer engagement platform focused on marketing automation, providing tools for personalized omnichannel communication, campaign orchestration, and customer lifecycle management.
+SAP Emarsys (now rebranded as SAP Engagement Cloud) is a customer engagement platform focused on marketing automation, providing tools for personalized omnichannel communication, campaign orchestration, and customer lifecycle management.
+
+**49. What is SAP Engagement Cloud?**
+SAP Engagement Cloud is the new name for SAP Emarsys. It is a comprehensive customer engagement platform that combines marketing automation, personalization, and omnichannel communication to help brands build stronger relationships with their customers.
+
+**50. Are SAP Emarsys and SAP Engagement Cloud same?**
+Yes, they are the same. SAP rebranded Emarsys as SAP Engagement Cloud in early 2026 to better reflect its role as a core component of the SAP Customer Experience (CX) suite.

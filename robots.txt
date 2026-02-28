@@ -3,6 +3,7 @@ Allow: /
 
 # Disallow documentation and source files
 Disallow: /README.md
+Disallow: /FAQ.md
 Disallow: /src/
 
 # Sitemap
