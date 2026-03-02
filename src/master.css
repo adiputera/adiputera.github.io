@@ -569,6 +569,47 @@ footer {
     margin-top: 1rem;
 }
 
+/* Skills Category Layout */
+.skills-category-section {
+    margin-bottom: 3rem;
+}
+
+.skills-category-section h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.category-intro {
+    font-size: 1.05rem;
+    color: var(--subtext);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.core-philosophies-section {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+}
+
+.philosophies-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.philosophies-list li {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.cta-section {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
 @media print {
 
     /* Hide toggle theme button and footer in print */

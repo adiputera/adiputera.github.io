@@ -2,8 +2,8 @@
 <html lang="id">
 
 <head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202603021148" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202603021148" />
+    <link rel="preload" as="style" href="src/master.min.css?v=202603021700" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202603021700" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon" href="images/192.png">
     <link rel="apple-touch-startup-image" href="images/512.png">
     <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202603021148" />
+    <link rel="stylesheet" href="src/master.min.css?v=202603021700" />
 
     <meta name="jobtitle"
         content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
@@ -55,10 +55,15 @@
     <meta property="og:image:height" content="750" />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:alt" content="Foto Yusuf Adiputera – Lead Software Engineer" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="https://adiputera.github.io/skills-id" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+
+    <meta property="profile:first_name" content="Yusuf" />
+    <meta property="profile:last_name" content="Adiputera" />
+    <meta property="profile:username" content="yusuf-adiputera" />
+    <meta property="profile:gender" content="male" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Keahlian Teknis & Teknologi – Yusuf Adiputera | Lead Software Engineer" />
@@ -243,6 +248,76 @@
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Keahlian Teknis Yusuf Adiputera",
+            "numberOfItems": 10,
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Java",
+                    "description": "Lebih dari 8 tahun pengalaman membangun backend kritis di Java 8-21+, menggunakan fitur modern seperti Virtual Threads (Project Loom)."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "SAP Commerce (Hybris)",
+                    "description": "Pengalaman mendalam dalam arsitektur platform, pemodelan data, pengembangan OCC API, dan kustomisasi Backoffice untuk platform commerce enterprise."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Spring Boot & MVC",
+                    "description": "Penggunaan luas ekosistem Spring untuk arsitektur microservices maupun monolitik, termasuk Security, JPA, dan Dependency Injection."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Integrasi REST & SOAP",
+                    "description": "Spesialisasi dalam integrasi sistem enterprise kompleks menggunakan RESTful API dan layanan web SOAP dengan fokus pada integritas data."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": "Desain Sistem & Performa",
+                    "description": "Fokus pada optimasi performa dan skalabilitas arsitektur menggunakan Redis, Ehcache, dan CDN untuk responsivitas sistem."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 6,
+                    "name": "Apache Kafka",
+                    "description": "Menerapkan arsitektur berbasis event untuk sinkronisasi data real-time, berpengalaman merancang producer, consumer, dan manajemen topik."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 7,
+                    "name": "Cloud & Serverless",
+                    "description": "Berpengalaman dengan Azure Function Apps dan pipeline CI/CD untuk meningkatkan kapabilitas platform enterprise inti."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 8,
+                    "name": "SAP CDP & Emarsys",
+                    "description": "Kemahiran dalam SAP Customer Data Platform dan SAP Engagement Cloud untuk mendorong keterlibatan pelanggan omnichannel."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 9,
+                    "name": "Drools",
+                    "description": "Pengalaman dengan Drools untuk manajemen aturan bisnis dan menerapkan pemisahan logika bisnis melalui rule-engine yang fleksibel."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 10,
+                    "name": "SAP S/4HANA ABAP",
+                    "description": "Familiar dengan pengembangan ABAP untuk ekstensi logika bisnis inti dalam ekosistem SAP S/4HANA."
+                }
+            ]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "Keahlian Teknis – Yusuf Adiputera",
             "description": "Daftar lengkap keahlian teknis termasuk Java, Spring Boot, dan SAP Commerce Cloud.",
@@ -284,8 +359,9 @@
         <header>
             <button class="toggle-theme button hide-for-print" onclick="toggleTheme()"
                 aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
-            <h1>
-                <a href="/id" style="text-decoration: none; color: inherit;">Yusuf Adiputera</a>
+            <h1 class="main-heading">
+                <a href="/id" style="text-decoration: none; color: inherit;" rel="noopener"
+                    title="Kembali ke Beranda">Yusuf Adiputera</a>
                 <span class="title">Keahlian & Kompetensi Teknis</span>
             </h1>
         </header>
@@ -297,99 +373,141 @@
                     platform SAP Commerce (Hybris).</p>
             </section>
 
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Java</h3>
-                    <p>Lebih dari 8 tahun pengalaman membangun backend kritis. Mahir dalam Java 8 hingga Java 21+,
-                        memanfaatkan
-                        fitur modern seperti Virtual Threads (Project Loom) untuk mencapai konkurensi throughput tinggi.
-                    </p>
-                    <span class="skill-level">Lead Level</span>
-                </div>
+            <div class="skills-categories">
+                <section class="skills-category-section">
+                    <h2 id="core-languages-frameworks">Bahasa & Framework Utama</h2>
+                    <p class="category-intro">Pondasi keahlian engineering saya, berfokus pada sistem berorientasi objek
+                        yang kokoh dan layanan backend dengan throughput tinggi.</p>
+                    <div class="skills-grid">
+                        <article class="skill-card">
+                            <h3>Java</h3>
+                            <p>Lebih dari 8 tahun pengalaman praktis membangun sistem backend kritis dalam Java 8 hingga
+                                Java 21+. Mahir dalam fitur modern seperti Virtual Threads (Project Loom), Streams API,
+                                dan arsitektur modular. Memimpin pengembangan platform skala enterprise untuk situs
+                                e-commerce dengan trafik tinggi termasuk motorkux.id, auto2000.co.id, dan seva.id. Fokus
+                                pada penulisan kode yang bersih dan mudah dipelihara mengikuti prinsip SOLID dan design
+                                patterns.</p>
+                            <span class="skill-level" aria-label="Proficiency: Lead Level">Lead Level</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>SAP Commerce (Hybris)</h3>
-                    <p>Sebelumnya dikenal sebagai Hybris. Pengalaman mendalam dalam arsitektur platform, pemodelan data,
-                        pengembangan OCC API, dan kustomisasi Backoffice. Implementasi tingkat senior untuk platform
-                        commerce enterprise.</p>
-                    <span class="skill-level">Lead Level</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>Spring Boot & MVC</h3>
+                            <p>Penggunaan luas ekosistem Spring untuk arsitektur microservices maupun monolitik
+                                enterprise. Pemahaman mendalam tentang Spring Security, Spring Data (JPA/Hibernate), dan
+                                Dependency Injection untuk desain aplikasi yang skalabel. Saat ini memimpin migrasi
+                                platform SAP Commerce ke microservices berbasis Spring Boot, merancang service
+                                boundaries, model RBAC, dan kapabilitas platform yang dapat digunakan kembali.</p>
+                            <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
+                        </article>
+                    </div>
+                </section>
 
-                <div class="skill-card">
-                    <h3>Spring Boot & MVC</h3>
-                    <p>Penggunaan luas ekosistem Spring untuk arsitektur microservices maupun monolitik. Pemahaman
-                        mendalam tentang Dependency Injection, Security, dan Data (JPA/Hibernate) untuk skala
-                        enterprise.</p>
-                    <span class="skill-level">Advanced</span>
-                </div>
+                <section class="skills-category-section">
+                    <h2 id="sap-ecosystem-ecommerce">Ekosistem SAP & E-Commerce</h2>
+                    <p class="category-intro">Keahlian khusus dalam rangkaian SAP Customer Experience (CX) dan
+                        implementasi platform commerce skala besar.</p>
+                    <div class="skills-grid">
+                        <article class="skill-card">
+                            <h3>SAP Commerce (Hybris)</h3>
+                            <p>Keahlian mendalam dalam arsitektur SAP Commerce Cloud, termasuk kustomisasi core
+                                platform, pemodelan data, pengembangan OCC API, ekstensi Backoffice, dan manajemen CMS.
+                                Memimpin berbagai implementasi enterprise dan upgrade platform (versi 6.6 hingga 2205)
+                                for Astra Group digital properties. Berpengalaman dengan kustomisasi promotion engine,
+                                strategi lazy loading CMS, dan arsitektur full-page caching menggunakan EHCache.</p>
+                            <span class="skill-level" aria-label="Proficiency: Lead Level">Lead Level</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>Integrasi REST & SOAP</h3>
-                    <p>Spesialisasi dalam integrasi sistem kompleks menggunakan RESTful API dan layanan web SOAP. Fokus
-                        pada integritas data, komunikasi aman, dan pertukaran pesan yang andal.</p>
-                    <span class="skill-level">Advanced</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>SAP CDP & Emarsys</h3>
+                            <p>Pengalaman praktis dengan SAP Customer Data Platform untuk profil pelanggan terpadu,
+                                segmentasi, dan resolusi identitas. Mengenal SAP Engagement Cloud (sebelumnya SAP
+                                Emarsys) untuk otomatisasi pemasaran omnichannel, orkestrasi kampanye, dan keterlibatan
+                                pelanggan yang dipersonalisasi di berbagai domain bisnis.</p>
+                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>Desain Sistem & Performa</h3>
-                    <p>Fokus pada optimasi performa dan skalabilitas arsitektur. Implementasi strategi caching yang
-                        canggih menggunakan Redis, Ehcache, dan CDN untuk memastikan responsivitas sistem.</p>
-                    <span class="skill-level">Advanced</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>SAP S/4HANA ABAP</h3>
+                            <p>Mengembangkan kemahiran dalam pengembangan ABAP untuk ekstensi logika bisnis inti dalam
+                                ekosistem SAP S/4HANA. Saat ini mendukung inisiatif integrasi SAP S/4HANA dan memperluas
+                                keahlian integrasi ERP untuk menghubungkan operasional commerce dan back-office.</p>
+                            <span class="skill-level" aria-label="Proficiency: Beginner">Beginner</span>
+                        </article>
+                    </div>
+                </section>
 
-                <div class="skill-card">
-                    <h3>Apache Kafka</h3>
-                    <p>Menerapkan arsitektur berbasis event (event-driven) untuk sinkronisasi data real-time.
-                        Berpengalaman merancang producer, consumer, dan manajemen topik untuk ketersediaan tinggi.</p>
-                    <span class="skill-level">Intermediate</span>
-                </div>
+                <section class="skills-category-section">
+                    <h2 id="architecture-integration-tools">Arsitektur, Integrasi & Tools</h2>
+                    <p class="category-intro">Merancang sistem terdistribusi yang skalabel, resilien, dan terintegrasi
+                        secara mendalam dalam lanskap enterprise.</p>
+                    <div class="skills-grid">
+                        <article class="skill-card">
+                            <h3>Integrasi REST & SOAP</h3>
+                            <p>Spesialisasi dalam integrasi sistem enterprise kompleks menggunakan RESTful API dan
+                                layanan web SOAP. Merancang dan mengimplementasikan integrasi antara SAP Commerce dan
+                                layanan pihak ketiga, termasuk payment gateway (kartu kredit, virtual account), penyedia
+                                pengiriman, dan platform perusahaan induk. Fokus pada integritas data, komunikasi aman,
+                                mekanisme retry, dan pertukaran pesan yang andal.</p>
+                            <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>Cloud & Serverless</h3>
-                    <p>Berpengalaman dengan Azure Function Apps. Menerapkan logika serverless dan pipeline CI/CD untuk
-                        meningkatkan kapabilitas platform enterprise.</p>
-                    <span class="skill-level">Intermediate</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>Desain Sistem & Performa</h3>
+                            <p>Fokus pada skalabilitas arsitektur dan engineering performa untuk platform trafik tinggi.
+                                Merancang arsitektur full-page caching yang mengurangi waktu muat halaman dari ~2 detik
+                                menjadi di bawah satu detik. Mengimplementasikan lazy loading CMS dan image resizer
+                                proxy yang mengurangi ukuran payload hingga 80%. Mencapai resiliensi terhadap lonjakan
+                                trafik 3x lipat menggunakan strategi Redis, EHCache, dan CDN.</p>
+                            <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>SAP CDP & Emarsys</h3>
-                    <p>Kemahiran tingkat Intermediate dalam SAP Customer Data Platform dan SAP Engagement Cloud
-                        (formerly SAP Emarsys) untuk mendorong
-                        keterlibatan pelanggan omnichannel dan otomatisasi pemasaran yang dipersonalisasi.</p>
-                    <span class="skill-level">Intermediate</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>Apache Kafka</h3>
+                            <p>Menerapkan arsitektur berbasis event untuk sinkronisasi data real-time antar sistem
+                                enterprise terdistribusi. Berpengalaman merancang producer, consumer, partisi topik, dan
+                                manajemen skema pesan untuk ketersediaan tinggi dan jaminan pengiriman.</p>
+                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>Drools</h3>
-                    <p>Pengalaman dengan Drools untuk manajemen aturan bisnis. Menerapkan pemisahan logika bisnis
-                        melalui rule-based engine yang fleksibel.</p>
-                    <span class="skill-level">Intermediate</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>Cloud & Serverless</h3>
+                            <p>Berpengalaman dengan Azure Function Apps untuk mengimplementasikan logika serverless guna
+                                meningkatkan kapabilitas platform enterprise inti. Menyiapkan pipeline CI/CD menggunakan
+                                Azure DevOps dan Jenkins untuk otomatisasi proses Build, Test, dan Deploy di berbagai
+                                lingkungan.</p>
+                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+                        </article>
 
-                <div class="skill-card">
-                    <h3>SAP S/4HANA ABAP</h3>
-                    <p>Familiar dengan pengembangan ABAP untuk ekstensi logika bisnis inti dalam ekosistem SAP S/4HANA.
-                    </p>
-                    <span class="skill-level">Beginner</span>
-                </div>
+                        <article class="skill-card">
+                            <h3>Drools</h3>
+                            <p>Merancang engine aturan dinamis (Rules-as-a-Service) menggunakan Drools, memungkinkan
+                                kondisi dan aksi yang ditentukan klien tanpa deployment kode. Membangun platform aturan
+                                yang dapat digunakan kembali yang memisahkan logika bisnis dari layanan aplikasi,
+                                termasuk payload validator on the fly. Memberikan kapabilitas inti platform untuk
+                                inisiatif modernisasi SAP Commerce.</p>
+                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+                        </article>
+                    </div>
+                </section>
             </div>
 
-            <section style="margin-top: 3rem;">
+            <section id="core-philosophies" class="core-philosophies-section">
                 <h2>Filosofi Pemrograman</h2>
-                <ul>
+                <ul class="philosophies-list">
                     <li><strong>Clean Code:</strong> Mematuhi prinsip SOLID untuk memastikan pemeliharaan jangka panjang
-                        yang mudah.</li>
+                        yang mudah dan sistem yang dapat dibaca.</li>
                     <li><strong>Performa Utama:</strong> Optimasi proaktif dan profiling untuk memastikan waktu respons
-                        di bawah satu detik.</li>
+                        di bawah satu detik untuk platform enterprise.</li>
                     <li><strong>Mentorship:</strong> Memimpin dengan memberi contoh dan menumbuhkan budaya keunggulan
                         teknis dalam tim engineering.</li>
                 </ul>
             </section>
 
-            <section class="faq-section hide-for-print">
+            <section class="cta-section hide-for-print">
                 <h2>Cari informasi lainnya?</h2>
-                <p>Lihat <a href="/id">Resume Lengkap</a> saya atau baca <a href="/faq-id">Pertanyaan Umum (FAQ)
-                        Teknis</a>.</p>
+                <p>Lihat <a href="/id" title="Resume lengkah dan riwayat kerja Yusuf Adiputera">Resume Lengkap</a> saya
+                    atau baca <a href="/faq-id" title="Pertanyaan Umum (FAQ) mengenai arsitektur teknis">Pertanyaan Umum
+                        (FAQ) Teknis</a>.</p>
             </section>
         </main>
 
@@ -398,7 +516,7 @@
             <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
         </footer>
     </div>
-    <script src="src/index.min.js?v=202603021148" defer></script>
+    <script src="src/index.min.js?v=202603021700" defer></script>
 </body>
 
 </html>
