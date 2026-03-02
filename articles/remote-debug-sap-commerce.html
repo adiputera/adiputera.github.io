@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preload" as="style" href="../src/master.min.css?v=202603021148" />
+    <link rel="preload" as="script" href="../src/index.min.js?v=202603021148" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – Yusuf Adiputera</title>
+    <meta name="title"
+        content="How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – Yusuf Adiputera" />
+    <meta name="description"
+        content="A comprehensive guide on setting up remote debugging for SAP Commerce using IntelliJ IDEA and Eclipse." />
+
+    <meta name="keywords"
+        content="SAP Commerce, Remote Debugging, IntelliJ IDEA, Eclipse, Hybris Debugging, Java Backend Engineer" />
+    <meta name="author" content="Yusuf Adiputera" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-005WBSEVCP');
+    </script>
+
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../images/192.png">
+    <link rel="apple-touch-startup-image" href="../images/512.png">
+    <link rel="manifest" href="../manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adiputera.github.io/articles/remote-debug-sap-commerce" />
+    <meta property="og:title" content="How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse" />
+    <meta property="og:description"
+        content="A comprehensive guide on setting up remote debugging for SAP Commerce using IntelliJ IDEA and Eclipse." />
+    <meta property="og:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="og:image:width" content="750" />
+    <meta property="og:image:height" content="750" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://adiputera.github.io/articles/remote-debug-sap-commerce" />
+    <meta property="twitter:title" content="How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse" />
+    <meta property="twitter:description"
+        content="A comprehensive guide on setting up remote debugging for SAP Commerce using IntelliJ IDEA and Eclipse." />
+    <meta property="twitter:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="twitter:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="../src/master.min.css?v=202603021148" />
+    <link rel="canonical"
+        href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943" />
+
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse",
+            "datePublished": "2022-09-15",
+            "dateModified": "2022-09-15",
+            "author": {
+                "@id": "https://adiputera.github.io/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://adiputera.github.io/articles/remote-debug-sap-commerce"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://adiputera.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Articles",
+                    "item": "https://adiputera.github.io/#articles"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Remote Debug SAP Commerce",
+                    "item": "https://adiputera.github.io/articles/remote-debug-sap-commerce"
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
+            "name": "Yusuf Adiputera",
+            "givenName": "Yusuf",
+            "additionalName": "Fahmi",
+            "familyName": "Adiputera",
+            "gender": "Male",
+            "alternateName": [
+                "Yusuf Fahmi Adiputera",
+                "Yusuf F. Adiputera",
+                "Yusuf Fahmi",
+                "Yusuf",
+                "Adiputera"
+            ],
+            "url": "https://adiputera.github.io/",
+            "image": "https://adiputera.github.io/images/photo.webp",
+            "jobTitle": "Lead Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "PT Astra International Tbk",
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+            },
+            "email": "mailto:yusuf@adiputera.id",
+            "sameAs": [
+                "https://www.linkedin.com/in/yusuf-adiputera",
+                "https://about.me/adiputera",
+                "https://github.com/adiputera",
+                "https://stackoverflow.com/users/3603194/adiputera",
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+            },
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
+            "knowsAbout": [
+                "Java",
+                "Spring Framework",
+                "Spring Boot",
+                "Spring MVC",
+                "SAP Commerce (Hybris)",
+                "SAP Customer Data Platform (SAP CDP)",
+                "SAP Engagement Cloud (formerly SAP Emarsys)",
+                "SAP S/4HANA ABAP",
+                "Kafka",
+                "Drools",
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
+            ],
+            "nationality": {
+                "@type": "Country",
+                "name": "Indonesia"
+            },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                }
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
+            "knowsLanguage": [
+                { "@type": "Language", "name": "English" },
+                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
+                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    ]
+    </script>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li><a href="/#articles">Articles</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li class="breadcrumb-current">Remote Debug SAP Commerce</li>
+                </ol>
+            </nav>
+            <button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        </div>
+
+        <header>
+            <h1 class="main-heading">How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse
+            </h1>
+            <p class="article-meta">Published on <time datetime="2022-09-15">September 15, 2022</time> by Yusuf
+                Adiputera</p>
+        </header>
+
+        <main class="article-content">
+            <section>
+                <h2><strong>The background:&nbsp;</strong></h2>
+                <p>In my experience, sometimes bugs only occurs on some environment, and I can't reproduce the issue in
+                    local environment, the only way to see what went wrong is to do remote debug the application server.
+                </p>
+            </section>
+
+            <section>
+                <h2><strong>The Goal:&nbsp;</strong></h2>
+                <p>This blog will guide you on how to do remote debugging on SAP Commerce instance. I will cover how to
+                    do remote debugging in IntelliJ IDEA as well in eclipse.</p>
+                <p>Remote debugging let you inspect running code, what is the value of variables in code, and determine
+                    what is the result of some method.</p>
+            </section>
+
+            <section>
+                <h2><b>Prerequisites:</b></h2>
+                <ol>
+                    <li>Basic knowledge in SAP Commerce</li>
+                    <li>Basic knowledge in application debugging</li>
+                    <li>Have a direct access to application server on port 8000 (or other port if you didn't want to use
+                        port 8000), please consult to your infra team for server access.</li>
+                    <li>Have an SSH access to server, or pipeline to start the server in debug mode</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>The first step</h2>
+                <p>These steps will cover how to setup application server so it can be debugged remotely.</p>
+                <ol>
+                    <li>Add following property to local.properties on server:
+                        <pre><code>tomcat.debugjavaoptions=-Djava.locale.providers=COMPAT,CLDR -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,address=*:8000,suspend=n</code></pre>
+                        <p>To add the config, you can either SSH to the server and add it manually, or re-deploy with
+                            the above config added. You need to do build (<strong>ant all</strong>) after you add above
+                            config.</p>
+                        <p>If you want to change the debug port, you can change 8000 to any port you like.</p>
+                    </li>
+                    <li>SSH to application server, and start the server in debug mode by executing
+                        <strong>./hybrisserver.sh debug</strong> or <strong>hybrisserver.bat debug&nbsp;</strong>
+                    </li>
+                    <li>Make sure you have the same code as the server, do build (<strong>ant all</strong>) in your
+                        local environment</li>
+                    <li>If your environment is running on clustering environment, I recommend stopping all other node
+                        apart from the one you are debugging. Or if it's not possible to stop all other node, you can
+                        isolate application server that we are using from load balancer, so no request will be coming to
+                        that server, then to reproduce the issue, you can access storefront directly using app server's
+                        IP address.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>How to debug on IntelliJ IDEA?</h2>
+                <p>These steps will cover on how to connect IntelliJ IDEA to remote server and do debugging</p>
+                <ol>
+                    <li>Edit configuration of remote debug, as shown in the picture below:<br>
+                        <img src="../images/articles/remote-debug-sap-commerce/intellij-debug-config-menu.png"
+                            alt="IntelliJ Remote JVM Debug menu" loading="lazy">
+                    </li>
+                    <li>In debug configuration window, change Host to IP address of the server, and port if you change
+                        the port number in the first step above.<br>
+                        <img src="../images/articles/remote-debug-sap-commerce/intellij-debug-config-window-1.png"
+                            alt="IntelliJ Remote Debug configuration" loading="lazy">
+                    </li>
+                    <li>Start debugging, add some breakpoints, just like debugging your local machine.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>How to debug on Eclipse?</h2>
+                <p>These steps will cover on how to connect Eclipse to remote server and do debugging</p>
+                <ol>
+                    <li>On eclipse, click on menu <strong>Run</strong> -&gt; <strong>Debug configurations...</strong>
+                    </li>
+                    <li>Double click on <strong>Remote Java Application</strong> to create new debug configuration</li>
+                    <li>Give name whatever you like, here I give name hybris. On the Connection Properties, put server's
+                        IP Address to Host<br>
+                        <img src="../images/articles/remote-debug-sap-commerce/Eclipse-debug-config-window.png"
+                            alt="Eclipse Debug configurations window" loading="lazy">
+                    </li>
+                    <li>On project section, click on browse, and select platform<br>
+                        <img src="../images/articles/remote-debug-sap-commerce/Cuplikan-layar-dari-2022-08-11-14-04-11.png"
+                            alt="Eclipse source lookup configuration" loading="lazy">
+                    </li>
+                    <li>On source tab, click add -&gt; choose file system directories -&gt; select you bin folder<br>
+                        <img src="../images/articles/remote-debug-sap-commerce/Eclipse-add-folder-config.png"
+                            alt="Eclipse add folder to source lookup" loading="lazy">
+                    </li>
+                    <li>Back in Debug Configuration window, click Apply, then click Debug to start debugging.</li>
+                    <li>Start debugging, add some breakpoints, just like debugging your local machine.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Conclusions</h2>
+                <p>Remote debugging application server is pretty easy, the steps are almost identical to debugging local
+                    environment, with the only difference is we need to have direct access to application server and be
+                    able to start it in debug mode, other than that, the steps are the same.</p>
+                <p>&nbsp;</p>
+                <p>Please let me know in the comment if you have any feedback, or any question. You might also check
+                    other blogs about <a href="https://blogs.sap.com/tags/67837800100800007216/" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce.</a></p>
+                <p>Or you might want to check answers.sap.com on <a
+                        href="https://answers.sap.com/tags/67837800100800007216" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce</a> or <a
+                        href="https://answers.sap.com/tags/73555000100800001224" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce Cloud</a> topic.</p>
+            </section>
+
+            <p class="original-source">
+                <em>Originally published at <a
+                        href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943"
+                        target="_blank" rel="noopener noreferrer">SAP Community</a>.</em>
+            </p>
+        </main>
+
+        <footer>
+            &copy; 2026 Yusuf Adiputera. All rights reserved.
+        </footer>
+    </div>
+    <script src="../src/index.min.js?v=202603021148" defer></script>
+</body>
+
+</html>

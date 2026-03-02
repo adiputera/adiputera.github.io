@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preload" as="style" href="../src/master.min.css?v=202603021148" />
+    <link rel="preload" as="script" href="../src/index.min.js?v=202603021148" />
+    <link rel="preload" as="image" href="../images/articles/sap-commerce-sso-bcrypt-error/cover.jpg" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAP Commerce SSO error: password cannot be more than 72 bytes – Yusuf Adiputera</title>
+    <meta name="title" content="SAP Commerce SSO error: password cannot be more than 72 bytes – Yusuf Adiputera" />
+    <meta name="description"
+        content="An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce." />
+
+    <meta name="keywords"
+        content="SAP Commerce, SSO, BCrypt, Spring Security, 72 bytes limit, Password Encoding, Enterprise Security" />
+    <meta name="author" content="Yusuf Adiputera" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-005WBSEVCP');
+    </script>
+
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../images/192.png">
+    <link rel="apple-touch-startup-image" href="../images/512.png">
+    <link rel="manifest" href="../manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error" />
+    <meta property="og:title" content="SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)" />
+    <meta property="og:description"
+        content="An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce." />
+    <meta property="og:image"
+        content="https://adiputera.github.io/images/articles/sap-commerce-sso-bcrypt-error/cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="SSO 72 Bytes Limit Error Breakdown" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error" />
+    <meta property="twitter:title"
+        content="SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)" />
+    <meta property="twitter:description"
+        content="An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce." />
+    <meta property="twitter:image"
+        content="https://adiputera.github.io/images/articles/sap-commerce-sso-bcrypt-error/cover.jpg" />
+    <meta property="twitter:image:alt" content="SSO 72 Bytes Limit Error Breakdown" />
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="../src/master.min.css?v=202603021148" />
+    <link rel="canonical"
+        href="https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/" />
+
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)",
+            "datePublished": "2025-08-02",
+            "dateModified": "2025-08-02",
+            "author": {
+                "@id": "https://adiputera.github.io/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://adiputera.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Articles",
+                    "item": "https://adiputera.github.io/#articles"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "SSO BCrypt Error",
+                    "item": "https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error"
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
+            "name": "Yusuf Adiputera",
+            "givenName": "Yusuf",
+            "additionalName": "Fahmi",
+            "familyName": "Adiputera",
+            "gender": "Male",
+            "alternateName": [
+                "Yusuf Fahmi Adiputera",
+                "Yusuf F. Adiputera",
+                "Yusuf Fahmi",
+                "Yusuf",
+                "Adiputera"
+            ],
+            "url": "https://adiputera.github.io/",
+            "image": "https://adiputera.github.io/images/photo.webp",
+            "jobTitle": "Lead Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "PT Astra International Tbk",
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+            },
+            "email": "mailto:yusuf@adiputera.id",
+            "sameAs": [
+                "https://www.linkedin.com/in/yusuf-adiputera",
+                "https://about.me/adiputera",
+                "https://github.com/adiputera",
+                "https://stackoverflow.com/users/3603194/adiputera",
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+            },
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
+            "knowsAbout": [
+                "Java",
+                "Spring Framework",
+                "Spring Boot",
+                "Spring MVC",
+                "SAP Commerce (Hybris)",
+                "SAP Customer Data Platform (SAP CDP)",
+                "SAP Engagement Cloud (formerly SAP Emarsys)",
+                "SAP S/4HANA ABAP",
+                "Kafka",
+                "Drools",
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
+            ],
+            "nationality": {
+                "@type": "Country",
+                "name": "Indonesia"
+            },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                }
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
+            "knowsLanguage": [
+                { "@type": "Language", "name": "English" },
+                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
+                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    ]
+    </script>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li><a href="/#articles">Articles</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li class="breadcrumb-current">SSO BCrypt Error</li>
+                </ol>
+            </nav>
+            <button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        </div>
+
+        <header>
+            <h1 class="main-heading">SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)</h1>
+            <p class="article-meta">Published on <time datetime="2025-08-02">August 2, 2025</time> by Yusuf Adiputera
+            </p>
+            <figure class="cover-image">
+                <img src="../images/articles/sap-commerce-sso-bcrypt-error/cover.jpg"
+                    alt="SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)" loading="lazy">
+                <figcaption>Our custom forbidden access page when user failed to login using SSO</figcaption>
+            </figure>
+        </header>
+
+        <main class="article-content">
+            <section>
+                <h2>The Problem</h2>
+                <p>We've just updated our SAP Commerce patch version, from 2205.36 to 2205.40. After updating, we soon
+                    discovered the user is unable to log in to Backoffice, HAC, and Smartedit using SSO. There's this
+                    error in the log:</p>
+                <pre><code>java.lang.IllegalArgumentException: password cannot be more than 72 bytes
+ at org.springframework.security.crypto.bcrypt.BCrypt.hashpw(BCrypt.java:616)
+ at org.springframework.security.crypto.bcrypt.BCrypt.hashpw(BCrypt.java:603)
+ at org.springframework.security.crypto.bcrypt.BCrypt.hashpw(BCrypt.java:593)
+ at org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder.encode(BCryptPasswordEncoder.java:110)
+ at de.hybris.platform.persistence.security.SpringPasswordEncoder.encode(SpringPasswordEncoder.java:18)
+ at de.hybris.platform.jalo.user.UserManager.getEncodedPasswordWithSalt(UserManager.java:1602)
+ at de.hybris.platform.jalo.user.EnhancedTokenGenerator.generateToken(EnhancedTokenGenerator.java:52)
+ at de.hybris.platform.jalo.user.UserManager.doGenerateLoginTokenCookieValue(UserManager.java:1572)
+ at de.hybris.platform.jalo.user.UserManager.generateLoginTokenCookieValue(UserManager.java:1546)
+ at de.hybris.platform.jalo.user.UserManager.storeLoginTokenCookie(UserManager.java:1648)
+ at de.hybris.platform.samlsinglesignon.DefaultSamlLoginService.storeLoginToken(DefaultSamlLoginService.java:59)
+ at de.hybris.platform.samlsinglesignon.security.Saml2UserFilter.doFilterInternal(Saml2UserFilter.java:61)</code></pre>
+                <p>These error logs indicate that there are some breaking changes on the patch 2205.40 (could be
+                    2205.37, 2205.38, or 2205.39, since I'm not testing using those versions, I assume this happens
+                    starting 2205.40).</p>
+            </section>
+
+            <section>
+                <h2>The Root cause</h2>
+                <p>Upon inspection, I notice patch 2205.36 is using spring-security-crypto-5.8.11, while patch 2205.40
+                    is using spring-security-crypto-5.8.19. And comparing<strong> hashpw </strong>methods on
+                    class<strong> org.springframework.security.crypto.bcrypt.BCrypt </strong>, I notice this difference:
+                </p>
+                <p><strong>BCrypt.hashpw() </strong>on<strong> 5.8.11 </strong>:</p>
+                <pre><code>if (salt == null) { 
+    throw new IllegalArgumentException("salt cannot be null");
+} else {
+    ...........</code></pre>
+                <p>While<strong> BCrypt.hashpw() </strong>on<strong> 5.8.19 </strong>:</p>
+                <pre><code>if (!for_check &amp;&amp; passwordb.length &gt; 72) {
+    throw new IllegalArgumentException("password cannot be more than 72 bytes");
+} else if (salt == null) {
+    throw new IllegalArgumentException("salt cannot be null");
+} else {
+    ...........</code></pre>
+                <p>As you can see, in 5.8.19, there's an additional if statement that checks for the password length. I
+                    can understand these changes because, after some reading, it turns out bcrypt will only process the
+                    first 72 bytes, and if you give it more than 72 bytes, the 73rd byte and so on will be ignored.
+                    Surely this is a major security concern.</p>
+                <p>Now, if this is a known issue, why does Hybris still pass more than 72 bytes to BCrypt?</p>
+                <p>The code that was responsible for this was this:</p>
+                <pre><code>package de.hybris.platform.jalo.user;
+
+public class EnhancedTokenGenerator extends AbstractTokenGenerator {
+    ...........
+    public String generateToken(TokenParams params) throws EJBPasswordEncoderNotFoundException {
+        ...........
+        String encodedPassword = this.getEncodedPassword(params);
+        String salt = this.getNextSaltString();
+        String encodedPasswordWithSalt = UserManager.getInstance().getEncodedPasswordWithSalt(params.getUser(), encodedPassword, salt); // those error were thrown from this line
+        ...........
+        return this.encodeToken(new String[]{userPk, languageIsoCode, encodedPasswordWithSalt, ttlTimestamp, salt, randomGeneratedTokenPart}, params.getDelimiter());
+    }
+    ...........
+}</code></pre>
+                <p>Then <strong>this.getEncodedPassword(params) </strong>was calling this method:</p>
+                <pre><code>package de.hybris.platform.jalo.user;
+
+public class UserManager extends Manager {
+    ...........
+    protected String getEncodedPasswordForLoginCookie(String uid, String plainTextPassword, User user) throws EJBPasswordEncoderNotFoundException {
+        if (plainTextPassword != null) {
+            return this.getLoginTokenPasswordEncoder(user).encode(uid, plainTextPassword);
+        } else {
+            return this.isPlainTextPasswordStored(user) ? this.getLoginTokenPasswordEncoder(user).encode(user.getUID(), user.getEncodedPassword()) : user.getEncodedPassword();
+        }
+    }
+    ...........
+}</code></pre>
+                <p>In my case, since the original password was already hashed using BCrypt, that method will return
+                    <strong>user.getEncodedPassword() </strong>, and since it was already BCrypt hashed, the encoded
+                    password is already 60 bytes long, only 12 bytes left for additional salt!
+                </p>
+                <p>But.... let's check the<strong> getNextSaltString() </strong>method:</p>
+                <pre><code>package de.hybris.platform.jalo.user;
+
+public class EnhancedTokenGenerator extends AbstractTokenGenerator {
+    ...........
+    private String getNextSaltString() {
+        return Base64.encodeBytes(getNextSalt(), 8);
+    }
+
+    private static byte[] getNextSalt() {
+        byte[] salt = new byte[16];
+        RANDOM.nextBytes(salt);
+        return salt;
+    }
+    ...........
+}</code></pre>
+                <p>See the problem already? The <strong>getNextSalt() </strong>method generates a byte array 16 in
+                    length. Even 60 + 16 is 76, already more than 72 bytes 🙃, now encode it with Base64 and you will
+                    get 24 bytes String. Waaayyy more than the limit of 72 bytes.</p>
+                <p>Okay, now that we have the root cause, let's go into the solution.</p>
+            </section>
+
+            <section>
+                <h2>The Solution</h2>
+                <h3>Changing the config</h3>
+                <p>For us, it's quite easy, since we always set a random password with default encoder every time a user
+                    logs in using SSO (this is to force users to log in using SSO), we just need to change this config:
+                </p>
+                <pre><code>default.password.encoding=argon2</code></pre>
+                <p>And now everything is able to log in to the Backoffice and others using SSO.</p>
+
+                <h3>Resetting passwords for all users</h3>
+                <p>You don't set a random password every time a user logs in? Fine, then you can reset the password
+                    manually using a groovy script. You can write a script that queries for all employees, and then set
+                    the password with some other encoding, like Argon2. The example script:</p>
+                <pre><code>import de.hybris.platform.core.model.user.EmployeeModel
+import de.hybris.platform.servicelayer.search.FlexibleSearchQuery
+import de.hybris.platform.servicelayer.search.SearchResult
+import org.apache.commons.collections.CollectionUtils
+
+flexibleSearchService = spring.getBean("flexibleSearchService")
+modelService = spring.getBean("modelService")
+userService = spring.getBean("userService")
+
+String query = "SELECT {PK} FROM {Employee}"
+
+SearchResult&lt;EmployeeModel&gt; results = flexibleSearchService.search(new FlexibleSearchQuery(query));
+if (CollectionUtils.isNotEmpty(results.getResult())) {
+    for (EmployeeModel employee : results.getResult()) {
+        userService.setPassword(employee, "randomStringPassword", "argon2")
+        modelService.save(employee)
+    }
+}
+return "Ok"</code></pre>
+
+                <h3>Overriding the culprit</h3>
+                <p>If you don't set a random password every time a user logs in using SSO, and also don't want to reset
+                    the passwords for all users, then the easiest option is to override
+                    <strong>de.hybris.platform.jalo.user.EnhancedTokenGenerator </strong>class. Override the
+                    <strong>generateToken(TokenParams params) </strong>and salt generator method to add a check whether
+                    the password encoding used by the user is BCrypt or not. And if it's BCrypt, then don't generate too
+                    long a salt string. The example code:
+                </p>
+                <pre><code>package de.hybris.platform.jalo.user;
+// We need to use this package, as some of the methods and variables accessed on this class is package-private
+
+public class CustomEnhancedTokenGenerator extends EnhancedTokenGenerator {
+    ...........
+    public String generateToken(TokenParams params) throws EJBPasswordEncoderNotFoundException {
+        String userPk = this.getUserPk(params);
+        String languageIsoCode = this.getLanguageByIsoCode(params);
+        String encodedPassword = this.getEncodedPassword(params);
+        String ttlTimestamp = this.getTTLTimestamp(params.getTtl());
+        String salt = this.getNextSaltString(params.getUser().getPasswordEncoding()); // add param for password encoding check
+        String encodedPasswordWithSalt = UserManager.getInstance().getEncodedPasswordWithSalt(params.getUser(), encodedPassword, salt);
+        String randomGeneratedTokenPart = this.getTokenService().getOrCreateTokenForUser(params.getUser().getUid());
+        return this.encodeToken(new String[]{userPk, languageIsoCode, encodedPasswordWithSalt, ttlTimestamp, salt, randomGeneratedTokenPart}, params.getDelimiter());
+    }
+
+    private String getNextSaltString(String passwordEncoding) {
+        return Base64.encodeBytes(getNextSalt(passwordEncoding), 8);
+    }
+
+    private static byte[] getNextSalt(String passwordEncoding) {
+        byte[] salt;
+        if ("bcrypt".equalsIgnoreCase(passwordEncoding))
+            salt = new byte[9]; // 9 bytes will generate 12 bytes base64 string
+        else
+            salt = new byte[16]; // 16 bytes will generate 24 bytes base64 string
+        RANDOM.nextBytes(salt);
+        return salt;
+    }
+    ...........
+}</code></pre>
+                <p>Register it as a bean:</p>
+                <pre><code>&lt;alias name="customEnhancedTokenGenerator" alias="tokenGenerator"/&gt;
+&lt;bean id="customEnhancedTokenGenerator"
+   class="de.hybris.platform.jalo.user.CustomEnhancedTokenGenerator" parent="enhancedTokenGenerator"/&gt;
+
+&lt;!-- I use de.hybris.platform.jalo.user package here because some of the required methods and variables were package-private --&gt;</code></pre>
+                <p>We do have to use <strong>de.hybris.platform.jalo.user </strong>package, if you try to use another
+                    package, it might work, but you will need to duplicate the package-private methods or variables.</p>
+                <p>Now, build and test the login using SSO, and you should be able to log in.</p>
+            </section>
+
+            <section>
+                <h2>Summary</h2>
+                <ul>
+                    <li>The error was caused by spring-security-crypto changes on the BCrypt class that enforce the
+                        password to be less than or equal to 72 bytes.</li>
+                    <li>If you set a random password every time a user logs in using SSO, you can simply change the
+                        <strong>default.password.encoding </strong>config value to argon2
+                    </li>
+                    <li>You can also create a script to change the password encoding of all users to Argon2 or another
+                        encoder that doesn't enforce limits, but this will reset passwords for all users.</li>
+                    <li>If you don't want to reset passwords for all users, you can override the EnhancedTokenGenerator
+                        class to add a check for password encoding before generating additional salt.</li>
+                </ul>
+                <p>I hope this article helps you. Please let me know in the comments if you have any questions or
+                    suggestions.</p>
+                <p>EnhancedTokenGenerator, UserManager, and other classes were decompiled by IntelliJ IDEA.</p>
+            </section>
+
+            <p class="original-source">
+                <em>Originally published at <a
+                        href="https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/"
+                        target="_blank" rel="noopener noreferrer">LinkedIn Pulse</a>.</em>
+            </p>
+        </main>
+
+        <footer>
+            &copy; 2026 Yusuf Adiputera. All rights reserved.
+        </footer>
+    </div>
+    <script src="../src/index.min.js?v=202603021148" defer></script>
+</body>
+
+</html>

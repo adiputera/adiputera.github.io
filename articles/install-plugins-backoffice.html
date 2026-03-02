@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preload" as="style" href="../src/master.min.css?v=202603021148" />
+    <link rel="preload" as="script" href="../src/index.min.js?v=202603021148" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to install additional plugins to Backoffice's WYSIWYG editor – Yusuf Adiputera</title>
+    <meta name="title" content="How to install additional plugins to Backoffice's WYSIWYG editor – Yusuf Adiputera" />
+    <meta name="description"
+        content="Technical guide on installing custom CKEditor plugins into SAP Commerce Backoffice." />
+
+    <meta name="keywords"
+        content="SAP Commerce, Backoffice, WYSIWYG, CKEditor Plugins, Java Engineer, Hybris Development" />
+    <meta name="author" content="Yusuf Adiputera" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-005WBSEVCP');
+    </script>
+
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../images/192.png">
+    <link rel="apple-touch-startup-image" href="../images/512.png">
+    <link rel="manifest" href="../manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adiputera.github.io/articles/install-plugins-backoffice" />
+    <meta property="og:title" content="How to install additional plugins to Backoffice's WYSIWYG editor" />
+    <meta property="og:description"
+        content="Technical guide on installing custom CKEditor plugins into SAP Commerce Backoffice." />
+    <meta property="og:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="og:image:width" content="750" />
+    <meta property="og:image:height" content="750" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://adiputera.github.io/articles/install-plugins-backoffice" />
+    <meta property="twitter:title" content="How to install additional plugins to Backoffice's WYSIWYG editor" />
+    <meta property="twitter:description"
+        content="Technical guide on installing custom CKEditor plugins into SAP Commerce Backoffice." />
+    <meta property="twitter:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="twitter:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="../src/master.min.css?v=202603021148" />
+    <link rel="canonical"
+        href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050" />
+
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to install additional plugins to Backoffice's WYSIWYG editor",
+            "datePublished": "2023-11-29",
+            "dateModified": "2023-11-29",
+            "author": {
+                "@id": "https://adiputera.github.io/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://adiputera.github.io/articles/install-plugins-backoffice"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://adiputera.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Articles",
+                    "item": "https://adiputera.github.io/#articles"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Install Backoffice Plugins",
+                    "item": "https://adiputera.github.io/articles/install-plugins-backoffice"
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
+            "name": "Yusuf Adiputera",
+            "givenName": "Yusuf",
+            "additionalName": "Fahmi",
+            "familyName": "Adiputera",
+            "gender": "Male",
+            "alternateName": [
+                "Yusuf Fahmi Adiputera",
+                "Yusuf F. Adiputera",
+                "Yusuf Fahmi",
+                "Yusuf",
+                "Adiputera"
+            ],
+            "url": "https://adiputera.github.io/",
+            "image": "https://adiputera.github.io/images/photo.webp",
+            "jobTitle": "Lead Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "PT Astra International Tbk",
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+            },
+            "email": "mailto:yusuf@adiputera.id",
+            "sameAs": [
+                "https://www.linkedin.com/in/yusuf-adiputera",
+                "https://about.me/adiputera",
+                "https://github.com/adiputera",
+                "https://stackoverflow.com/users/3603194/adiputera",
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+            },
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
+            "knowsAbout": [
+                "Java",
+                "Spring Framework",
+                "Spring Boot",
+                "Spring MVC",
+                "SAP Commerce (Hybris)",
+                "SAP Customer Data Platform (SAP CDP)",
+                "SAP Engagement Cloud (formerly SAP Emarsys)",
+                "SAP S/4HANA ABAP",
+                "Kafka",
+                "Drools",
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
+            ],
+            "nationality": {
+                "@type": "Country",
+                "name": "Indonesia"
+            },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                }
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
+            "knowsLanguage": [
+                { "@type": "Language", "name": "English" },
+                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
+                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    ]
+    </script>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li><a href="/#articles">Articles</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li class="breadcrumb-current">Install Backoffice Plugins</li>
+                </ol>
+            </nav>
+            <button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        </div>
+
+        <header>
+            <h1 class="main-heading">How to install additional plugins to Backoffice's WYSIWYG editor</h1>
+            <p class="article-meta">Published on <time datetime="2023-11-29">November 29, 2023</time> by Yusuf Adiputera
+            </p>
+        </header>
+
+        <main class="article-content">
+            <section>
+                <h2>Intro</h2>
+                <p>SAP Commerce's Backoffice uses <strong>ZKCKEditor</strong>(ZKCKeditor is a wrapper of CKEditor for
+                    the ZK framework) as a WYSIWYG editor. Out of the box, CKEditor supports various additional plugins
+                    other than those that are already installed.</p>
+                <p>In this blog post, I will guide you on how to install new plugins to Backoffice's WYSIWYG editor, I
+                    will guide you using the <strong>SAP Commerce 2205.18</strong> version (with <strong>ZKCKeditor
+                        4.21.0.0</strong>). If you use a different SAP Commerce version, the ZKCKEditor version might be
+                    different, but the overall steps should be the same.</p>
+                <p>Also, I will be using the Code Snippet plugin by CKSource as the example plugin that I will install
+                    in this blog post. If you have your own plugins, the overall steps should be the same.</p>
+            </section>
+
+            <section>
+                <h2>Prerequisites:</h2>
+                <p>You need basic knowledge of SAP Commerce and its extensions.</p>
+            </section>
+
+            <section>
+                <h2>The Steps</h2>
+                <ol>
+                    <li>Find out the ZKCKEditor's jar file (it's named <strong>ckez-xyz.jar</strong>, xyz is the
+                        version). For SAP Commerce 2205, it should be on
+                        <strong>bin/modules/backoffice-framework/backoffice/web/webroot/WEB-INF/lib/</strong>
+                    </li>
+                    <li>Copy the jar file to another empty folder, for example in <strong>Document/ck-editor,</strong> I
+                        will mention this folder as the<strong> "extracted jar folder"</strong></li>
+                    <li>Open the folder in the terminal (command prompt or Windows terminal if you're using Windows)
+                    </li>
+                    <li>Execute this (change 4-21.0.0 with any version you use):
+                        <pre><code>jar xvf ckez-4.21.0.0.jar</code></pre>
+                    </li>
+                    <li>The jar file will be extracted, remove the jar file.
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-10-46-13.png"
+                            alt="Extracted jar content" loading="lazy">
+                    </li>
+                    <li>Download plugins if you haven't, you can find many plugins from the <a
+                            href="https://ckeditor.com/cke4/addons/plugins/all" target="_blank"
+                            rel="nofollow noopener noreferrer">CKEditor's add-ons website</a>.</li>
+                    <li>For example, I will use the <a href="https://ckeditor.com/cke4/addon/codesnippet"
+                            target="_blank" rel="nofollow noopener noreferrer">Code Snippet</a> plugin, download the
+                        plugins and all its dependencies(if any)</li>
+                    <li>Extract the plugin's zip.
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-16-13-10.png"
+                            alt="Extracted plugin zip" loading="lazy">
+                    </li>
+                    <li>Copy the plugin folder (the folder that contains the plugin.js file).
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-16-15-13.png"
+                            alt="Plugin folder" loading="lazy">
+                        For my example, the folder that I should copy is the <strong>codesnippet</strong>
+                    </li>
+                    <li>Paste it in <strong>${extraced jar folder}/web/js/ckez/ext/CKeditor/plugins</strong><br>
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-16-31-33.png"
+                            alt="Pasted plugin in CKeditor/plugins" loading="lazy">
+                    </li>
+                    <li>Go to the <strong>"extracted jar folder"</strong> in steps 3-5, and if you haven't, remove the
+                        jar file, so the folder will only contain the extracted content of the jar file.<br>
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-12-59-22.png"
+                            alt="Extracted jar folder ready for repackaging" loading="lazy">
+                    </li>
+                    <li>Execute this (change 4-21.0.0 with any version you use):
+                        <pre><code>jar cf ckez-4.21.0.0.jar *</code></pre>
+                    </li>
+                    <li>The new jar file will be created.</li>
+                    <li>Put the new jar back to where you found it in step 1, and replace the original jar. You can use
+                        <strong>ant customize</strong> for this.
+                    </li>
+                    <li>Create a new file, named <strong>customckeditorconfig.js </strong>in
+                        <strong>{backofficeextension}/backoffice/resources/cng/customckeditorconfig.js</strong>
+                        <pre><code>CKEDITOR.editorConfig = function(config) {
+    // to activate the plugin
+    config.extraPlugins = 'codesnippet';
+};</code></pre>
+                    </li>
+                    <li>Add this line inside&nbsp;<strong>{backofficeextension}/project.properties</strong>&nbsp;so
+                        CKEditor can read the config:
+                        <pre><code>backoffice.wysiwyg.config.uri=/cng/customckeditorconfig.js</code></pre>
+                    </li>
+                    <li>Build the application by executing&nbsp;<strong>ant all</strong></li>
+                    <li>Start the server, open the backoffice, and open any WYSIWYG editor, there will be the code
+                        snippet button<br>
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-16-47-26.png"
+                            alt="Code snippet button in editor" loading="lazy">
+                    </li>
+                    <li>Try it by clicking the insert code snippet button, and adds some code<br>
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-16-54-02.png"
+                            alt="Adding code snippet" loading="lazy">
+                    </li>
+                    <li>The code snippet will be added to the body<br>
+                        <img src="../images/articles/install-plugins-backoffice/Cuplikan-layar-dari-2023-11-29-16-56-51.png"
+                            alt="Code snippet added" loading="lazy">
+                    </li>
+                    <li>Done.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Conclusions</h2>
+                <p>We've covered all the steps necessary to install additional plugins to Backoffice's WYSIWYG editor.
+                    In this tutorial, I'm using Pop!_OS, but the command should be working for other OSs too although I
+                    only tested it in Pop!_OS and Windows only.</p>
+                <p>Please let me know in the comment if you have any feedback or any questions. You might also check
+                    other blogs about <a href="https://blogs.sap.com/tags/67837800100800007216/" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce</a> or <a
+                        href="https://blogs.sap.com/tags/73555000100800001224/" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce Cloud</a>.</p>
+                <p>Or you might want to check answers.sap.com on <a
+                        href="https://answers.sap.com/tags/67837800100800007216" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce</a> or <a
+                        href="https://answers.sap.com/tags/73555000100800001224" target="_blank"
+                        rel="noopener noreferrer">SAP Commerce Cloud</a> topic.</p>
+            </section>
+
+            <p class="original-source">
+                <em>Originally published at <a
+                        href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050"
+                        target="_blank" rel="noopener noreferrer">SAP Community</a>.</em>
+            </p>
+        </main>
+
+        <footer>
+            &copy; 2026 Yusuf Adiputera. All rights reserved.
+        </footer>
+    </div>
+    <script src="../src/index.min.js?v=202603021148" defer></script>
+</body>
+
+</html>

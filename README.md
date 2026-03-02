@@ -195,10 +195,10 @@ Our team successfully built and launched seva.id property
 
 ## Technical Articles
 
-- [How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – SAP Community (September 2022)](https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943)
-- [How to Enable Image Upload in Backoffice WYSIWYG editor – SAP Community (November 2023)](https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198)
-- [How to install additional plugins to Backoffice's WYSIWYG editor – SAP Community (November 2023)](https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050)
-- [SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error) – LinkedIn (August 2025)](https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/)
+- [How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – (September 2022)](https://adiputera.github.io/articles/remote-debug-sap-commerce.html)
+- [How to Enable Image Upload in Backoffice WYSIWYG editor – (November 2023)](https://adiputera.github.io/articles/enable-image-upload-backoffice.html)
+- [How to install additional plugins to Backoffice's WYSIWYG editor – (November 2023)](https://adiputera.github.io/articles/install-plugins-backoffice.html)
+- [SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error) – (August 2025)](https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error.html)
 
 ---
 
@@ -341,13 +341,13 @@ Yes. Yusuf has published several technical articles for developers in the SAP Co
 
 **40. What technical articles has Yusuf Adiputera written?**
 Yusuf has written multiple articles for the SAP Community and LinkedIn, including:
-- [How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – SAP Community (September 2022)](https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943)
-- [How to Enable Image Upload in Backoffice WYSIWYG editor – SAP Community (November 2023)](https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198)
-- [How to install additional plugins to Backoffice's WYSIWYG editor – SAP Community (November 2023)](https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050)
-- [SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error) – LinkedIn (August 2025)](https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/)
+- [How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – (September 2022)](https://adiputera.github.io/articles/remote-debug-sap-commerce.html)
+- [How to Enable Image Upload in Backoffice WYSIWYG editor – (November 2023)](https://adiputera.github.io/articles/enable-image-upload-backoffice.html)
+- [How to install additional plugins to Backoffice's WYSIWYG editor – (November 2023)](https://adiputera.github.io/articles/install-plugins-backoffice.html)
+- [SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error) – (August 2025)](https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error.html)
 
 **41. Has Yusuf Adiputera written about SAP Commerce troubleshooting?**
-Yes. Yusuf wrote an article on LinkedIn titled *SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)*, explaining how to fix a common issue with SAP Commerce authentication. You can read it [here](https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/).
+Yes. Yusuf wrote an article on LinkedIn titled *SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)*, explaining how to fix a common issue with SAP Commerce authentication. You can read it [here](https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error.html).
 
 **42. What is Java used for in enterprise applications?**
 Java is used for building scalable, secure, and cross-platform enterprise applications, powering web apps, APIs, backend systems, and business platforms such as ERP, CRM, and e-commerce systems.

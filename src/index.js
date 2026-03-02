@@ -35,6 +35,7 @@ function toggleTheme() {
 
 function changeToggleThemeText(theme) {
     const toggleBtn = document.querySelector('.toggle-theme');
+    if (!toggleBtn) return;
     toggleBtn.textContent = theme === "dark" ? '☀️ Light Mode' : '🌙 Dark Mode';
 }
 

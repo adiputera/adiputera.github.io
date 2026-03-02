@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preload" as="style" href="../src/master.min.css?v=202603021148" />
+    <link rel="preload" as="script" href="../src/index.min.js?v=202603021148" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Enable Image Upload in Backoffice WYSIWYG editor – Yusuf Adiputera</title>
+    <meta name="title" content="How to Enable Image Upload in Backoffice WYSIWYG editor – Yusuf Adiputera" />
+    <meta name="description"
+        content="Step-by-step guide on enabling image upload in SAP Commerce Backoffice WYSIWYG editor." />
+
+    <meta name="keywords"
+        content="SAP Commerce, Backoffice, WYSIWYG, Image Upload, CKEditor, Java Engineer, Hybris Development" />
+    <meta name="author" content="Yusuf Adiputera" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-005WBSEVCP');
+    </script>
+
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../images/192.png">
+    <link rel="apple-touch-startup-image" href="../images/512.png">
+    <link rel="manifest" href="../manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adiputera.github.io/articles/enable-image-upload-backoffice" />
+    <meta property="og:title" content="How to Enable Image Upload in Backoffice WYSIWYG editor" />
+    <meta property="og:description"
+        content="Step-by-step guide on enabling image upload in SAP Commerce Backoffice WYSIWYG editor." />
+    <meta property="og:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="og:image:width" content="750" />
+    <meta property="og:image:height" content="750" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://adiputera.github.io/articles/enable-image-upload-backoffice" />
+    <meta property="twitter:title" content="How to Enable Image Upload in Backoffice WYSIWYG editor" />
+    <meta property="twitter:description"
+        content="Step-by-step guide on enabling image upload in SAP Commerce Backoffice WYSIWYG editor." />
+    <meta property="twitter:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="twitter:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="../src/master.min.css?v=202603021148" />
+    <link rel="canonical"
+        href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198" />
+
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to Enable Image Upload in Backoffice WYSIWYG editor",
+            "datePublished": "2023-11-07",
+            "dateModified": "2023-11-07",
+            "author": {
+                "@id": "https://adiputera.github.io/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://adiputera.github.io/articles/enable-image-upload-backoffice"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://adiputera.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Articles",
+                    "item": "https://adiputera.github.io/#articles"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Enable Image Upload",
+                    "item": "https://adiputera.github.io/articles/enable-image-upload-backoffice"
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
+            "name": "Yusuf Adiputera",
+            "givenName": "Yusuf",
+            "additionalName": "Fahmi",
+            "familyName": "Adiputera",
+            "gender": "Male",
+            "alternateName": [
+                "Yusuf Fahmi Adiputera",
+                "Yusuf F. Adiputera",
+                "Yusuf Fahmi",
+                "Yusuf",
+                "Adiputera"
+            ],
+            "url": "https://adiputera.github.io/",
+            "image": "https://adiputera.github.io/images/photo.webp",
+            "jobTitle": "Lead Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "PT Astra International Tbk",
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+            },
+            "email": "mailto:yusuf@adiputera.id",
+            "sameAs": [
+                "https://www.linkedin.com/in/yusuf-adiputera",
+                "https://about.me/adiputera",
+                "https://github.com/adiputera",
+                "https://stackoverflow.com/users/3603194/adiputera",
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+            },
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
+            "knowsAbout": [
+                "Java",
+                "Spring Framework",
+                "Spring Boot",
+                "Spring MVC",
+                "SAP Commerce (Hybris)",
+                "SAP Customer Data Platform (SAP CDP)",
+                "SAP Engagement Cloud (formerly SAP Emarsys)",
+                "SAP S/4HANA ABAP",
+                "Kafka",
+                "Drools",
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
+            ],
+            "nationality": {
+                "@type": "Country",
+                "name": "Indonesia"
+            },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                }
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
+            "knowsLanguage": [
+                { "@type": "Language", "name": "English" },
+                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
+                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    ]
+    </script>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li><a href="/#articles">Articles</a></li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li class="breadcrumb-current">Enable Image Upload</li>
+                </ol>
+            </nav>
+            <button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+        </div>
+
+        <header>
+            <h1 class="main-heading">How to Enable Image Upload in Backoffice WYSIWYG editor</h1>
+            <p class="article-meta">Published on <time datetime="2023-11-07">November 7, 2023</time> by Yusuf Adiputera
+            </p>
+        </header>
+
+        <main class="article-content">
+            <section>
+                <h2>Intro</h2>
+                <p>SAP Commerce's Backoffice uses CKEditor 4 as a WYSIWYG editor. Out of the box, CKEditor does support
+                    file/image upload, we just need to provide the API for file/image upload, although it's not enabled
+                    by default.</p>
+                <p>By default, the image dialog in the backoffice WYSIWYG editor is like this, you can only insert
+                    images by URL, with no option for upload, note that "<strong>Tautan</strong>" is
+                    "<strong>Link</strong>":</p>
+                <figure>
+                    <img src="../images/articles/enable-image-upload-backoffice/Cuplikan-layar-dari-2023-11-02-15-21-29.png"
+                        alt="Backoffice WYSIWYG default image dialog" loading="lazy">
+                    <figcaption>Backoffice WYSIWYG default image dialog</figcaption>
+                </figure>
+                <p>In this blog post, I will guide you on how to enable image upload in the backoffice WYSIWYG editor.
+                </p>
+            </section>
+
+            <section>
+                <h2>Prerequisites:</h2>
+                <p>You need to have some basic knowledge of SAP Commerce and its extensions.</p>
+            </section>
+
+            <section>
+                <h2>The Steps</h2>
+                <ol>
+                    <li>First, you need to know the response CKEditor is expecting, and the response is like this if the
+                        upload is a success:
+                        <pre><code>{
+    "fileName": "filename.png",
+    "uploaded": 1,
+    "url": "{urlOfTheMedia}"
+}</code></pre>
+                        And if the upload is failing, the response CKEditor expecting is like this:
+                        <pre><code>{
+    "error": {
+      "message": "some error message, return this if upload is failed"
+    },
+    "uploaded": 0
+}</code></pre>
+                    </li>
+                    <li>Based on the JSON in the first step, create a new DTO by adding this in the
+                        trainingwebservices-beans.xml:
+                        <pre><code>&lt;bean class="org.training.webservices.upload.dto.MessageDTO"&gt;
+	&lt;property name="message" type="String"/&gt;
+&lt;/bean&gt;
+
+&lt;bean class="org.training.webservices.upload.dto.FileUploadResponseDTO"&gt;
+	&lt;property name="uploaded" type="Integer"/&gt;
+	&lt;property name="fileName" type="String"/&gt;
+	&lt;property name="url" type="String"/&gt;
+	&lt;property name="error" type="org.training.webservices.upload.dto.MessageDTO"/&gt;
+&lt;/bean&gt;</code></pre>
+                    </li>
+                    <li>Create a new controller that will accept the "upload" parameter with the type of MultipartFile
+                        and save it as a <strong>CatalogUnawareMedia</strong>:
+                        <pre><code>@PostMapping("/file-upload")
+@ApiBaseSiteIdParam
+@ApiOperation(nickname = "uploadFile", value = "Upload a file. by Yusuf F. Adiputera")
+public ResponseEntity&lt;FileUploadResponseDTO&gt; uploadImageFile(@ApiParam("File to upload") @RequestParam("upload") final MultipartFile upload)
+{
+    FileUploadResponseDTO responseDTO = new FileUploadResponseDTO();
+    try {
+        CatalogUnawareMediaModel mediaModel = modelService.create(CatalogUnawareMediaModel.class);
+        mediaModel.setFolder(mediaService.getFolder("images"));
+        mediaModel.setCode("images" + "-" + System.currentTimeMillis() + upload.getOriginalFilename());
+        modelService.save(mediaModel);
+        mediaService.setStreamForMedia(mediaModel, upload.getInputStream(),
+                    upload.getOriginalFilename(), upload.getContentType());
+        modelService.refresh(mediaModel);
+        responseDTO.setUploaded(1);
+        responseDTO.setFileName(mediaModel.getRealFileName());
+        responseDTO.setUrl(mediaModel.getURL());
+        return new ResponseEntity&lt;&gt;(responseDTO, HttpStatus.ACCEPTED);
+    } catch (Exception e) {
+        LOGGER.error("An error occurred while saving media: {}", e.getMessage(), e);
+        responseDTO.setUploaded(0);
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setMessage(e.getMessage());
+        responseDTO.setError(messageDTO);
+        return new ResponseEntity&lt;&gt;(responseDTO, HttpStatus.BAD_REQUEST);
+    }
+}</code></pre>
+                    </li>
+                    <li>Create a new filter for file upload in
+                        <strong>{webservicesextension}/web/src/org.training.webservices.v2.filter/FileUploadFilter.java</strong>
+                        <pre><code>/**
+ * The class FileUploadFilter
+ *
+ * @author Yusuf F. Adiputera
+ */
+public class FileUploadFilter extends AbstractUrlMatchingFilter {
+
+    private Map&lt;String, MultipartFilter&gt; urlFilterMapping;
+    private PathMatcher pathMatcher;
+
+    @Override
+    public void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response,
+                                 final FilterChain filterChain) throws IOException, ServletException
+    {
+        if (HttpMethod.POST.name().equalsIgnoreCase(request.getMethod()))
+        {
+            final MultipartFilter multipartFilter = getMultipartFilter(request.getServletPath());
+            if (multipartFilter != null)
+            {
+                multipartFilter.doFilter(request, response, filterChain);
+            }
+            else
+            {
+                filterChain.doFilter(request, response);
+            }
+        }
+        else
+        {
+            filterChain.doFilter(request, response);
+        }
+    }
+
+    protected MultipartFilter getMultipartFilter(final String servletPath)
+    {
+        for (Map.Entry&lt;String, MultipartFilter&gt; multipartFilterEntry : getUrlFilterMapping().entrySet())
+        {
+            if (getPathMatcher().match(multipartFilterEntry.getKey(), servletPath))
+            {
+                return multipartFilterEntry.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    protected Map&lt;String, MultipartFilter&gt; getUrlFilterMapping()
+    {
+        return urlFilterMapping;
+    }
+
+    public void setUrlFilterMapping(final Map&lt;String, MultipartFilter&gt; urlFilterMapping)
+    {
+        this.urlFilterMapping = urlFilterMapping;
+    }
+
+    protected PathMatcher getPathMatcher()
+    {
+        return pathMatcher;
+    }
+
+    public void setPathMatcher(final PathMatcher pathMatcher)
+    {
+        this.pathMatcher = pathMatcher;
+    }
+}</code></pre>
+                    </li>
+                    <li>Register previous filter as bean inside
+                        <strong>{webservicesextension}/web/webroot/WEB-INF/config/v2/filter-config-v2-spring.xml</strong>
+                        <pre><code>&lt;bean id="occAntPathMatcher" class="org.springframework.util.AntPathMatcher" /&gt;
+
+&lt;bean id="occFileUploadFilter" class="org.training.webservices.v2.filter.FileUploadFilter" &gt;
+	&lt;property name="urlFilterMapping"&gt;
+		&lt;ref bean="occFileUploadUrlFilterMappings" /&gt;
+	&lt;/property&gt;
+	&lt;property name="pathMatcher" ref="occAntPathMatcher"/&gt;
+&lt;/bean&gt;
+
+&lt;alias name="defaultOccFileUploadUrlFilterMappings" alias="occFileUploadUrlFilterMappings" /&gt;
+&lt;util:map id="defaultOccFileUploadUrlFilterMappings" key-type="java.lang.String" value-type="org.springframework.web.multipart.support.MultipartFilter"&gt;
+	&lt;entry key="/**" value-ref="occMultiPartFilter"/&gt;
+&lt;/util:map>
+
+&lt;bean id="occMultiPartFilter" class="org.springframework.web.multipart.support.MultipartFilter"&gt;
+	&lt;property name="multipartResolverBeanName" value="occMultipartResolver"/&gt;
+&lt;/bean&gt;
+
+&lt;bean id="occMultipartResolver"
+	  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/&gt;</code></pre>
+                        Then add <strong>occFileUploadFilter</strong> in the FilterChainList
+                        <pre><code>&lt;alias name="defaultCommerceWebServicesFilterChainListV2" alias="commerceWebServicesFilterChainListV2" /&gt;
+&lt;util:list id="defaultCommerceWebServicesFilterChainListV2"&gt;
+	&lt;!-- some other filter --&gt;
+	&lt;!-- ................. --&gt;
+
+	&lt;!-- filter to handle multipart file upload --&gt;
+	&lt;ref bean="occFileUploadFilter" /&gt;
+&lt;/util:list&gt;</code></pre>
+                    </li>
+                    <li>Create a new file, named <strong>customckeditorconfig.js</strong> in
+                        <strong>{backofficeextension}/backoffice/resources/cng/customckeditorconfig.js</strong>
+                        <pre><code>CKEDITOR.editorConfig = function(config) {
+	// replace this with your file upload URL
+	config.filebrowserImageUploadUrl = '/trainingwebservices/v2/training/file-upload';
+};</code></pre>
+                    </li>
+                    <li>Add this line inside <strong>{backofficeextension}/project.properties</strong> so CKEditor can
+                        read the config:
+                        <pre><code>backoffice.wysiwyg.config.uri=/cng/customckeditorconfig.js</code></pre>
+                    </li>
+                    <li>Build the application by executing <strong>ant all</strong></li>
+                    <li>Test the API from the Postman
+                        <figure>
+                            <img src="../images/articles/enable-image-upload-backoffice/Cuplikan-layar-dari-2023-11-02-15-05-35.png"
+                                alt="Postman API testing" loading="lazy">
+                        </figure>
+                    </li>
+                    <li>Open Backoffice, open any WYSIWYG editor and check if there's a new "<strong>upload</strong>"
+                        tab. Note in this picture "<strong>Unggah</strong>" is "<strong>Upload</strong>",
+                        "<strong>Tautan</strong>" is
+                        "<strong>Link</strong>"
+                        <figure>
+                            <img src="../images/articles/enable-image-upload-backoffice/Cuplikan-layar-dari-2023-11-02-15-24-28.png"
+                                alt="New upload tab in WYSIWYG editor" loading="lazy">
+                        </figure>
+                    </li>
+                    <li>Test Uploading an image by going to the "Upload" tab, click "Choose file" to browse for files,
+                        and click "Send to server" to upload
+                        <figure>
+                            <img src="../images/articles/enable-image-upload-backoffice/Cuplikan-layar-dari-2023-11-02-15-26-50.png"
+                                alt="Uploading an image" loading="lazy">
+                        </figure>
+                    </li>
+                    <li>The image will be uploaded, you can change the height, and width if you'd like, then click ok
+                        <figure>
+                            <img src="../images/articles/enable-image-upload-backoffice/Cuplikan-layar-dari-2023-11-02-15-28-01.png"
+                                alt="Image upload dialog" loading="lazy">
+                        </figure>
+                        The image will be added to the WYSIWYG editor
+                        <figure>
+                            <img src="../images/articles/enable-image-upload-backoffice/Cuplikan-layar-dari-2023-11-02-15-29-40.png"
+                                alt="Image added to WYSIWYG editor" loading="lazy">
+                        </figure>
+                    </li>
+                    <li>Done</li>
+                </ol>
+            </section>
+
+
+            <section>
+                <h2>Limitation</h2>
+                <p>The API will be open without any authentication since the webservices extension can't read the
+                    backoffice sessions, so if the webservices endpoint is exposed to the public, everyone will be able
+                    to upload some files without any authentication.</p>
+            </section>
+
+            <p class="original-source">
+                <em>Originally published at <a
+                        href="https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198"
+                        target="_blank" rel="noopener noreferrer">SAP Community</a>.</em>
+            </p>
+        </main>
+
+        <footer>
+            &copy; 2026 Yusuf Adiputera. All rights reserved.
+        </footer>
+    </div>
+    <script src="../src/index.min.js?v=202603021148" defer></script>
+</body>
+
+</html>

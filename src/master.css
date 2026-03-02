@@ -35,6 +35,12 @@ body {
     transition: background 0.3s ease;
 }
 
+.article-content img,
+.cover-image img {
+    max-width: 100%;
+    height: auto;
+}
+
 header h1 {
     font-size: 2.5rem;
     margin: 0;
@@ -424,6 +430,90 @@ footer {
     font-size: 0.95rem;
     color: var(--text);
     line-height: 1.5;
+}
+
+/* Article page content */
+.article-content {
+    line-height: 1.7;
+}
+
+.article-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.25rem;
+}
+
+.article-content h3 {
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.article-content pre {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+}
+
+.article-content pre code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    display: block;
+    white-space: pre;
+    color: inherit;
+}
+
+.article-content code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+    font-size: 0.875em;
+}
+
+.article-content img {
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+.article-content figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.article-content figure img {
+    margin: 0;
+    border: none;
+}
+
+.article-content figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--subtext);
+    font-style: italic;
+}
+
+.article-meta {
+    font-size: 0.9rem;
+    color: var(--subtext);
+    margin-bottom: 1.5rem;
+}
+
+.original-source {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--subtext);
 }
 
 

@@ -10,7 +10,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/" />
         <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/id" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/" />
-        <lastmod>2026-03-01</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
 
@@ -28,7 +28,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/" />
         <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/id" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/" />
-        <lastmod>2026-03-01</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
 
@@ -46,7 +46,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/skills" />
         <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/skills-id" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/skills" />
-        <lastmod>2026-03-01</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -57,7 +57,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/skills" />
         <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/skills-id" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/skills" />
-        <lastmod>2026-03-01</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -68,7 +68,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/faq" />
         <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/faq-id" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/faq" />
-        <lastmod>2026-03-01</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -79,9 +79,41 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/faq" />
         <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/faq-id" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/faq" />
-        <lastmod>2026-03-01</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+
+    <!-- Article: Enable Image Upload -->
+    <url>
+        <loc>https://adiputera.github.io/articles/enable-image-upload-backoffice</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Article: Install Plugins -->
+    <url>
+        <loc>https://adiputera.github.io/articles/install-plugins-backoffice</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Article: Remote Debug -->
+    <url>
+        <loc>https://adiputera.github.io/articles/remote-debug-sap-commerce</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Article: SSO BCrypt Error -->
+    <url>
+        <loc>https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
 </urlset>
