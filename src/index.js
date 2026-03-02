@@ -6,12 +6,22 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+const THEME_COLORS = { light: "#ffffff", dark: "#1e1e1e" };
+
+function updateThemeColor(theme) {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+        meta.setAttribute("content", THEME_COLORS[theme] || THEME_COLORS.light);
+    }
+}
+
 function toggleTheme() {
     const html = document.documentElement;
     const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
     html.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
     changeToggleThemeText(newTheme);
+    updateThemeColor(newTheme);
 }
 
 (function () {
@@ -19,6 +29,7 @@ function toggleTheme() {
     if (saved) {
         document.documentElement.setAttribute("data-theme", saved);
         changeToggleThemeText(saved);
+        updateThemeColor(saved);
     }
 })();
 
