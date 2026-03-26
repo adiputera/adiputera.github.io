@@ -610,6 +610,12 @@ footer {
     border-top: 1px solid var(--border);
 }
 
+.short-version-link {
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: var(--subtext);
+}
+
 @media print {
 
     /* Hide toggle theme button and footer in print */
