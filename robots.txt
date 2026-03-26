@@ -5,6 +5,8 @@ Allow: /
 Disallow: /README.md
 Disallow: /FAQ.md
 Disallow: /src/
+Disallow: /articles/template
+Disallow: /articles/template.html
 
 # Sitemap
 Sitemap: https://adiputera.github.io/sitemap.xml
