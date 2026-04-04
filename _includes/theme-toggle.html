@@ -1,0 +1,4 @@
+{% assign lang_data = site.data[page.lang] | default: site.data.en %}
+<button class="toggle-theme button hide-for-print" onclick="toggleTheme()" aria-label="Toggle between light and dark theme">
+    {{ lang_data.ui.buttons.dark_mode }}
+</button>

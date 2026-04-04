@@ -1,0 +1,15 @@
+# Project documentation (local only)
+CLAUDE.md
+SEO_RECOMMENDATIONS.md
+FAQ.md
+FAQ_SUGGESTIONS.md
+
+# Jekyll build directories
+_site/
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata
+
+# Bundler
+.bundle/
+vendor/

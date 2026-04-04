@@ -1,0 +1,59 @@
+{% if page.layout == 'article' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ page.title }}",
+  "description": "{{ page.description }}",
+  "datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
+  "dateModified": "{{ page.date_modified | default: page.date | date: '%Y-%m-%d' }}",
+  "author": {
+    "@type": "Person",
+    "@id": "{{ site.url }}/#person",
+    "name": "{{ site.author }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "{{ site.url }}/#person",
+    "name": "{{ site.author }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  }{% if page.image %},
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ site.url }}{{ page.image }}",
+    "width": 750,
+    "height": 750
+  }{% endif %}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Articles",
+      "item": "{{ site.url }}/#articles"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ page.title }}",
+      "item": "{{ site.url }}{{ page.url }}"
+    }
+  ]
+}
+</script>
+{% endif %}

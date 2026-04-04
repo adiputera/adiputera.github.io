@@ -1,0 +1,11 @@
+{% assign lang_data = site.data[page.lang] | default: site.data.en %}
+<div class="language-switcher">
+    <span>🌐</span>
+    {% if page.lang == 'id' %}
+    <a href="{{ page.permalink_en | default: '/' }}" aria-label="{{ lang_data.ui.language_switcher.aria_label_en }}">EN</a>
+    <a href="{{ page.url }}" class="active" aria-label="{{ lang_data.ui.language_switcher.aria_label_id }}">ID</a>
+    {% else %}
+    <a href="{{ page.url }}" class="active" aria-label="{{ lang_data.ui.language_switcher.aria_label_en }}">EN</a>
+    <a href="{{ page.permalink_id | default: '/id' }}" aria-label="{{ lang_data.ui.language_switcher.aria_label_id }}">ID</a>
+    {% endif %}
+</div>

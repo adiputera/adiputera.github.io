@@ -1,0 +1,13 @@
+{% assign lang_data = site.data[page.lang] | default: site.data.en %}
+<div class="top-nav hide-for-print">
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="{% if page.lang == 'id' %}/id{% else %}/{% endif %}">{{ lang_data.breadcrumb.home }}</a></li>
+            {% if page.breadcrumb %}
+            <li class="breadcrumb-separator">/</li>
+            <li class="breadcrumb-current">{{ page.breadcrumb }}</li>
+            {% endif %}
+        </ol>
+    </nav>
+    {% include language-switcher.html %}
+</div>

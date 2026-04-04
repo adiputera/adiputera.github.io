@@ -1,12 +1,15 @@
-https://adiputera.github.io
-https://adiputera.github.io/id
-https://adiputera.github.io/faq
-https://adiputera.github.io/faq-id
-https://adiputera.github.io/skills
-https://adiputera.github.io/skills-id
-https://adiputera.github.io/short
-https://adiputera.github.io/short-id
-https://adiputera.github.io/articles/enable-image-upload-backoffice
-https://adiputera.github.io/articles/install-plugins-backoffice
-https://adiputera.github.io/articles/remote-debug-sap-commerce
-https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error
+---
+layout: null
+permalink: /sitemap.txt
+---
+{{ site.url }}/
+{{ site.url }}/id
+{{ site.url }}/faq
+{{ site.url }}/faq-id
+{{ site.url }}/skills
+{{ site.url }}/skills-id
+{{ site.url }}/short
+{{ site.url }}/short-id
+{%- for article in site.articles %}
+{{ site.url }}{{ article.url }}
+{%- endfor %}

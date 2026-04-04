@@ -1,0 +1,6 @@
+<footer>
+    &copy; <span id="current-year">{{ 'now' | date: "%Y" }}</span> {{ site.author }}. All rights reserved.
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</footer>

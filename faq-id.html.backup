@@ -1,20 +1,1067 @@
----
-layout: default
-lang: id
-permalink: /faq-id
-permalink_en: /faq
-title: "Pertanyaan Umum | Yusuf Adiputera – Lead Software Engineer"
-description: "Pertanyaan umum tentang Yusuf Adiputera, Lead Software Engineer dengan pengalaman lebih dari 8 tahun di Java, SAP Commerce (Hybris), Spring MVC, dan Spring Boot."
-breadcrumb: "FAQ"
----
-{% assign data = site.data[page.lang] %}
-{% include schema-person.html %}
+<!DOCTYPE html>
+<html lang="id">
 
-<div class="container">
-        {% include navigation.html %}
+<head>
+    <link rel="preload" as="style" href="src/master.min.css?v=202603251700" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202603251700" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pertanyaan Umum | Yusuf Adiputera – Lead Software Engineer</title>
+    <meta name="title" content="Pertanyaan Umum | Yusuf Adiputera – Lead Software Engineer" />
+
+    <meta name="description"
+        content="Pertanyaan umum tentang Yusuf Adiputera, Lead Software Engineer dengan pengalaman lebih dari 8 tahun di Java, SAP Commerce (Hybris), Spring MVC, dan Spring Boot." />
+
+    <meta name="keywords"
+        content="Yusuf Adiputera, FAQ, Pertanyaan Umum, Tentang Yusuf Adiputera, Lead Software Engineer, SAP Hybris, SAP Commerce, SAP CX, Java Developer, Java Engineer, Spring Boot, Spring MVC, Spring Framework, SAP Customer Data Platform, SAP CDP, SAP Emarsys, Backend Engineer, Backend Developer, Full Stack Developer, Software Engineer Indonesia, Developer Jakarta, Pengembang Java, Proyek Astra, motorkuX.id, auto2000.co.id, astra-daihatsu.id, seva.id" />
+
+    <meta name="author" content="Yusuf Adiputera" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-005WBSEVCP');
+    </script>
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="canonical" href="https://adiputera.github.io/faq-id" />
+    <link rel="alternate" hreflang="en" href="https://adiputera.github.io/faq" />
+    <link rel="alternate" hreflang="id" href="https://adiputera.github.io/faq-id" />
+    <link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/faq" />
+    <link rel="apple-touch-icon" href="images/192.png">
+    <link rel="apple-touch-startup-image" href="images/512.png">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="src/master.min.css?v=202603251700" />
+
+    <meta name="jobtitle"
+        content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
+    <meta name="skills"
+        content="Java, SAP Hybris Commerce, Spring MVC, Spring Boot, REST API, Arsitektur Perangkat Lunak, Desain Sistem" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera – Pertanyaan Umum (FAQ)">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title"
+        content="Pertanyaan Umum (FAQ) | Yusuf Adiputera – Lead Software Engineer (Java, SAP Hybris Commerce, Spring)" />
+    <meta property="og:description"
+        content="Temukan jawaban atas pertanyaan umum tentang Yusuf Adiputera – Lead Software Engineer dengan pengalaman lebih dari 8 tahun di Java, SAP Commerce (Hybris), Spring Boot, dan Spring MVC. Ketahui lebih lanjut tentang karier, keahlian, serta proyek-proyek besar yang telah ia kerjakan untuk Grup Astra." />
+    <meta property="og:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta property="og:image:width" content="750" />
+    <meta property="og:image:height" content="750" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="Foto Yusuf Adiputera – Lead Software Engineer" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adiputera.github.io/faq-id" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title"
+        content="Pertanyaan Umum (FAQ) | Yusuf Adiputera – Lead Software Engineer (Java, SAP Hybris Commerce, Spring)" />
+    <meta name="twitter:description"
+        content="Pelajari lebih lanjut tentang Yusuf Adiputera melalui halaman FAQ ini. Seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun di Java, SAP Commerce (Hybris), Spring Boot, dan Spring MVC. Temukan jawabannya di sini." />
+    <meta name="twitter:image" content="https://adiputera.github.io/images/photo.webp" />
+    <meta name="twitter:image:alt" content="Foto Yusuf Adiputera – Lead Software Engineer" />
+
+    <meta property="article:author" content="https://adiputera.github.io/" />
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
+            "name": "Yusuf Adiputera",
+            "givenName": "Yusuf",
+            "additionalName": "Fahmi",
+            "familyName": "Adiputera",
+            "gender": "Male",
+            "alternateName": [
+                "Yusuf Fahmi Adiputera",
+                "Yusuf F. Adiputera",
+                "Yusuf Fahmi",
+                "Yusuf",
+                "Adiputera"
+            ],
+            "url": "https://adiputera.github.io/",
+            "image": "https://adiputera.github.io/images/photo.webp",
+            "jobTitle": "Lead Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "PT Astra International Tbk",
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+            },
+            "email": "mailto:yusuf@adiputera.id",
+            "sameAs": [
+                "https://www.linkedin.com/in/yusuf-adiputera",
+                "https://about.me/adiputera",
+                "https://github.com/adiputera",
+                "https://stackoverflow.com/users/3603194/adiputera",
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+            },
+            "description": "Yusuf Adiputera adalah Lead Software Engineer dengan keahlian dalam Java, SAP Commerce (Hybris), Spring Boot, dan Spring MVC. Berpengalaman dalam performa sistem enterprise dan integrasi dengan reliabilitas tinggi menggunakan REST dan SOAP.",
+            "knowsAbout": [
+                "Java",
+                "Spring Framework",
+                "Spring Boot",
+                "Spring MVC",
+                "SAP Commerce (Hybris)",
+                "SAP Customer Data Platform (SAP CDP)",
+                "SAP Engagement Cloud (formerly SAP Emarsys)",
+                "SAP S/4HANA ABAP",
+                "Kafka",
+                "Drools",
+                "Apache Solr",
+                "Integrasi REST & SOAP",
+                "Optimasi Performa",
+                "Redis & Ehcache",
+                "Azure Function App"
+            ],
+            "nationality": {
+                "@type": "Country",
+                "name": "Indonesia"
+            },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                }
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
+            "knowsLanguage": [
+                { "@type": "Language", "name": "English" },
+                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
+                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Beranda",
+                    "item": "https://adiputera.github.io/id"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Pertanyaan Umum",
+                    "item": "https://adiputera.github.io/faq-id"
+                }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "name": "Pertanyaan Umum (FAQ) | Yusuf Adiputera – Lead Software Engineer",
+            "description": "Pertanyaan umum seputar Yusuf Adiputera, Lead Software Engineer dengan lebih dari 8 tahun pengalaman di Java, SAP Commerce (Hybris), Spring MVC, dan Spring Boot.",
+            "author": {
+                "@type": "Person",
+                "@id": "https://adiputera.github.io/#person",
+                "name": "Yusuf Adiputera"
+            },
+            "inLanguage": "id",
+            "datePublished": "2025-10-05",
+            "dateModified": "2026-03-02",
+            "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": [".faq-answer"]
+            },
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Siapa itu Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf Adiputera (nama lengkap: Yusuf Fahmi Adiputera) adalah seorang Lead Software Engineer yang berfokus pada Java, SAP Commerce (Hybris), dan Spring Framework. Dengan pengalaman profesional lebih dari 8 tahun di bidang software engineering, Yusuf telah berkontribusi dalam pengembangan proyek e-commerce skala besar untuk merek-merek otomotif terkemuka di bawah Astra Group. Ia dikenal karena pendekatannya yang terstruktur dalam pengembangan backend, dengan fokus pada kualitas sistem, performa, dan keamanan. Baru-baru ini, Yusuf juga terlibat dalam implementasi SAP Customer Data Platform (SAP CDP) dan SAP Engagement Cloud (formerly SAP Emarsys), sehingga memperoleh pengalaman praktis dalam manajemen data pelanggan dan marketing automation di dalam ekosistem SAP CX. Ia juga telah merambah ke pengembangan SAP S/4HANA ABAP."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mengapa Yusuf Adiputera dianggap sebagai software engineer berpengalaman?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki pengalaman langsung lebih dari 8 tahun di bidang enterprise software engineering, dengan fokus pada pengembangan backend yang scalable dan mudah dipelihara menggunakan Java. Ia telah terlibat dalam berbagai implementasi SAP Commerce, melakukan optimasi performa, serta memimpin inisiatif backend untuk platform digital Astra. Keseimbangan antara kemampuan teknis dan kepemimpinannya menjadikannya kontributor yang andal di lingkungan enterprise yang kompleks."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa yang membuat Yusuf Adiputera menonjol sebagai software engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf dikenal karena konsistensinya dalam menjaga kualitas dan maintainability. Ia menjunjung tinggi clean architecture, kolaborasi, dan hasil yang terukur. Gaya kepemimpinannya menekankan pada mentoring anggota tim, melakukan code review untuk stabilitas jangka panjang, serta memastikan keselarasan antara pekerjaan teknis dan tujuan bisnis — agar proyek dapat memberikan performa dan keandalan maksimal di lingkungan enterprise."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bahasa pemrograman dan framework apa yang digunakan oleh Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf bekerja terutama menggunakan Java, SAP Commerce (Hybris), dan ekosistem Spring, termasuk Spring Boot dan Spring MVC. Ia juga memiliki pengalaman praktis menggunakan Drools untuk business rules, Kafka untuk asynchronous processing, serta Apache Solr untuk search dan indexing di lingkungan SAP Commerce. Baru-baru ini, Yusuf juga terlibat dalam implementasi SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) dalam ekosistem SAP CX. Ia juga telah merambah ke pengembangan SAP S/4HANA ABAP."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera pernah menerima penghargaan atas pekerjaannya?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Pada tahun 2024, salah satu proyek yang dikontribusikan oleh Yusuf memperoleh penghargaan internal Best Project Quality. Penghargaan ini menegaskan komitmennya terhadap kualitas perangkat lunak yang stabil serta kontribusinya dalam proyek transformasi digital Astra Group yang berfokus pada peningkatan performa dan praktik engineering di berbagai tim."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Yusuf Adiputera berspesialisasi di bidang apa?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf berfokus pada enterprise-grade software engineering menggunakan Java, Spring MVC, Spring Boot, dan SAP Commerce. Keahliannya meliputi arsitektur backend, desain API, pemodelan data, dan optimasi backend. Ia juga baru-baru ini terlibat dalam implementasi SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), serta telah merambah ke pengembangan SAP S/4HANA ABAP."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Proyek apa saja yang pernah dikerjakan oleh Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf telah terlibat dalam proyek digital commerce besar seperti motorkuX.id, auto2000.co.id, astra-daihatsu.id, dan seva.id. Proyek-proyek ini merupakan bagian dari transformasi digital Astra Group dan mencerminkan pengalamannya dalam membangun serta memelihara platform enterprise berskala besar dengan trafik tinggi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa yang menginspirasi Yusuf Adiputera menjadi software engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ketertarikan Yusuf terhadap software engineering bermula dari rasa ingin tahunya terhadap teknologi dan keinginannya untuk memecahkan masalah dunia nyata. Ia menikmati proses merancang sistem backend yang efisien, scalable, dan memberikan dampak positif bagi bisnis."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Jenis proyek seperti apa yang paling disukai Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf menyukai proyek berskala enterprise yang memiliki kompleksitas tinggi, tingkat skalabilitas besar, serta memberikan dampak nyata bagi bisnis — khususnya di bidang e-commerce dan inisiatif transformasi digital. Ia mendapatkan kepuasan dari peningkatan performa, menjaga reliability sistem, dan membantu tim berkembang melalui praktik engineering yang lebih baik."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera terbuka untuk peluang karier baru?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, Yusuf terbuka untuk menjajaki peluang karier internasional. Ia tertarik pada posisi yang memungkinkan relokasi ke Malaysia, Singapura, Australia, Inggris, atau Uni Eropa. Namun, ia juga terbuka untuk peluang global lainnya yang sesuai dengan keahliannya dan mendukung pengembangan kariernya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Negara mana saja yang diminati Yusuf Adiputera untuk relokasi?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf terbuka untuk relokasi kerja ke luar negeri, terutama ke Malaysia, Singapura, Australia, Uni Eropa, dan Inggris. Ia juga mempertimbangkan negara lain dengan ekosistem teknologi yang kuat dan peluang pertumbuhan profesional yang baik."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Yusuf Adiputera bekerja di perusahaan apa?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Saat ini Yusuf bekerja di PT Astra International Tbk, salah satu perusahaan terbesar dan paling dihormati di Indonesia. Ia berkontribusi dalam transformasi digital perusahaan, khususnya di sektor otomotif, dengan fokus pada sistem backend dan proyek SAP Commerce."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa peran Yusuf Adiputera di Astra?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf berperan sebagai Lead Software Engineer, memimpin pengembangan backend dalam ekosistem digital commerce Astra. Tanggung jawabnya meliputi pengawasan proyek SAP Commerce (Hybris), peningkatan performa sistem, dan pembinaan developer dalam praktik engineering berbasis Java dan Spring."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Sudah berapa lama Yusuf Adiputera bekerja sebagai software engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf telah bekerja di bidang software engineering selama lebih dari 8 tahun, dengan fokus pada Java, SAP Commerce (Hybris), dan Spring Framework. Sepanjang kariernya, ia telah mendapatkan pengalaman praktis dalam membangun aplikasi enterprise yang scalable dan memimpin berbagai inisiatif teknis."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa alamat email bisnis Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Anda dapat menghubungi Yusuf secara langsung melalui email di yusuf@adiputera.id untuk keperluan profesional, kolaborasi, atau networking."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa pengalaman kerja terbaru Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Peran terbaru Yusuf adalah sebagai Lead Software Engineer di PT Astra International Tbk, di mana ia berfokus pada solusi enterprise menggunakan Java, Spring Boot, dan SAP Commerce (Hybris). Pekerjaannya mencakup arsitektur backend, pengembangan API, dan integrasi dengan platform SAP CX."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa latar belakang pendidikan terakhir Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki gelar Sarjana Ilmu Komputer, yang memberinya dasar kuat dalam software engineering, algoritma, dan pengembangan sistem enterprise. Ia terus memperdalam pengetahuannya melalui pengalaman langsung dan pembelajaran mandiri terkait teknologi enterprise modern."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Industri apa yang digeluti oleh Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf bekerja di industri teknologi informasi dan digital commerce, dengan fokus pada sistem backend di sektor otomotif dan ritel. Pengalamannya menjembatani antara teknologi dan bisnis, membantu organisasi memodernisasi platform digital mereka."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana cara menghubungi Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Anda dapat menghubungi Yusuf melalui email di yusuf@adiputera.id atau terhubung dengannya di LinkedIn untuk keperluan profesional atau kolaborasi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Di mana lokasi Yusuf Adiputera saat ini?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf saat ini berdomisili di Jakarta, Indonesia. Ia terbuka untuk peluang relokasi ke luar negeri — terutama ke Malaysia, Singapura, Australia, Inggris, dan Uni Eropa — serta negara lain dengan ekosistem teknologi yang kuat."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa saja pencapaian penting Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sepanjang kariernya, Yusuf telah berkontribusi pada berbagai proyek transformasi digital berskala besar di Astra Group. Ia berperan penting dalam meningkatkan performa, skalabilitas, dan maintainability backend di beberapa platform enterprise. Pada tahun 2024, salah satu proyek yang ia kontribusikan memperoleh penghargaan internal <strong><a href=\"id.html#key-achievements\">Best Project Quality Award</a></strong>."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Perusahaan apa saja yang pernah bekerja sama dengan Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf bekerja dengan <a href=\"id.html#experience\">PT Astra International Tbk</a>, berkolaborasi erat dengan tim produk, marketing, dan teknologi. Fokus utamanya adalah menghadirkan solusi digital commerce yang inovatif dan menjaga standar engineering yang tinggi di lingkungan enterprise berskala besar."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf pernah mengadakan pelatihan atau bootcamp?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Yusuf telah memimpin beberapa bootcamp internal <a href=\"skills-id.html\">SAP Commerce (Hybris)</a> dan sesi pelatihan teknis bagi developer. Sesi-sesi tersebut berfokus pada peningkatan pemahaman peserta terhadap <a href=\"skills-id.html\">Java</a>, Spring MVC, dan fundamental SAP Commerce."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Topik apa saja yang dibahas dalam bootcamp SAP Commerce yang dipandu oleh Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Bootcamp dan pelatihan internal yang dipimpin Yusuf mencakup dasar-dasar Java dan Spring Framework, arsitektur SAP Commerce, data modeling, flexible search, pengembangan OCC API, cronjob, konfigurasi hot folder, serta kustomisasi backoffice. Ia juga memperkenalkan best practice untuk menjaga kualitas kode."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Metodologi pengembangan apa yang diikuti Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf mengikuti metodologi Agile dan Scrum, dengan fokus kuat pada kolaborasi dan perbaikan berkelanjutan. Ia mendorong praktik terbaik seperti peer review dan otomatisasi CI/CD untuk menjaga kualitas serta konsistensi perangkat lunak."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Tools dan teknologi apa yang digunakan Yusuf setiap hari?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf bekerja terutama menggunakan <a href=\"skills-id.html\">Java</a>, <a href=\"skills-id.html\">Spring Framework</a> (termasuk Spring MVC dan Spring Boot), dan <a href=\"skills-id.html\">SAP Commerce (Hybris)</a>. Ia juga berpengalaman menggunakan <a href=\"skills-id.html\">Apache Solr</a> untuk search, <a href=\"skills-id.html\">Drools</a> untuk business rules, dan <a href=\"skills-id.html\">Kafka</a> untuk asynchronous processing sesuai kebutuhan proyek. Selain itu, ia menggunakan Azure DevOps dan Git untuk version control dan otomatisasi deployment."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana pendekatan Yusuf terhadap kualitas perangkat lunak?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf meyakini bahwa kualitas perangkat lunak dicapai melalui konsistensi, kejelasan, dan kolaborasi. Ia menekankan prinsip clean code, praktik pengembangan yang aman, serta proses review yang berkelanjutan untuk menjaga kesehatan kode dan performa sistem dalam jangka panjang."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf memiliki pengalaman memimpin tim engineering?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Sebagai seorang Lead Software Engineer, Yusuf berpengalaman dalam memandu tim melalui proyek-proyek kompleks dari tahap perencanaan hingga delivery. Ia memberikan mentoring, mendorong knowledge sharing, dan memastikan keselarasan antara tujuan teknis dan bisnis."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Untuk apa Java digunakan dalam aplikasi enterprise?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Java merupakan bahasa pemrograman populer yang digunakan untuk membangun aplikasi enterprise yang scalable, aman, dan lintas platform. Java digunakan untuk web application, API, sistem backend, serta platform bisnis seperti ERP, CRM, dan e-commerce."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Spring MVC dan Spring Boot?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Spring MVC (Model-View-Controller) adalah web framework dalam ekosistem Spring yang digunakan untuk membangun aplikasi web yang terstruktur dan mudah dipelihara. Sementara itu, Spring Boot merupakan framework yang dibangun di atas Spring, yang menyederhanakan konfigurasi dan deployment."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa perbedaan antara Spring MVC dan Spring Boot?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Perbedaan utama antara Spring MVC dan Spring Boot terletak pada konfigurasi dan kemudahan penggunaannya. Spring MVC memerlukan konfigurasi manual terhadap dependency, web.xml, dan context file, sedangkan Spring Boot mengotomatiskan sebagian besar konfigurasi tersebut dan menyediakan embedded server seperti Tomcat atau Jetty."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu SAP Commerce (Hybris)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "SAP Commerce (sebelumnya dikenal sebagai Hybris) adalah platform e-commerce kelas enterprise yang dibangun menggunakan Java dan Spring Framework. Platform ini menyediakan fitur untuk mengelola katalog produk, harga, promosi, dan pengalaman pelanggan di berbagai channel seperti web, mobile, maupun omnichannel."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa peran seorang Lead Software Engineer dalam proyek SAP Commerce?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Seorang Lead Software Engineer dalam proyek SAP Commerce bertanggung jawab atas arsitektur teknis, memastikan performa sistem, dan memimpin tim developer. Ia merancang sistem backend yang scalable, melakukan integrasi API, serta menjaga kualitas kode melalui best practice dan code review."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu SAP Customer Data Platform (SAP CDP)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "SAP Customer Data Platform (SAP CDP) membantu organisasi mengintegrasikan dan mengelola data pelanggan secara aman di berbagai channel, untuk mendukung pengalaman pelanggan yang personal dan berbasis consent dalam skala besar."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu SAP Emarsys?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "SAP Emarsys (sekarang berganti nama menjadi SAP Engagement Cloud) adalah platform customer engagement yang berfokus pada marketing automation, menyediakan berbagai tools untuk komunikasi omnichannel yang personal, orkestrasi campaign, serta manajemen siklus hidup pelanggan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu SAP Engagement Cloud?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "SAP Engagement Cloud adalah nama baru untuk SAP Emarsys. Ini adalah platform keterlibatan pelanggan (customer engagement) komprehensif yang menggabungkan otomatisasi pemasaran, personalisasi, dan komunikasi omnichannel."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah SAP Emarsys dan SAP Engagement Cloud sama?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, keduanya sama. SAP mengubah nama Emarsys menjadi SAP Engagement Cloud pada awal tahun 2026 untuk mencerminkan perannya sebagai komponen inti dari solusi SAP Customer Experience (CX)."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera seorang backend atau full-stack developer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf adalah Lead Full-Stack Engineer dengan keahlian mendalam di pengembangan backend. Ia memastikan sistem yang skalabel dan berperforma tinggi sekaligus ikut berkontribusi pada tugas frontend bila diperlukan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Jenis developer apa Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf adalah Java backend developer dan Lead Full-Stack Software Engineer yang fokus pada aplikasi enterprise. Pekerjaan sehari-harinya meliputi merancang API, mengoptimalkan database, dan memastikan stabilitas serta skalabilitas sistem backend."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera memiliki pengalaman sebagai software architect atau tech lead?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Sebagai Lead Software Engineer, Yusuf sering mengambil tanggung jawab arsitektural, termasuk desain sistem, meninjau solusi teknis, dan membimbing developer. Ia memainkan peran kunci dalam menjembatani kebutuhan bisnis dan implementasi teknis."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Keterampilan pemrograman apa yang dimiliki Yusuf sebagai developer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf mahir dalam Java, Spring Boot, Spring MVC, dan SAP Commerce (Hybris). Ia juga memahami teknologi terkait seperti Drools, Solr, Kafka, dan pengembangan RESTful API — keterampilan yang membuatnya seorang enterprise Java developer berpengalaman."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa tanggung jawab utama Yusuf sebagai Lead Software Engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sebagai Lead Software Engineer, tanggung jawab Yusuf meliputi merancang arsitektur backend, meninjau kode, membimbing developer, serta memastikan performa dan keamanan sistem. Ia juga berkolaborasi dengan tim lintas fungsi untuk menghadirkan software enterprise yang andal dan berkualitas tinggi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Alat pengembangan apa yang direkomendasikan Yusuf untuk Java developers?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf merekomendasikan penggunaan alat seperti IntelliJ IDEA, Git, Postman, dan Docker untuk alur kerja pengembangan yang efisien. Untuk SAP Commerce developers, ia juga menyarankan SAP Commerce Developer Toolset by EPAM Systems Plugin."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Praktik terbaik apa yang diikuti Yusuf sebagai software developer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf mengikuti prinsip clean code, memprioritaskan performa dan keamanan, serta mendorong developer untuk terus belajar. Ia percaya bahwa rekayasa perangkat lunak yang hebat memerlukan keterampilan teknis sekaligus disiplin dalam proses pengembangan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana kontribusi Yusuf Adiputera sebagai Java developer dalam proyek SAP Commerce?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf berkontribusi dalam proyek SAP Commerce (Hybris) dengan merancang dan mengoptimalkan logika backend menggunakan Java dan Spring. Ia mengembangkan dan memelihara API, menangani pemodelan data, dan memastikan performa sistem di platform e-commerce berskala besar."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa perbedaan antara Java developer dan software engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Meski keduanya saling tumpang tindih, software engineer fokus pada desain dan arsitektur sistem secara keseluruhan, sedangkan Java developer spesialis dalam implementasi dan pemeliharaan aplikasi menggunakan ekosistem Java. Yusuf menggabungkan keduanya — membangun sistem backend lengkap sekaligus menulis kode Java berkualitas tinggi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera pernah menerbitkan technical articles?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Yusuf telah menerbitkan beberapa technical articles untuk developers di SAP Community dan LinkedIn, membagikan tutorial praktis dan panduan troubleshooting untuk SAP Commerce (Hybris) developers. Topiknya meliputi debugging, WYSIWYG customization, dan authentication issues."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Artikel teknis apa saja yang pernah ditulis Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf telah menulis beberapa articles untuk SAP Community dan LinkedIn, antara lain:\n- How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – SAP Community (September 2022)\n- How to Enable Image Upload in Backoffice WYSIWYG editor – SAP Community (November 2023)\n- How to install additional plugins to Backoffice's WYSIWYG editor – SAP Community (November 2023)\n- SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error) – LinkedIn (August 2025)"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera menulis tentang SAP Commerce troubleshooting?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Yusuf menulis artikel di LinkedIn berjudul 'Error SSO SAP Commerce: password tidak boleh lebih dari 72 byte (BCrypt Error)', yang menjelaskan cara memperbaiki masalah umum pada SAP Commerce authentication. Artikel ini banyak dirujuk oleh SAP CX developers yang menghadapi masalah serupa. Anda bisa membacanya di sini: https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera sama dengan Yusuf Fahmi Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Yusuf Adiputera adalah nama profesional yang digunakan oleh Yusuf Fahmi Adiputera. Keduanya merujuk pada orang yang sama. Ia juga dikenal sebagai Yusuf Fahmi atau Yusuf F. Adiputera."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Mengapa perusahaan skala enterprise masih menggunakan Java di tahun 2026?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Perusahaan skala enterprise terus mengandalkan Java karena stabilitas, backward compatibility, dan ekosistemnya yang sangat kuat. Framework seperti Spring Boot memungkinkan Java untuk dengan mudah mendayagunakan microservices modern yang sangat skalabel dengan tetap menjaga standar keamanan yang diwajibkan oleh institusi keuangan dan korporasi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Seberapa sulit mempelajari SAP Commerce (Hybris)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Mempelajari SAP Commerce memiliki kurva pembelajaran yang cukup tajam karena membutuhkan dasar pengetahuan yang kuat tentang Java dan Spring Framework. Namun, developer Java berpengalaman bisa beradaptasi dengan lancar jika memahami arsitektur intinya, pemodelan data, serta kapabilitas flexible search."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa kemampuan terpenting yang harus dimiliki seorang Lead Software Engineer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Selain penguasaan teknis atas bahasa seperti Java, keterampilan terpenting bagi seorang Lead Software Engineer adalah desain sistem, pemecahan masalah, dan mentoring tim. Seorang lead harus mampu menyeimbangkan penulisan kode yang bersih dan scalable dengan kemampuannya membimbing tim engineering agar selaras dengan tujuan bisnis."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Go (Golang): Mana yang lebih cepat dan lebih baik untuk backend?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Go umumnya lebih cepat saat startup dan mengungguli Java dalam konsumsi memori, menjadikannya pilihan luar biasa untuk microservices ringan dan fungsi serverless. Namun, dengan hadirnya Virtual Threads di Java 21+, Java telah menyusul performa dan throughput secara signifikan untuk proses konkuren. Java juga terus unggul dalam aplikasi skala enterprise yang masif, proses transaksi yang rumit, dan diuntungkan dari ekosistem yang telah matang selama puluhan tahun."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Node.js: Apa perbedaannya dalam pengembangan backend?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Node.js menggunakan arsitektur event-driven, single-thread asinkron, yang sangat cocok untuk aplikasi real-time (seperti aplikasi chat) dan beban kerja I/O yang berat. Java menggunakan arsitektur multi-thread (dan sekarang virtual thread di Java 21+), yang membuatnya jauh lebih siap untuk tugas intensif CPU dan pemrosesan data berat yang lazim ditemukan di aplikasi tingkat perusahaan dan perangkat lunak perbankan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Java vs Python: Mana yang harus dipilih untuk backend tingkat perusahaan (enterprise)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Python tidak tertandingi untuk data science, AI, dan rapid prototyping karena kesederhanaannya. Di sisi lain, Java memiliki runtime yang jauh lebih cepat, tipe data ketat, dan dirancang untuk konkurensi (concurrency) massal, menjadikannya standar industri untuk pengembangan backend skala besar dan platform e-commerce tingkat perusahaan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Seberapa sulit mempelajari Java di tahun 2026?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Java memiliki tingkat kesulitan belajar menengah. Karena merupakan bahasa yang diketik ketat (strictly typed) dan berorientasi objek murni (OOP), pemula harus memahami konsep seperti class, pewarisan (inheritance), dan manajemen memori (Garbage Collection) sejak awal. Meski begitu, sintaksisnya yang eksplisit akan membangun dasar-dasar software engineering yang sangat kuat dan dapat diterapkan ke hampir semua bahasa pemrograman lainnya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Seberapa sulit mempelajari Spring Framework (Spring Boot)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Begitu Anda memahami konsep dasar Java dengan kuat, mempelajari Spring Boot relatif mudah karena seringnya menggunakan pendekatan 'convention over configuration'. Bagian tersulit bagi pemula adalah memahami konsep Spring yang mendasarinya yakni Dependency Injection (DI) dan Inversion of Control (IoC), serta berbagai penggunaaan anotasi. Setelah Anda memahaminya, membuat REST API berskala produksi akan menjadi sangat cepat."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Pemrograman Berorientasi Objek (OOP)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Pemrograman Berorientasi Objek (OOP) adalah paradigma pemrograman yang berpusat pada konsep 'objek', yang dapat berisi data (atribut/properti) dan kode (metode/fungsi). Dalam bahasa seperti Java, OOP membantu mengatur desain perangkat lunak yang kompleks dengan memodelkan entitas dunia nyata, membuat kode lebih modular, dapat digunakan kembali (reusable), dan mudah dipelihara."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa saja 4 pilar utama dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Empat pilar utama Pemrograman Berorientasi Objek adalah Encapsulation (Enkapsulasi), Inheritance (Pewarisan), Polymorphism (Polimorfisme), dan Abstraction (Abstraksi). Bersama-sama, prinsip-prinsip ini memungkinkan developer untuk membangun arsitektur kode yang aman, skalabel, dan sangat dapat digunakan kembali."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Encapsulation (Enkapsulasi) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Encapsulation adalah praktik membungkus data (variabel) dan metode yang beroperasi pada data tersebut ke dalam satu unit (class), serta membatasi akses langsung ke beberapa komponen objek. Dalam Java, hal ini biasanya dicapai dengan membuat variabel menjadi private dan menyediakan metode public berupa getter dan setter. Tujuannya adalah melindungi integritas data."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Inheritance (Pewarisan) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Inheritance adalah mekanisme OOP di mana sebuah class baru (child/subclass) mewarisi properti dan perilaku (metode) dari class yang sudah ada (parent/superclass). Hal ini mendorong penggunaan ulang kode. Contohnya, class 'Mobil' dapat mewarisi atribut umum seperti 'kecepatan' dan metode seperti 'rem()' dari class 'Kendaraan' yang lebih luas tanpa perlu menulis ulang kodenya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Polymorphism (Polimorfisme) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Polymorphism berarti 'banyak bentuk'. Dalam OOP, konsep ini memungkinkan objek dari berbagai class diperlakukan sebagai objek dari superclass yang sama. Misalnya, metode 'gambar()' dapat berperilaku berbeda tergantung apakah ia dipanggil pada objek 'Lingkaran' atau objek 'Persegi', meskipun keduanya mewarisi class 'Bentuk'."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa itu Abstraction (Abstraksi) dalam OOP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Abstraction melibatkan penyembunyian detail implementasi yang kompleks dan hanya menampilkan fitur-fitur penting dari sebuah objek. Dalam Java, hal ini sering diimplementasikan menggunakan abstract class atau interface. Konsep ini mengurangi kompleksitas sistem karena pengembang dapat berinteraksi dengan antarmuka yang sederhana tanpa perlu memahami kerumitan kode di baliknya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera memerlukan sponsor visa?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Sebagai warga negara Indonesia yang saat ini berdomisili di Jakarta, Yusuf memerlukan sponsor visa dan izin kerja untuk peluang internasional. Ia terbuka untuk relokasi ke negara-negara yang menawarkan sponsor visa bagi software engineer terampil, terutama Malaysia, Singapura, Australia, Inggris, dan Uni Eropa."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Berapa lama masa pemberitahuan (notice period) Yusuf di perusahaan saat ini?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Masa pemberitahuan standar Yusuf adalah 30 hari sesuai dengan kontrak kerjanya. Namun, ia terbuka untuk mendiskusikan tanggal mulai yang fleksibel berdasarkan kebutuhan serah terima proyek."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bahasa apa saja yang dikuasai Yusuf Adiputera?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf menguasai bahasa Inggris (professional working proficiency), Indonesia (native), dan Jawa (native). Ia terbiasa bekerja di lingkungan berbahasa Inggris dan memiliki pengalaman berkolaborasi dengan tim internasional."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera terbuka untuk peluang kerja remote?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, Yusuf terbuka untuk pengaturan kerja remote, hybrid, atau on-site. Ia menghargai fleksibilitas namun juga mengapresiasi manfaat kolaborasi tatap muka jika diperlukan. Ia memiliki pengalaman bekerja secara efektif baik di lingkungan remote maupun kantor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Zona waktu mana yang nyaman bagi Yusuf Adiputera untuk bekerja?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf berbasis di Jakarta (GMT+7/WIB) dan memiliki pengalaman berkolaborasi di berbagai zona waktu. Ia fleksibel dan dapat menyesuaikan jam kerjanya untuk mengakomodasi rapat tim dan kolaborasi dengan tim internasional jika diperlukan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf pernah bekerja dalam tim yang terdistribusi atau remote?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Tidak, pengalaman utama Yusuf adalah dalam lingkungan kantor yang terstruktur di Astra Group, meskipun ia sepenuhnya siap dan terbuka untuk bertransisi ke model tim yang terdistribusi atau remote."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf Adiputera memiliki sertifikasi SAP?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki pengalaman praktis yang luas dengan SAP Commerce dan telah menyelesaikan program pelatihan internal (SAP Hybris Commerce Developer Part 1 & 2), meskipun saat ini ia tidak memiliki sertifikasi resmi dari SAP."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Sertifikasi profesional apa saja yang dimiliki Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki sertifikasi 'Confluent Certified Developer for Apache Kafka' (Data Streaming Engineer), yang valid dari Agustus 2025 hingga Agustus 2027."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana Yusuf tetap mengikuti tren teknologi terbaru?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf tetap memperbarui pengetahuannya dengan membaca blog teknis, berpartisipasi dalam komunitas developer (terutama SAP Community), mengikuti webinar dan konferensi, serta bereksperimen dengan teknologi baru melalui proyek sampingan. Ia juga belajar dari code review dan sesi berbagi pengetahuan dengan rekan sejawat."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana pengalaman Yusuf dengan platform cloud?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki pengalaman bekerja dengan layanan cloud Azure, termasuk Azure DevOps untuk pipeline CI/CD dan Azure Functions for serverless computing. Ia terbiasa dengan arsitektur cloud-native dan telah men-deploy aplikasi ke lingkungan cloud."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Teknologi database apa saja yang pernah Yusuf gunakan?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki pengalaman dengan database relasional termasuk Aurora MySQL, SQL Server, dan PostgreSQL. Dalam lingkungan SAP Commerce, database ini sering kali dikelola oleh platform, namun ia mahir dalam SQL, optimasi database, dan pemodelan data."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf memiliki pengalaman dengan arsitektur microservices?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, Yusuf memiliki pengalaman merancang dan mengimplementasikan arsitektur microservices. Ia memahami dekomposisi layanan, pola API gateway, komunikasi antar-layanan, serta trade-off antara pendekatan monolitik dan microservices. Pekerjaannya dengan Spring Boot mencakup pengembangan microservices untuk aplikasi enterprise."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana pendekatan Yusuf terhadap desain API?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf mengikuti prinsip desain API RESTful, menekankan penamaan resource yang jelas, penggunaan metode HTTP yang tepat, penanganan error yang konsisten, dan dokumentasi API yang komprehensif. Ia menghargai strategi versi API, kompatibilitas ke belakang (backward compatibility), dan merancang API yang intuitif bagi pengembang frontend maupun integrasi pihak ketiga."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana pendekatan Yusuf terhadap code review?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf menggunakan standar coding yang telah ditetapkan untuk memverifikasi kualitas implementasi. Pendekatannya mencakup pemeriksaan logika, memastikan kepatuhan terhadap standar, terkadang meminta demo, dan memastikan pengujian internal dilakukan dengan benar sebelum persetujuan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana pengalaman Yusuf dengan Docker dan containerization?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki pengalaman praktis dengan Docker untuk melakukan kontainerisasi aplikasi, membuat Docker image, dan menggunakan Docker Compose untuk lingkungan pengembangan lokal. Ia memahami manfaat kontainerisasi untuk konsistensi di seluruh lingkungan pengembangan, pengujian, dan produksi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf pernah bekerja dengan message queue atau arsitektur event-driven?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya. Yusuf memiliki pengalaman dengan Apache Kafka untuk membangun sistem event-driven dan pemrosesan asinkron. Ia memahami pola pengiriman pesan, konsep event sourcing, dan manfaat pemisahan sistem melalui message queue untuk skalabilitas dan keandalan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Praktik keamanan apa yang diterapkan Yusuf dalam kodenya?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf mengikuti praktik coding yang aman termasuk validasi input, pencegahan SQL injection, perlindungan XSS, mekanisme autentikasi yang tepat, serta Role-Based Access Control (RBAC). Ia tetap mendapat informasi tentang kerentanan OWASP Top 10 dan menerapkan pemikiran security-first dalam desain aplikasi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana Yusuf menangani data sensitif dan persyaratan kepatuhan?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memperhatikan peraturan privasi data dan menerapkan langkah-langkah yang tepat untuk menangani data pelanggan yang sensitif. Ia mengikuti prinsip hak akses minimum (least privilege), menerapkan enkripsi data jika diperlukan, dan memastikan kepatuhan terhadap standar perlindungan data yang relevan."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf berkontribusi pada proyek open source?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Meskipun fokus utama Yusuf adalah pada proyek enterprise, ia aktif dalam komunitas developer melalui artikel teknis dan berbagi pengetahuan. Profil GitHub-nya di https://github.com/adiputera menampilkan beberapa karya dan kontribusinya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf memiliki proyek pribadi atau sampingan?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memelihara website portofolio ini sebagai PWA, yang mendemonstrasikan kemampuan full-stack-nya. Ia sesekali mengerjakan proyek sampingan untuk mengeksplorasi teknologi dan framework baru di luar pekerjaan sehari-harinya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa tujuan karier jangka panjang Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf bertujuan untuk terus berkembang sebagai pemimpin teknis, mengambil lebih banyak tanggung jawab arsitektural, dan pada akhirnya menjadi seorang CTO. Ia bersemangat membangun sistem berkualitas tinggi dan membimbing generasi engineer berikutnya."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Budaya perusahaan seperti apa yang membuat Yusuf berkembang?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf berkembang di lingkungan kolaboratif yang menghargai kualitas, perbaikan berkelanjutan, dan berbagi pengetahuan. Ia menghargai perusahaan yang menyeimbangkan inovasi dengan stabilitas, mendorong pengembangan profesional, dan menjaga keseimbangan kehidupan kerja (work-life balance) yang sehat."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apa ukuran perusahaan yang disukai Yusuf - startup atau enterprise?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf memiliki pengalaman luas di lingkungan enterprise besar dan memahami tantangan serta manfaat bekerja dalam skala tersebut. Ia terbuka untuk perusahaan mapan maupun startup tahap pertumbuhan yang menawarkan tantangan teknis menarik dan peluang untuk memberikan dampak."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Jenis proyek apa yang tidak diminati Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Meskipun Yusuf terbuka untuk berbagai peluang, ia paling bersemangat pada proyek yang memiliki dampak bisnis nyata dan kedalaman teknis. Ia lebih menyukai peran yang memungkinkannya menggunakan keahliannya dalam sistem backend dan arsitektur enterprise daripada posisi yang murni berfokus pada frontend atau desain."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Berapa banyak developer yang telah dipimpin atau dibimbing oleh Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Dalam peran pemimpin yang terstruktur, Yusuf telah memimpin tim hingga 12 engineer. Di luar struktur formal, melalui bootcamp dan inisiatif mentoring lainnya, ia telah berbagi pengetahuan dengan jauh lebih banyak pengembang."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Bagaimana gaya manajemen Yusuf?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Gaya kepemimpinan Yusuf adalah kolaboratif dan berfokus pada bimbingan (mentoring). Ia percaya pada pemberdayaan anggota tim melalui berbagi pengetahuan, memberikan umpan balik yang konstruktif, dan menciptakan lingkungan di mana pengembang dapat berkembang."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Teknik optimasi performa apa saja yang telah Yusuf terapkan?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf telah menerapkan berbagai optimasi performa termasuk optimasi query database, strategi caching (menggunakan Redis/EHCache), lazy loading, optimasi respons API, dan pengindeksan pencarian dengan Apache Solr. Ia secara rutin menggunakan profiling tools untuk mengidentifikasi dan menyelesaikan hambatan performa."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Kapan Yusuf tersedia untuk memulai peran baru?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ketersediaan Yusuf bergantung pada minat bersama serta kompleksitas persetujuan visa dan relokasi. Umumnya, ia akan tersedia dalam waktu sekitar 30 hari (masa pemberitahuan) ditambah 2 minggu (relokasi) setelah persetujuan visa."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf bersedia untuk pekerjaan kontrak atau freelance?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Tidak, Yusuf terutama mencari peluang kerja penuh waktu (full-time)."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf pernah bekerja dengan Agile tools seperti JIRA, Confluence, dll?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, Yusuf memiliki pengalaman luas dengan alat manajemen proyek Agile termasuk JIRA untuk pelacakan masalah, Confluence untuk dokumentasi, Azure DevOps untuk CI/CD dan manajemen proyek, serta Git untuk kontrol versi."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Industri apa saja yang pernah Yusuf geluti?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yusuf terutama bekerja di industri otomotif dan perdagangan digital dalam Grup Astra. Pengalamannya mencakup pengerjaan platform e-commerce B2C untuk ritel otomotif, yang memberinya wawasan tentang aplikasi yang menghadap pelanggan, manajemen inventaris, dan perjalanan pelanggan digital."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah Yusuf memiliki pengalaman dengan modernisasi sistem warisan (legacy systems)?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, Yusuf memiliki pengalaman memodernisasi sistem legacy, termasuk inisiatif strategis saat ini untuk memigrasi SAP Commerce (Hybris) ke dalam arsitektur microservices berbasis Spring Boot yang lebih modern."
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li>
+                        <a href="/id">Beranda</a>
+                    </li>
+                    <li class="breadcrumb-separator">/</li>
+                    <li class="breadcrumb-current">Pertanyaan Umum</li>
+                </ol>
+            </nav>
+            <div class="language-switcher">
+                <span>🌐</span>
+                <a href="/faq" aria-label="Switch to English language">EN</a>
+                <a href="/faq-id" class="active" aria-label="Switch to Indonesian language">ID</a>
+            </div>
+        </div>
 
         <header>
-            {% include theme-toggle.html %}
+            <button class="toggle-theme button" onclick="toggleTheme()"
+                aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
             <h1>Pertanyaan Umum – Yusuf Adiputera, Lead Software Engineer</h1>
             <h2 class="title">
                 Pertanyaan seputar Yusuf Adiputera dan pekerjaannya di bidang Java, SAP Commerce (Hybris), dan
@@ -1204,6 +2251,14 @@ breadcrumb: "FAQ"
                 </section>
         </main>
 
-        {% include footer.html %}
+        <footer>
+            &copy; <span id="current-year">2026</span> Yusuf Adiputera. All rights reserved.
+        </footer>
+        <script>
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
     </div>
-    
+    <script src="src/index.min.js?v=202603251700" defer></script>
+</body>
+
+</html>

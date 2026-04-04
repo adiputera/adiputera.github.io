@@ -1,0 +1,102 @@
+{% assign lang_data = site.data[page.lang] | default: site.data.en %}
+<link rel="preload" as="style" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
+<link rel="preload" as="script" href="{{ site.baseurl }}/src/index.min.js?v={{ site.asset_version }}" />
+<link rel="preload" as="image" href="{{ site.baseurl }}/images/astra.svg" />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{{ page.title | default: lang_data.site.title }}</title>
+<meta name="title" content="{{ page.title | default: lang_data.site.title }}" />
+<meta name="description" content="{{ page.description | default: lang_data.site.description }}" />
+<meta name="keywords" content="{{ page.keywords | default: lang_data.site.keywords }}" />
+<meta name="author" content="{{ site.data.meta.meta.author }}" />
+<meta name="robots" content="{{ site.data.meta.meta.robots }}" />
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.data.meta.google_analytics_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.data.meta.google_analytics_id }}');
+</script>
+
+<!-- Favicons & Icons -->
+<link rel="icon" href="{{ site.baseurl }}/favicon.ico" />
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/images/192.png">
+<link rel="apple-touch-startup-image" href="{{ site.baseurl }}/images/512.png">
+
+<!-- Canonical & Alternates -->
+<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.data.meta.hreflang.en }}" />
+<link rel="alternate" hreflang="id" href="{{ site.url }}{{ site.data.meta.hreflang.id }}" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.data.meta.hreflang.default }}" />
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="{{ site.baseurl }}/manifest.json" />
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
+
+<!-- Job & Skills Meta -->
+<meta name="jobtitle" content="{{ site.data.meta.meta.job_title }}" />
+<meta name="skills" content="{{ site.data.meta.meta.skills }}" />
+
+<!-- PWA & Mobile App Meta -->
+<meta name="apple-mobile-web-app-capable" content="{{ site.data.meta.pwa.apple_mobile_capable }}">
+<meta name="mobile-web-app-capable" content="{{ site.data.meta.pwa.mobile_app_capable }}">
+<meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{ site.data.meta.pwa.apple_status_bar_style }}">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
+<meta property="og:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />
+<meta property="og:image" content="{{ page.og_image | default: site.data.meta.og_defaults.image }}" />
+<meta property="og:image:width" content="{{ site.data.meta.og_defaults.image_width }}" />
+<meta property="og:image:height" content="{{ site.data.meta.og_defaults.image_height }}" />
+<meta property="og:image:type" content="{{ site.data.meta.og_defaults.image_type }}" />
+<meta property="og:image:alt" content="{{ site.data.meta.og_defaults.image_alt }}" />
+<meta property="og:type" content="{{ page.og_type | default: site.data.meta.og_defaults.type }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:locale" content="{% if page.lang == 'id' %}id_ID{% else %}en_US{% endif %}" />
+<meta property="og:site_name" content="{{ site.data.meta.og_defaults.site_name }}" />
+
+<!-- Profile Meta (for profile type pages) -->
+{% if page.og_type == 'profile' or site.data.meta.og_defaults.type == 'profile' %}
+<meta property="profile:first_name" content="{{ site.data.meta.profile.first_name }}" />
+<meta property="profile:last_name" content="{{ site.data.meta.profile.last_name }}" />
+<meta property="profile:username" content="{{ site.data.meta.profile.username }}" />
+<meta property="profile:gender" content="{{ site.data.meta.profile.gender }}" />
+{% endif %}
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="{{ site.data.meta.twitter_defaults.card }}" />
+<meta name="twitter:title" content="{{ page.title | default: lang_data.site.title }}" />
+<meta name="twitter:description" content="{{ page.description | default: lang_data.site.description }}" />
+<meta name="twitter:image" content="{{ page.twitter_image | default: site.data.meta.twitter_defaults.image }}" />
+<meta name="twitter:image:alt" content="{{ site.data.meta.twitter_defaults.image_alt }}" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="{{ site.data.meta.pwa.theme_color_light }}" />
+
+<!-- Person JSON-LD Schema -->
+{% include schema-person.html %}
+
+<!-- Article JSON-LD Schema (for article pages) -->
+{% include schema-article.html %}
+
+<!-- Theme Detection Script -->
+<script>
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.content = theme === 'dark' ? '{{ site.data.meta.pwa.theme_color_dark }}' : '{{ site.data.meta.pwa.theme_color_light }}';
+    }
+  })();
+</script>

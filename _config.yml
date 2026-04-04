@@ -1,0 +1,50 @@
+# Site Settings
+title: "Yusuf Adiputera – Lead Software Engineer"
+description: "Lead Software Engineer with more than 8 years of experience in Java, SAP Commerce (Hybris), Spring MVC, and Spring Boot. Based in Jakarta, open to relocation."
+author: "Yusuf Adiputera"
+email: "yusuf@adiputera.id"
+url: "https://adiputera.github.io"
+baseurl: ""
+timezone: Asia/Jakarta
+
+# Asset Versioning (for cache-busting)
+asset_version: "202603251700"
+
+# Collections
+collections:
+  articles:
+    output: true
+    permalink: /articles/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: "article"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins (GitHub Pages compatible only)
+plugins:
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CLAUDE.md
+  - SEO_RECOMMENDATIONS.md
+  - FAQ.md
+  - FAQ_SUGGESTIONS.md
+  - tasks.md
+  - .gitignore

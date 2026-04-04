@@ -1,0 +1,184 @@
+# English Content Data
+
+site:
+  title: "Yusuf Adiputera – Lead Software Engineer"
+  name: "Yusuf Adiputera"
+  tagline: "Lead Software Engineer | Java & SAP Commerce"
+  description: "Lead Software Engineer with more than 8 years of experience in Java, SAP Commerce (Hybris), Spring MVC, and Spring Boot. Based in Jakarta, open to relocation."
+  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Lead Software Developer, SAP Hybris, SAP Hybris Commerce, SAP Commerce, SAP CX, SAP CX Commerce, Java, Spring MVC, Spring Framework, Spring Boot, OCC API, Drools, Solr, Kafka, Apache Kafka, SAP Customer Data Platform, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), REST API, Git, Serverless, Azure Function App, Function App, Backend Engineer, Senior Backend Engineer, Backend Developer, Senior Backend Developer, Backend Software Engineer, Senior Backend Software Engineer, Backend Software Developer, Senior Backend Software Developer, Full Stack Developer, Senior Full stack Developer, Full Stack Software Developer, Senior Full Stack Software Developer, Full Stack Engineer, Senior Full Stack Engineer, Full Stack Software Engineer, Senior Full Stack Software Engineer, Jakarta Developer, Indonesian Software Engineer, Southeast Asia Developer, Hire Java Developer, Java Developer Portfolio, SAP Commerce Resume, Hybris Developer Resume"
+
+contact:
+  email: "yusuf@adiputera.id"
+  location: "Jakarta, Indonesia"
+  linkedin_url: "https://www.linkedin.com/in/yusuf-adiputera"
+
+social:
+  - name: "GitHub"
+    icon: "github"
+    url: "https://github.com/adiputera"
+  - name: "Stack Overflow"
+    icon: "stackoverflow"
+    url: "https://stackoverflow.com/users/3603194/adiputera"
+  - name: "SAP Community"
+    icon: "sap"
+    url: "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+  - name: "About.me"
+    icon: "link"
+    url: "https://about.me/adiputera"
+
+ui:
+  buttons:
+    print_resume: "🖨️ Print Resume"
+    dark_mode: "🌙 Dark Mode"
+  language_switcher:
+    current: "EN"
+    alternate: "ID"
+    alternate_url: "/id"
+    aria_label_en: "Switch to English language"
+    aria_label_id: "Switch to Indonesian language"
+
+sections:
+  contact: "Contact"
+  connect: "Connect with me"
+  summary: "Summary"
+  key_achievements: "Key Achievements"
+  skills: "Skills"
+  experience: "Experience"
+  education: "Education"
+  courses: "Courses & Training"
+  certifications: "Certifications"
+  articles: "Technical Articles"
+  faq: "Frequently Asked Questions"
+
+links:
+  short_version: "Too long? Read the short version →"
+  short_version_url: "/short"
+  detailed_skills: "View detailed technical expertise & technologies →"
+  detailed_skills_url: "/skills"
+  faq: "Have questions? Check FAQ →"
+  faq_url: "/faq"
+
+breadcrumb:
+  home: "Home"
+  faq: "FAQ"
+  skills: "Skills"
+  short: "Short Version"
+
+summary: |
+  Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed systems, and SAP Commerce (Hybris) architecture, with more than 8 years of professional experience in building scalable, high-performance systems within the SAP ecosystem.
+
+
+  He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes SAP Commerce development, Spring-based microservices architecture, secure Role-Based Access Control (RBAC), and enterprise system integration across the SAP CX landscape.
+
+
+  Yusuf has led multiple large-scale SAP Commerce implementations and platform upgrades across Astra Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He led the end-to-end development of motorkux.id from analysis through production launch and continues to drive platform evolution based on business and technical requirements.
+
+
+  He is currently leading a strategic modernization initiative to migrate SAP Commerce into a Spring Boot–based microservices architecture, designing core system architecture and reusable platform capabilities including a dynamic rules engine (rules-as-a-service) and scalable service foundation.
+
+
+  His work emphasizes performance and scalability engineering, including full-page caching architecture, storefront optimization, and infrastructure improvements enabling the platform to handle significant traffic spikes with high reliability.
+
+
+  Yusuf also contributes to enterprise integration initiatives including SAP Customer Data Platform (CDP), SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA, supporting unified customer data, marketing automation, and ERP integration.
+
+
+  He is passionate about building maintainable systems, mentoring engineering teams, and designing scalable architectures that support long-term business growth.
+
+skills:
+  languages: "Java, JavaScript, HTML"
+  frameworks_and_platforms: "SAP Commerce (Hybris), Spring Boot, Spring MVC, jQuery, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA ABAP"
+  architecture_and_integration: "Microservices, REST API"
+  tools_and_infrastructure: "Kafka, Apache Solr, Drools, Git"
+
+key_achievements:
+  - "Led the development team that successfully built and launched motorkux.id (2021–now)"
+  - "Led the development team that successfully built and launched seva.id marketplace (2019–2021)"
+  - "Part of a development team that successfully built and launched seva.id property (2018–2019)"
+  - "Won internal \"Best Project Development Quality\" award (2024)"
+  - "Recently involved in SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) implementation (2025)"
+  - "Recently involved in SAP S/4HANA ABAP development (2026)"
+  - "Successfully developed image resizer proxy (2024)"
+  - "Successfully developed payload validator on the fly, using Drools (2025)"
+  - "Successfully created custom promotion conditions (location-based quota without having to use coupons) (2023)"
+  - "Successfully created a cronjob to migrate the database from SAP Hana to MySQL for various Hybris projects (2019–2020)"
+  - "Upgraded SAP Commerce versions for various Hybris projects (2020–2022)"
+  - "Set up CI/CD on Jenkins and Azure DevOps for various Hybris projects (2018–2022)"
+  - "Successfully implemented lazy loading of CMS content slot in a page"
+  - "Successfully implemented lazy loading of CMS components"
+  - "Successfully improved the performance of the JSP storefront"
+
+education:
+  degree: "Bachelor's Degree in Computer Science"
+  institution: "Universitas Diponegoro"
+  location: "Semarang, Indonesia"
+
+courses_and_training:
+  - "Oracle Academy Java Fundamentals (Oracle)"
+  - "Oracle Academy Java Programming (Oracle)"
+  - "Java Spring Framework Bootcamp (XSIS)"
+  - "SAP Hybris Commerce Developer Part 1 (SAP & Trainocate)"
+  - "SAP Hybris Commerce Developer Part 2 (SAP & Trainocate)"
+  - "Spartacus Training (Divante)"
+  - "Confluent Developer Skills for Building Apache Kafka® (Confluent)"
+
+certifications:
+  - name: "Confluent Certified Developer for Apache Kafka"
+    credential_type: "Data Streaming Engineer"
+    valid_from: "2025-08"
+    valid_to: "2027-08"
+
+experience:
+  - title: "Lead Software Engineer"
+    company: "PT Astra International Tbk"
+    duration: "Feb 2021 - Present"
+    description: "Lead architecture and delivery of enterprise-scale SAP Commerce (Hybris) e-commerce platforms, focusing on system scalability, platform modernization, and enterprise integration."
+    tech_stack: "SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices, Drools, EHCache, SAP CDP, SAP Emarsys, SAP S/4HANA"
+
+  - title: "Bootcamp Trainer"
+    company: "PT Astra International Tbk"
+    duration: "Nov 2021 - Dec 2022"
+    description: "Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP Commerce/Hybris fundamentals."
+    tech_stack: "Java, Spring MVC, SAP Commerce (Hybris)"
+
+  - title: "Lead Software Developer"
+    company: "PT Astra International Tbk"
+    duration: "Apr 2020 - Jan 2021"
+    description: "Led the delivery of seva.id marketplace, managing team, maintaining coding standards, and driving platform development from concept to production launch."
+    key_achievement: "Successfully launched seva.id marketplace on October 2020 with payment integration, shipping cost integration, 3rd party integration via SOAP, and partial checkout feature."
+    tech_stack: "SAP Hybris Commerce, Java, Spring MVC, Azure DevOps, Jenkins, MySQL"
+
+  - title: "Tech Lead & DevOps Engineer"
+    company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
+    duration: "Apr 2019 - Apr 2020"
+    description: "Led technical architecture, integrated 3rd-party APIs, established CI/CD pipelines, and executed complex database migrations for enterprise platforms."
+    key_achievement: "Successfully migrated databases for seva.id otomotif, seva.id marketplace, and astra-daihatsu from SAP HANA to Aurora MySQL."
+    tech_stack: "SAP Hybris Commerce, Java, Spring MVC, Jenkins, Azure DevOps, SAP HANA, Aurora MySQL"
+
+  - title: "Software Developer"
+    company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
+    duration: "Apr 2018 - Apr 2019"
+    description: "Developed and maintained core e-commerce features for seva.id property marketplace, integrated 3rd-party APIs, and implemented OAuth social login."
+    key_achievement: "Successfully built and launched seva.id property"
+    tech_stack: "SAP Hybris Commerce, Java, Spring MVC, REST/SOAP APIs, OAuth"
+
+technical_articles:
+  - title: "How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse"
+    url: "/articles/remote-debug-sap-commerce"
+    date_published: "2022-09-15"
+    snippet: "A deep-dive tutorial explaining how developers can configure and attach remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce (On-Premise) server issues."
+  
+  - title: "How to Enable Image Upload in Backoffice WYSIWYG editor"
+    url: "/articles/enable-image-upload-backoffice"
+    date_published: "2023-11-07"
+    snippet: "Step-by-step configuration guide on extending the default SAP Commerce Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG tool."
+  
+  - title: "How to install additional plugins to Backoffice's WYSIWYG editor"
+    url: "/articles/install-plugins-backoffice"
+    date_published: "2023-11-29"
+    snippet: "A technical exploration on advanced CKEditor customization within the SAP Commerce framework, detailing how to inject custom JavaScript plugins into the Backoffice environment."
+  
+  - title: "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)"
+    url: "/articles/sap-commerce-sso-bcrypt-error"
+    date_published: "2025-08-02"
+    snippet: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce, alongside the implemented encryption bypass solution."

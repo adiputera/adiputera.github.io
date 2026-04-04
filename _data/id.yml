@@ -1,0 +1,320 @@
+# Indonesian Content Data
+
+site:
+  title: "Yusuf Adiputera – Lead Software Engineer"
+  name: "Yusuf Adiputera"
+  tagline: "Lead Software Engineer berspesialisasi dalam Java, SAP Commerce (Hybris), dan Spring Framework"
+  description: "Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java, SAP Commerce (Hybris), Spring MVC, dan Spring Boot. Berlokasi di Jakarta, terbuka untuk relokasi."
+  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Lead Software Developer, SAP Hybris, SAP Hybris Commerce, SAP Commerce, SAP CX, SAP CX Commerce, Java, Spring MVC, Spring Framework, Spring Boot, OCC API, Drools, Solr, Kafka, Apache Kafka, SAP Customer Data Platform, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), REST API, Git, Serverless, Azure Function App, Function App, Backend Engineer, Senior Backend Engineer, Backend Developer, Senior Backend Developer, Backend Software Engineer, Senior Backend Software Engineer, Backend Software Developer, Senior Backend Software Developer, Full Stack Developer, Senior Full stack Developer, Full Stack Software Developer, Senior Full Stack Software Developer, Full Stack Engineer, Senior Full Stack Engineer, Full Stack Software Engineer, Senior Full Stack Software Engineer, Jakarta Developer, Indonesian Software Engineer, Southeast Asia Developer, Hire Java Developer, Java Developer Portfolio, SAP Commerce Resume, Hybris Developer Resume"
+  email: "yusuf@adiputera.id"
+  linkedin: "https://www.linkedin.com/in/yusuf-adiputera"
+  linkedin_display: "linkedin.com/in/yusuf-adiputera"
+  github: "https://github.com/adiputera"
+  stackoverflow: "https://stackoverflow.com/users/3603194/adiputera"
+  sap_community: "https://profile.sap.com/u/adiputera"
+  about_me: "https://about.me/adiputera"
+  location: "Jakarta, Indonesia"
+  summary_html: |
+    <p>Yusuf adalah Lead Software Engineer yang berspesialisasi dalam enterprise e-commerce platforms, distributed systems, dan arsitektur SAP Commerce (Hybris), dengan lebih dari 8 tahun pengalaman profesional dalam membangun sistem yang scalable dan high-performance di dalam ekosistem SAP.</p>
+    <p>Dia memimpin desain arsitektur dan delivery platform skala enterprise, dengan fokus pada system scalability, platform modernization, dan strategi teknis jangka panjang. Keahliannya mencakup pengembangan SAP Commerce, arsitektur microservices berbasis Spring, Role-Based Access Control (RBAC) yang aman, dan integrasi sistem enterprise di seluruh lanskap SAP CX.</p>
+    <p>Yusuf telah memimpin beberapa implementasi SAP Commerce skala besar dan platform upgrades di seluruh platform digital Astra Group, termasuk seva.id, auto2000.co.id, astra-daihatsu.id, dan motorkux.id. Dia memimpin pengembangan end-to-end motorkux.id dari analisis hingga peluncuran produksi dan terus mendorong evolusi platform berdasarkan kebutuhan bisnis dan teknis.</p>
+    <p>Saat ini dia memimpin inisiatif modernisasi strategis untuk memigrasikan SAP Commerce ke arsitektur microservices berbasis Spring Boot, merancang arsitektur sistem inti dan kapabilitas platform yang reusable termasuk dynamic rules engine (rules-as-a-service) dan fondasi layanan yang scalable.</p>
+    <p>Pekerjaannya menekankan pada performance dan scalability engineering, termasuk arsitektur full-page caching, optimalisasi storefront, dan perbaikan infrastruktur yang memungkinkan platform menangani lonjakan traffic yang signifikan dengan keandalan tinggi.</p>
+    <p>Yusuf juga berkontribusi pada inisiatif integrasi enterprise termasuk SAP Customer Data Platform (CDP), SAP Engagement Cloud (formerly SAP Emarsys), dan SAP S/4HANA, mendukung data pelanggan yang terpadu, otomatisasi pemasaran, dan integrasi ERP.</p>
+    <p>Dia sangat antusias dalam membangun maintainable systems, membimbing tim engineering, dan merancang scalable architectures yang mendukung pertumbuhan bisnis jangka panjang.</p>
+
+contact:
+  email: "yusuf@adiputera.id"
+  location: "Jakarta, Indonesia"
+  linkedin_url: "https://www.linkedin.com/in/yusuf-adiputera"
+
+social:
+  - name: "GitHub"
+    icon: "github"
+    url: "https://github.com/adiputera"
+  - name: "Stack Overflow"
+    icon: "stackoverflow"
+    url: "https://stackoverflow.com/users/3603194/adiputera"
+  - name: "SAP Community"
+    icon: "sap"
+    url: "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+  - name: "About.me"
+    icon: "link"
+    url: "https://about.me/adiputera"
+
+ui:
+  buttons:
+    print_resume: "🖨️ Cetak Resume"
+    dark_mode: "🌙 Mode Gelap"
+  language_switcher:
+    current: "ID"
+    alternate: "EN"
+    alternate_url: "/"
+    aria_label_en: "Switch to English language"
+    aria_label_id: "Switch to Indonesian language"
+
+sections:
+  contact: "Kontak"
+  connect: "Temukan saya di"
+  summary: "Ringkasan"
+  achievements: "Pencapaian Utama"
+  skills: "Keahlian"
+  experience: "Pengalaman Kerja"
+  education: "Pendidikan"
+  courses: "Kursus"
+  certifications: "Sertifikasi"
+  articles: "Artikel Teknis"
+  faq: "Pertanyaan Umum"
+
+links:
+  short_version: "Terlalu panjang? Baca versi ringkas →"
+  short_version_url: "/short-id"
+  detailed_skills: "Lihat keahlian teknis & teknologi terperinci →"
+  detailed_skills_url: "/skills-id"
+  faq: "Punya pertanyaan? Cek FAQ →"
+  faq_url: "/faq-id"
+
+breadcrumb:
+  home: "Beranda"
+  faq: "FAQ"
+  skills: "Keahlian"
+  short: "Versi Ringkas"
+
+summary: |
+  Yusuf adalah Lead Software Engineer yang berspesialisasi dalam enterprise e-commerce platforms, distributed systems, dan arsitektur SAP Commerce (Hybris), dengan lebih dari 8 tahun pengalaman profesional dalam membangun sistem yang scalable dan high-performance di dalam ekosistem SAP.
+  
+  Dia memimpin desain arsitektur dan delivery platform skala enterprise, dengan fokus pada system scalability, platform modernization, dan strategi teknis jangka panjang. Keahliannya mencakup pengembangan SAP Commerce, arsitektur microservices berbasis Spring, Role-Based Access Control (RBAC) yang aman, dan integrasi sistem enterprise di seluruh lanskap SAP CX.
+  
+  Yusuf telah memimpin beberapa implementasi SAP Commerce skala besar dan platform upgrades di seluruh platform digital Astra Group, termasuk seva.id, auto2000.co.id, astra-daihatsu.id, dan motorkux.id. Dia memimpin pengembangan end-to-end motorkux.id dari analisis hingga peluncuran produksi dan terus mendorong evolusi platform berdasarkan kebutuhan bisnis dan teknis.
+  
+  Saat ini dia memimpin inisiatif modernisasi strategis untuk memigrasikan SAP Commerce ke arsitektur microservices berbasis Spring Boot, merancang arsitektur sistem inti dan kapabilitas platform yang reusable termasuk dynamic rules engine (rules-as-a-service) dan fondasi layanan yang scalable.
+  
+  Pekerjaannya menekankan pada performance dan scalability engineering, termasuk arsitektur full-page caching, optimalisasi storefront, dan perbaikan infrastruktur yang memungkinkan platform menangani lonjakan traffic yang signifikan dengan keandalan tinggi.
+  
+  Yusuf juga berkontribusi pada inisiatif integrasi enterprise termasuk SAP Customer Data Platform (CDP), SAP Engagement Cloud (formerly SAP Emarsys), dan SAP S/4HANA, mendukung data pelanggan yang terpadu, otomatisasi pemasaran, dan integrasi ERP.
+  
+  Dia sangat antusias dalam membangun maintainable systems, membimbing tim engineering, dan merancang scalable architectures yang mendukung pertumbuhan bisnis jangka panjang.
+
+skills:
+  - category: "Bahasa Pemrograman"
+    items: "Java, JavaScript, HTML"
+  - category: "Framework & Platform"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, jQuery, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA ABAP"
+  - category: "Arsitektur & Integrasi"
+    items: "Microservices, REST API"
+  - category: "Infrastruktur & Alat"
+    items: "Kafka, Apache Solr, Drools, Git"
+
+achievements:
+  - "Memimpin development team yang berhasil membangun dan meluncurkan motorkux.id (2021–sekarang)"
+  - "Memimpin development team yang berhasil membangun dan meluncurkan seva.id marketplace (2019–2021)"
+  - "Menjadi bagian dari development team yang berhasil membangun dan meluncurkan seva.id property (2018–2019)"
+  - "Memenangkan penghargaan internal \"Best Project Development Quality\" (2024)"
+  - "Terlibat dalam implementasi SAP Customer Data Platform (SAP CDP) dan SAP Engagement Cloud (formerly SAP Emarsys) (2025)"
+  - "Terlibat dalam pengembangan SAP S/4HANA ABAP (2026)"
+  - "Berhasil mengembangkan image resizer proxy (2024)"
+  - "Berhasil mengembangkan payload validator on the fly menggunakan Drools (2025)"
+  - "Berhasil membuat custom promotion conditions (kuota berbasis lokasi tanpa harus menggunakan kupon) (2023)"
+  - "Berhasil membuat cronjob untuk melakukan migrasi database dari SAP Hana ke MySQL untuk berbagai proyek Hybris (2019–2020)"
+  - "Melakukan upgrade versi SAP Commerce untuk berbagai proyek Hybris (2020–2022)"
+  - "Menyiapkan CI/CD di Jenkins dan Azure DevOps untuk berbagai proyek Hybris (2018–2022)"
+  - "Berhasil mengimplementasikan lazy loading pada CMS content slot di halaman"
+  - "Berhasil mengimplementasikan lazy loading pada CMS components"
+  - "Berhasil meningkatkan performa JSP storefront"
+
+education:
+  - degree: "Gelar Sarjana Ilmu Komputer (S.Kom)"
+    institution: "Universitas Diponegoro"
+    location: "Semarang, Indonesia"
+
+courses:
+  - name: "Oracle Academy Java Fundamentals (Oracle)"
+  - name: "Oracle Academy Java Programming (Oracle)"
+  - name: "Java Spring Framework Bootcamp (XSIS)"
+  - name: "SAP Hybris Commerce Developer Part 1 (SAP & Trainocate)"
+  - name: "SAP Hybris Commerce Developer Part 2 (SAP & Trainocate)"
+  - name: "Spartacus Training (Divante)"
+  - name: "Confluent Developer Skills for Building Apache Kafka® (Confluent)"
+
+certifications:
+  - name: "Confluent Certified Developer for Apache Kafka"
+    credential_type: "Data Streaming Engineer"
+    valid_from: "2025-08"
+    valid_to: "2027-08"
+
+experience:
+  - title: "Lead Software Engineer"
+    company: "PT Astra International Tbk"
+    logo: "images/astra.svg"
+    logo_alt: "PT Astra International Tbk Logo"
+    start_date: "2021-02"
+    start_display: "Feb 2021"
+    end_date: null
+    end_display: "Sekarang"
+    duration: "Feb 2021 - Sekarang"
+    description_html: |
+      <p>Memimpin arsitektur dan <i>delivery</i> platform <i>e-commerce</i> SAP Commerce (Hybris) skala enterprise, dengan fokus pada <i>scalability</i> sistem, modernisasi platform, dan integrasi perusahaan. Bertanggung jawab atas <i>engineering leadership</i>, desain sistem inti, dan evolusi platform jangka panjang di berbagai domain bisnis.</p>
+
+      <h4>Engineering Leadership</h4>
+      <ul>
+        <li>Memimpin tim hingga 12 <i>engineers</i> yang mengirimkan platform <i>e-commerce</i> enterprise dari analisis hingga produksi (motorkux.id go-live Juni 2022).</li>
+        <li>Bertanggung jawab atas <i>end-to-end delivery</i> termasuk desain arsitektur, perencanaan proyek, eksekusi sprint, dan manajemen rilis.</li>
+        <li>Menetapkan <i>coding standards</i> dan menegakkan <i>engineering quality</i> melalui <i>code reviews</i>, <i>technical mentoring</i>, dan <i>knowledge sharing</i>.</li>
+        <li>Mengoordinasikan kolaborasi lintas tim di seluruh tim produk, infrastruktur, dan integrasi perusahaan.</li>
+        <li>Memenangkan penghargaan internal "Best Project Development Quality" (2024).</li>
+      </ul>
+
+      <h4>Platform Modernization & Architecture (Sedang berlangsung)</h4>
+      <ul>
+        <li>Memimpin inisiatif modernisasi perusahaan untuk memigrasikan platform SAP Commerce ke arsitektur <i>microservices</i> berbasis Spring Boot.</li>
+        <li>Merancang arsitektur sistem inti yang mendukung berbagai domain bisnis dan mengawasi 3 proyek <i>rewrite</i> paralel.</li>
+        <li>Menetapkan <i>service boundaries</i>, standar arsitektur, dan pedoman implementasi.</li>
+        <li>Merancang model <i>Role-Based Access Control</i> (RBAC) yang aman untuk otorisasi layanan dan perlindungan sumber daya.</li>
+      </ul>
+
+      <h4>Rule Engine Platform (Rules-as-a-Service)</h4>
+      <ul>
+        <li>Merancang <i>dynamic rule engine</i> menggunakan Drools yang memungkinkan kondisi dan tindakan yang ditentukan klien tanpa <i>code deployment</i>.</li>
+        <li>Membangun platform aturan yang <i>reusable</i> yang memisahkan <i>business logic</i> dari layanan aplikasi.</li>
+        <li>Mengimplementasikan model aturan fleksibel yang tidak terikat erat dengan <i>domain objects</i>.</li>
+        <li>Disampaikan sebagai kemampuan platform inti untuk modernisasi SAP Commerce dan arsitektur layanan masa depan.</li>
+        <li>Mengembangkan payload validator on the fly menggunakan Drools (2025).</li>
+      </ul>
+
+      <h4>Performance & Scalability Engineering</h4>
+      <ul>
+        <li>Merancang dan mengimplementasikan arsitektur <i>full-page caching</i> (EHCache), mengurangi <i>page load time</i> dari ~2 detik menjadi respons sub-detik.</li>
+        <li>Meningkatkan ketahanan platform yang memungkinkan sistem menangani lonjakan <i>traffic</i> lebih dari 3× tanpa <i>downtime</i>.</li>
+        <li>Mengoptimalkan kinerja <i>storefront</i> melalui strategi <i>CMS lazy loading</i> dan optimalisasi <i>rendering</i>.</li>
+        <li>Membangun <i>image resizer proxy</i> yang mengurangi ukuran <i>payload</i> hingga 80% dan meningkatkan kinerja <i>page load</i>.</li>
+        <li>Meningkatkan kinerja <i>JSP storefront</i>.</li>
+        <li>Mengembangkan image resizer proxy (2024).</li>
+      </ul>
+
+      <h4>SAP Commerce Platform Engineering</h4>
+      <ul>
+        <li>Memimpin beberapa <i>upgrades</i> platform SAP Commerce di seluruh sistem perusahaan:
+          <ul>
+            <li>seva.id marketplace & otomotif (6.6 → 20.11)</li>
+            <li>auto2000 & Astra-Daihatsu (19.05 → 20.11)</li>
+            <li>motorkux.id (2105 → 2205)</li>
+          </ul>
+        </li>
+        <li>Mengembangkan <i>promotion engine</i> kustom yang mendukung kuota berbasis lokasi tanpa ketergantungan kupon (2023).</li>
+        <li>Mengimplementasikan mekanisme <i>employee role expiration</i> untuk kontrol akses perusahaan.</li>
+      </ul>
+
+      <h4>Enterprise Integration</h4>
+      <ul>
+        <li>Berkontribusi pada implementasi SAP Customer Data Platform (SAP CDP) dan SAP Engagement Cloud (formerly SAP Emarsys) untuk data pelanggan dan otomatisasi pemasaran.</li>
+        <li>Mendukung inisiatif integrasi SAP S/4HANA dan memperluas keahlian ABAP untuk integrasi ERP.</li>
+      </ul>
+
+      <h4>Core Responsibilities</h4>
+      <ul>
+        <li>Desain arsitektur dan perencanaan evolusi sistem</li>
+        <li>Perencanaan proyek dan manajemen pengiriman</li>
+        <li>Tata kelola <i>engineering standards</i> dan <i>code review</i></li>
+        <li>Implementasi <i>pipeline</i> CI/CD (Azure DevOps, Jenkins)</li>
+        <li>Peningkatan platform dan strategi <i>deployment</i></li>
+        <li>Optimalisasi kinerja dan perbaikan <i>scalability</i></li>
+      </ul>
+
+      <p><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices Architecture, RBAC, Drools, EHCache, JSP, Azure DevOps, Jenkins, SAP CDP, SAP Emarsys, SAP S/4HANA.</p>
+
+  - title: "Bootcamp Trainer"
+    company: "PT Astra International Tbk"
+    logo: "images/astra.svg"
+    logo_alt: "PT Astra International Tbk Logo"
+    start_date: "2021-11"
+    start_display: "Nov 2021"
+    end_date: "2022-12"
+    end_display: "Des 2022"
+    duration: "Nov 2021 - Des 2022"
+    description_html: |
+      <p>Melatih 3 batch internal SAP Commerce bootcamp yang mencakup Java, Spring MVC, dan SAP Commerce/Hybris fundamental.</p>
+      <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring MVC, SAP Commerce (Hybris)</p>
+
+  - title: "Lead Software Developer"
+    company: "PT Astra International Tbk"
+    logo: "images/astra.svg"
+    logo_alt: "PT Astra International Tbk Logo"
+    start_date: "2020-04"
+    start_display: "Apr 2020"
+    end_date: "2021-01"
+    end_display: "Jan 2021"
+    duration: "Apr 2020 - Jan 2021"
+    description_html: |
+      <h4>Key Achievement:</h4>
+      Tim kami berhasil meluncurkan seva.id marketplace pada Oktober 2020 dengan integrasi pembayaran (kartu kredit dan transfer virtual account), integrasi ongkos kirim, integrasi dengan sistem pihak ketiga menggunakan SOAP web services, serta fitur partial checkout.
+
+      <h4>Responsibilities:</h4>
+      <ul>
+        <li>Memelihara dokumentasi standar pengkodean dan menegakkan kualitas melalui code review serta knowledge sharing untuk tim development.</li>
+        <li>Memimpin perencanaan proyek, termasuk estimasi man-days, development timeline, dan memecah user story menjadi tugas-tugas kecil untuk sprint planning.</li>
+        <li>Mengembangkan fitur baru dan menyelesaikan bug kritis di production untuk memastikan stabilitas dan pengiriman yang berkelanjutan.</li>
+        <li>Mengelola deployment ke lower environment dan menyusun release notes yang komprehensif.</li>
+        <li>Menyiapkan dan memelihara pipeline CI/CD menggunakan Azure DevOps dan Jenkins, mengotomatiskan proses build, deployment, dan patch aplikasi.</li>
+        <li>Memimpin upgrade versi dan patch aplikasi SAP Hybris Commerce / SAP Commerce.</li>
+      </ul>
+      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, Azure DevOps, Jenkins, MySQL</p>
+
+  - title: "Tech Lead & DevOps Engineer"
+    company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
+    logo: "images/astra.svg"
+    logo_alt: "PT Astra International Tbk Logo"
+    start_date: "2019-04"
+    start_display: "Apr 2019"
+    end_date: "2020-04"
+    end_display: "Apr 2020"
+    duration: "Apr 2019 - Apr 2020"
+    description_html: |
+      <h4>Key achievement:</h4>
+      Berhasil melakukan migrasi database untuk seva.id otomotif, seva.id marketplace, dan astra-daihatsu dari SAP HANA ke Aurora MySQL.
+
+      <h4>Responsibilities:</h4>
+      <ul>
+        <li>Mengintegrasikan API REST/SOAP pihak ketiga dan layanan dari parent site untuk mendukung operasi marketplace dan otomotif.</li>
+        <li>Meningkatkan proses deployment manual menjadi pipeline CI/CD otomatis menggunakan Azure DevOps dan Jenkins untuk environment Dev, QA, dan Pre-Prod.</li>
+        <li>Bertugas dalam production deployment team, memastikan rilis yang lancar dengan release notes yang komprehensif.</li>
+        <li>Melakukan code review untuk mempertahankan kualitas kode dan standar arsitektur tingkat tinggi.</li>
+        <li>Melakukan tracing dan menyelesaikan bug kompleks untuk mempertahankan ketersediaan tinggi pada traffic e-commerce.</li>
+        <li>Mengeksekusi migrasi database kompleks, termasuk migrasi tanpa celah dari SAP HANA ke Aurora MySQL.</li>
+        <li>Mengembangkan fitur-fitur scalable untuk memenuhi kebutuhan bisnis.</li>
+      </ul>
+      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, Jenkins, Azure DevOps, SAP HANA, Aurora MySQL</p>
+
+  - title: "Software Developer"
+    company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
+    logo: "images/astra.svg"
+    logo_alt: "Logo Astra"
+    start_date: "2018-04"
+    start_display: "Apr 2018"
+    end_date: "2019-04"
+    end_display: "Apr 2019"
+    duration: "Apr 2018 - Apr 2019"
+    description_html: |
+      <h4>Key achievement:</h4>
+      Tim kami berhasil membangun dan meluncurkan seva.id property.
+
+      <h4>Responsibility:</h4>
+      <ul>
+        <li>Mengintegrasikan API pihak ketiga dan sumber daya dari parent site untuk membangun fungsionalitas inti dan penyediaan konten.</li>
+        <li>Mengembangkan dan memelihara fitur e-commerce utama, secara aktif menangani bug dan mengoptimasi fungsionalitas untuk property marketplace.</li>
+        <li>Mengimplementasikan integrasi login media sosial (OAuth) untuk memudahkan onboarding dan autentikasi pengguna.</li>
+      </ul>
+      <p style="margin-top: 1rem;"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, REST/SOAP APIs, OAuth</p>
+
+articles:
+  - title: "How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse"
+    url: "articles/remote-debug-sap-commerce"
+    snippet: "Tutorial mendalam yang menjelaskan bagaimana developer dapat mengonfigurasi dan menyambungkan debugger jarak jauh di IntelliJ IDEA dan Eclipse untuk memecahkan masalah kompleks pada server SAP Commerce (On-Premise)."
+  - title: "How to Enable Image Upload in Backoffice WYSIWYG editor"
+    url: "articles/enable-image-upload-backoffice"
+    snippet: "Panduan konfigurasi langkah demi langkah tentang cara memperluas antarmuka pengguna bawaan SAP Commerce Backoffice untuk memungkinkan pengguna bisnis internal mengunggah media langsung melalui alat WYSIWYG CKEditor."
+  - title: "How to install additional plugins to Backoffice's WYSIWYG editor"
+    url: "articles/install-plugins-backoffice"
+    snippet: "Eksplorasi teknis mengenai penyesuaian lanjutan CKEditor dalam kerangka kerja SAP Commerce, merinci cara menyuntikkan plugin JavaScript kustom ke dalam lingkungan Backoffice."
+  - title: "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)"
+    url: "articles/sap-commerce-sso-bcrypt-error"
+    snippet: "Rincian arsitektur mengenai batasan Single Sign-On (SSO) yang ditemui saat menggunakan Spring Security dan BCrypt di SAP Commerce, beserta penerapan solusi bypass enkripsi yang digunakan."

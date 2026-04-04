@@ -1,141 +1,113 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml"
-    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-    <!-- Main resume / homepage (English) -->
+    <!-- Main resume pages (English and Indonesian) -->
     <url>
-        <loc>https://adiputera.github.io/</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/" />
-        <lastmod>2026-03-25</lastmod>
+        <loc>{{ site.url }}/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
-
-        <!-- Image entries -->
         <image:image>
-            <image:loc>https://adiputera.github.io/images/photo.webp</image:loc>
+            <image:loc>{{ site.url }}/images/photo.webp</image:loc>
             <image:title>Yusuf Adiputera - Lead Software Engineer</image:title>
             <image:caption>Professional photo of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce</image:caption>
         </image:image>
     </url>
 
-    <!-- Main resume / homepage (Indonesian) -->
     <url>
-        <loc>https://adiputera.github.io/id</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/" />
-        <lastmod>2026-03-25</lastmod>
+        <loc>{{ site.url }}/id</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
-
-        <!-- Image entries -->
         <image:image>
-            <image:loc>https://adiputera.github.io/images/photo.webp</image:loc>
+            <image:loc>{{ site.url }}/images/photo.webp</image:loc>
             <image:title>Yusuf Adiputera - Lead Software Engineer</image:title>
             <image:caption>Professional photo of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce</image:caption>
         </image:image>
     </url>
 
-    <!-- Technical Skills (English) -->
+    <!-- Skills pages -->
     <url>
-        <loc>https://adiputera.github.io/skills</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/skills" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/skills-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/skills" />
-        <lastmod>2026-03-02</lastmod>
+        <loc>{{ site.url }}/skills</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/skills" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/skills-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/skills" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Technical Skills (Indonesian) -->
     <url>
-        <loc>https://adiputera.github.io/skills-id</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/skills" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/skills-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/skills" />
-        <lastmod>2026-03-02</lastmod>
+        <loc>{{ site.url }}/skills-id</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/skills" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/skills-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/skills" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- FAQ English version -->
+    <!-- FAQ pages -->
     <url>
-        <loc>https://adiputera.github.io/faq</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/faq" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/faq-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/faq" />
-        <lastmod>2026-03-02</lastmod>
+        <loc>{{ site.url }}/faq</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/faq" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/faq-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/faq" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- FAQ Indonesian version -->
     <url>
-        <loc>https://adiputera.github.io/faq-id</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/faq" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/faq-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/faq" />
-        <lastmod>2026-03-02</lastmod>
+        <loc>{{ site.url }}/faq-id</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/faq" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/faq-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/faq" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Short English version -->
+    <!-- Short version pages -->
     <url>
-        <loc>https://adiputera.github.io/short</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/short" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/short-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/short" />
-        <lastmod>2026-03-25</lastmod>
+        <loc>{{ site.url }}/short</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/short" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/short-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/short" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Short Indonesian version -->
     <url>
-        <loc>https://adiputera.github.io/short-id</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://adiputera.github.io/short" />
-        <xhtml:link rel="alternate" hreflang="id" href="https://adiputera.github.io/short-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/short" />
-        <lastmod>2026-03-25</lastmod>
+        <loc>{{ site.url }}/short-id</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/short" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/short-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/short" />
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Article: Enable Image Upload -->
+    <!-- Articles collection - dynamically generated -->
+    {%- for article in site.articles -%}
     <url>
-        <loc>https://adiputera.github.io/articles/enable-image-upload-backoffice</loc>
-        <lastmod>2026-03-02</lastmod>
+        <loc>{{ site.url }}{{ article.url }}</loc>
+        <lastmod>{{ article.date | date_to_xmlschema }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-
-    <!-- Article: Install Plugins -->
-    <url>
-        <loc>https://adiputera.github.io/articles/install-plugins-backoffice</loc>
-        <lastmod>2026-03-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Article: Remote Debug -->
-    <url>
-        <loc>https://adiputera.github.io/articles/remote-debug-sap-commerce</loc>
-        <lastmod>2026-03-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Article: SSO BCrypt Error -->
-    <url>
-        <loc>https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error</loc>
-        <lastmod>2026-03-02</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+    {%- endfor -%}
 
 </urlset>

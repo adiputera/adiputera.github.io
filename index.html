@@ -1,834 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+lang: en
+permalink: /
+permalink_id: /id
+title: "Yusuf Adiputera – Lead Software Engineer | Java & SAP Commerce"
+description: "Lead Software Engineer with more than 8 years of experience in Java, SAP Commerce (Hybris), Spring MVC, and Spring Boot. Based in Jakarta, open to relocation."
+---
+{% assign data = site.data[page.lang] %}
+{% include schema-person.html %}
 
-<head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202603251700" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202603251700" />
-    <link rel="preload" as="image" href="images/astra.svg" />
+<div class="container">
+    {% include navigation.html %}
+    
+    <header>
+        <button class="button hide-for-print" onclick="window.print()" aria-label="Print or save resume as PDF"
+            style="margin-right: 10px;">🖨️ Print Resume</button>
+        <button class="toggle-theme button hide-for-print" onclick="toggleTheme()"
+            aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
+        <h1 class="main-heading">
+            {{ data.site.name }}
+            <span class="title">{{ data.site.tagline }}</span>
+        </h1>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yusuf Adiputera – Lead Software Engineer | Java & SAP Commerce</title>
-    <meta name="title" content="Yusuf Adiputera – Lead Software Engineer | Java & SAP Commerce" />
+        <h2 class="contact-heading">{{ data.sections.contact }}</h2>
+        <p>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align: middle; margin-right: 8px;">
+                <path fill="currentColor" d="M12 13.065L2 6.5V18a1 1 0 001 1h18a1 1 0 001-1V6.5l-10 6.565zM21.4 6H2.6L12 12.395 21.4 6z" />
+            </svg>
+            <a href="mailto:{{ data.site.email }}">{{ data.site.email }}</a>
+        </p>
+        <p>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align: middle; margin-right: 8px;">
+                <path fill="currentColor" d="M19 0h-14C2.238 0 1 1.238 1 2.771v18.457C1 22.762 2.238 24 4 24h16c1.762 0 3-1.238 3-2.771V2.771C23 1.238 21.762 0 20 0zm-11 20H5v-9h3v9zm-1.5-10.271c-.966 0-1.75-.785-1.75-1.75S5.534 6.229 6.5 6.229s1.75.785 1.75 1.75-.784 1.75-1.75 1.75zm13.5 10.271h-3v-4.5c0-1.071-.928-2-2-2s-2 .929-2 2v4.5h-3v-9h3v1.2c.669-.864 1.882-1.2 3-1.2 2.205 0 4 1.795 4 4v5z" />
+            </svg>
+            <a href="{{ data.site.linkedin }}" target="_blank" rel="noopener noreferrer me">{{ data.site.linkedin_display }}</a>
+        </p>
 
-    <meta name="description"
-        content="Lead Software Engineer with more than 8 years of experience in Java, SAP Commerce (Hybris), Spring MVC, and Spring Boot. Based in Jakarta, open to relocation." />
-    <meta name="keywords"
-        content="Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Lead Software Developer, SAP Hybris, SAP Hybris Commerce, SAP Commerce, SAP CX, SAP CX Commerce, Java, Spring MVC, Spring Framework, Spring Boot, OCC API, Drools, Solr, Kafka, Apache Kafka, SAP Customer Data Platform, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), REST API, Git, Serverless, Azure Function App, Function App, Backend Engineer, Senior Backend Engineer, Backend Developer, Senior Backend Developer, Backend Software Engineer, Senior Backend Software Engineer, Backend Software Developer, Senior Backend Software Developer, Full Stack Developer, Senior Full stack Developer, Full Stack Software Developer, Senior Full Stack Software Developer, Full Stack Engineer, Senior Full Stack Engineer, Full Stack Software Engineer, Senior Full Stack Software Engineer, Jakarta Developer, Indonesian Software Engineer, Southeast Asia Developer, Hire Java Developer, Java Developer Portfolio, SAP Commerce Resume, Hybris Developer Resume" />
-    <meta name="author" content="Yusuf Adiputera" />
-    <meta name="robots" content="index, follow" />
+        <h2 class="connect-heading hide-for-print">{{ data.sections.connect }}</h2>
+        <div class="connect-links hide-for-print">
+            <a href="{{ data.site.github }}" target="_blank" rel="noopener noreferrer me" title="GitHub" class="connect-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub
+            </a>
+            <a href="{{ data.site.stackoverflow }}" target="_blank" rel="noopener noreferrer me" title="Stack Overflow" class="connect-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.478-2.187-.453 2.068zm1.359-5.056l9.705 4.53.903-1.95-9.706-4.53-.902 1.936v.014zm2.715-4.785l8.217 6.855 1.359-1.62-8.216-6.853-1.35 1.617-.01.001zM15.751 0l-1.746 1.294 6.405 8.604 1.746-1.294L15.749 0h.002z" />
+                </svg>
+                Stack Overflow
+            </a>
+            <a href="{{ data.site.sap_community }}" target="_blank" rel="noopener noreferrer me" title="SAP Community" class="connect-link">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor">
+                    <path d="M0 8.083v15.835h16.172l15.828-15.835zM4.355 11.031h0.005c1.151 0 2.552 0.324 3.567 0.844l-1.093 1.907c-1.115-0.541-1.672-0.588-2.307-0.625-0.943-0.052-1.417 0.287-1.428 0.651-0.005 0.444 0.896 0.844 1.745 1.12 1.281 0.407 2.916 0.953 3.167 2.532l2.349-6.208h2.728l2.751 7.432-0.011-7.432h3.161c3.011 0 4.427 1.020 4.427 3.359 0 2.099-1.452 3.355-3.916 3.355h-1.016l-0.015 2.791-4.781-0.005-0.333-1.213c-0.495 0.167-1.052 0.256-1.641 0.256-0.609 0-1.183-0.095-1.687-0.265l-0.475 1.223-2.667 0.005 0.12-0.615c-0.041 0.037-0.079 0.068-0.12 0.1-0.708 0.572-1.609 0.839-2.713 0.859h-0.287c-1.203 0.016-2.391-0.296-3.437-0.896l0.973-1.932c1.052 0.625 1.715 0.76 2.605 0.745 0.463-0.011 0.796-0.095 1.015-0.319 0.131-0.135 0.204-0.307 0.209-0.495 0.009-0.5-0.709-0.733-1.579-1.005-0.708-0.219-1.516-0.52-2.141-0.984-0.744-0.541-1.104-1.229-1.083-2.197 0.005-0.688 0.276-1.344 0.755-1.833 0.693-0.719 1.808-1.152 3.152-1.152zM18.479 13.255v2.543h0.699c0.921 0 1.661-0.308 1.661-1.287 0-0.948-0.74-1.256-1.661-1.256zM11.697 14.281l-0.995 3.145c0.297 0.115 0.641 0.177 1.005 0.177 0.36 0 0.699-0.063 0.989-0.167l-0.979-3.161z" />
+                </svg>
+                SAP Community
+            </a>
+            <a href="{{ data.site.about_me }}" target="_blank" rel="noopener noreferrer me" title="About.me" class="connect-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.536 9.146c-1.373 0-2.133 1.014-2.294 2.116h4.608c-.125-1.05-.867-2.115-2.314-2.115m-2.26 3.617c.235 1.156 1.193 1.97 2.532 1.97.725 0 1.77-.27 2.384-.914l1.175 1.35c-1.064 1.11-2.653 1.426-3.74 1.426-2.64 0-4.697-1.906-4.697-4.606 0-2.535 1.894-4.62 4.57-4.62 2.585 0 4.5 1.98 4.5 4.604v.766h-6.723v.023zm-6.487 3.83v-5.69c0-.976-.435-1.536-1.338-1.536-.814 0-1.355.585-1.717 1.007v6.24h-2.35v-5.7c0-.976-.415-1.532-1.318-1.532-.813 0-1.375.586-1.717 1.006v6.24H0V7.505h2.35v1.15c.4-.463 1.302-1.26 2.71-1.26 1.247 0 2.096.526 2.477 1.59.524-.761 1.5-1.59 2.91-1.59 1.7 0 2.69 1.01 2.69 2.963v6.24h-2.353l.005-.007z" />
+                </svg>
+                About.me
+            </a>
+        </div>
+    </header>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <main>
+        <p class="short-version-link hide-for-print">
+            Too long? <a href="/short">Read the short version &rarr;</a>
+        </p>
 
-        gtag('config', 'G-005WBSEVCP');
-    </script>
-
-    <link rel="icon" href="favicon.ico" />
-    <link rel="canonical" href="https://adiputera.github.io/" />
-    <link rel="alternate" hreflang="en" href="https://adiputera.github.io/" />
-    <link rel="alternate" hreflang="id" href="https://adiputera.github.io/id" />
-    <link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/" />
-    <link rel="apple-touch-icon" href="images/192.png">
-    <link rel="apple-touch-startup-image" href="images/512.png">
-    <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202603251700" />
-
-    <meta name="jobtitle"
-        content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
-    <meta name="skills" content="Java, SAP Hybris, SAP Commerce, Spring MVC, Spring Boot, REST APIs" />
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <meta property="og:title" content="Yusuf Adiputera – Lead Software Engineer (Java, SAP Hybris Commerce, Spring)" />
-    <meta property="og:description"
-        content="Lead Software Engineer with more than 8 years of experience specializing in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Delivered large-scale enterprise projects for Astra Group, including motorkuX.id, auto2000.co.id, astra-daihatsu.id, and seva.id." />
-    <meta property="og:image" content="https://adiputera.github.io/images/photo.webp" />
-    <meta property="og:image:width" content="750" />
-    <meta property="og:image:height" content="750" />
-    <meta property="og:image:type" content="image/webp" />
-    <meta property="og:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
-    <meta property="og:type" content="profile" />
-    <meta property="og:url" content="https://adiputera.github.io/" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
-
-    <meta property="profile:first_name" content="Yusuf" />
-    <meta property="profile:last_name" content="Adiputera" />
-    <meta property="profile:username" content="yusuf-adiputera" />
-    <meta property="profile:gender" content="male" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Yusuf Adiputera – Lead Software Engineer (Java, SAP Hybris Commerce, Spring)" />
-    <meta name="twitter:description"
-        content="Lead Software Engineer with more than 8 years of experience specializing in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Delivered large-scale enterprise projects for Astra Group, including motorkuX.id, auto2000.co.id, astra-daihatsu.id, and seva.id." />
-    <meta name="twitter:image" content="https://adiputera.github.io/images/photo.webp" />
-    <meta name="twitter:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
-
-    <meta name="theme-color" content="#ffffff" />
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "@id": "https://adiputera.github.io/#person",
-            "name": "Yusuf Adiputera",
-            "givenName": "Yusuf",
-            "additionalName": "Fahmi",
-            "familyName": "Adiputera",
-            "gender": "Male",
-            "alternateName": [
-                "Yusuf Fahmi Adiputera",
-                "Yusuf F. Adiputera",
-                "Yusuf Fahmi",
-                "Yusuf",
-                "Adiputera"
-            ],
-            "url": "https://adiputera.github.io/",
-            "image": "https://adiputera.github.io/images/photo.webp",
-            "jobTitle": "Lead Software Engineer",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "PT Astra International Tbk",
-                "url": "https://www.astra.co.id/",
-                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
-            },
-            "email": "mailto:yusuf@adiputera.id",
-            "sameAs": [
-                "https://www.linkedin.com/in/yusuf-adiputera",
-                "https://about.me/adiputera",
-                "https://github.com/adiputera",
-                "https://stackoverflow.com/users/3603194/adiputera",
-                "https://profile.sap.com/u/adiputera",
-                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
-            ],
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Jakarta",
-                "addressCountry": "ID"
-            },
-            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
-            "knowsAbout": [
-                "Java",
-                "Spring Framework",
-                "Spring Boot",
-                "Spring MVC",
-                "SAP Commerce (Hybris)",
-                "SAP Customer Data Platform (SAP CDP)",
-                "SAP Engagement Cloud (formerly SAP Emarsys)",
-                "SAP S/4HANA ABAP",
-                "Kafka",
-                "Drools",
-                "Apache Solr",
-                "REST & SOAP Integration",
-                "Performance Tuning",
-                "Redis & Ehcache",
-                "Azure Function App"
-            ],
-            "nationality": {
-                "@type": "Country",
-                "name": "Indonesia"
-            },
-            "alumniOf": [
-                {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Universitas Diponegoro",
-                    "url": "https://www.undip.ac.id/",
-                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Semarang",
-                        "addressRegion": "Central Java",
-                        "addressCountry": "ID"
-                    }
-                },
-                {
-                    "@type": "EducationalOrganization",
-                    "name": "SMA Negeri 1 Pekalongan",
-                    "url": "https://www.sman1pekalongan.sch.id/v3/",
-                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Pekalongan",
-                        "addressRegion": "Central Java",
-                        "addressCountry": "ID"
-                    }
-                }
-            ],
-            "hasCredential": [
-                {
-                    "@type": "EducationalOccupationalCredential",
-                    "name": "Bachelor's Degree in Computer Science",
-                    "credentialCategory": "Bachelor's Degree",
-                    "educationalLevel": "Bachelor",
-                    "recognizedBy": {
-                        "@type": "Organization",
-                        "name": "Universitas Diponegoro",
-                        "url": "https://www.undip.ac.id/",
-                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
-                    }
-                },
-                {
-                    "@type": "EducationalOccupationalCredential",
-                    "name": "Best Project Development Quality Award",
-                    "credentialCategory": "Award",
-                    "recognizedBy": {
-                        "@type": "Organization",
-                        "name": "PT Astra International Tbk",
-                        "url": "https://www.astra.co.id/",
-                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
-                    }
-                }
-            ],
-            "hasOccupation": [
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Lead Software Engineer",
-                    "startDate": "2021-02"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
-                    "startDate": "2021-11",
-                    "endDate": "2022-12"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Lead Software Developer",
-                    "startDate": "2020-04",
-                    "endDate": "2021-01"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
-                    "startDate": "2019-04",
-                    "endDate": "2020-04"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Software Developer - SAP Hybris Commerce",
-                    "startDate": "2018-04",
-                    "endDate": "2019-04"
-                }
-            ],
-            "knowsLanguage": [
-                { "@type": "Language", "name": "English" },
-                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
-                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
-            ]
-        }
-    </script>
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "ProfilePage",
-            "name": "Yusuf Adiputera - Lead Software Engineer",
-            "url": "https://adiputera.github.io/",
-            "description": "Professional portfolio of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce",
-            "author": {
-                "@type": "Person",
-                "@id": "https://adiputera.github.io/#person",
-                "name": "Yusuf Adiputera"
-            },
-            "mainEntity": {
-                "@type": "Person",
-                "@id": "https://adiputera.github.io/#person",
-                "name": "Yusuf Adiputera"
-            },
-            "inLanguage": ["en", "id"],
-            "datePublished": "2025-07-07",
-            "dateModified": "2026-03-02",
-            "speakable": {
-                "@type": "SpeakableSpecification",
-                "cssSelector": [".summary"]
-            }
-        }
-    </script>
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://adiputera.github.io/"
-                }
-            ]
-        }
-    </script>
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Technical Articles by Yusuf Adiputera",
-            "description": "Technical articles about SAP Commerce written by Yusuf Adiputera",
-            "itemListElement": [
-                {
-                    "@type": "Article",
-                    "position": 1,
-                    "headline": "How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse",
-                    "url": "https://adiputera.github.io/articles/remote-debug-sap-commerce",
-                    "datePublished": "2022-09-15",
-                    "dateModified": "2022-09-15",
-                    "inLanguage": "en",
-                    "author": {
-                        "@id": "https://adiputera.github.io/#person"
-                    }
-                },
-                {
-                    "@type": "Article",
-                    "position": 2,
-                    "headline": "How to Enable Image Upload in Backoffice WYSIWYG editor",
-                    "url": "https://adiputera.github.io/articles/enable-image-upload-backoffice",
-                    "datePublished": "2023-11-07",
-                    "dateModified": "2023-11-07",
-                    "inLanguage": "en",
-                    "author": {
-                        "@id": "https://adiputera.github.io/#person"
-                    }
-                },
-                {
-                    "@type": "Article",
-                    "position": 3,
-                    "headline": "How to install additional plugins to Backoffice's WYSIWYG editor",
-                    "url": "https://adiputera.github.io/articles/install-plugins-backoffice",
-                    "datePublished": "2023-11-29",
-                    "dateModified": "2023-11-29",
-                    "inLanguage": "en",
-                    "author": {
-                        "@id": "https://adiputera.github.io/#person"
-                    }
-                },
-                {
-                    "@type": "Article",
-                    "position": 4,
-                    "headline": "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)",
-                    "url": "https://adiputera.github.io/articles/sap-commerce-sso-bcrypt-error",
-                    "datePublished": "2025-08-02",
-                    "dateModified": "2025-08-02",
-                    "inLanguage": "en",
-                    "author": {
-                        "@id": "https://adiputera.github.io/#person"
-                    }
-                }
-            ]
-        }
-    </script>
-
-</head>
-
-<body>
-    <div class="resume">
-        <div class="top-nav hide-for-print">
-            <nav aria-label="Breadcrumb" class="breadcrumb">
-                <ol>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                </ol>
-            </nav>
-            <div class="language-switcher">
-                <span>🌐</span>
-                <a href="/" class="active" aria-label="Switch to English language">EN</a>
-                <a href="/id" aria-label="Switch to Indonesian language">ID</a>
-            </div>
+        <h2 id="summary">{{ data.sections.summary }}</h2>
+        <div class="summary">
+            {{ data.site.summary_html }}
         </div>
 
-        <header>
-            <button class="button hide-for-print" onclick="window.print()" aria-label="Print or save resume as PDF"
-                style="margin-right: 10px;">🖨️ Print Resume</button>
-            <button class="toggle-theme button hide-for-print" onclick="toggleTheme()"
-                aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
-            <h1 class="main-heading">
-                Yusuf Adiputera
-                <span class="title">Lead Software Engineer specialized in
-                    Java, SAP Commerce (Hybris), and Spring Framework</span>
-            </h1>
+        <h2 id="key-achievements">{{ data.sections.achievements }}</h2>
+        <ul class="key-achievements">
+            {% for achievement in data.achievements %}
+            <li>{{ achievement }}</li>
+            {% endfor %}
+        </ul>
 
-            <h2 class="contact-heading">Contact</h2>
-            <p>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    style="vertical-align: middle; margin-right: 8px;">
-                    <path fill="currentColor"
-                        d="M12 13.065L2 6.5V18a1 1 0 001 1h18a1 1 0 001-1V6.5l-10 6.565zM21.4 6H2.6L12 12.395 21.4 6z" />
-                </svg>
-                <a href="mailto:yusuf@adiputera.id">yusuf@adiputera.id</a>
-            </p>
-            <p>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    style="vertical-align: middle; margin-right: 8px;">
-                    <path fill="currentColor"
-                        d="M19 0h-14C2.238 0 1 1.238 1 2.771v18.457C1 22.762 2.238 24 4 24h16c1.762 0 3-1.238 3-2.771V2.771C23 1.238 21.762 0 20 0zm-11 20H5v-9h3v9zm-1.5-10.271c-.966 0-1.75-.785-1.75-1.75S5.534 6.229 6.5 6.229s1.75.785 1.75 1.75-.784 1.75-1.75 1.75zm13.5 10.271h-3v-4.5c0-1.071-.928-2-2-2s-2 .929-2 2v4.5h-3v-9h3v1.2c.669-.864 1.882-1.2 3-1.2 2.205 0 4 1.795 4 4v5z" />
-                </svg>
-                <a href="https://www.linkedin.com/in/yusuf-adiputera" target="_blank"
-                    rel="noopener noreferrer me">linkedin.com/in/yusuf-adiputera</a>
-            </p>
+        <h2 id="skills">{{ data.sections.skills }}</h2>
+        <p class="hide-for-print" style="margin-bottom: 1rem;"><a href="/skills">View detailed technical expertise &
+                technologies &rarr;</a></p>
+        <ul class="skills-group">
+            {% for skill in data.skills %}
+            <li class="skills-item"><strong>{{ skill.category }}:</strong> {{ skill.items }}</li>
+            {% endfor %}
+        </ul>
 
-            <h2 class="connect-heading hide-for-print">Connect with me</h2>
-            <div class="connect-links hide-for-print">
-                <a href="https://github.com/adiputera" target="_blank" rel="noopener noreferrer me" title="GitHub"
-                    class="connect-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    GitHub
+        <h2 id="experience">{{ data.sections.experience }}</h2>
+
+        {% for job in data.experience %}
+        <div class="job">
+            <img src="{{ job.logo }}" alt="{{ job.company }} Logo" title="{{ job.company }} Logo"
+                class="company-logo" loading="lazy" width="50" height="50" />
+            <div class="job-details">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">
+                            <h3>{{ job.title }}</h3>
+                        </div>
+                        <div class="company">{{ job.company }}</div>
+                    </div>
+                    <div class="duration">
+                        <time datetime="{{ job.start_date }}">{{ job.start_display }}</time> – 
+                        {% if job.end_date %}
+                        <time datetime="{{ job.end_date }}">{{ job.end_display }}</time>
+                        {% else %}
+                        <time>{{ job.end_display }}</time>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="description">
+                    {{ job.description_html }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <h2 id="education">{{ data.sections.education }}</h2>
+        <ul>
+            {% for edu in data.education %}
+            <li>
+                <h3 class="normal-text"><strong>{{ edu.degree }}</strong><br>{{ edu.institution }}</h3>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2 id="courses">{{ data.sections.courses }}</h2>
+        <ul>
+            {% for course in data.courses %}
+            <li>
+                <h3 class="normal-text">{{ course.name }}</h3>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2 id="articles">{{ data.sections.articles }}</h2>
+        <ul class="article-list">
+            {% for article in data.articles %}
+            <li>
+                <a href="{{ article.url }}">
+                    <h3 class="normal-text">{{ article.title }}</h3>
                 </a>
-                <a href="https://stackoverflow.com/users/3603194/adiputera" target="_blank" rel="noopener noreferrer me"
-                    title="Stack Overflow" class="connect-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.478-2.187-.453 2.068zm1.359-5.056l9.705 4.53.903-1.95-9.706-4.53-.902 1.936v.014zm2.715-4.785l8.217 6.855 1.359-1.62-8.216-6.853-1.35 1.617-.01.001zM15.751 0l-1.746 1.294 6.405 8.604 1.746-1.294L15.749 0h.002z" />
-                    </svg>
-                    Stack Overflow
-                </a>
-                <a href="https://profile.sap.com/u/adiputera" target="_blank" rel="noopener noreferrer me"
-                    title="SAP Community" class="connect-link">
-                    <svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor">
-                        <path
-                            d="M0 8.083v15.835h16.172l15.828-15.835zM4.355 11.031h0.005c1.151 0 2.552 0.324 3.567 0.844l-1.093 1.907c-1.115-0.541-1.672-0.588-2.307-0.625-0.943-0.052-1.417 0.287-1.428 0.651-0.005 0.444 0.896 0.844 1.745 1.12 1.281 0.407 2.916 0.953 3.167 2.532l2.349-6.208h2.728l2.751 7.432-0.011-7.432h3.161c3.011 0 4.427 1.020 4.427 3.359 0 2.099-1.452 3.355-3.916 3.355h-1.016l-0.015 2.791-4.781-0.005-0.333-1.213c-0.495 0.167-1.052 0.256-1.641 0.256-0.609 0-1.183-0.095-1.687-0.265l-0.475 1.223-2.667 0.005 0.12-0.615c-0.041 0.037-0.079 0.068-0.12 0.1-0.708 0.572-1.609 0.839-2.713 0.859h-0.287c-1.203 0.016-2.391-0.296-3.437-0.896l0.973-1.932c1.052 0.625 1.715 0.76 2.605 0.745 0.463-0.011 0.796-0.095 1.015-0.319 0.131-0.135 0.204-0.307 0.209-0.495 0.009-0.5-0.709-0.733-1.579-1.005-0.708-0.219-1.516-0.52-2.141-0.984-0.744-0.541-1.104-1.229-1.083-2.197 0.005-0.688 0.276-1.344 0.755-1.833 0.693-0.719 1.808-1.152 3.152-1.152zM18.479 13.255v2.543h0.699c0.921 0 1.661-0.308 1.661-1.287 0-0.948-0.74-1.256-1.661-1.256zM11.697 14.281l-0.995 3.145c0.297 0.115 0.641 0.177 1.005 0.177 0.36 0 0.699-0.063 0.989-0.167l-0.979-3.161z" />
-                    </svg>
-                    SAP Community
-                </a>
-                <a href="https://about.me/adiputera" target="_blank" rel="noopener noreferrer me" title="About.me"
-                    class="connect-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M19.536 9.146c-1.373 0-2.133 1.014-2.294 2.116h4.608c-.125-1.05-.867-2.115-2.314-2.115m-2.26 3.617c.235 1.156 1.193 1.97 2.532 1.97.725 0 1.77-.27 2.384-.914l1.175 1.35c-1.064 1.11-2.653 1.426-3.74 1.426-2.64 0-4.697-1.906-4.697-4.606 0-2.535 1.894-4.62 4.57-4.62 2.585 0 4.5 1.98 4.5 4.604v.766h-6.723v.023zm-6.487 3.83v-5.69c0-.976-.435-1.536-1.338-1.536-.814 0-1.355.585-1.717 1.007v6.24h-2.35v-5.7c0-.976-.415-1.532-1.318-1.532-.813 0-1.375.586-1.717 1.006v6.24H0V7.505h2.35v1.15c.4-.463 1.302-1.26 2.71-1.26 1.247 0 2.096.526 2.477 1.59.524-.761 1.5-1.59 2.91-1.59 1.7 0 2.69 1.01 2.69 2.963v6.24h-2.353l.005-.007z" />
-                    </svg>
-                    About.me
-                </a>
-            </div>
-        </header>
+                <p class="article-snippet">{{ article.snippet }}</p>
+            </li>
+            {% endfor %}
+        </ul>
 
-        <main>
-            <p class="short-version-link hide-for-print">
-                Too long? <a href="/short">Read the short version &rarr;</a>
-            </p>
+        <section id="faq" class="faq-section hide-for-print">
+            <h2>Frequently Asked Questions</h2>
+            <p>For more information, read <a href="/faq">Yusuf Adiputera's Frequently Asked Questions</a>.</p>
+            <p>Untuk informasi lebih lanjut, kunjungi <a href="/faq-id">halaman Pertanyaan Umum Yusuf Adiputera</a>.</p>
+        </section>
+    </main>
 
-            <h2 id="summary">Summary</h2>
-
-            <div class="summary">
-                <p>
-                    Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed
-                    systems, and SAP Commerce (Hybris) architecture, with more than 8 years of professional experience
-                    in
-                    building scalable, high-performance systems within the SAP ecosystem.
-                </p>
-                <p>
-                    He leads architecture design and delivery of enterprise-scale platforms, focusing on system
-                    scalability, platform modernization, and long-term technical strategy. His expertise includes SAP
-                    Commerce development, Spring-based microservices architecture, secure Role-Based Access Control
-                    (RBAC), and enterprise system integration across the SAP CX landscape.
-                </p>
-                <p>
-                    Yusuf has led multiple large-scale SAP Commerce implementations and platform upgrades across Astra
-                    Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He
-                    led the end-to-end development of motorkux.id from analysis through production launch and continues
-                    to drive platform evolution based on business and technical requirements.
-                </p>
-                <p>
-                    He is currently leading a strategic modernization initiative to migrate SAP Commerce into a Spring
-                    Boot–based microservices architecture, designing core system architecture and reusable platform
-                    capabilities including a dynamic rules engine (rules-as-a-service) and scalable service foundation.
-                </p>
-                <p>
-                    His work emphasizes performance and scalability engineering, including full-page caching
-                    architecture, storefront optimization, and infrastructure improvements enabling the platform to
-                    handle significant traffic spikes with high reliability.
-                </p>
-                <p>
-                    Yusuf also contributes to enterprise integration initiatives including SAP Customer Data Platform
-                    (CDP), SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA, supporting unified customer
-                    data, marketing automation, and ERP
-                    integration.
-                </p>
-                <p>
-                    He is passionate about building maintainable systems, mentoring engineering teams, and designing
-                    scalable architectures that support long-term business growth.
-                </p>
-            </div>
-
-            <h2 id="key-achievements">Key Achievements</h2>
-            <ul class="key-achievements">
-                <li>Led the development team that successfully built and launched motorkux.id (2021–now)</li>
-                <li>Led the development team that successfully built and launched seva.id marketplace (2019–2021)</li>
-                <li>Part of a development team that successfully built and launched seva.id property (2018–2019)</li>
-                <li>Won internal "Best Project Development Quality" award (2024)</li>
-                <li>Recently involved in SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP
-                    Emarsys) implementation (2025)</li>
-                <li>Recently involved in SAP S/4HANA ABAP development (2026)</li>
-                <li>Successfully developed image resizer proxy (2024)</li>
-                <li>Successfully developed payload validator on the fly, using Drools (2025)</li>
-                <li>Successfully created custom promotion conditions (location-based quota without having to use
-                    coupons) (2023)</li>
-                <li>Successfully created a cronjob to migrate the database from SAP Hana to MySQL for various Hybris
-                    projects (2019–2020)</li>
-                <li>Upgraded SAP Commerce versions for various Hybris projects (2020–2022)</li>
-                <li>Set up CI/CD on Jenkins and Azure DevOps for various Hybris projects (2018–2022)</li>
-                <li>Successfully implemented lazy loading of CMS content slot in a page</li>
-                <li>Successfully implemented lazy loading of CMS components</li>
-                <li>Successfully improved the performance of the JSP storefront</li>
-            </ul>
-
-
-            <h2 id="skills">Skills</h2>
-            <p class="hide-for-print" style="margin-bottom: 1rem;"><a href="/skills">View detailed technical expertise &
-                    technologies &rarr;</a></p>
-            <ul class="skills-group">
-                <li class="skills-item"><strong>Languages:</strong> Java, JavaScript, HTML</li>
-                <li class="skills-item"><strong>Frameworks & Platforms:</strong> SAP Commerce (Hybris), Spring Boot,
-                    Spring MVC, jQuery, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud
-                    (formerly SAP Emarsys), SAP
-                    S/4HANA ABAP</li>
-                <li class="skills-item"><strong>Architecture & Integration:</strong> Microservices, REST API</li>
-                <li class="skills-item"><strong>Tools & Infrastructure:</strong> Kafka, Apache Solr, Drools,
-                    Git</li>
-            </ul>
-
-            <h2 id="experience">Experience</h2>
-
-            <div class="job">
-                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
-                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
-                    height="50" />
-                <div class="job-details">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">
-                                <h3>Lead Software Engineer</h3>
-                            </div>
-                            <div class="company">PT Astra International Tbk</div>
-                        </div>
-                        <div class="duration"><time datetime="2021-02">Feb 2021</time> – <time>Present</time></div>
-                    </div>
-                    <div class="description">
-                        <p>Lead architecture and delivery of enterprise-scale SAP Commerce (Hybris) e-commerce
-                            platforms, focusing on system scalability, platform modernization, and enterprise
-                            integration. Responsible for engineering leadership, core system design, and long-term
-                            platform evolution across multiple business domains.</p>
-
-                        <h4>Engineering Leadership</h4>
-                        <ul>
-                            <li>Led a team of up to 12 engineers delivering enterprise e-commerce platforms from
-                                analysis through production (motorkux.id go-live June 2022).</li>
-                            <li>Owned end-to-end delivery including architecture design, project planning, sprint
-                                execution, and release management.</li>
-                            <li>Established coding standards and enforced engineering quality through code reviews,
-                                technical mentoring, and knowledge sharing.</li>
-                            <li>Coordinated cross-team collaboration across product, infrastructure, and enterprise
-                                integration teams.</li>
-                            <li>Won internal “Best Project Development Quality” award (2024).</li>
-                        </ul>
-
-                        <h4>Platform Modernization & Architecture (on going)</h4>
-                        <ul>
-                            <li>Leading enterprise modernization initiative to migrate SAP Commerce platform to Spring
-                                Boot–based microservices architecture.</li>
-                            <li>Designed core system architecture supporting multiple business domains and supervising 3
-                                parallel rewrite projects.</li>
-                            <li>Defined service boundaries, architecture standards, and implementation guidelines.</li>
-                            <li>Designed secure Role-Based Access Control (RBAC) model for service authorization and
-                                resource protection.</li>
-                        </ul>
-
-                        <h4>Rule Engine Platform (Rules-as-a-Service)</h4>
-                        <ul>
-                            <li>Designed dynamic rule engine using Drools enabling client-defined conditions and actions
-                                without code deployment.</li>
-                            <li>Built reusable rules platform decoupling business logic from application services.</li>
-                            <li>Implemented flexible rule model not tightly coupled to domain objects.</li>
-                            <li>Delivered as core platform capability for SAP Commerce modernization and future service
-                                architecture.</li>
-                            <li>Developed payload validator on the fly, using Drools (2025).</li>
-                        </ul>
-
-                        <h4>Performance & Scalability Engineering</h4>
-                        <ul>
-                            <li>Designed and implemented full-page caching architecture (EHCache), reducing page load
-                                time from ~2s to sub-second response.</li>
-                            <li>Improved platform resilience enabling system to handle more than 3× traffic spikes
-                                without downtime.</li>
-                            <li>Optimized storefront performance through CMS lazy loading strategy and rendering
-                                optimization.</li>
-                            <li>Built image resizer proxy reducing payload size up to 80% and improving page load
-                                performance.</li>
-                            <li>Improved JSP storefront performance.</li>
-                            <li>Developed image resizer proxy (2024).</li>
-                        </ul>
-
-                        <h4>SAP Commerce Platform Engineering</h4>
-                        <ul>
-                            <li>Led multiple SAP Commerce platform upgrades across enterprise systems:
-                                <ul>
-                                    <li>seva.id marketplace & otomotif (6.6 → 20.11)</li>
-                                    <li>auto2000 & Astra-Daihatsu (19.05 → 20.11)</li>
-                                    <li>motorkux.id (2105 → 2205)</li>
-                                </ul>
-                            </li>
-                            <li>Developed custom promotion engine supporting location-based quota without coupon
-                                dependency (2023).</li>
-                            <li>Implemented employee role expiration mechanism for enterprise access control.</li>
-                        </ul>
-
-                        <h4>Enterprise Integration</h4>
-                        <ul>
-                            <li>Contributed to SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly
-                                SAP Emarsys) implementation for
-                                customer data and marketing automation.</li>
-                            <li>Supporting SAP S/4HANA integration initiatives and expanding ABAP expertise for ERP
-                                integration.</li>
-                        </ul>
-
-                        <h4>Core Responsibilities</h4>
-                        <ul>
-                            <li>Architecture design and system evolution planning</li>
-                            <li>Project planning and delivery management</li>
-                            <li>Engineering standards governance and code review</li>
-                            <li>Platform upgrade and deployment strategy</li>
-                            <li>Performance optimization and scalability improvements</li>
-                        </ul>
-
-                        <p><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, Spring Boot,
-                            Microservices Architecture, Drools, EHCache, JSP, SAP CDP, SAP
-                            Emarsys, SAP S/4HANA.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job">
-                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
-                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
-                    height="50" />
-                <div class="job-details">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">
-                                <h3>Bootcamp Trainer</h3>
-                            </div>
-                            <div class="company">PT Astra International Tbk</div>
-                        </div>
-                        <div class="duration"><time datetime="2021-11">Nov 2021</time> – <time datetime="2022-12">Dec
-                                2022</time></div>
-                    </div>
-                    <div class="description">
-                        <p>Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP
-                            Commerce/Hybris fundamentals.</p>
-                        <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring MVC, SAP Commerce
-                            (Hybris)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job">
-                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
-                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
-                    height="50" />
-                <div class="job-details">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">
-                                <h3>Lead Software Developer</h3>
-                            </div>
-                            <div class="company">PT Astra International Tbk</div>
-                        </div>
-                        <div class="duration"><time datetime="2020-04">Apr 2020</time> – <time datetime="2021-01">Jan
-                                2021</time></div>
-                    </div>
-                    <div class="description">
-                        <h4>Key Achievement:</h4>
-                        Our team successfully launched seva.id marketplace on October 2020 with payment integration
-                        (credit card and virtual account transfer), shipping cost integration, 3rd party integration
-                        using SOAP web services, and a partial checkout feature.
-
-                        <h4>Responsibilities:</h4>
-                        <ul>
-                            <li>Maintained coding standards documentation and enforced quality through code reviews and
-                                knowledge sharing sessions for the development team.</li>
-                            <li>Led project planning, including man-days estimation, development timelines, and breaking
-                                down user stories into smaller tasks for sprint planning.</li>
-                            <li>Developed new features and resolved critical production bugs to ensure platform
-                                stability and continuous delivery.</li>
-                            <li>Managed deployment to lower environments and prepared comprehensive release notes.</li>
-                            <li>Set up and maintained CI/CD pipelines using Azure DevOps and Jenkins, automating build,
-                                deployment, and patch application processes.</li>
-                            <li>Led SAP Hybris Commerce/SAP Commerce version upgrades and patch applications.</li>
-                        </ul>
-                        <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java,
-                            Spring MVC, Azure DevOps, Jenkins, MySQL</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job">
-                <img src="images/astra.svg" alt="PT Astra International Tbk Logo"
-                    title="PT Astra International Tbk Logo" class="company-logo" loading="lazy" width="50"
-                    height="50" />
-                <div class="job-details">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">
-                                <h3>Tech Lead & DevOps Engineer</h3>
-                            </div>
-                            <div class="company">PT Astra International Tbk (via PT Xsis Mitra Utama)</div>
-                        </div>
-                        <div class="duration"><time datetime="2019-04">Apr 2019</time> – <time datetime="2020-04">Apr
-                                2020</time></div>
-                    </div>
-                    <div class="description">
-                        <h4>Key achievement:</h4>
-                        Successfully migrating the database of seva.id otomotif, seva.id marketplace, and astra-daihatsu
-                        from SAP HANA to Aurora MySQL.
-
-                        <h4>Responsibilities:</h4>
-                        <ul>
-                            <li>Integrated 3rd-party REST/SOAP APIs and parent site services to support marketplace and
-                                automotive operations.</li>
-                            <li>Transitioned manual deployment processes to automated CI/CD pipelines using Azure DevOps
-                                and Jenkins for Dev, QA, and Pre-Prod environments.</li>
-                            <li>Served on the production deployment team, ensuring smooth and reliable releases with
-                                comprehensive release notes.</li>
-                            <li>Conducted code reviews to maintain high code quality and architectural standards.</li>
-                            <li>Traced and resolved complex bugs to maintain high availability for e-commerce traffic.
-                            </li>
-                            <li>Executed complex database migrations, including seamless migration from SAP HANA to
-                                Aurora MySQL.</li>
-                            <li>Developed scalable features to meet business requirements.</li>
-                        </ul>
-                        <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java,
-                            Spring MVC, Jenkins, Azure DevOps, SAP HANA, Aurora MySQL</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job">
-                <img src="images/astra.svg" alt="Astra Logo" title="Astra Logo" class="company-logo" loading="lazy"
-                    width="50" height="50" />
-                <div class="job-details">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">
-                                <h3>Software Developer</h3>
-                            </div>
-                            <div class="company">PT Astra International Tbk (via PT Xsis Mitra Utama)</div>
-                        </div>
-                        <div class="duration"><time datetime="2018-04">Apr 2018</time> – <time datetime="2019-04">Apr
-                                2019</time></div>
-                    </div>
-                    <div class="description">
-                        <h4>Key achievement:</h4>
-                        Our team successfully built and launched seva.id property
-
-                        <h4>Responsibility: </h4>
-                        <ul>
-                            <li>Integrated 3rd-party APIs and parent site resources to build core functionalities and
-                                content delivery.</li>
-                            <li>Developed and maintained core e-commerce features, actively resolving bugs and
-                                optimizing existing codebase for property marketplace.</li>
-                            <li>Implemented social media login integration (OAuth) to streamline user onboarding and
-                                authentication.</li>
-                        </ul>
-                        <p style="margin-top: 1rem;"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java,
-                            Spring MVC, REST/SOAP APIs, OAuth</p>
-                    </div>
-                </div>
-            </div>
-
-            <h2 id="education">Education</h2>
-            <ul>
-                <li>
-                    <h3 class="normal-text"><strong>Bachelor's Degree in Computer Science</strong><br>Universitas
-                        Diponegoro (Semarang, Indonesia)</h3>
-                </li>
-            </ul>
-
-            <h2 id="courses">Courses</h2>
-            <ul>
-                <li>
-                    <h3 class="normal-text">Oracle Academy Java Fundamentals (Oracle)</h3>
-                </li>
-                <li>
-                    <h3 class="normal-text">Oracle Academy Java Programming (Oracle)</h3>
-                </li>
-                <li>
-                    <h3 class="normal-text">Java Spring Framework Bootcamp (XSIS)</h3>
-                </li>
-                <li>
-                    <h3 class="normal-text">SAP Hybris Commerce Developer Part 1 (SAP & Trainocate)</h3>
-                </li>
-                <li>
-                    <h3 class="normal-text">SAP Hybris Commerce Developer Part 2 (SAP & Trainocate)</h3>
-                </li>
-                <li>
-                    <h3 class="normal-text">Spartacus Training (Divante)</h3>
-                </li>
-                <li>
-                    <h3 class="normal-text">Confluent Developer Skills for Building Apache Kafka® (Confluent)</h3>
-                </li>
-            </ul>
-
-            <h2 id="articles">Technical Articles</h2>
-            <ul class="article-list">
-                <li><a href="articles/remote-debug-sap-commerce">
-                        <h3 class="normal-text">How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse</h3>
-                    </a>
-                    <p class="article-snippet">A deep-dive tutorial explaining how developers can configure and attach
-                        remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce
-                        (On-Premise) server issues.</p>
-                </li>
-                <li><a href="articles/enable-image-upload-backoffice">
-                        <h3 class="normal-text">How to Enable Image Upload in Backoffice WYSIWYG editor</h3>
-                    </a>
-                    <p class="article-snippet">Step-by-step configuration guide on extending the default SAP Commerce
-                        Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG
-                        tool.</p>
-                </li>
-                <li><a href="articles/install-plugins-backoffice">
-                        <h3 class="normal-text">How to install additional plugins to Backoffice's WYSIWYG editor</h3>
-                    </a>
-                    <p class="article-snippet">A technical exploration on advanced CKEditor customization within the SAP
-                        Commerce framework, detailing how to inject custom JavaScript plugins into the Backoffice
-                        environment.</p>
-                </li>
-                <li><a href="articles/sap-commerce-sso-bcrypt-error">
-                        <h3 class="normal-text">SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt
-                            Error)</h3>
-                    </a>
-                    <p class="article-snippet">An architectural breakdown of a Single Sign-On (SSO) limitation
-                        encountered using Spring Security and BCrypt in SAP Commerce, alongside the implemented
-                        encryption bypass solution.</p>
-                </li>
-            </ul>
-
-            <section id="faq" class="faq-section hide-for-print">
-                <h2>Frequently Asked Questions</h2>
-
-                <p>For more information, read <a href="/faq">Yusuf Adiputera's Frequently Asked Questions</a>.</p>
-
-                <p>Untuk informasi lebih lanjut, kunjungi <a href="/faq-id">halaman Pertanyaan Umum Yusuf Adiputera</a>.
-                </p>
-            </section>
-
-        </main>
-
-        <footer>
-            &copy; <span id="current-year">2026</span> Yusuf Adiputera. All rights reserved.
-            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
-        </footer>
-    </div>
-    <script src="src/index.min.js?v=202603251700" defer></script>
-</body>
-
-</html>
+    {% include footer.html %}
+</div>

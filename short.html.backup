@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preload" as="style" href="src/master.min.css?v=202603251700" />
+    <link rel="preload" as="script" href="src/index.min.js?v=202603251700" />
+    <link rel="preload" as="image" href="images/astra.svg" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yusuf Adiputera – Lead Software Engineer (Condensed Version)</title>
+    <meta name="description"
+        content="Condensed resume of Yusuf Adiputera, Lead Software Engineer with more than 8 years of experience in Java and SAP Commerce." />
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="src/master.min.css?v=202603251700" />
+    <style>
+        @media print {
+            .resume {
+                padding: 0;
+                margin: 0;
+            }
+
+            h2 {
+                margin-top: 1.2rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .summary p {
+                margin-bottom: 0.5rem;
+            }
+
+            .job {
+                margin-bottom: 1rem;
+                page-break-inside: avoid;
+            }
+
+            .job-header {
+                margin-bottom: 0.2rem;
+            }
+
+            ul {
+                margin-bottom: 0.5rem;
+            }
+
+            li {
+                margin-bottom: 0.2rem;
+            }
+
+            .skills-group {
+                display: block;
+            }
+
+            .skills-item {
+                margin-bottom: 0.3rem;
+            }
+
+            header {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://adiputera.github.io/#person",
+            "name": "Yusuf Adiputera",
+            "givenName": "Yusuf",
+            "additionalName": "Fahmi",
+            "familyName": "Adiputera",
+            "gender": "Male",
+            "alternateName": [
+                "Yusuf Fahmi Adiputera",
+                "Yusuf F. Adiputera",
+                "Yusuf Fahmi",
+                "Yusuf",
+                "Adiputera"
+            ],
+            "url": "https://adiputera.github.io/",
+            "image": "https://adiputera.github.io/images/photo.webp",
+            "jobTitle": "Lead Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "PT Astra International Tbk",
+                "url": "https://www.astra.co.id/",
+                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+            },
+            "email": "mailto:yusuf@adiputera.id",
+            "sameAs": [
+                "https://www.linkedin.com/in/yusuf-adiputera",
+                "https://about.me/adiputera",
+                "https://github.com/adiputera",
+                "https://stackoverflow.com/users/3603194/adiputera",
+                "https://profile.sap.com/u/adiputera",
+                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+            },
+            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
+            "knowsAbout": [
+                "Java",
+                "Spring Framework",
+                "Spring Boot",
+                "Spring MVC",
+                "SAP Commerce (Hybris)",
+                "SAP Customer Data Platform (SAP CDP)",
+                "SAP Engagement Cloud (formerly SAP Emarsys)",
+                "SAP S/4HANA ABAP",
+                "Kafka",
+                "Drools",
+                "Apache Solr",
+                "REST & SOAP Integration",
+                "Performance Tuning",
+                "Redis & Ehcache",
+                "Azure Function App"
+            ],
+            "nationality": {
+                "@type": "Country",
+                "name": "Indonesia"
+            },
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Universitas Diponegoro",
+                    "url": "https://www.undip.ac.id/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Semarang",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                },
+                {
+                    "@type": "EducationalOrganization",
+                    "name": "SMA Negeri 1 Pekalongan",
+                    "url": "https://www.sman1pekalongan.sch.id/v3/",
+                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Pekalongan",
+                        "addressRegion": "Central Java",
+                        "addressCountry": "ID"
+                    }
+                }
+            ],
+            "hasCredential": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Bachelor's Degree in Computer Science",
+                    "credentialCategory": "Bachelor's Degree",
+                    "educationalLevel": "Bachelor",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Universitas Diponegoro",
+                        "url": "https://www.undip.ac.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
+                    }
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Best Project Development Quality Award",
+                    "credentialCategory": "Award",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "PT Astra International Tbk",
+                        "url": "https://www.astra.co.id/",
+                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
+                    }
+                }
+            ],
+            "hasOccupation": [
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Engineer",
+                    "startDate": "2021-02"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+                    "startDate": "2021-11",
+                    "endDate": "2022-12"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Lead Software Developer",
+                    "startDate": "2020-04",
+                    "endDate": "2021-01"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+                    "startDate": "2019-04",
+                    "endDate": "2020-04"
+                },
+                {
+                    "@type": "EmployeeRole",
+                    "roleName": "Software Developer - SAP Hybris Commerce",
+                    "startDate": "2018-04",
+                    "endDate": "2019-04"
+                }
+            ],
+            "knowsLanguage": [
+                { "@type": "Language", "name": "English" },
+                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
+                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "name": "Yusuf Adiputera - Lead Software Engineer (Condensed Version)",
+            "url": "https://adiputera.github.io/short",
+            "description": "Condensed resume of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce",
+            "author": {
+                "@type": "Person",
+                "@id": "https://adiputera.github.io/#person",
+                "name": "Yusuf Adiputera"
+            },
+            "mainEntity": {
+                "@type": "Person",
+                "@id": "https://adiputera.github.io/#person",
+                "name": "Yusuf Adiputera"
+            },
+            "inLanguage": ["en", "id"],
+            "datePublished": "2025-07-07",
+            "dateModified": "2026-03-02"
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://adiputera.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Short Version",
+                    "item": "https://adiputera.github.io/short"
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="top-nav hide-for-print">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li class="breadcrumb-separator">&nbsp;/&nbsp;</li>
+                    <li class="breadcrumb-current">Short version</li>
+                </ol>
+            </nav>
+            <div class="language-switcher">
+                <span>🌐</span>
+                <a href="/short" class="active" aria-label="Switch to English language">EN</a>
+                <a href="/short-id" aria-label="Switch to Indonesian language">ID</a>
+            </div>
+        </div>
+
+        <header>
+            <button class="button hide-for-print" onclick="window.print()" style="margin-right: 10px;">🖨️ Print
+                Resume</button>
+            <button class="toggle-theme button hide-for-print" onclick="toggleTheme()"
+                aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
+            <h1 class="main-heading">
+                Yusuf Adiputera
+                <span class="title">Lead Software Engineer | Java, SAP Commerce & Spring Framework</span>
+            </h1>
+
+            <h2 class="contact-heading">Contact</h2>
+            <p>📧 <a href="mailto:yusuf@adiputera.id">yusuf@adiputera.id</a> | 🔗 <a
+                    href="https://www.linkedin.com/in/yusuf-adiputera"
+                    target="_blank">linkedin.com/in/yusuf-adiputera</a></p>
+        </header>
+
+        <main>
+            <h2 id="summary">Summary</h2>
+            <div class="summary">
+                <p>
+                    Lead Software Engineer with more than 8 years of experience specializing in <strong>Java and SAP
+                        Commerce (Hybris) architecture</strong>.
+                    Proven track record in designing and delivering enterprise-scale e-commerce platforms for Astra
+                    Group, focusing on scalability,
+                    platform modernization, and high-performance system integration.
+                </p>
+                <p>
+                    Expertise includes Spring-based microservices, dynamic rules engines (Rules-as-a-Service),
+                    performance engineering (EHCache, lazy loading),
+                    and enterprise integration within the SAP landscape (SAP CDP, SAP Engagement/Emarsys, S/4HANA).
+                    Passionate about engineering leadership,
+                    technical strategy, and building maintainable, high-availability systems.
+                </p>
+            </div>
+
+            <h2 id="key-achievements">Key Achievements</h2>
+            <ul class="key-achievements">
+                <li><strong>Lead Architect:</strong> Successfully built and launched <i>motorkux.id</i> (2021–Present)
+                    and <i>seva.id</i> marketplace (2019–2021).</li>
+                <li><strong>Award Recipient:</strong> Won internal "Best Project Development Quality" award (2024).</li>
+                <li><strong>Rules-as-a-Service:</strong> Designed and implemented a dynamic rules engine using Drools,
+                    decoupling business logic from code.</li>
+                <li><strong>Performance:</strong> Achieved sub-second response times through EHCache full-page caching
+                    and storefront optimizations.</li>
+                <li><strong>Modernization:</strong> Leading the migration of legacy SAP Commerce monoliths to Spring
+                    Boot–based microservices.</li>
+                <li><strong>Enterprise Integration:</strong> Delivered integrations for SAP CDP, Emarsys, and S/4HANA
+                    ABAP.</li>
+            </ul>
+
+            <h2 id="skills">Skills</h2>
+            <ul class="skills-group">
+                <li class="skills-item"><strong>Languages:</strong> Java, JavaScript, HTML, ABAP</li>
+                <li class="skills-item"><strong>Frameworks:</strong> SAP Commerce (Hybris), Spring Boot, Spring MVC,
+                    jQuery, Azure Functions</li>
+                <li class="skills-item"><strong>Platforms:</strong> SAP Customer Data Platform (CDP), SAP Engagement
+                    Cloud (Emarsys), SAP S/4HANA</li>
+                <li class="skills-item"><strong>Tools & Infra:</strong> Kafka, Apache Solr, Drools, Redis, Kafka, Azure
+                    DevOps, Jenkins, Git</li>
+            </ul>
+
+            <h2 id="experience">Professional Experience</h2>
+
+            <div class="job">
+                <div class="job-details">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">
+                                <h3>Lead Software Engineer</h3>
+                            </div>
+                            <div class="company">PT Astra International Tbk</div>
+                        </div>
+                        <div class="duration">Feb 2021 – Present</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Engineering Leadership:</strong> Lead a team of 12 engineers in delivering
+                                enterprise platforms from analysis through launch (motorkux.id).</li>
+                            <li><strong>Modernization:</strong> Heading the strategic initiative to migrate SAP Commerce
+                                to microservices, supervising 3 parallel projects.</li>
+                            <li><strong>Rules Engine:</strong> Built a dynamic rule platform (Drools) enabling
+                                client-defined actions without code deployment.</li>
+                            <li><strong>Scalability:</strong> Optimized performance (caching, image resizer proxy, lazy
+                                loading) to handle 3x traffic spikes with sub-second response.</li>
+                            <li><strong>Integrations:</strong> Support SAP CDP, Emarsys marketing automation, and
+                                S/4HANA integration.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-details">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">
+                                <h3>Bootcamp Trainer (Java & SAP Commerce)</h3>
+                            </div>
+                            <div class="company">PT Astra International Tbk</div>
+                        </div>
+                        <div class="duration">Nov 2021 – Dec 2022</div>
+                    </div>
+                    <div class="description">
+                        <p>Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP
+                            Commerce/Hybris fundamentals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-details">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">
+                                <h3>Lead Software Developer</h3>
+                            </div>
+                            <div class="company">PT Astra International Tbk</div>
+                        </div>
+                        <div class="duration">Apr 2020 – Jan 2021</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Platform Launch:</strong> Successfully launched seva.id marketplace with
+                                payment, shipping, and 3rd party SOAP integrations.</li>
+                            <li><strong>DevOps:</strong> Established CI/CD pipelines on Azure DevOps and Jenkins;
+                                managed SAP Commerce version upgrades.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-details">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">
+                                <h3>Tech Lead & DevOps Engineer</h3>
+                            </div>
+                            <div class="company">PT Astra International Tbk (via PT Xsis Mitra Utama)</div>
+                        </div>
+                        <div class="duration">Apr 2019 – Apr 2020</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Database Migration:</strong> Executed seamless migration from SAP HANA to Aurora
+                                MySQL for automotive and marketplace projects.</li>
+                            <li><strong>Automation:</strong> Transitioned manual deployments to automated CI/CD
+                                pipelines across Dev/QA/Pre-Prod environments.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-details">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">
+                                <h3>Software Developer</h3>
+                            </div>
+                            <div class="company">PT Astra International Tbk (via PT Xsis Mitra Utama)</div>
+                        </div>
+                        <div class="duration">Apr 2018 – Apr 2019</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Seva.id Property:</strong> Built and launched the property marketplace module;
+                                implemented OAuth social login.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2 id="education">Education</h2>
+            <p><strong>Bachelor's Degree in Computer Science</strong> | Universitas Diponegoro, Indonesia</p>
+
+            <h2 id="courses">Key Courses</h2>
+            <p>SAP Hybris Commerce Developer I & II • Confluent Developer Skills for Building Apache Kafka® (Confluent)
+                • Java Spring Bootcamp • Oracle
+                Academy Java Programming</p>
+
+        </main>
+    </div>
+    <script src="src/index.min.js?v=202603251700" defer></script>
+</body>
+
+</html>

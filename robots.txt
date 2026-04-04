@@ -4,9 +4,18 @@ Allow: /
 # Disallow documentation and source files
 Disallow: /README.md
 Disallow: /FAQ.md
+Disallow: /CLAUDE.md
+Disallow: /SEO_RECOMMENDATIONS.md
+Disallow: /FAQ_SUGGESTIONS.md
 Disallow: /src/
 Disallow: /articles/template
 Disallow: /articles/template.html
+
+# Disallow Jekyll internals and backup files
+Disallow: /_data/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /*.backup
 
 # Sitemap
 Sitemap: https://adiputera.github.io/sitemap.xml

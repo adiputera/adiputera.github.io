@@ -1,0 +1,53 @@
+# SEO & Metadata Configuration
+
+# Google Analytics
+google_analytics_id: "G-005WBSEVCP"
+
+# Verification Codes
+google_verification: "26b94dfd36a78165"
+yandex_verification: "9f1999c54c9c7840"
+
+# Open Graph Defaults
+og_defaults:
+  type: "profile"
+  image: "https://adiputera.github.io/images/photo.webp"
+  image_width: "750"
+  image_height: "750"
+  image_type: "image/webp"
+  image_alt: "Yusuf Adiputera's Photo – Lead Software Engineer"
+  site_name: "Yusuf Adiputera – Lead Software Engineer"
+
+# Twitter Card Defaults
+twitter_defaults:
+  card: "summary_large_image"
+  image: "https://adiputera.github.io/images/photo.webp"
+  image_alt: "Yusuf Adiputera's Photo – Lead Software Engineer"
+
+# Profile Meta (OpenGraph profile type)
+profile:
+  first_name: "Yusuf"
+  last_name: "Adiputera"
+  username: "yusuf-adiputera"
+  gender: "male"
+
+# PWA & Mobile App Meta
+pwa:
+  theme_color_light: "#ffffff"
+  theme_color_dark: "#1e1e1e"
+  apple_mobile_capable: "yes"
+  mobile_app_capable: "yes"
+  apple_status_bar_style: "default"
+
+# Canonical URLs & hreflang
+canonical_base: "https://adiputera.github.io"
+hreflang:
+  en: "/"
+  id: "/id"
+  default: "/"
+
+# Common Meta Tags
+meta:
+  author: "Yusuf Adiputera"
+  robots: "index, follow"
+  job_title: "Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework"
+  skills: "Java, SAP Hybris, SAP Commerce, Spring MVC, Spring Boot, REST APIs"

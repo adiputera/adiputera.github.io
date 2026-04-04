@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+lang: en
+permalink: /404.html
+title: "404: Page Not Found | Yusuf Adiputera"
+description: "The page you are looking for does not exist. Return to Yusuf Adiputera's professional portfolio."
+---
+{% assign data = site.data[page.lang] %}
+{% include schema-person.html %}
 
-<head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202603251700" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202603251700" />
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404: Page Not Found | Yusuf Adiputera</title>
-    <meta name="description"
-        content="The page you are looking for does not exist. Return to Yusuf Adiputera's professional portfolio." />
-    <meta name="robots" content="noindex, follow" />
-
-    <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="src/master.min.css?v=202603251700" />
-
-    <meta name="theme-color" content="#ffffff" />
-</head>
-
-<body>
-    <div class="resume">
+<div class="container">
         <header>
             <h1 class="main-heading">
                 404: Page Not Found
@@ -38,12 +27,5 @@
             </div>
         </main>
 
-        <footer>
-            &copy; <span id="current-year">2026</span> Yusuf Adiputera. All rights reserved.
-            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
-        </footer>
-    </div>
-    <script src="src/index.min.js?v=202603251700" defer></script>
-</body>
-
-</html>
+        {% include footer.html %}</div>
+    

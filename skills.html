@@ -1,522 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+lang: en
+permalink: /skills
+permalink_id: /skills-id
+title: "Technical Skills & Technologies – Yusuf Adiputera | Lead Software Engineer"
+description: "Detailed breakdown of Yusuf Adiputera's technical expertise in Java, SAP Commerce (Hybris), Spring Boot, Kafka, and Cloud architectures for enterprise scaling."
+breadcrumb: "Skills"
+---
+{% assign data = site.data[page.lang] %}
+{% include schema-person.html %}
 
-<head>
-    <link rel="preload" as="style" href="src/master.min.css?v=202603251700" />
-    <link rel="preload" as="script" href="src/index.min.js?v=202603251700" />
+<div class="container">
+    {% include navigation.html %}
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technical Skills & Technologies – Yusuf Adiputera | Lead Software Engineer</title>
-    <meta name="title" content="Technical Skills & Technologies – Yusuf Adiputera | Lead Software Engineer" />
+    <header>
+      {% include theme-toggle.html %}
+      <h1 class="main-heading">
+        <a href="/" style="text-decoration: none; color: inherit;" rel="noopener" title="Go back to Home">Yusuf
+          Adiputera</a>
+        <span class="title">Technical Skills & Expertise</span>
+      </h1>
+    </header>
 
-    <meta name="description"
-        content="Detailed breakdown of Yusuf Adiputera's technical expertise in Java, SAP Commerce (Hybris), Spring Boot, Kafka, and Cloud architectures for enterprise scaling." />
-    <meta name="keywords"
-        content="Java Software Engineer, SAP Commerce Developer, SAP Hybris Developer, Spring Boot Professional, Spring MVC, Kafka Developer, Drools Rule Engine, Apache Solr, System Design, REST API, Microservices, Jakarta Java Developer, Performance Tuning, Lead Software Engineer Skills, Enterprise Java Developer, SAP CX Developer, SAP CDP, SAP Engagement Cloud, SAP Emarsys, Full Stack Java Developer" />
-    <meta name="author" content="Yusuf Adiputera" />
-    <meta name="robots" content="index, follow" />
+    <main>
+      <section class="skills-hero">
+        <p>A deep dive into the technologies and frameworks I use to build robust, scalable, and
+          high-performance enterprise applications. My focus is on the Java ecosystem and the SAP Commerce
+          (Hybris) platform.</p>
+      </section>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-005WBSEVCP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      <div class="skills-categories">
+        <section class="skills-category-section">
+          <h2 id="core-languages-frameworks">Core Languages & Frameworks</h2>
+          <p class="category-intro">The foundation of my engineering expertise, focusing on robust,
+            object-oriented systems and high-throughput backend services.</p>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>Java</h3>
+              <p>More than 8 years of hands-on experience building mission-critical backend systems in
+                Java 8 through Java 21+. Proficient in modern features such as Virtual Threads (Project
+                Loom), Streams API, and modular architecture. Led the development of enterprise-scale
+                platforms serving high-traffic e-commerce websites including motorkux.id,
+                auto2000.co.id, and seva.id. Focused on writing clean, maintainable code following SOLID
+                principles and design patterns.</p>
+              <span class="skill-level" aria-label="Proficiency: Lead Level">Lead Level</span>
+            </article>
 
-        gtag('config', 'G-005WBSEVCP');
-    </script>
+            <article class="skill-card">
+              <h3>Spring Boot & MVC</h3>
+              <p>Extensive use of the Spring ecosystem for both microservices and monolithic enterprise
+                architectures. Deep understanding of Spring Security, Spring Data (JPA/Hibernate), and
+                Dependency Injection for scalable application design. Currently leading the migration of
+                SAP Commerce platforms into Spring Boot–based microservices, designing service
+                boundaries, RBAC models, and reusable platform capabilities.</p>
+              <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
+            </article>
+          </div>
+        </section>
 
-    <link rel="icon" href="favicon.ico" />
-    <link rel="canonical" href="https://adiputera.github.io/skills" />
-    <link rel="alternate" hreflang="en" href="https://adiputera.github.io/skills" />
-    <link rel="alternate" hreflang="id" href="https://adiputera.github.io/skills-id" />
-    <link rel="alternate" hreflang="x-default" href="https://adiputera.github.io/skills" />
-    <link rel="apple-touch-icon" href="images/192.png">
-    <link rel="apple-touch-startup-image" href="images/512.png">
-    <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="src/master.min.css?v=202603251700" />
+        <section class="skills-category-section">
+          <h2 id="sap-ecosystem-ecommerce">SAP Ecosystem & E-Commerce</h2>
+          <p class="category-intro">Specialized expertise in the SAP Customer Experience (CX) suite and
+            large-scale commerce platform implementation.</p>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>SAP Commerce (Hybris)</h3>
+              <p>Deep expertise in SAP Commerce Cloud architecture, including core platform customization,
+                data modeling, OCC API development, Backoffice extensions, and CMS management. Led
+                multiple enterprise implementations and platform upgrades (versions 6.6 through 2205)
+                for Astra Group digital properties. Experienced with promotion engine customization, CMS
+                lazy loading strategies, and full-page caching architecture using EHCache.</p>
+              <span class="skill-level" aria-label="Proficiency: Lead Level">Lead Level</span>
+            </article>
 
-    <meta name="jobtitle"
-        content="Lead Software Engineer – Java, SAP Hybris Commerce, Spring Boot, Spring MVC, Spring Framework" />
-    <meta name="skills"
-        content="Java, SAP Hybris Commerce, Spring MVC, Spring Boot, REST APIs, System Design, Software Architecture" />
+            <article class="skill-card">
+              <h3>SAP CDP & Emarsys</h3>
+              <p>Hands-on experience with SAP Customer Data Platform for unified customer profiling,
+                segmentation, and identity resolution. Familiar with SAP Engagement Cloud (formerly SAP
+                Emarsys) for omnichannel marketing automation, campaign orchestration, and personalized
+                customer engagement across multiple business domains.</p>
+              <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+            </article>
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Yusuf Adiputera – Skills">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+            <article class="skill-card">
+              <h3>SAP S/4HANA ABAP</h3>
+              <p>Developing familiarity with ABAP development for core business logic extensions within
+                the SAP S/4HANA ecosystem. Currently supporting SAP S/4HANA integration initiatives and
+                expanding ERP integration expertise to bridge commerce and back-office operations.</p>
+              <span class="skill-level" aria-label="Proficiency: Beginner">Beginner</span>
+            </article>
+          </div>
+        </section>
 
-    <meta property="og:title" content="Technical Skills & Technologies – Yusuf Adiputera | Lead Software Engineer" />
-    <meta property="og:description"
-        content="Detailed breakdown of Yusuf Adiputera's technical expertise in Java, SAP Commerce (Hybris), Spring Boot, Kafka, and Cloud architectures for enterprise scaling." />
-    <meta property="og:image" content="https://adiputera.github.io/images/photo.webp" />
-    <meta property="og:image:width" content="750" />
-    <meta property="og:image:height" content="750" />
-    <meta property="og:image:type" content="image/webp" />
-    <meta property="og:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://adiputera.github.io/skills" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Yusuf Adiputera – Lead Software Engineer" />
+        <section class="skills-category-section">
+          <h2 id="architecture-integration-tools">Architecture, Integration & Tools</h2>
+          <p class="category-intro">Designing distributed systems that are scalable, resilient, and deeply
+            integrated within enterprise landscapes.</p>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>REST & SOAP Integration</h3>
+              <p>Specializing in complex enterprise system integrations using RESTful APIs and SOAP web
+                services. Designed and implemented integrations between SAP Commerce and third-party
+                services, including payment gateways (credit card, virtual account), shipping providers,
+                and parent company platforms. Focus on data integrity, secure communication, retry
+                mechanisms, and reliable message exchange.</p>
+              <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
+            </article>
 
-    <meta property="profile:first_name" content="Yusuf" />
-    <meta property="profile:last_name" content="Adiputera" />
-    <meta property="profile:username" content="yusuf-adiputera" />
-    <meta property="profile:gender" content="male" />
+            <article class="skill-card">
+              <h3>System Design & Performance</h3>
+              <p>Focus on architectural scalability and performance engineering for high-traffic
+                platforms. Designed full-page caching architecture reducing page load from ~2s to
+                sub-second. Implemented CMS lazy loading and image resizer proxy reducing payload size
+                up to 80%. Achieved 3× traffic spike resilience using Redis, EHCache, and CDN
+                strategies.</p>
+              <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
+            </article>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Technical Skills & Technologies – Yusuf Adiputera | Lead Software Engineer" />
-    <meta name="twitter:description"
-        content="Detailed breakdown of Yusuf Adiputera's technical expertise in Java, SAP Commerce (Hybris), Spring Boot, Kafka, and Cloud architectures for enterprise scaling." />
-    <meta name="twitter:image" content="https://adiputera.github.io/images/photo.webp" />
-    <meta name="twitter:image:alt" content="Yusuf Adiputera's Photo – Lead Software Engineer" />
+            <article class="skill-card">
+              <h3>Apache Kafka</h3>
+              <p>Implementing event-driven architectures for real-time data synchronization between
+                distributed enterprise systems. Experienced in designing producers, consumers, topic
+                partitioning, and message schema management for high availability and guaranteed
+                delivery.</p>
+              <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+            </article>
 
-    <meta name="theme-color" content="#ffffff" />
+            <article class="skill-card">
+              <h3>Cloud & Serverless</h3>
+              <p>Experienced with Azure Function Apps for implementing serverless logic to augment core
+                enterprise platform capabilities. Set up CI/CD pipelines using Azure DevOps and Jenkins
+                to automate build, test, and deployment processes across multiple environments.</p>
+              <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+            </article>
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://adiputera.github.io/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Skills",
-                    "item": "https://adiputera.github.io/skills"
-                }
-            ]
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "@id": "https://adiputera.github.io/#person",
-            "name": "Yusuf Adiputera",
-            "givenName": "Yusuf",
-            "additionalName": "Fahmi",
-            "familyName": "Adiputera",
-            "gender": "Male",
-            "alternateName": [
-                "Yusuf Fahmi Adiputera",
-                "Yusuf F. Adiputera",
-                "Yusuf Fahmi",
-                "Yusuf",
-                "Adiputera"
-            ],
-            "url": "https://adiputera.github.io/",
-            "image": "https://adiputera.github.io/images/photo.webp",
-            "jobTitle": "Lead Software Engineer",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "PT Astra International Tbk",
-                "url": "https://www.astra.co.id/",
-                "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
-            },
-            "email": "mailto:yusuf@adiputera.id",
-            "sameAs": [
-                "https://www.linkedin.com/in/yusuf-adiputera",
-                "https://about.me/adiputera",
-                "https://github.com/adiputera",
-                "https://stackoverflow.com/users/3603194/adiputera",
-                "https://profile.sap.com/u/adiputera",
-                "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
-            ],
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Jakarta",
-                "addressCountry": "ID"
-            },
-            "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, SAP Commerce (Hybris), Spring Boot, and Spring MVC. Experienced in enterprise system performance and high-reliability integrations using REST and SOAP.",
-            "knowsAbout": [
-                "Java",
-                "Spring Framework",
-                "Spring Boot",
-                "Spring MVC",
-                "SAP Commerce (Hybris)",
-                "SAP Customer Data Platform (SAP CDP)",
-                "SAP Engagement Cloud (formerly SAP Emarsys)",
-                "SAP S/4HANA ABAP",
-                "Kafka",
-                "Drools",
-                "Apache Solr",
-                "REST & SOAP Integration",
-                "Performance Tuning",
-                "Redis & Ehcache",
-                "Azure Function App"
-            ],
-            "nationality": {
-                "@type": "Country",
-                "name": "Indonesia"
-            },
-            "alumniOf": [
-                {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Universitas Diponegoro",
-                    "url": "https://www.undip.ac.id/",
-                    "sameAs": "https://www.wikidata.org/wiki/Q4200627",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Semarang",
-                        "addressRegion": "Central Java",
-                        "addressCountry": "ID"
-                    }
-                },
-                {
-                    "@type": "EducationalOrganization",
-                    "name": "SMA Negeri 1 Pekalongan",
-                    "url": "https://www.sman1pekalongan.sch.id/v3/",
-                    "sameAs": "https://www.wikidata.org/wiki/Q19748089",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Pekalongan",
-                        "addressRegion": "Central Java",
-                        "addressCountry": "ID"
-                    }
-                }
-            ],
-            "hasCredential": [
-                {
-                    "@type": "EducationalOccupationalCredential",
-                    "name": "Bachelor's Degree in Computer Science",
-                    "credentialCategory": "Bachelor's Degree",
-                    "educationalLevel": "Bachelor",
-                    "recognizedBy": {
-                        "@type": "Organization",
-                        "name": "Universitas Diponegoro",
-                        "url": "https://www.undip.ac.id/",
-                        "sameAs": "https://www.wikidata.org/wiki/Q4200627"
-                    }
-                },
-                {
-                    "@type": "EducationalOccupationalCredential",
-                    "name": "Best Project Development Quality Award",
-                    "credentialCategory": "Award",
-                    "recognizedBy": {
-                        "@type": "Organization",
-                        "name": "PT Astra International Tbk",
-                        "url": "https://www.astra.co.id/",
-                        "sameAs": "https://www.wikidata.org/wiki/Q4688912/"
-                    }
-                }
-            ],
-            "hasOccupation": [
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Lead Software Engineer",
-                    "startDate": "2021-02"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
-                    "startDate": "2021-11",
-                    "endDate": "2022-12"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Lead Software Developer",
-                    "startDate": "2020-04",
-                    "endDate": "2021-01"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
-                    "startDate": "2019-04",
-                    "endDate": "2020-04"
-                },
-                {
-                    "@type": "EmployeeRole",
-                    "roleName": "Software Developer - SAP Hybris Commerce",
-                    "startDate": "2018-04",
-                    "endDate": "2019-04"
-                }
-            ],
-            "knowsLanguage": [
-                { "@type": "Language", "name": "English" },
-                { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
-                { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
-            ]
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Technical Skills of Yusuf Adiputera",
-            "numberOfItems": 10,
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Java",
-                    "description": "More than 8 years of experience building mission-critical backends in Java 8-21+, utilizing modern features like Virtual Threads (Project Loom)."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "SAP Commerce (Hybris)",
-                    "description": "Deep experience in core platform architecture, data modeling, OCC API development, and Backoffice customization for enterprise commerce engines."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "Spring Boot & MVC",
-                    "description": "Extensive use of the Spring ecosystem for microservices and monolithic architectures, including Security, JPA, and Dependency Injection."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 4,
-                    "name": "REST & SOAP Integration",
-                    "description": "Specializing in complex system integrations using RESTful APIs and SOAP web services with focus on data integrity and secure communication."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 5,
-                    "name": "System Design & Performance",
-                    "description": "Focus on performance tuning and architectural scalability using Redis, Ehcache, and CDN to ensure system responsiveness under heavy loads."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 6,
-                    "name": "Apache Kafka",
-                    "description": "Implementing event-driven architectures for real-time data synchronization with experienced in producers, consumers, and topic management."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 7,
-                    "name": "Cloud & Serverless",
-                    "description": "Experienced with Azure Function Apps and CI/CD pipelines to augment and extend core enterprise platform capabilities."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 8,
-                    "name": "SAP CDP & Emarsys",
-                    "description": "Proficiency in SAP Customer Data Platform and SAP Engagement Cloud for driving omnichannel customer engagement and marketing automation."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 9,
-                    "name": "Drools",
-                    "description": "Experience with Drools for business rule management and implementing business logic decoupling through flexible rule-engines."
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 10,
-                    "name": "SAP S/4HANA ABAP",
-                    "description": "Familiarity with ABAP development for core business logic extensions within the SAP S/4HANA ecosystem."
-                }
-            ]
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Technical Skills – Yusuf Adiputera",
-            "description": "Comprehensive list of technical skills including Java, Spring Boot, and SAP Commerce Cloud.",
-            "datePublished": "2026-02-27",
-            "dateModified": "2026-03-02",
-            "author": {
-                "@type": "Person",
-                "@id": "https://adiputera.github.io/#person",
-                "name": "Yusuf Adiputera"
-            },
-            "inLanguage": "en",
-            "speakable": {
-                "@type": "SpeakableSpecification",
-                "cssSelector": [".skills-hero"]
-            }
-        }
-    </script>
-</head>
+            <article class="skill-card">
+              <h3>Drools</h3>
+              <p>Designed a dynamic rules engine (Rules-as-a-Service) using Drools, enabling
+                client-defined conditions and actions without code deployment. Built a reusable rules
+                platform that decouples business logic from application services, including a payload
+                validator on the fly. Delivered as a core platform capability for the SAP Commerce
+                modernization initiative.</p>
+              <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
+            </article>
+          </div>
+        </section>
+      </div>
 
-<body>
-    <div class="resume">
-        <div class="top-nav hide-for-print">
-            <nav aria-label="Breadcrumb" class="breadcrumb">
-                <ol>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="breadcrumb-separator">/</li>
-                    <li class="breadcrumb-current">Skills</li>
-                </ol>
-            </nav>
-            <div class="language-switcher">
-                <span>🌐</span>
-                <a href="/skills" class="active" aria-label="Switch to English language">EN</a>
-                <a href="/skills-id" aria-label="Switch to Indonesian language">ID</a>
-            </div>
-        </div>
+      <section id="core-philosophies" class="core-philosophies-section">
+        <h2>Core Philosophies</h2>
+        <ul class="philosophies-list">
+          <li><strong>Clean Code:</strong> Adhering to SOLID principles to ensure long-term maintainability
+            and system readability.</li>
+          <li><strong>Performance First:</strong> Proactive optimization and profiling to ensure sub-second
+            response times for enterprise platforms.</li>
+          <li><strong>Mentorship:</strong> Leading by example and fostering a culture of technical excellence
+            within engineering teams.</li>
+        </ul>
+      </section>
 
-        <header>
-            <button class="toggle-theme button hide-for-print" onclick="toggleTheme()"
-                aria-label="Toggle between light and dark theme">🌙 Dark Mode</button>
-            <h1 class="main-heading">
-                <a href="/" style="text-decoration: none; color: inherit;" rel="noopener" title="Go back to Home">Yusuf
-                    Adiputera</a>
-                <span class="title">Technical Skills & Expertise</span>
-            </h1>
-        </header>
+      <section class="cta-section hide-for-print">
+        <h2>Looking for more?</h2>
+        <p>View my <a href="/" title="Yusuf Adiputera's full resume and work history">Full Resume &amp;
+            Experience</a> or read my <a href="/faq"
+            title="Frequently Asked Questions about technical architecture">Technical FAQ</a>.</p>
+      </section>
+    </main>
 
-        <main>
-            <section class="skills-hero">
-                <p>A deep dive into the technologies and frameworks I use to build robust, scalable, and
-                    high-performance enterprise applications. My focus is on the Java ecosystem and the SAP Commerce
-                    (Hybris) platform.</p>
-            </section>
-
-            <div class="skills-categories">
-                <section class="skills-category-section">
-                    <h2 id="core-languages-frameworks">Core Languages & Frameworks</h2>
-                    <p class="category-intro">The foundation of my engineering expertise, focusing on robust,
-                        object-oriented systems and high-throughput backend services.</p>
-                    <div class="skills-grid">
-                        <article class="skill-card">
-                            <h3>Java</h3>
-                            <p>More than 8 years of hands-on experience building mission-critical backend systems in
-                                Java 8 through Java 21+. Proficient in modern features such as Virtual Threads (Project
-                                Loom), Streams API, and modular architecture. Led the development of enterprise-scale
-                                platforms serving high-traffic e-commerce websites including motorkux.id,
-                                auto2000.co.id, and seva.id. Focused on writing clean, maintainable code following SOLID
-                                principles and design patterns.</p>
-                            <span class="skill-level" aria-label="Proficiency: Lead Level">Lead Level</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>Spring Boot & MVC</h3>
-                            <p>Extensive use of the Spring ecosystem for both microservices and monolithic enterprise
-                                architectures. Deep understanding of Spring Security, Spring Data (JPA/Hibernate), and
-                                Dependency Injection for scalable application design. Currently leading the migration of
-                                SAP Commerce platforms into Spring Boot–based microservices, designing service
-                                boundaries, RBAC models, and reusable platform capabilities.</p>
-                            <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
-                        </article>
-                    </div>
-                </section>
-
-                <section class="skills-category-section">
-                    <h2 id="sap-ecosystem-ecommerce">SAP Ecosystem & E-Commerce</h2>
-                    <p class="category-intro">Specialized expertise in the SAP Customer Experience (CX) suite and
-                        large-scale commerce platform implementation.</p>
-                    <div class="skills-grid">
-                        <article class="skill-card">
-                            <h3>SAP Commerce (Hybris)</h3>
-                            <p>Deep expertise in SAP Commerce Cloud architecture, including core platform customization,
-                                data modeling, OCC API development, Backoffice extensions, and CMS management. Led
-                                multiple enterprise implementations and platform upgrades (versions 6.6 through 2205)
-                                for Astra Group digital properties. Experienced with promotion engine customization, CMS
-                                lazy loading strategies, and full-page caching architecture using EHCache.</p>
-                            <span class="skill-level" aria-label="Proficiency: Lead Level">Lead Level</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>SAP CDP & Emarsys</h3>
-                            <p>Hands-on experience with SAP Customer Data Platform for unified customer profiling,
-                                segmentation, and identity resolution. Familiar with SAP Engagement Cloud (formerly SAP
-                                Emarsys) for omnichannel marketing automation, campaign orchestration, and personalized
-                                customer engagement across multiple business domains.</p>
-                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>SAP S/4HANA ABAP</h3>
-                            <p>Developing familiarity with ABAP development for core business logic extensions within
-                                the SAP S/4HANA ecosystem. Currently supporting SAP S/4HANA integration initiatives and
-                                expanding ERP integration expertise to bridge commerce and back-office operations.</p>
-                            <span class="skill-level" aria-label="Proficiency: Beginner">Beginner</span>
-                        </article>
-                    </div>
-                </section>
-
-                <section class="skills-category-section">
-                    <h2 id="architecture-integration-tools">Architecture, Integration & Tools</h2>
-                    <p class="category-intro">Designing distributed systems that are scalable, resilient, and deeply
-                        integrated within enterprise landscapes.</p>
-                    <div class="skills-grid">
-                        <article class="skill-card">
-                            <h3>REST & SOAP Integration</h3>
-                            <p>Specializing in complex enterprise system integrations using RESTful APIs and SOAP web
-                                services. Designed and implemented integrations between SAP Commerce and third-party
-                                services, including payment gateways (credit card, virtual account), shipping providers,
-                                and parent company platforms. Focus on data integrity, secure communication, retry
-                                mechanisms, and reliable message exchange.</p>
-                            <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>System Design & Performance</h3>
-                            <p>Focus on architectural scalability and performance engineering for high-traffic
-                                platforms. Designed full-page caching architecture reducing page load from ~2s to
-                                sub-second. Implemented CMS lazy loading and image resizer proxy reducing payload size
-                                up to 80%. Achieved 3× traffic spike resilience using Redis, EHCache, and CDN
-                                strategies.</p>
-                            <span class="skill-level" aria-label="Proficiency: Advanced">Advanced</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>Apache Kafka</h3>
-                            <p>Implementing event-driven architectures for real-time data synchronization between
-                                distributed enterprise systems. Experienced in designing producers, consumers, topic
-                                partitioning, and message schema management for high availability and guaranteed
-                                delivery.</p>
-                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>Cloud & Serverless</h3>
-                            <p>Experienced with Azure Function Apps for implementing serverless logic to augment core
-                                enterprise platform capabilities. Set up CI/CD pipelines using Azure DevOps and Jenkins
-                                to automate build, test, and deployment processes across multiple environments.</p>
-                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
-                        </article>
-
-                        <article class="skill-card">
-                            <h3>Drools</h3>
-                            <p>Designed a dynamic rules engine (Rules-as-a-Service) using Drools, enabling
-                                client-defined conditions and actions without code deployment. Built a reusable rules
-                                platform that decouples business logic from application services, including a payload
-                                validator on the fly. Delivered as a core platform capability for the SAP Commerce
-                                modernization initiative.</p>
-                            <span class="skill-level" aria-label="Proficiency: Intermediate">Intermediate</span>
-                        </article>
-                    </div>
-                </section>
-            </div>
-
-            <section id="core-philosophies" class="core-philosophies-section">
-                <h2>Core Philosophies</h2>
-                <ul class="philosophies-list">
-                    <li><strong>Clean Code:</strong> Adhering to SOLID principles to ensure long-term maintainability
-                        and system readability.</li>
-                    <li><strong>Performance First:</strong> Proactive optimization and profiling to ensure sub-second
-                        response times for enterprise platforms.</li>
-                    <li><strong>Mentorship:</strong> Leading by example and fostering a culture of technical excellence
-                        within engineering teams.</li>
-                </ul>
-            </section>
-
-            <section class="cta-section hide-for-print">
-                <h2>Looking for more?</h2>
-                <p>View my <a href="/" title="Yusuf Adiputera's full resume and work history">Full Resume &amp;
-                        Experience</a> or read my <a href="/faq"
-                        title="Frequently Asked Questions about technical architecture">Technical FAQ</a>.</p>
-            </section>
-        </main>
-
-        <footer>
-            &copy; <span id="current-year">2026</span> Yusuf Adiputera. All rights reserved.
-            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
-        </footer>
-    </div>
-    <script src="src/index.min.js?v=202603251700" defer></script>
-</body>
-
-</html>
+    {% include footer.html %}</div>
+  
