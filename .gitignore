@@ -13,3 +13,6 @@ _site/
 # Bundler
 .bundle/
 vendor/
+
+# Node
+node_modules/

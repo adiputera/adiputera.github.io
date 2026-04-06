@@ -1,0 +1,15 @@
+{
+  "name": "adiputera-github-io",
+  "private": true,
+  "scripts": {
+    "minify:css": "cleancss -o src/master.min.css src/master.css",
+    "minify:js": "terser src/index.js -o src/index.min.js --compress --mangle",
+    "minify": "npm run minify:css && npm run minify:js",
+    "version": "node scripts/bump-version.js",
+    "build": "npm run minify && npm run version"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.37.0"
+  }
+}

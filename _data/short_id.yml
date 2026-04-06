@@ -1,0 +1,86 @@
+section_experience: "Pengalaman Profesional"
+section_courses: "Kursus Utama"
+title: "Yusuf Adiputera – Lead Software Engineer (Versi Ringkas)"
+description: "Resume ringkas Yusuf Adiputera, Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java dan SAP Commerce."
+subtitle: "Lead Software Engineer | Java, SAP Commerce & Spring Framework"
+summary_html: |
+  <p>
+      Lead Software Engineer dengan lebih dari 8 tahun pengalaman spesialisasi dalam <strong>arsitektur
+          Java dan SAP Commerce (Hybris)</strong>.
+      Memiliki rekam jejak terbukti dalam merancang dan mengirimkan platform e-commerce skala enterprise
+      untuk Astra Group, berfokus pada skalabilitas,
+      modernisasi platform, dan integrasi sistem berperforma tinggi.
+  </p>
+  <p>
+      Keahlian mencakup microservices berbasis Spring, dynamic rules engine (Rules-as-a-Service),
+      performance engineering (EHCache, lazy loading),
+      dan integrasi enterprise di seluruh lanskap SAP (SAP CDP, SAP Engagement/Emarsys, S/4HANA).
+      Bersemangat dalam kepemimpinan engineering,
+      strategi teknis, dan membangun sistem high-availability yang mudah dipelihara.
+  </p>
+key_achievements:
+  - label: "Lead Architect"
+    text: "Berhasil membangun dan meluncurkan <i>motorkux.id</i> (2021–Sekarang) dan <i>seva.id</i> marketplace (2019–2021)."
+  - label: "Penghargaan"
+    text: "Memenangkan penghargaan internal \"Best Project Development Quality\" (2024)."
+  - label: "Rules-as-a-Service"
+    text: "Merancang dan implementasi dynamic rules engine menggunakan Drools, memisahkan logika bisnis dari kode."
+  - label: "Performa"
+    text: "Mencapai waktu respons sub-detik melalui EHCache full-page caching dan optimasi storefront."
+  - label: "Modernisasi"
+    text: "Memimpin inisiatif strategis migrasi monolit SAP Commerce ke microservices berbasis Spring Boot."
+  - label: "Integrasi Enterprise"
+    text: "Memberikan integrasi untuk SAP CDP, Emarsys, dan S/4HANA ABAP."
+skills:
+  - category: "Bahasa"
+    items: "Java, JavaScript, HTML, ABAP"
+  - category: "Framework"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, jQuery, Azure Functions"
+  - category: "Platform"
+    items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys), SAP S/4HANA"
+  - category: "Alat & Infra"
+    items: "Kafka, Apache Solr, Drools, Redis, Kafka, Azure DevOps, Jenkins, Git"
+experience:
+  - title: "Lead Software Engineer"
+    company: "PT Astra International Tbk"
+    duration: "Feb 2021 – Sekarang"
+    items:
+      - label: "Engineering Leadership"
+        text: "Memimpin tim hingga 12 engineer dalam pengiriman platform enterprise dari analisis hingga rilis (motorkux.id)."
+      - label: "Modernisasi"
+        text: "Memimpin inisiatif strategis migrasi SAP Commerce ke microservices, mengawasi 3 proyek paralel."
+      - label: "Rules Engine"
+        text: "Membangun platform aturan dinamis (Drools) yang memungkinkan aksi ditentukan klien tanpa deployment kode."
+      - label: "Skalabilitas"
+        text: "Optimasi performa (caching, image proxy, lazy loading) untuk menangani lonjakan trafik 3x lipat dengan respons sub-detik."
+      - label: "Integrasi"
+        text: "Mendukung integrasi SAP CDP, otomatisasi pemasaran Emarsys, dan integrasi S/4HANA."
+  - title: "Pelatih Bootcamp (Java & SAP Commerce)"
+    company: "PT Astra International Tbk"
+    duration: "Nov 2021 – Des 2022"
+    description: "Melatih 3 batch internal SAP Commerce bootcamp yang mencakup dasar-dasar Java, Spring MVC, dan SAP Commerce/Hybris."
+  - title: "Lead Software Developer"
+    company: "PT Astra International Tbk"
+    duration: "Apr 2020 – Jan 2021"
+    items:
+      - label: "Peluncuran Platform"
+        text: "Berhasil meluncurkan seva.id marketplace dengan integrasi pembayaran, pengiriman, dan SOAP pihak ketiga."
+      - label: "DevOps"
+        text: "Membangun pipeline CI/CD pada Azure DevOps dan Jenkins; mengelola upgrade versi SAP Commerce."
+  - title: "Tech Lead & DevOps Engineer"
+    company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
+    duration: "Apr 2019 – Apr 2020"
+    items:
+      - label: "Migrasi Database"
+        text: "Eksekusi migrasi tanpa hambatan dari SAP HANA ke Aurora MySQL untuk proyek otomotif dan marketplace."
+      - label: "Otomatisasi"
+        text: "Transisi dari deployment manual ke pipeline CI/CD otomatis di lingkungan Dev/QA/Pre-Prod."
+  - title: "Software Developer"
+    company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
+    duration: "Apr 2018 – Apr 2019"
+    items:
+      - label: "Seva.id Property"
+        text: "Membangun dan meluncurkan modul marketplace properti; implementasi OAuth social login."
+education: "Sarjana Ilmu Komputer"
+education_institution: "Universitas Diponegoro, Indonesia"
+courses: "SAP Hybris Commerce Developer I & II • Confluent Developer Skills for Building Apache Kafka® (Confluent) • Java Spring Bootcamp • Oracle Academy Java Programming"

@@ -1,0 +1,51 @@
+{% if page.permalink == '/' or page.permalink == '/id' %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "Yusuf Adiputera - Lead Software Engineer",
+    "url": "{{ site.url }}/",
+    "description": "{% if page.lang == 'id' %}Portofolio profesional Yusuf Adiputera, Lead Software Engineer yang berspesialisasi dalam Java dan SAP Commerce{% else %}Professional portfolio of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce{% endif %}",
+    "author": {
+        "@type": "Person",
+        "@id": "https://adiputera.github.io/#person",
+        "name": "Yusuf Adiputera"
+    },
+    "mainEntity": {
+        "@type": "Person",
+        "@id": "https://adiputera.github.io/#person",
+        "name": "Yusuf Adiputera"
+    },
+    "inLanguage": ["en", "id"],
+    "datePublished": "{{ site.data.lastmod.published.home }}",
+    "dateModified": "{% if page.lang == 'id' %}{{ site.data.lastmod.home_id }}{% else %}{{ site.data.lastmod.home_en }}{% endif %}",
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".summary"]
+    }
+}
+</script>
+{% elsif page.permalink == '/short' or page.permalink == '/short-id' %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "{% if page.lang == 'id' %}Yusuf Adiputera - Lead Software Engineer (Versi Ringkas){% else %}Yusuf Adiputera - Lead Software Engineer (Condensed Version){% endif %}",
+    "url": "{{ site.url }}{{ page.permalink }}",
+    "description": "{% if page.lang == 'id' %}Portofolio profesional Yusuf Adiputera (Versi Ringkas), Lead Software Engineer yang berspesialisasi dalam Java dan SAP Commerce{% else %}Condensed resume of Yusuf Adiputera, Lead Software Engineer specializing in Java and SAP Commerce{% endif %}",
+    "author": {
+        "@type": "Person",
+        "@id": "https://adiputera.github.io/#person",
+        "name": "Yusuf Adiputera"
+    },
+    "mainEntity": {
+        "@type": "Person",
+        "@id": "https://adiputera.github.io/#person",
+        "name": "Yusuf Adiputera"
+    },
+    "inLanguage": ["en", "id"],
+    "datePublished": "{{ site.data.lastmod.published.short }}",
+    "dateModified": "{% if page.lang == 'id' %}{{ site.data.lastmod.short_id }}{% else %}{{ site.data.lastmod.short_en }}{% endif %}"
+}
+</script>
+{% endif %}

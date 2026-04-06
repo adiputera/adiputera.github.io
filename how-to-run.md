@@ -6,50 +6,57 @@ This guide walks you through installing all prerequisites and running the Jekyll
 
 ## What You Need to Install
 
-1. **Homebrew** - macOS package manager (if not already installed)
-2. **Ruby 3.3** - Programming language (Jekyll requires Ruby 3.x, NOT Ruby 4.x)
-3. **Bundler** - Ruby dependency manager
-4. **Jekyll & Dependencies** - Static site generator and related gems
+1. **Ruby 3.1** - Programming language (Jekyll requires Ruby 3.x, NOT Ruby 4.x)
+2. **Bundler** - Ruby dependency manager
+3. **Jekyll & Dependencies** - Static site generator and related gems
 
 ---
 
 ## Installation Steps
 
-### Step 1: Check if Homebrew is Installed
+### Step 1: Install Ruby 3.1
+
+Ruby 3.1 is required (compatible with Jekyll 3.9.0 and Liquid 4.0.3). Ruby 3.2+ and Ruby 4.0+ are NOT compatible due to removed `tainted?` method.
+
+#### macOS (Homebrew)
 
 ```bash
-brew --version
-```
-
-**If you see a version number**, Homebrew is already installed. Skip to Step 2.
-
-**If you see "command not found"**, install Homebrew:
-
-```bash
+# Install Homebrew if not already installed
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
 
-Follow the on-screen instructions to complete installation.
-
----
-
-### Step 2: Install Ruby 3.1
-
-```bash
+# Install Ruby 3.1
 brew install ruby@3.1
 ```
-
-This installs Ruby 3.1 (compatible with Jekyll 3.9.0 and Liquid 4.0.3). Ruby 3.2+ and Ruby 4.0+ are NOT compatible due to removed `tainted?` method.
-
----
-
-### Step 3: Configure Ruby 3.1 as Default
 
 Add Ruby 3.1 to your shell PATH:
 
 ```bash
 echo 'export PATH="/usr/local/opt/ruby@3.1/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
+```
+
+#### Ubuntu / Debian
+
+Install build dependencies and rbenv to manage Ruby versions:
+
+```bash
+# Install dependencies
+sudo apt update
+sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev \
+  autoconf bison build-essential libyaml-dev libffi-dev libgdbm-dev \
+  libncurses5-dev libsqlite3-dev
+
+# Install rbenv and ruby-build
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+
+# Add rbenv to PATH
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install Ruby 3.1.7 and set as default
+rbenv install 3.1.7
+rbenv global 3.1.7
 ```
 
 **Verify the installation:**
@@ -60,11 +67,11 @@ ruby --version
 
 **Expected output:** `ruby 3.1.x` (e.g., `ruby 3.1.7`)
 
-**Note:** If you still see Ruby 3.3.x or 4.x, restart your terminal and run `ruby --version` again.
+**Note:** If you still see a different Ruby version, restart your terminal and run `ruby --version` again.
 
 ---
 
-### Step 4: Install Bundler
+### Step 2: Install Bundler
 
 ```bash
 gem install bundler
@@ -78,12 +85,12 @@ bundle --version
 
 ---
 
-### Step 5: Install Jekyll and All Dependencies
+### Step 3: Install Jekyll and All Dependencies
 
 Navigate to the project directory:
 
 ```bash
-cd /Users/adiputera/master_git/adiputera.github.io
+cd path/to/adiputera.github.io
 ```
 
 Install all required gems from the Gemfile:
@@ -121,9 +128,9 @@ bundle exec jekyll serve --livereload
 **Expected output:**
 
 ```
-Configuration file: /Users/adiputera/master_git/adiputera.github.io/_config.yml
-            Source: /Users/adiputera/master_git/adiputera.github.io
-       Destination: /Users/adiputera/master_git/adiputera.github.io/_site
+Configuration file: /path/to/adiputera.github.io/_config.yml
+            Source: /path/to/adiputera.github.io
+       Destination: /path/to/adiputera.github.io/_site
       Generating... 
                     done in X.XXX seconds.
  Auto-regeneration: enabled
@@ -170,7 +177,7 @@ Once everything is installed, your typical workflow is:
 
 ```bash
 # 1. Navigate to project
-cd /Users/adiputera/master_git/adiputera.github.io
+cd path/to/adiputera.github.io
 
 # 2. Start server with live reload
 bundle exec jekyll serve --livereload
@@ -218,24 +225,31 @@ ruby -ryaml -e "YAML.load_file('_data/id.yml')"
 
 ### Issue: Ruby version still shows 3.3.x or 4.x
 
-**Solution:**
+**Solution (macOS):**
 ```bash
-# Reload shell configuration
 source ~/.zshrc
-
-# Verify PATH includes Ruby 3.1
 echo $PATH | grep ruby@3.1
 
 # If not found, manually add to PATH:
 export PATH="/usr/local/opt/ruby@3.1/bin:$PATH"
 ```
 
+**Solution (Ubuntu):**
+```bash
+source ~/.bashrc
+rbenv versions      # Check installed versions
+rbenv global 3.1.7  # Set Ruby 3.1.7 as default
+```
+
 ### Issue: "Port 4000 already in use"
 
 **Solution:**
 ```bash
-# Find and kill process using port 4000
+# Find and kill process using port 4000 (macOS)
 lsof -ti:4000 | xargs kill -9
+
+# Find and kill process using port 4000 (Ubuntu)
+fuser -k 4000/tcp
 
 # Or use a different port
 bundle exec jekyll serve --port 4001
@@ -245,10 +259,15 @@ bundle exec jekyll serve --port 4001
 
 **Solution:**
 ```bash
-# Ensure you're in the project directory
-cd /Users/adiputera/master_git/adiputera.github.io
+# Ensure you're in the project directory and reinstall
+bundle install
+```
 
-# Reinstall dependencies
+### Issue: Build errors about missing native extensions (Ubuntu)
+
+**Solution:**
+```bash
+sudo apt install -y libssl-dev libreadline-dev zlib1g-dev libyaml-dev libffi-dev
 bundle install
 ```
 
@@ -351,31 +370,38 @@ Visit `http://localhost:4000`
 
 ## Quick Setup Command Summary
 
-Copy and paste all commands:
+**macOS:**
 
 ```bash
-# Install Ruby 3.1
 brew install ruby@3.1
-
-# Add to PATH
 echo 'export PATH="/usr/local/opt/ruby@3.1/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
-
-# Verify
 ruby --version
-
-# Navigate to project
-cd /Users/adiputera/master_git/adiputera.github.io
-
-# Install Bundler
+cd path/to/adiputera.github.io
 gem install bundler
-
-# Install dependencies
 bundle install
-
-# Start server
 bundle exec jekyll serve --livereload
+# Open http://localhost:4000
+```
 
+**Ubuntu / Debian:**
+
+```bash
+sudo apt update
+sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev \
+  autoconf bison build-essential libyaml-dev libffi-dev libgdbm-dev \
+  libncurses5-dev libsqlite3-dev
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+rbenv install 3.1.7
+rbenv global 3.1.7
+ruby --version
+cd path/to/adiputera.github.io
+gem install bundler
+bundle install
+bundle exec jekyll serve --livereload
 # Open http://localhost:4000
 ```
 

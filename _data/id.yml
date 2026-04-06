@@ -45,6 +45,7 @@ social:
 ui:
   buttons:
     print_resume: "🖨️ Cetak Resume"
+    print_aria: "Cetak atau simpan resume sebagai PDF"
     dark_mode: "🌙 Mode Gelap"
   language_switcher:
     current: "ID"
@@ -67,11 +68,12 @@ sections:
   faq: "Pertanyaan Umum"
 
 links:
-  short_version: "Terlalu panjang? Baca versi ringkas →"
+  short_version_label: "Terlalu panjang?"
+  short_version_link: "Baca versi ringkas &rarr;"
   short_version_url: "/short-id"
-  detailed_skills: "Lihat keahlian teknis & teknologi terperinci →"
+  detailed_skills: "Lihat keahlian teknis & teknologi terperinci &rarr;"
   detailed_skills_url: "/skills-id"
-  faq: "Punya pertanyaan? Cek FAQ →"
+  faq: "Punya pertanyaan? Cek FAQ &rarr;"
   faq_url: "/faq-id"
 
 breadcrumb:
@@ -161,7 +163,7 @@ experience:
         <li>Bertanggung jawab atas <i>end-to-end delivery</i> termasuk desain arsitektur, perencanaan proyek, eksekusi sprint, dan manajemen rilis.</li>
         <li>Menetapkan <i>coding standards</i> dan menegakkan <i>engineering quality</i> melalui <i>code reviews</i>, <i>technical mentoring</i>, dan <i>knowledge sharing</i>.</li>
         <li>Mengoordinasikan kolaborasi lintas tim di seluruh tim produk, infrastruktur, dan integrasi perusahaan.</li>
-        <li>Memenangkan penghargaan internal "Best Project Development Quality" (2024).</li>
+        <li>Memenangkan penghargaan internal “Best Project Development Quality” (2024).</li>
       </ul>
 
       <h4>Platform Modernization & Architecture (Sedang berlangsung)</h4>
@@ -220,7 +222,7 @@ experience:
         <li>Optimalisasi kinerja dan perbaikan <i>scalability</i></li>
       </ul>
 
-      <p><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices Architecture, RBAC, Drools, EHCache, JSP, Azure DevOps, Jenkins, SAP CDP, SAP Emarsys, SAP S/4HANA.</p>
+      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices Architecture, RBAC, Drools, EHCache, JSP, Azure DevOps, Jenkins, SAP CDP, SAP Emarsys, SAP S/4HANA.</p>
 
   - title: "Bootcamp Trainer"
     company: "PT Astra International Tbk"
@@ -303,18 +305,5 @@ experience:
         <li>Mengembangkan dan memelihara fitur e-commerce utama, secara aktif menangani bug dan mengoptimasi fungsionalitas untuk property marketplace.</li>
         <li>Mengimplementasikan integrasi login media sosial (OAuth) untuk memudahkan onboarding dan autentikasi pengguna.</li>
       </ul>
-      <p style="margin-top: 1rem;"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, REST/SOAP APIs, OAuth</p>
+      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, REST/SOAP APIs, OAuth</p>
 
-articles:
-  - title: "How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse"
-    url: "articles/remote-debug-sap-commerce"
-    snippet: "Tutorial mendalam yang menjelaskan bagaimana developer dapat mengonfigurasi dan menyambungkan debugger jarak jauh di IntelliJ IDEA dan Eclipse untuk memecahkan masalah kompleks pada server SAP Commerce (On-Premise)."
-  - title: "How to Enable Image Upload in Backoffice WYSIWYG editor"
-    url: "articles/enable-image-upload-backoffice"
-    snippet: "Panduan konfigurasi langkah demi langkah tentang cara memperluas antarmuka pengguna bawaan SAP Commerce Backoffice untuk memungkinkan pengguna bisnis internal mengunggah media langsung melalui alat WYSIWYG CKEditor."
-  - title: "How to install additional plugins to Backoffice's WYSIWYG editor"
-    url: "articles/install-plugins-backoffice"
-    snippet: "Eksplorasi teknis mengenai penyesuaian lanjutan CKEditor dalam kerangka kerja SAP Commerce, merinci cara menyuntikkan plugin JavaScript kustom ke dalam lingkungan Backoffice."
-  - title: "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)"
-    url: "articles/sap-commerce-sso-bcrypt-error"
-    snippet: "Rincian arsitektur mengenai batasan Single Sign-On (SSO) yang ditemui saat menggunakan Spring Security dan BCrypt di SAP Commerce, beserta penerapan solusi bypass enkripsi yang digunakan."

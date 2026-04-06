@@ -483,6 +483,8 @@ footer {
 .article-content img {
     border-radius: 4px;
     border: 1px solid var(--border);
+    display: block;
+    margin: 1.5rem auto;
 }
 
 .article-content figure {
@@ -495,11 +497,14 @@ footer {
     border: none;
 }
 
-.article-content figcaption {
+.article-content figcaption,
+.article-content img + em {
+    display: block;
     margin-top: 0.5rem;
     font-size: 0.875rem;
     color: var(--subtext);
     font-style: italic;
+    text-align: center;
 }
 
 .article-meta {

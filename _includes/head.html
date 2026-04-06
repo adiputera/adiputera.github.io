@@ -28,10 +28,18 @@
 <link rel="apple-touch-startup-image" href="{{ site.baseurl }}/images/512.png">
 
 <!-- Canonical & Alternates -->
-<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-<link rel="alternate" hreflang="en" href="{{ site.url }}{{ site.data.meta.hreflang.en }}" />
-<link rel="alternate" hreflang="id" href="{{ site.url }}{{ site.data.meta.hreflang.id }}" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.data.meta.hreflang.default }}" />
+{% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}" />
+{% else %}<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+{% endif %}
+{% if page.lang == 'id' %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.permalink_en | default: '/' }}" />
+<link rel="alternate" hreflang="id" href="{{ site.url }}{{ page.permalink | default: '/id' }}" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.permalink_en | default: '/' }}" />
+{% else %}
+<link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.permalink | default: '/' }}" />
+<link rel="alternate" hreflang="id" href="{{ site.url }}{{ page.permalink_id | default: '/id' }}" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.permalink | default: '/' }}" />
+{% endif %}
 
 <!-- PWA Manifest -->
 <link rel="manifest" href="{{ site.baseurl }}/manifest.json" />
@@ -56,24 +64,24 @@
 <meta property="og:image:width" content="{{ site.data.meta.og_defaults.image_width }}" />
 <meta property="og:image:height" content="{{ site.data.meta.og_defaults.image_height }}" />
 <meta property="og:image:type" content="{{ site.data.meta.og_defaults.image_type }}" />
-<meta property="og:image:alt" content="{{ site.data.meta.og_defaults.image_alt }}" />
-<meta property="og:type" content="{{ page.og_type | default: site.data.meta.og_defaults.type }}" />
+<meta property="og:image:alt" content="{% if page.lang == 'id' %}Foto Yusuf Adiputera – Lead Software Engineer{% else %}{{ site.data.meta.og_defaults.image_alt }}{% endif %}" />
+<meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}{{ page.og_type | default: site.data.meta.og_defaults.type }}{% endif %}" />
 <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 <meta property="og:locale" content="{% if page.lang == 'id' %}id_ID{% else %}en_US{% endif %}" />
 <meta property="og:site_name" content="{{ site.data.meta.og_defaults.site_name }}" />
 
 <!-- Profile Meta (for profile type pages) -->
-{% if page.og_type == 'profile' or site.data.meta.og_defaults.type == 'profile' %}
+{% unless page.layout == 'article' %}{% if page.og_type == 'profile' or site.data.meta.og_defaults.type == 'profile' %}
 <meta property="profile:first_name" content="{{ site.data.meta.profile.first_name }}" />
 <meta property="profile:last_name" content="{{ site.data.meta.profile.last_name }}" />
 <meta property="profile:username" content="{{ site.data.meta.profile.username }}" />
 <meta property="profile:gender" content="{{ site.data.meta.profile.gender }}" />
-{% endif %}
+{% endif %}{% endunless %}
 
 <!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="{{ site.data.meta.twitter_defaults.card }}" />
-<meta name="twitter:title" content="{{ page.title | default: lang_data.site.title }}" />
-<meta name="twitter:description" content="{{ page.description | default: lang_data.site.description }}" />
+<meta name="twitter:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
+<meta name="twitter:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />
 <meta name="twitter:image" content="{{ page.twitter_image | default: site.data.meta.twitter_defaults.image }}" />
 <meta name="twitter:image:alt" content="{{ site.data.meta.twitter_defaults.image_alt }}" />
 
@@ -86,17 +94,14 @@
 <!-- Article JSON-LD Schema (for article pages) -->
 {% include schema-article.html %}
 
-<!-- Theme Detection Script -->
-<script>
-  (function() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-    
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    if (metaTheme) {
-      metaTheme.content = theme === 'dark' ? '{{ site.data.meta.pwa.theme_color_dark }}' : '{{ site.data.meta.pwa.theme_color_light }}';
-    }
-  })();
-</script>
+<!-- ProfilePage JSON-LD Schema (for homepage) -->
+{% include schema-profilepage.html %}
+
+<!-- BreadcrumbList JSON-LD Schema -->
+{% include schema-breadcrumb.html %}
+
+<!-- ArticleList JSON-LD Schema (for homepage) -->
+{% include schema-articlelist.html %}
+
+<!-- Skills JSON-LD Schema (for skills page) -->
+{% include schema-skills.html %}

@@ -1,0 +1,24 @@
+{% if page.permalink == '/' or page.permalink == '/id' %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "{% if page.lang == 'id' %}Artikel Teknis oleh Yusuf Adiputera{% else %}Technical Articles by Yusuf Adiputera{% endif %}",
+    "description": "{% if page.lang == 'id' %}Artikel teknis tentang SAP Commerce yang ditulis oleh Yusuf Adiputera{% else %}Technical articles about SAP Commerce written by Yusuf Adiputera{% endif %}",
+    "itemListElement": [{% for article in site.articles %}
+        {
+            "@type": "Article",
+            "position": {{ forloop.index }},
+            "headline": {{ article.title | jsonify }},
+            "url": "{{ site.url }}{{ article.permalink }}",
+            "datePublished": "{{ article.date | date: '%Y-%m-%d' }}",
+            "dateModified": "{{ article.date | date: '%Y-%m-%d' }}",
+            "inLanguage": "en",
+            "author": {
+                "@id": "https://adiputera.github.io/#person"
+            }
+        }{% unless forloop.last %},{% endunless %}{% endfor %}
+    ]
+}
+</script>
+{% endif %}

@@ -1,0 +1,80 @@
+---
+layout: default
+---
+{% assign data = site.data[page.lang] %}
+{% assign short_key = "short_" | append: page.lang %}
+{% assign short = site.data[short_key] %}
+<div class="container">
+        {% include navigation.html %}
+
+        <header>
+            <button class="button hide-for-print" onclick="window.print()" style="margin-right: 10px;">{{ data.ui.buttons.print_resume }}</button>
+            {% include theme-toggle.html %}
+            <h1 class="main-heading">
+                Yusuf Adiputera
+                <span class="title">{{ short.subtitle }}</span>
+            </h1>
+
+            <h2 class="contact-heading">{{ data.sections.contact }}</h2>
+            <p>📧 <a href="mailto:yusuf@adiputera.id">yusuf@adiputera.id</a> | 🔗 <a
+                    href="https://www.linkedin.com/in/yusuf-adiputera"
+                    target="_blank">linkedin.com/in/yusuf-adiputera</a></p>
+        </header>
+
+        <main>
+            <h2 id="summary">{{ data.sections.summary }}</h2>
+            <div class="summary">
+                {{ short.summary_html }}
+            </div>
+
+            <h2 id="key-achievements">{{ data.sections.achievements }}</h2>
+            <ul class="key-achievements">
+                {% for item in short.key_achievements %}
+                <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2 id="skills">{{ data.sections.skills }}</h2>
+            <ul class="skills-group">
+                {% for skill in short.skills %}
+                <li class="skills-item"><strong>{{ skill.category }}:</strong> {{ skill.items }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2 id="experience">{{ short.section_experience }}</h2>
+
+            {% for job in short.experience %}
+            <div class="job">
+                <div class="job-details">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">
+                                <h3>{{ job.title }}</h3>
+                            </div>
+                            <div class="company">{{ job.company }}</div>
+                        </div>
+                        <div class="duration">{{ job.duration }}</div>
+                    </div>
+                    <div class="description">
+                        {% if job.items %}
+                        <ul>
+                            {% for item in job.items %}
+                            <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% elsif job.description %}
+                        <p>{{ job.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <h2 id="education">{{ data.sections.education }}</h2>
+            <p><strong>{{ short.education }}</strong> | {{ short.education_institution }}</p>
+
+            <h2 id="courses">{{ short.section_courses }}</h2>
+            <p>{{ short.courses }}</p>
+
+        </main>
+    </div>

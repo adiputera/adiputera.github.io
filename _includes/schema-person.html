@@ -1,3 +1,9 @@
+{% if page.lang == 'id' %}
+<script type="application/ld+json">
+{{ site.data.schema_person_id | jsonify }}
+</script>
+{% else %}
 <script type="application/ld+json">
 {{ site.data.schema_person | jsonify }}
 </script>
+{% endif %}

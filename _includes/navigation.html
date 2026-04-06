@@ -5,7 +5,13 @@
             <li><a href="{% if page.lang == 'id' %}/id{% else %}/{% endif %}">{{ lang_data.breadcrumb.home }}</a></li>
             {% if page.breadcrumb %}
             <li class="breadcrumb-separator">/</li>
+            {% if page.breadcrumb_short %}
+            <li><a href="{% if page.lang == 'id' %}/id{% else %}/{% endif %}#articles">{{ page.breadcrumb }}</a></li>
+            <li class="breadcrumb-separator">/</li>
+            <li class="breadcrumb-current">{{ page.breadcrumb_short }}</li>
+            {% else %}
             <li class="breadcrumb-current">{{ page.breadcrumb }}</li>
+            {% endif %}
             {% endif %}
         </ol>
     </nav>

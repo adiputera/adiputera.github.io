@@ -1,4 +1,44 @@
 ---
 layout: default
 ---
-{{ content }}
+{% assign faq_key = 'faq_' | append: page.lang %}
+{% assign faq = site.data[faq_key] %}
+<div class="container">
+        {% include navigation.html %}
+
+        <header>
+            {% include theme-toggle.html %}
+            <h1>{{ faq.header.h1 }}</h1>
+            <h2 class="title">
+                {{ faq.header.h2 }}
+            </h2>
+            <p class="lang-switch">
+                {{ faq.header.lang_switch }}
+            </p>
+
+            <p>{{ faq.header.resume }}</p>
+        </header>
+
+        <main>
+            <section id="faq" class="faq-section">
+{% for section in faq.sections %}
+                <h3 class="faq-subtitle">{{ section.subtitle }}</h3>
+                <section id="{{ section.id }}" class="faq-subsection">
+{% for item in section.items %}
+                    <div class="faq-item open">
+                        <h4 class="faq-question">{{ item.question }}</h4>
+                        <div class="faq-answer">
+                            {{ item.answer }}
+                        </div>
+                    </div>
+{% endfor %}
+                </section>
+{% endfor %}
+                    <p style="margin-top: 2rem;">{{ faq.footer_text }}</p>
+                </section>
+        </main>
+
+        {% include schema-faqpage.html %}
+
+        {% include footer.html %}
+    </div>

@@ -1,0 +1,40 @@
+{% if page.permalink == '/skills' or page.permalink == '/skills-id' %}
+{% assign sp_key = "skills_page_" | append: page.lang %}
+{% assign sp = site.data[sp_key] %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "{% if page.lang == 'id' %}Keahlian Teknis Yusuf Adiputera{% else %}Technical Skills of Yusuf Adiputera{% endif %}",
+    "numberOfItems": {{ sp.schema_skills | size }},
+    "itemListElement": [{% for skill in sp.schema_skills %}{% if forloop.first == false %},{% endif %}
+        {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "name": {{ skill.name | jsonify }},
+            "description": {{ skill.description | jsonify }}
+        }{% endfor %}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{% if page.lang == 'id' %}Keahlian Teknis – Yusuf Adiputera{% else %}Technical Skills – Yusuf Adiputera{% endif %}",
+    "description": "{% if page.lang == 'id' %}Daftar lengkap keahlian teknis termasuk Java, Spring Boot, dan SAP Commerce Cloud.{% else %}Comprehensive list of technical skills including Java, Spring Boot, and SAP Commerce Cloud.{% endif %}",
+    "datePublished": "{{ site.data.lastmod.published.skills }}",
+    "dateModified": "{% if page.lang == 'id' %}{{ site.data.lastmod.skills_id }}{% else %}{{ site.data.lastmod.skills_en }}{% endif %}",
+    "author": {
+        "@type": "Person",
+        "@id": "https://adiputera.github.io/#person",
+        "name": "Yusuf Adiputera"
+    },
+    "inLanguage": "{{ page.lang }}",
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".skills-hero"]
+    }
+}
+</script>
+{% endif %}

@@ -1,0 +1,34 @@
+{% assign faq_key = 'faq_' | append: page.lang %}
+{% assign faq = site.data[faq_key] %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "{{ page.title }}",
+    "description": "{{ page.description }}",
+    "author": {
+        "@type": "Person",
+        "@id": "https://adiputera.github.io/#person",
+        "name": "Yusuf Adiputera"
+    },
+    "inLanguage": "{{ page.lang }}",
+    "datePublished": "{{ site.data.lastmod.published.faq }}",
+    "dateModified": "{{ site.data.lastmod[faq_key] }}",
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".faq-answer"]
+    },
+    "mainEntity": [
+        {% for section in faq.sections %}{% for item in section.items %}{% unless forloop.first and section == faq.sections.first %}
+        ,
+        {% endunless %}{
+            "@type": "Question",
+            "name": {{ item.question | jsonify }},
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ item.answer | strip_html | strip_newlines | strip | jsonify }}
+            }
+        }{% endfor %}{% endfor %}
+    ]
+}
+</script>

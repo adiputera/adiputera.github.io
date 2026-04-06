@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{% assign data = site.data[page.lang] %}
+{% assign sp_key = "skills_page_" | append: page.lang %}
+{% assign sp = site.data[sp_key] %}
+<div class="container">
+    {% include navigation.html %}
+
+    <header>
+      {% include theme-toggle.html %}
+      <h1 class="main-heading">
+        <a href="{{ sp.home_url }}" style="text-decoration: none; color: inherit;" rel="noopener" title="{{ sp.home_title }}">Yusuf
+          Adiputera</a>
+        <span class="title">{{ sp.subtitle }}</span>
+      </h1>
+    </header>
+
+    <main>
+      <section class="skills-hero">
+        <p>{{ sp.hero }}</p>
+      </section>
+
+      <div class="skills-categories">
+        {% for cat in sp.categories %}
+        <section class="skills-category-section">
+          <h2 id="{{ cat.id }}">{{ cat.heading }}</h2>
+          <p class="category-intro">{{ cat.intro }}</p>
+          <div class="skills-grid">
+            {% for skill in cat.skills %}
+            <article class="skill-card">
+              <h3>{{ skill.name }}</h3>
+              <p>{{ skill.description }}</p>
+              <span class="skill-level" aria-label="Proficiency: {{ skill.level }}">{{ skill.level }}</span>
+            </article>
+            {% endfor %}
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+
+      <section id="core-philosophies" class="core-philosophies-section">
+        <h2>{{ sp.philosophies.heading }}</h2>
+        <ul class="philosophies-list">
+          {% for item in sp.philosophies.items %}
+          <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="cta-section hide-for-print">
+        <h2>{{ sp.cta.heading }}</h2>
+        <p>{{ sp.cta.text_html }}</p>
+      </section>
+    </main>
+
+    {% include footer.html %}</div>

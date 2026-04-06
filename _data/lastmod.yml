@@ -1,0 +1,18 @@
+# Last modified dates for sitemap and schema markup
+# Update the specific page entry when its content changes
+
+home_en: 2026-03-02
+home_id: 2026-03-02
+short_en: 2026-03-02
+short_id: 2026-03-02
+skills_en: 2026-03-02
+skills_id: 2026-03-02
+faq_en: 2026-03-02
+faq_id: 2026-03-02
+
+# Date published (first publish date, should not change)
+published:
+  home: 2025-07-07
+  short: 2025-07-07
+  skills: 2026-02-27
+  faq: 2025-10-05

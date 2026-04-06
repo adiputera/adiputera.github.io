@@ -45,6 +45,7 @@ social:
 ui:
   buttons:
     print_resume: "🖨️ Print Resume"
+    print_aria: "Print or save resume as PDF"
     dark_mode: "🌙 Dark Mode"
   language_switcher:
     current: "EN"
@@ -67,11 +68,12 @@ sections:
   faq: "Frequently Asked Questions"
 
 links:
-  short_version: "Too long? Read the short version →"
+  short_version_label: "Too long?"
+  short_version_link: "Read the short version &rarr;"
   short_version_url: "/short"
-  detailed_skills: "View detailed technical expertise & technologies →"
+  detailed_skills: "View detailed technical expertise & technologies &rarr;"
   detailed_skills_url: "/skills"
-  faq: "Have questions? Check FAQ →"
+  faq: "Have questions? Check FAQ &rarr;"
   faq_url: "/faq"
 
 breadcrumb:
@@ -161,7 +163,7 @@ experience:
         <li>Owned end-to-end delivery including architecture design, project planning, sprint execution, and release management.</li>
         <li>Established coding standards and enforced engineering quality through code reviews, technical mentoring, and knowledge sharing.</li>
         <li>Coordinated cross-team collaboration across product, infrastructure, and enterprise integration teams.</li>
-        <li>Won internal "Best Project Development Quality" award (2024).</li>
+        <li>Won internal “Best Project Development Quality” award (2024).</li>
       </ul>
 
       <h4>Platform Modernization & Architecture (on going)</h4>
@@ -304,16 +306,3 @@ experience:
       </ul>
       <p style="margin-top: 1rem;"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, REST/SOAP APIs, OAuth</p>
 
-articles:
-  - title: "How to Remote Debug SAP Commerce on IntelliJ IDEA and Eclipse"
-    url: "articles/remote-debug-sap-commerce"
-    snippet: "A deep-dive tutorial explaining how developers can configure and attach remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce (On-Premise) server issues."
-  - title: "How to Enable Image Upload in Backoffice WYSIWYG editor"
-    url: "articles/enable-image-upload-backoffice"
-    snippet: "Step-by-step configuration guide on extending the default SAP Commerce Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG tool."
-  - title: "How to install additional plugins to Backoffice's WYSIWYG editor"
-    url: "articles/install-plugins-backoffice"
-    snippet: "A technical exploration on advanced CKEditor customization within the SAP Commerce framework, detailing how to inject custom JavaScript plugins into the Backoffice environment."
-  - title: "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)"
-    url: "articles/sap-commerce-sso-bcrypt-error"
-    snippet: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce, alongside the implemented encryption bypass solution."
