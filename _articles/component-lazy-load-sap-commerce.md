@@ -139,23 +139,143 @@ Now let's also test to get component by UID
 
 And that works too! Now we can move to the next step.
 
-4. ini untuk hapus tag cms content slot dari layout jsp
+4. Remove the CMS content slot tag from the layout JSP. Instead of rendering the slot directly, we replace it with a **dummy placeholder element** that holds the slot metadata as data attributes.
 
-5. ini untuk bikin function call component
+    For example, in your page layout JSP (e.g., `landingLayout2Page.jsp`), replace:
+    ```HTML
+    <cms:pageSlot position="Section1" var="feature" element="div" class="row">
+        <cms:component component="${feature}" element="div" class="col-xs-12"/>
+    </cms:pageSlot>
+    ```
 
-6. ini untuk bikin function is element in or above view port
+    With a dummy element:
+    ```HTML
+    <div class="lazy-slot"
+         data-slot-position="Section1"
+         data-slot-element="div"
+         data-slot-class="row"
+         data-component-element="div"
+         data-component-class="col-xs-12"
+         data-page-id="${currentPage.uid}">
+        <div class="lazy-loading-placeholder"></div>
+    </div>
+    ```
 
-7. ini untuk bikin function gabungin 5 dan 6.
+    The dummy element is lightweight — it only holds the metadata needed to fetch the actual components later.
 
-8. ini untuk hasil test
+5. Create a JavaScript function to fetch the component HTML via Ajax.
 
-9. ini untuk ngasih dummy element di layout, kenapa perlu
+    ```javascript
+    function fetchSlotComponents(element, functionToExecute) {
+        var params = {
+            slotPosition: element.getAttribute("data-slot-position"),
+            slotElement: element.getAttribute("data-slot-element"),
+            slotClass: element.getAttribute("data-slot-class"),
+            componentElement: element.getAttribute("data-component-element"),
+            componentClass: element.getAttribute("data-component-class"),
+            pageId: element.getAttribute("data-page-id")
+        };
 
-10. test lagi
+        var queryString = Object.keys(params)
+            .filter(function(key) { return params[key]; })
+            .map(function(key) { return key + "=" + encodeURIComponent(params[key]); })
+            .join("&");
+
+        fetch("/cms-components?" + queryString)
+            .then(function(response) { return response.text(); })
+            .then(function(html) {
+                element.outerHTML = html;
+                if (typeof functionToExecute === "function") {
+                    functionToExecute();
+                }
+            });
+    }
+    ```
+
+    The `functionToExecute` callback is important — some components rely on JavaScript to initialize after rendering (e.g., carousels, sliders, accordions). Without this callback, those components would render the HTML but remain non-functional.
+
+    For example:
+    ```javascript
+    fetchSlotComponents(slotElement, function() {
+        initCarousel();  // re-initialize carousel after lazy-loaded HTML is injected
+    });
+    ```
+
+6. Create a function to check if an element is in or above the viewport.
+
+    ```javascript
+    function isInOrAboveViewport(element) {
+        var rect = element.getBoundingClientRect();
+        return rect.top < (window.innerHeight || document.documentElement.clientHeight);
+    }
+    ```
+
+    This returns `true` if the element is currently visible **or** has already been scrolled past (above the viewport). This ensures components are loaded even if the user scrolls fast.
+
+7. Combine both functions — on scroll, check all lazy slot elements and fetch the ones that enter the viewport.
+
+    ```javascript
+    function loadVisibleSlots() {
+        var lazySlots = document.querySelectorAll(".lazy-slot");
+        lazySlots.forEach(function(slot) {
+            if (isInOrAboveViewport(slot)) {
+                var callback = slot.getAttribute("data-callback");
+                fetchSlotComponents(slot, callback ? window[callback] : null);
+            }
+        });
+    }
+
+    // Throttle helper — limits how often a function can fire
+    // During fast scrolling, the scroll event fires on every pixel.
+    // Throttle ensures we only check once per interval (e.g., every 200ms).
+    // When it does fire, it checks ALL lazy slots at once and triggers
+    // fetch for every one that's in the viewport — so multiple components
+    // load in parallel, not one by one.
+    function throttle(fn, delay) {
+        var lastCall = 0;
+        return function() {
+            var now = Date.now();
+            if (now - lastCall >= delay) {
+                lastCall = now;
+                fn();
+            }
+        };
+    }
+
+    // Load visible slots on page load and on scroll (throttled)
+    document.addEventListener("DOMContentLoaded", loadVisibleSlots);
+    window.addEventListener("scroll", throttle(loadVisibleSlots, 200));
+    ```
+
+8. Test the result. Open your browser's DevTools Network tab and scroll down the page. You should see Ajax calls being made to `/cms-components` as each lazy slot enters the viewport.
+
+    <!-- TODO: Add screenshot of network tab showing lazy load requests -->
+
+9. Why the dummy element is important: without it, the page would have **no height** where the components should be, causing a layout shift (CLS) when the component loads. The placeholder element reserves space and can show a loading indicator to the user.
+
+    You can style the placeholder to indicate loading:
+    ```css
+    .lazy-loading-placeholder {
+        min-height: 200px;
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ```
+
+10. Test again with the placeholder styling. The page should now:
+    - Load fast (only above-the-fold components rendered server-side)
+    - Show placeholder blocks for off-screen components
+    - Seamlessly load components as you scroll down
+
+    <!-- TODO: Add before/after screenshot comparison -->
 
 ## Result
 
-<!-- TODO: Add before/after comparison, performance metrics -->
+The initial page load is significantly faster because only the components visible in the viewport are rendered server-side. Off-screen components are loaded on demand via Ajax as the user scrolls.
+
+<!-- TODO: Add performance metrics (page load time before vs after) -->
 
 ## Credits
 
