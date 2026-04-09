@@ -39,6 +39,7 @@ This approach:
 
 1. Create 2 JSP files, **cmscontentslot.jsp** and **cmscomponent.jsp**. **Cmscontentslot.jsp** will be used for returning all components in a content slot, while **cmscomponent.jsp** will be used for returning single component by its UID.
     - **cmscontentslot.jsp**
+
     ```HTML
     <%@ page trimDirectiveWhitespaces="true"%>
     <%@ taglib prefix="cms" uri="http://hybris.com/tld/cmstags"%>
@@ -52,7 +53,9 @@ This approach:
                     class="${fn:escapeXml(componentClass)}"/>
     </cms:pageSlot>
     ```
+
     - **cmscomponent.jsp**
+
     ```HTML
     <%@ page trimDirectiveWhitespaces="true"%>
     <%@ taglib prefix="cms" uri="http://hybris.com/tld/cmstags"%>
@@ -71,17 +74,25 @@ This approach:
     import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
     import de.hybris.platform.cms2.model.pages.AbstractPageModel;
     import org.apache.commons.lang3.StringUtils;
+    import org.springframework.http.HttpStatus;
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
+    import org.springframework.web.bind.annotation.ExceptionHandler;
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.RequestParam;
+    import org.springframework.web.bind.annotation.ResponseBody;
+    import org.springframework.web.bind.annotation.ResponseStatus;
 
     import javax.servlet.http.HttpServletRequest;
     import javax.servlet.http.HttpServletResponse;
     import java.util.Map;
 
+    import static org.apache.commons.lang.StringUtils.EMPTY;
+
     /**
      * The class ComponentController
+     * This class have 1 API that will return the HTML of the components of the slot (if page id & slotPosition param is filled)
+     * Or return HTML of the component, if component UID param is set
      *
      * @author Yusuf F. Adiputera
      */
@@ -111,51 +122,57 @@ This approach:
             }
             final String pageId = parameters.get("pageId");
             AbstractPageModel pageModel = getContentPageForLabelOrId(pageId);
-            if (null != pageModel) {
-                storeCmsPageInModel(model, pageModel);
-                final String slotPosition = parameters.get("slotPosition");
-                final String slotElement = parameters.get("slotElement");
-                final String slotClass = parameters.get("slotClass");
-                model.addAttribute("slotPosition", slotPosition);
-                model.addAttribute("slotElement", slotElement);
-                model.addAttribute("slotClass", slotClass);
-                return FRAGMENTS_CMS_CONTENT_SLOT;
-            }
-            throw new CMSItemNotFoundException("Page not found");
+            storeCmsPageInModel(model, pageModel);
+            final String slotPosition = parameters.get("slotPosition");
+            final String slotElement = parameters.get("slotElement");
+            final String slotClass = parameters.get("slotClass");
+            model.addAttribute("slotPosition", slotPosition);
+            model.addAttribute("slotElement", slotElement);
+            model.addAttribute("slotClass", slotClass);
+            return FRAGMENTS_CMS_CONTENT_SLOT;
+        }
+
+
+        @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+        @ResponseBody
+        @ExceptionHandler({Exception.class})
+        public String handleException(final Exception ex)
+        {
+            return EMPTY; // we don't want the API return error page when some exception happens
         }
     }
     ```
 3. Let's test the controller first.
 
-![Result of get components of the slot](/images/articles/component-lazy-load/component-controller-get-slot.png)
-*Result of get components of the slot*
+    ![Result of get components of the slot](/images/articles/component-lazy-load/component-controller-get-slot.png)
+    *Result of get components of the slot, in the image it return 2 banner components*
 
-As you can see, the controller correctly return the HTML of the slot Section1 from the homepage.
+    As you can see, the controller correctly return the HTML of the slot Section1 (contains 2 banner component) from the homepage.
 
-Now let's also test to get component by UID
+    Now let's also test to get component by UID
 
-![Result of get component by UID](/images/articles/component-lazy-load/component-controller-get-by-uid.png)
-*Result of get component by UID*
+    ![Result of get component by UID](/images/articles/component-lazy-load/component-controller-get-by-uid.png)
+    *Result of get component by UID, return single component HTML*
 
-And that works too! Now we can move to the next step.
+    And that works too! Now we can move to the next step.
 
-4. Remove the CMS content slot tag from the layout JSP. Instead of rendering the slot directly, we replace it with a **dummy placeholder element** that holds the slot metadata as data attributes.
+4. Remove the CMS content slot tag from the layout JSP. Instead of rendering the slot directly, we replace it with a **dummy placeholder element** that holds the slot metadata as data attributes. Remember to only remove slots/components that are invisible when the page load.
 
-    For example, in your page layout JSP (e.g., `landingLayout2Page.jsp`), replace:
+    For example, for homepagelayout JSP (e.g., `landingLayout2Page.jsp`), replace:
     ```HTML
-    <cms:pageSlot position="Section1" var="feature" element="div" class="row">
-        <cms:component component="${feature}" element="div" class="col-xs-12"/>
+    <cms:pageSlot position="Section2A" var="feature" element="div" class="row no-margin">
+        <cms:component component="${feature}" element="div" class="col-xs-12 col-sm-6 no-space yComponentWrapper"/>
     </cms:pageSlot>
     ```
 
     With a dummy element:
     ```HTML
-    <div class="lazy-slot"
-         data-slot-position="Section1"
+    <div class="lazy-slot-component"
+         data-slot-position="Section2A"
          data-slot-element="div"
-         data-slot-class="row"
+         data-slot-class="row no-margin"
          data-component-element="div"
-         data-component-class="col-xs-12"
+         data-component-class="col-xs-12 col-sm-6 no-space yComponentWrapper"
          data-page-id="${currentPage.uid}">
         <div class="lazy-loading-placeholder"></div>
     </div>
