@@ -373,7 +373,7 @@ After lazy load:
 
 ## Conclusion
 
-Lazy loading off-screen components can improve your JSP-based accelerator storefront's performance. Of course there's option to decopled and migrate the storefront to modern front-end, but this can helps if you're stuck with the old accelerator, like I did. Even in theory, I could build SPA using this method, but that requires a lot of works.
+Lazy loading off-screen components can improve your JSP-based accelerator storefront's performance. Of course there's option to decopled and migrate the storefront to modern front-end, but this can helps if you're stuck with the old accelerator, like I did. Even in theory, someone with enough spare time could build SPA using this method, but that requires a lot of works.
 
 ## Credits
 
