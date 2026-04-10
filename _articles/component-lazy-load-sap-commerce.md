@@ -344,6 +344,18 @@ This approach:
 
     Now the user know that there's some components that will be loaded later.
 
+10. Now, let's also test smartedit, since it's important parts to manage contents.
+
+    ![Smartedit still works after implementing component lazy load](/images/articles/component-lazy-load/smartedit-works.webp)
+    *Smartedit still works after implementing component lazy load*
+
+    As you can see from the screenshot, smartedit still works. 
+    
+    Also same as when accessing storefront directly, the components will be lazy loaded and will be loaded as you scroll through the page.
+
+    ![Lazy loaded component on smartedit](/images/articles/component-lazy-load/smartedit-with-lazy-loaded-components.webp)
+    *Lazy loaded component on smartedit*
+
 
 ## Result
 
