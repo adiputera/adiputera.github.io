@@ -2,16 +2,14 @@
 layout: article
 title: "How to Implement Lazy Loading of CMS Components in SAP Commerce Accelerator Storefront"
 description: "Step-by-step guide on implementing lazy loading of CMS components in SAP Commerce (Hybris) Accelerator Storefront using JSP and JavaScript to improve page load performance."
-date: 2026-04-09
-date_modified: 2026-04-09
+date: 2026-04-10
+date_modified: 2026-04-10
 permalink: /articles/component-lazy-load-sap-commerce
 breadcrumb: "Articles"
 breadcrumb_short: "Component Lazy Load"
 snippet: "A practical guide on implementing CMS component lazy loading in SAP Commerce Accelerator Storefront to reduce initial page load time by deferring off-screen components."
 snippet_id: "Panduan praktis mengimplementasikan lazy loading komponen CMS pada SAP Commerce Accelerator Storefront untuk mengurangi waktu muat halaman dengan menunda komponen di luar viewport."
-canonical_url: ""
-canonical_source: ""
-published: false
+published: true
 ---
 
 ## The Background
@@ -27,7 +25,7 @@ At the first page load, components outside the viewport will not be rendered. In
 This approach:
 - Reduces initial page load time by only rendering visible components
 - Loads off-screen components on demand as the user scrolls
-- Works with the existing JSP-based Accelerator Storefront (no Angular required)
+- Works with the existing JSP-based Accelerator Storefront
 
 ## Prerequisites
 
@@ -142,16 +140,16 @@ This approach:
         }
     }
     ```
-3. Let's test the controller first.
+3. Let's test the controller first. We'll fetch section 1 of the homepage
 
-    ![Result of get components of the slot](/images/articles/component-lazy-load/component-controller-get-slot.png)
+    ![Result of get components of the slot](/images/articles/component-lazy-load/component-controller-get-slot.webp)
     *Result of get components of the slot, in the image it return 2 banner components*
 
     As you can see, the controller correctly return the HTML of the slot Section1 (contains 2 banner component) from the homepage.
 
     Now let's also test to get component by UID
 
-    ![Result of get component by UID](/images/articles/component-lazy-load/component-controller-get-by-uid.png)
+    ![Result of get component by UID](/images/articles/component-lazy-load/component-controller-get-by-uid.webp)
     *Result of get component by UID, return single component HTML*
 
     And that works too! Now we can move to the next step.
@@ -168,23 +166,48 @@ This approach:
     With a dummy element:
     ```HTML
     <div class="lazy-slot-component"
-         data-slot-position="Section2A"
-         data-slot-element="div"
-         data-slot-class="row no-margin"
-         data-component-element="div"
-         data-component-class="col-xs-12 col-sm-6 no-space yComponentWrapper"
-         data-page-id="${currentPage.uid}">
+            data-slot-position="Section2A"
+            data-slot-element="div"
+            data-slot-class="row no-margin"
+            data-component-element="div"
+            data-component-class="col-xs-12 col-sm-6 no-space yComponentWrapper"
+            data-page-id="${currentPage.uid}"
+            data-callback="functionToCallAfterFetch"> <!-- enter the name of the function to execute after fetch success here -->
         <div class="lazy-loading-placeholder"></div>
     </div>
     ```
 
     The dummy element is lightweight — it only holds the metadata needed to fetch the actual components later.
 
+    The `functionToCallAfterFetch` parameter is important — some components rely on JavaScript to initialize after rendering (e.g., carousels, sliders, responsive image). Without this callback, those components would render the HTML but remain non-functional.
+
+    If the components rely on 2 or more functions to function, then you need to create wrapper function that will call all of the functions, for example:
+
+    ```javascript
+    function callMultipleJavaScriptFunctions() {
+        ACC.carousel.bindCarousel();  // re-initialize carousel after lazy-loaded HTML is injected
+        ACC.global.reprocessImages(); // re-initialize js responsive images
+    };
+    ```
+
 5. Create a JavaScript function to fetch the component HTML via Ajax.
 
     ```javascript
-    function fetchSlotComponents(element, functionToExecute) {
-        var params = {
+    function fetchSlotComponents(element) {
+        // Check if element is still in the DOM before proceeding
+        if (!element || !element.parentNode) {
+            return;
+        }
+
+        // Check if element is already being fetched
+        if (element.getAttribute("data-fetching") === "true") {
+            return;
+        }
+
+        // Mark this element as currently being fetched
+        element.setAttribute("data-fetching", "true");
+
+        let params = {
             slotPosition: element.getAttribute("data-slot-position"),
             slotElement: element.getAttribute("data-slot-element"),
             slotClass: element.getAttribute("data-slot-class"),
@@ -193,29 +216,70 @@ This approach:
             pageId: element.getAttribute("data-page-id")
         };
 
-        var queryString = Object.keys(params)
+        let queryString = Object.keys(params)
             .filter(function(key) { return params[key]; })
             .map(function(key) { return key + "=" + encodeURIComponent(params[key]); })
             .join("&");
 
-        fetch("/cms-components?" + queryString)
+        fetch(ACC.config.contextPath +  "/cms-components?" + queryString)
             .then(function(response) { return response.text(); })
             .then(function(html) {
-                element.outerHTML = html;
-                if (typeof functionToExecute === "function") {
-                    functionToExecute();
+                if (element && element.parentNode) {
+                    element.outerHTML = html;
+
+                    let callback = element.getAttribute("data-callback");
+                    let resolved = callback ? resolveFunctionName(callback) : null;
+                    if (resolved && typeof resolved.func === "function") {
+                        resolved.func.call(resolved.context);  // Call with preserved context
+                    }
                 }
             });
     }
-    ```
 
-    The `functionToExecute` callback is important — some components rely on JavaScript to initialize after rendering (e.g., carousels, sliders, accordions). Without this callback, those components would render the HTML but remain non-functional.
+    /**
+     * Resolves a dot-notation (or simple) function name string to the actual function and its context.
+     * 
+     * Examples:
+     * - "alert" resolves to the alert function
+     * - "ACC.carousel.bindCarousel" resolves to ACC.carousel.bindCarousel
+     * - "myFunction" resolves to window.myFunction
+     * 
+     * @param {string} functionName - Function name, can be simple (e.g., "alert") or dot-notation (e.g., "ACC.global.myFunction")
+     * @returns {Object|null} Object with {func: Function, context: Object} or null if function not found
+     *                        - func: The actual function to call
+     *                        - context: The object context (this) for the function
+    */
+    function resolveFunctionName(functionName) {
+        // Split the function name by dots to get each property level
+        // Example: "ACC.carousel.bindCarousel" becomes ["ACC", "carousel", "bindCarousel"]
+        // Example: "alert" becomes ["alert"]
+        let parts = functionName.split(".");
+        
+        // Start with the global window object
+        let func = window;
+        
+        // Keep track of the parent object (context) for proper function invocation
+        let context = window;
 
-    For example:
-    ```javascript
-    fetchSlotComponents(slotElement, function() {
-        initCarousel();  // re-initialize carousel after lazy-loaded HTML is injected
-    });
+        // Traverse through each part of the dot-notation path
+        for (let i = 0; i < parts.length; i++) {
+            // Move context one level deeper (the current object becomes the next context)
+            context = func;
+            
+            // Attempt to access the next property in the chain
+            // Example: window["ACC"] -> ACC["carousel"] -> carousel["bindCarousel"]
+            // Example: window["alert"] -> alert function
+            func = func[parts[i]];
+            
+            // If any property in the chain doesn't exist, return null (function not found)
+            if (!func) return null;
+        }
+
+        // Return both the function and its context (parent object)
+        // This allows us to call it with proper 'this' binding: func.call(context)
+        return { func: func, context: context };
+    }
+
     ```
 
 6. Create a function to check if an element is in or above the viewport.
@@ -233,68 +297,72 @@ This approach:
 
     ```javascript
     function loadVisibleSlots() {
-        var lazySlots = document.querySelectorAll(".lazy-slot");
+        let lazySlots = document.querySelectorAll(".lazy-slot-component:not([data-fetching='true'])"); // we only fetch lazy slot component that is yet to be fetched
         lazySlots.forEach(function(slot) {
             if (isInOrAboveViewport(slot)) {
-                var callback = slot.getAttribute("data-callback");
-                fetchSlotComponents(slot, callback ? window[callback] : null);
+                fetchSlotComponents(slot);
             }
         });
     }
 
-    // Throttle helper — limits how often a function can fire
-    // During fast scrolling, the scroll event fires on every pixel.
-    // Throttle ensures we only check once per interval (e.g., every 200ms).
-    // When it does fire, it checks ALL lazy slots at once and triggers
-    // fetch for every one that's in the viewport — so multiple components
-    // load in parallel, not one by one.
-    function throttle(fn, delay) {
-        var lastCall = 0;
-        return function() {
-            var now = Date.now();
-            if (now - lastCall >= delay) {
-                lastCall = now;
-                fn();
-            }
-        };
-    }
-
-    // Load visible slots on page load and on scroll (throttled)
+    // Load visible slots on page load and on scroll
     document.addEventListener("DOMContentLoaded", loadVisibleSlots);
-    window.addEventListener("scroll", throttle(loadVisibleSlots, 200));
+    window.addEventListener("scroll", loadVisibleSlots);
     ```
 
-8. Test the result. Open your browser's DevTools Network tab and scroll down the page. You should see Ajax calls being made to `/cms-components` as each lazy slot enters the viewport.
+8. Test the result. Open your browser's DevTools Network tab and scroll down the page. You should see Ajax calls being made to `/cms-components` as each dummy element enters the viewport.
 
-    <!-- TODO: Add screenshot of network tab showing lazy load requests -->
+    ![Chrome network tab, showing multiple fetch to /cms-components](/images/articles/component-lazy-load/ajax-call-component.webp)
+    *Chrome network tab, showing multiple fetch to /cms-components*
 
-9. Why the dummy element is important: without it, the page would have **no height** where the components should be, causing a layout shift (CLS) when the component loads. The placeholder element reserves space and can show a loading indicator to the user.
+9. Why the dummy element is important: without it, the element would have **no height** where the components should be, causing a layout shift (CLS) when the component loads. The placeholder element reserves space and can show a loading indicator to the user.
 
-    You can style the placeholder to indicate loading:
+    If we didn't add styling to placeholder, the page would look like this:
+
+    ![Homepage with dummy element that have no styling, the page looks short](/images/articles/component-lazy-load/dummy-element-without-styling.webp)
+    *Homepage with dummy element that have no styling, the page looks short*
+
+    It's not good right? The page looks short, the user won't know there would be components showing under the banner, the user will have no incentive to scroll.
+
+    For this test let's just add simple CSS, you can add animation or some better styling later:
     ```css
     .lazy-loading-placeholder {
-        min-height: 200px;
-        background: #f4f4f4;
+        min-height: 50px;
+        max-width: 99%;
+        margin: 3px;
+        background: #dbcccc;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     ```
 
-10. Test again with the placeholder styling. The page should now:
-    - Load fast (only above-the-fold components rendered server-side)
-    - Show placeholder blocks for off-screen components
-    - Seamlessly load components as you scroll down
+    Now the result is:
 
-    <!-- TODO: Add before/after screenshot comparison -->
+    ![Homepage with dummy element that have styling, the page indicate that some elements are not yet loaded](/images/articles/component-lazy-load/dummy-element-with-styling.webp)
+    *Homepage with dummy element that have styling, the page indicate that some elements are not yet loaded*
+
+    Now the user know that there's some components that will be loaded later.
+
 
 ## Result
 
-The initial page load is significantly faster because only the components visible in the viewport are rendered server-side. Off-screen components are loaded on demand via Ajax as the user scrolls.
+The initial page load is faster because only the components visible in the viewport are rendered server-side. Off-screen components are loaded on demand via Ajax as the user scrolls.
 
-<!-- TODO: Add performance metrics (page load time before vs after) -->
+Before lazy load:
+
+![Page load time before implementing component lazy load showing 890ms, taken from Page Load Time Google Chrome's extension](/images/articles/component-lazy-load/page-load-before.webp)
+*Page load time before implementing component lazy load showing 890ms, taken from Page Load Time Google Chrome's extension*
+
+After lazy load:
+
+![Page load time after implementing component lazy load showing 230ms, taken from Page Load Time Google Chrome's extension](/images/articles/component-lazy-load/page-load-after.webp)
+*Page load time after implementing component lazy load showing 230ms, taken from Page Load Time Google Chrome's extension*
+
+## Conclusion
+
+Lazy loading off-screen components can improve your JSP-based accelerator storefront's performance. Of course there's option to decopled and migrate the storefront to modern front-end, but this can helps if you're stuck with the old accelerator, like I did. Even in theory, I could build SPA using this method, but that requires a lot of works.
 
 ## Credits
 
 This implementation is inspired by [Rauf Aliev's article on Angular2 and Hybris integration](https://hybrismart.com/2016/09/03/angularjs-v-2-and-hybris/), adapted for the JSP-based Accelerator Storefront.
-

@@ -88,20 +88,14 @@
 <!-- Theme Color -->
 <meta name="theme-color" content="{{ site.data.meta.pwa.theme_color_light }}" />
 
-<!-- Person JSON-LD Schema -->
 {% include schema-person.html %}
 
-<!-- Article JSON-LD Schema (for article pages) -->
 {% include schema-article.html %}
 
-<!-- ProfilePage JSON-LD Schema (for homepage) -->
 {% include schema-profilepage.html %}
 
-<!-- BreadcrumbList JSON-LD Schema -->
-{% include schema-breadcrumb.html %}
+{% unless page.layout == 'article' %}{% include schema-breadcrumb.html %}{% endunless %}
 
-<!-- ArticleList JSON-LD Schema (for homepage) -->
 {% include schema-articlelist.html %}
 
-<!-- Skills JSON-LD Schema (for skills page) -->
 {% include schema-skills.html %}

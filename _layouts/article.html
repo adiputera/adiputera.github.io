@@ -32,7 +32,7 @@ layout: default
     <main class="article-content">
         {{ content }}
 
-        {% if page.canonical_url %}
+        {% if page.canonical_url and page.canonical_source %}
         <p class="original-source">
             <em>Originally published at <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer">{{ page.canonical_source | default: "SAP Community" }}</a>.</em>
         </p>
