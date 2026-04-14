@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg: #ffffff;
     --text: #222;
@@ -29,6 +33,14 @@ body {
     background: var(--card);
     color: var(--text);
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Fix for anchor links being covered by sticky navigation */
+h1[id],
+h2[id],
+h3[id],
+section[id] {
+    scroll-margin-top: 120px;
 }
 
 .resume {
