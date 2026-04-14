@@ -67,6 +67,17 @@ sections:
   articles: "Technical Articles"
   faq: "Frequently Asked Questions"
 
+navigation:
+  items:
+    - text: "Experience"
+      url: "/#experience"
+    - text: "Skills"
+      url: "/skills"
+    - text: "Articles"
+      url: "/#articles"
+    - text: "FAQ"
+      url: "/faq"
+
 links:
   short_version_label: "Too long?"
   short_version_link: "Read the short version &rarr;"

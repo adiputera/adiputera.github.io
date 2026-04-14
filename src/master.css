@@ -5,6 +5,7 @@
     --border: #ddd;
     --card: #f4f4f4;
     --link: #007acc;
+    --nav-bg: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme="dark"] {
@@ -14,6 +15,11 @@
     --border: #333;
     --card: #2a2a2a;
     --link: #4ea3f1;
+    --nav-bg: rgba(30, 30, 30, 0.8);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 body {
@@ -297,23 +303,208 @@ footer {
 }
 
 /* Top navigation container */
-.top-nav {
+/* Navigation Styles */
+.nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: -2rem -3rem 2rem;
+    padding: 0 3rem;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    border-radius: 6px 6px 0 0;
+    transition: background 0.3s ease;
+}
+
+.main-nav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.02);
+    text-decoration: none;
+}
+
+.logo-svg {
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    padding: 0.5rem 0;
+}
+
+.nav-links a:hover {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
     gap: 1rem;
+    margin-left: 2rem;
 }
 
 /* Breadcrumb navigation */
 .breadcrumb {
-    padding: 10px 0;
+    padding: 12px 0;
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--subtext);
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
+    border-top: 1px solid var(--border);
+}
+
+/* Mobile Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    position: relative;
+    transition: background 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: transform 0.3s;
+}
+
+.hamburger::before { top: -7px; }
+.hamburger::after { bottom: -7px; }
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger::before {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger::after {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Responsive */
+@media (max-width: 850px) {
+    .nav-wrapper {
+        margin: -1.5rem -1.5rem 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-links-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+    }
+
+    .nav-links-container.active {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+        margin-right: 0.5rem;
+        padding: 0;
+        border: none;
+        width: auto;
+        gap: 0.8rem;
+    }
+
+    .nav-site-name {
+        display: none; /* Hide name on small screens, keep badge */
+    }
 }
 
 .breadcrumb ol {
@@ -619,6 +810,71 @@ footer {
     margin-bottom: 1.5rem;
     font-style: italic;
     color: var(--subtext);
+}
+
+/* Share Buttons */
+.share-container {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.share-label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--subtext);
+}
+
+.share-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    color: white;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+}
+
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--text);
+}
+
+.share-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--border);
+}
+
+.share-btn.facebook:hover svg { stroke: #1877f2; }
+.share-btn.x-twitter:hover svg { stroke: #000000; }
+[data-theme="dark"] .share-btn.x-twitter:hover svg { stroke: #ffffff; }
+.share-btn.whatsapp svg { fill: var(--text); stroke: none; }
+.share-btn.whatsapp:hover svg { fill: #25d366; stroke: none; }
+.share-btn.copy-link:hover svg { stroke: var(--link); }
+.share-btn.system-share:hover svg { stroke: var(--link); }
+
+.share-btn.copy-link.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.share-btn.copy-link.success svg {
+    stroke: white;
 }
 
 @media print {

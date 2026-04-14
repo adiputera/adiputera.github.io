@@ -3,22 +3,7 @@ layout: default
 ---
 
 <div class="container">
-    <div class="top-nav hide-for-print">
-        <nav aria-label="Breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="/">Home</a></li>
-                {% if page.breadcrumb %}
-                <li class="breadcrumb-separator">/</li>
-                <li><a href="/#articles">{{ page.breadcrumb }}</a></li>
-                {% endif %}
-                {% if page.breadcrumb_short %}
-                <li class="breadcrumb-separator">/</li>
-                <li class="breadcrumb-current">{{ page.breadcrumb_short }}</li>
-                {% endif %}
-            </ol>
-        </nav>
-        {% include theme-toggle.html %}
-    </div>
+    {% include navigation.html %}
 
     <header>
         <h1 class="main-heading">{{ page.title }}</h1>
@@ -37,6 +22,8 @@ layout: default
             <em>Originally published at <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer">{{ page.canonical_source | default: "SAP Community" }}</a>.</em>
         </p>
         {% endif %}
+
+        {% include share-buttons.html %}
     </main>
 
     {% include footer.html %}

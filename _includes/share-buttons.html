@@ -1,0 +1,21 @@
+<div class="share-container hide-for-print">
+    <span class="share-label">Share this article:</span>
+    <div class="share-buttons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url | url_encode }}{{ page.url | url_encode }}" target="_blank" rel="noopener noreferrer" class="share-btn facebook" title="Share on Facebook" aria-label="Share on Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="https://x.com/intent/tweet?url={{ site.url | url_encode }}{{ page.url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="share-btn x-twitter" title="Share on X" aria-label="Share on X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+        </a>
+        <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ site.url | url_encode }}{{ page.url | url_encode }}" target="_blank" rel="noopener noreferrer" class="share-btn whatsapp" title="Share on WhatsApp" aria-label="Share on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.004 2C6.48 2 2.001 6.477 2.001 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.308A9.974 9.974 0 0 0 12.004 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.002c-1.744 0-3.39-.462-4.814-1.27l-.344-.194-2.984.782.796-2.912-.212-.338A8.002 8.002 0 0 1 4.002 12c0-4.411 3.589-8 8.002-8s8.002 3.589 8.002 8-3.589 8.002-8.002 8.002zm4.437-6.11c-.244-.122-1.441-.711-1.664-.792-.223-.081-.385-.122-.548.122-.162.244-.63.792-.772.954-.142.162-.284.183-.528.061-.244-.122-1.03-.38-1.962-1.211-.724-.645-1.213-1.442-1.355-1.686-.142-.244-.015-.376.107-.498.11-.11.244-.284.366-.427.122-.142.162-.244.244-.406.081-.162.041-.305-.021-.427-.061-.122-.548-1.321-.751-1.809-.197-.474-.397-.409-.548-.417-.142-.008-.305-.009-.467-.009-.162 0-.427.061-.65.305-.223.244-.853.833-.853 2.031 0 1.198.873 2.356.995 2.519.122.163 1.717 2.622 4.159 3.674.581.25 1.034.4 1.388.513.581.185 1.11.159 1.528.097.466-.07 1.441-.588 1.643-1.157.203-.569.203-1.056.142-1.157-.061-.101-.223-.162-.467-.284z"></path></svg>
+        </a>
+        <button class="share-btn copy-link" id="copy-link-btn" title="Copy Link" aria-label="Copy Link" data-url="{{ site.url }}{{ page.url }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon" style="display: none;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </button>
+        <button class="share-btn system-share" id="system-share-btn" title="Share" aria-label="System Share" style="display: none;" data-title="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        </button>
+    </div>
+</div>

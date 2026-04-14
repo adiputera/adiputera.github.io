@@ -67,6 +67,17 @@ sections:
   articles: "Artikel Teknis"
   faq: "Pertanyaan Umum"
 
+navigation:
+  items:
+    - text: "Pengalaman"
+      url: "/id#experience"
+    - text: "Keahlian"
+      url: "/skills-id"
+    - text: "Artikel"
+      url: "/id#articles"
+    - text: "FAQ"
+      url: "/faq-id"
+
 links:
   short_version_label: "Terlalu panjang?"
   short_version_link: "Baca versi ringkas &rarr;"

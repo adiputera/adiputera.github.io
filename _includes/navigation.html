@@ -1,5 +1,38 @@
 {% assign lang_data = site.data[page.lang] | default: site.data.en %}
-<div class="top-nav hide-for-print">
+<div class="nav-wrapper hide-for-print">
+    <nav class="main-nav" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="{% if page.lang == 'id' %}/id{% else %}/{% endif %}" class="nav-logo">
+                <svg width="34" height="30" viewBox="0 0 110 100" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true" class="logo-svg">
+                    <text x="50%" y="48%" dominant-baseline="central" text-anchor="middle"
+                        font-family="system-ui, -apple-system, sans-serif" font-weight="bold" font-size="60"
+                        fill="currentColor">{YA}</text>
+                </svg>
+                <span class="nav-site-name">{{ lang_data.site.name }}</span>
+            </a>
+
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    {% for item in lang_data.navigation.items %}
+                    <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                {% unless page.layout == 'article' %}
+                {% include language-switcher.html %}
+                {% endunless %}
+                {% include theme-toggle.html %}
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
     <nav aria-label="Breadcrumb" class="breadcrumb">
         <ol>
             <li><a href="{% if page.lang == 'id' %}/id{% else %}/{% endif %}">{{ lang_data.breadcrumb.home }}</a></li>
@@ -15,5 +48,4 @@
             {% endif %}
         </ol>
     </nav>
-    {% include language-switcher.html %}
 </div>
