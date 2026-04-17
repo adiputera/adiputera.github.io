@@ -4,7 +4,7 @@ title: "How to Implement Lazy Loading of CMS Components in SAP Commerce (SAP Hyb
 description: "Step-by-step guide on implementing lazy loading of CMS components in SAP Commerce (SAP Hybris) Accelerator Storefront using JSP and JavaScript to improve page load performance."
 date: 2026-04-10
 keywords: "SAP Commerce, SAP Hybris, Lazy Loading, CMS Components, Accelerator Storefront, Performance"
-date_modified: 2026-04-10
+date_modified: 2026-04-17
 permalink: /articles/component-lazy-load-sap-commerce
 breadcrumb: "Articles"
 breadcrumb_short: "Component Lazy Load"

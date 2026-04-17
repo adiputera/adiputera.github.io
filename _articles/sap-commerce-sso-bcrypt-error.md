@@ -4,7 +4,7 @@ title: "SAP Commerce (SAP Hybris) SSO error: password cannot be more than 72 byt
 description: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce (SAP Hybris)."
 keywords: "SAP Commerce, SAP Hybris, SSO, BCrypt, Spring Security, 72 bytes limit, Password Encoding, Enterprise Security"
 date: 2025-08-02
-date_modified: 2025-08-02
+date_modified: 2026-04-17
 canonical_url: "https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/"
 canonical_source: "LinkedIn Pulse"
 breadcrumb: "Articles"
