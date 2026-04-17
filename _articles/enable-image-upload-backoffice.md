@@ -1,8 +1,8 @@
 ---
 layout: article
 title: "How to Enable Image Upload in Backoffice WYSIWYG editor"
-description: "Step-by-step guide on enabling image upload in SAP Commerce Backoffice WYSIWYG editor."
-keywords: "SAP Commerce, Backoffice, WYSIWYG, Image Upload, CKEditor, Java Engineer, Hybris Development"
+description: "Step-by-step guide on enabling image upload in SAP Commerce (SAP Hybris) Backoffice WYSIWYG editor."
+keywords: "SAP Commerce, SAP Hybris, Backoffice, WYSIWYG, Image Upload, CKEditor, Java Engineer, Hybris Development"
 date: 2023-11-07
 date_modified: 2023-11-07
 canonical_url: "https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198"
@@ -10,13 +10,13 @@ canonical_source: "SAP Community"
 breadcrumb: "Articles"
 breadcrumb_short: "Enable Image Upload"
 permalink: /articles/enable-image-upload-backoffice
-snippet: "Step-by-step configuration guide on extending the default SAP Commerce Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG tool."
-snippet_id: "Panduan konfigurasi langkah demi langkah tentang cara memperluas antarmuka pengguna bawaan SAP Commerce Backoffice untuk memungkinkan pengguna bisnis internal mengunggah media langsung melalui alat WYSIWYG CKEditor."
+snippet: "Step-by-step configuration guide on extending the default SAP Commerce (SAP Hybris) Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG tool."
+snippet_id: "Panduan konfigurasi langkah demi langkah tentang cara memperluas antarmuka pengguna bawaan SAP Commerce (SAP Hybris) Backoffice untuk memungkinkan pengguna bisnis internal mengunggah media langsung melalui alat WYSIWYG CKEditor."
 ---
 
 ## Intro
 
-SAP Commerce's Backoffice uses CKEditor 4 as a WYSIWYG editor. Out of the box, CKEditor does support file/image upload, we just need to provide the API for file/image upload, although it's not enabled by default.
+SAP Commerce (SAP Hybris)'s Backoffice uses CKEditor 4 as a WYSIWYG editor. Out of the box, CKEditor does support file/image upload, we just need to provide the API for file/image upload, although it's not enabled by default.
 
 By default, the image dialog in the backoffice WYSIWYG editor is like this, you can only insert images by URL, with no option for upload, note that "**Tautan**" is "**Link**":
 
@@ -27,7 +27,7 @@ In this blog post, I will guide you on how to enable image upload in the backoff
 
 ## Prerequisites:
 
-You need to have some basic knowledge of SAP Commerce and its extensions.
+You need to have some basic knowledge of SAP Commerce (SAP Hybris) and its extensions.
 
 ## The Steps
 

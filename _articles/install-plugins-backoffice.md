@@ -1,8 +1,8 @@
 ---
 layout: article
 title: "How to install additional plugins to Backoffice's WYSIWYG editor"
-description: "Technical guide on installing custom CKEditor plugins into SAP Commerce Backoffice."
-keywords: "SAP Commerce, Backoffice, WYSIWYG, CKEditor Plugins, Java Engineer, Hybris Development"
+description: "Technical guide on installing custom CKEditor plugins into SAP Commerce (SAP Hybris) Backoffice."
+keywords: "SAP Commerce, SAP Hybris, Backoffice, WYSIWYG, CKEditor Plugins, Java Engineer, Hybris Development"
 date: 2023-11-29
 date_modified: 2023-11-29
 canonical_url: "https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050"
@@ -10,21 +10,21 @@ canonical_source: "SAP Community"
 breadcrumb: "Articles"
 breadcrumb_short: "Install Backoffice Plugins"
 permalink: /articles/install-plugins-backoffice
-snippet: "A technical exploration on advanced CKEditor customization within the SAP Commerce framework, detailing how to inject custom JavaScript plugins into the Backoffice environment."
-snippet_id: "Eksplorasi teknis mengenai penyesuaian lanjutan CKEditor dalam kerangka kerja SAP Commerce, merinci cara menyuntikkan plugin JavaScript kustom ke dalam lingkungan Backoffice."
+snippet: "A technical exploration on advanced CKEditor customization within the SAP Commerce (SAP Hybris) framework, detailing how to inject custom JavaScript plugins into the Backoffice environment."
+snippet_id: "Eksplorasi teknis mengenai penyesuaian lanjutan CKEditor dalam kerangka kerja SAP Commerce (SAP Hybris), merinci cara menyuntikkan plugin JavaScript kustom ke dalam lingkungan Backoffice."
 ---
 
 ## Intro
 
-SAP Commerce's Backoffice uses **ZKCKEditor** (ZKCKeditor is a wrapper of CKEditor for the ZK framework) as a WYSIWYG editor. Out of the box, CKEditor supports various additional plugins other than those that are already installed.
+SAP Commerce (SAP Hybris)'s Backoffice uses **ZKCKEditor** (ZKCKeditor is a wrapper of CKEditor for the ZK framework) as a WYSIWYG editor. Out of the box, CKEditor supports various additional plugins other than those that are already installed.
 
-In this blog post, I will guide you on how to install new plugins to Backoffice's WYSIWYG editor, I will guide you using the **SAP Commerce 2205.18** version (with **ZKCKeditor 4.21.0.0**). If you use a different SAP Commerce version, the ZKCKEditor version might be different, but the overall steps should be the same.
+In this blog post, I will guide you on how to install new plugins to Backoffice's WYSIWYG editor, I will guide you using the **SAP Commerce (SAP Hybris) 2205.18** version (with **ZKCKeditor 4.21.0.0**). If you use a different SAP Commerce (SAP Hybris) version, the ZKCKEditor version might be different, but the overall steps should be the same.
 
 Also, I will be using the Code Snippet plugin by CKSource as the example plugin that I will install in this blog post. If you have your own plugins, the overall steps should be the same.
 
 ## Prerequisites:
 
-You need basic knowledge of SAP Commerce and its extensions.
+You need basic knowledge of SAP Commerce (SAP Hybris) and its extensions.
 
 ## The Steps
 

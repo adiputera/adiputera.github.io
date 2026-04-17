@@ -1,20 +1,21 @@
 ---
 layout: article
-title: "How to Implement Lazy Loading of CMS Components in SAP Commerce Accelerator Storefront"
-description: "Step-by-step guide on implementing lazy loading of CMS components in SAP Commerce (Hybris) Accelerator Storefront using JSP and JavaScript to improve page load performance."
+title: "How to Implement Lazy Loading of CMS Components in SAP Commerce (SAP Hybris) Accelerator Storefront"
+description: "Step-by-step guide on implementing lazy loading of CMS components in SAP Commerce (SAP Hybris) Accelerator Storefront using JSP and JavaScript to improve page load performance."
 date: 2026-04-10
+keywords: "SAP Commerce, SAP Hybris, Lazy Loading, CMS Components, Accelerator Storefront, Performance"
 date_modified: 2026-04-10
 permalink: /articles/component-lazy-load-sap-commerce
 breadcrumb: "Articles"
 breadcrumb_short: "Component Lazy Load"
-snippet: "A practical guide on implementing CMS component lazy loading in SAP Commerce Accelerator Storefront to reduce initial page load time by deferring off-screen components."
-snippet_id: "Panduan praktis mengimplementasikan lazy loading komponen CMS pada SAP Commerce Accelerator Storefront untuk mengurangi waktu muat halaman dengan menunda komponen di luar viewport."
+snippet: "A practical guide on implementing CMS component lazy loading in SAP Commerce (SAP Hybris) Accelerator Storefront to reduce initial page load time by deferring off-screen components."
+snippet_id: "Panduan praktis mengimplementasikan lazy loading komponen CMS pada SAP Commerce (SAP Hybris) Accelerator Storefront untuk mengurangi waktu muat halaman dengan menunda komponen di luar viewport."
 published: true
 ---
 
 ## The Background
 
-SAP Commerce Accelerator Storefront is a powerful, component-based front end that makes it easy for business users to change content without needing a deployment. But because of its rich content nature, rendering all components on every page load can take time — and on a website, every millisecond counts.
+SAP Commerce (SAP Hybris) Accelerator Storefront is a powerful, component-based front end that makes it easy for business users to change content without needing a deployment. But because of its rich content nature, rendering all components on every page load can take time — and on a website, every millisecond counts.
 
 The idea is simple: **components outside the viewport don't need to be loaded immediately**. By deferring their rendering until the user scrolls to them, we can significantly reduce the initial page load time.
 
@@ -29,7 +30,7 @@ This approach:
 
 ## Prerequisites
 
-1. Basic knowledge of SAP Commerce (Hybris) Accelerator Storefront
+1. Basic knowledge of SAP Commerce (SAP Hybris) Accelerator Storefront
 2. Understanding of JSP tag files and CMS component rendering
 3. Basic knowledge of JavaScript
 

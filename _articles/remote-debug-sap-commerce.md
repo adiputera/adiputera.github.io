@@ -1,8 +1,8 @@
 ---
 layout: article
-title: "How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse"
-description: "A comprehensive guide on setting up remote debugging for SAP Commerce using IntelliJ IDEA and Eclipse."
-keywords: "SAP Commerce, Remote Debugging, IntelliJ IDEA, Eclipse, Hybris Debugging, Java Backend Engineer"
+title: "How to Remote Debug SAP Commerce (SAP Hybris) (on premise version) on IntelliJ IDEA and Eclipse"
+description: "A comprehensive guide on setting up remote debugging for SAP Commerce (SAP Hybris) using IntelliJ IDEA and Eclipse."
+keywords: "SAP Commerce, SAP Hybris, Remote Debugging, IntelliJ IDEA, Eclipse, Hybris Debugging, Java Backend Engineer"
 date: 2022-09-15
 date_modified: 2022-09-15
 canonical_url: "https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943"
@@ -10,8 +10,8 @@ canonical_source: "SAP Community"
 breadcrumb: "Articles"
 breadcrumb_short: "Remote Debug SAP Commerce"
 permalink: /articles/remote-debug-sap-commerce
-snippet: "A deep-dive tutorial explaining how developers can configure and attach remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce (On-Premise) server issues."
-snippet_id: "Tutorial mendalam yang menjelaskan bagaimana developer dapat mengonfigurasi dan menyambungkan debugger jarak jauh di IntelliJ IDEA dan Eclipse untuk memecahkan masalah kompleks pada server SAP Commerce (On-Premise)."
+snippet: "A deep-dive tutorial explaining how developers can configure and attach remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce (SAP Hybris) (On-Premise) server issues."
+snippet_id: "Tutorial mendalam yang menjelaskan bagaimana developer dapat mengonfigurasi dan menyambungkan debugger jarak jauh di IntelliJ IDEA dan Eclipse untuk memecahkan masalah kompleks pada server SAP Commerce (SAP Hybris) (On-Premise)."
 ---
 
 ## The background:
@@ -20,13 +20,13 @@ In my experience, sometimes bugs only occurs on some environment, and I can't re
 
 ## The Goal:
 
-This blog will guide you on how to do remote debugging on SAP Commerce instance. I will cover how to do remote debugging in IntelliJ IDEA as well in eclipse.
+This blog will guide you on how to do remote debugging on SAP Commerce (SAP Hybris) instance. I will cover how to do remote debugging in IntelliJ IDEA as well in eclipse.
 
 Remote debugging let you inspect running code, what is the value of variables in code, and determine what is the result of some method.
 
 ## Prerequisites:
 
-1. Basic knowledge in SAP Commerce
+1. Basic knowledge in SAP Commerce (SAP Hybris)
 2. Basic knowledge in application debugging
 3. Have a direct access to application server on port 8000 (or other port if you didn't want to use port 8000), please consult to your infra team for server access.
 4. Have an SSH access to server, or pipeline to start the server in debug mode

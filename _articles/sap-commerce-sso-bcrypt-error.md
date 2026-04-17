@@ -1,8 +1,8 @@
 ---
 layout: article
-title: "SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)"
-description: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce."
-keywords: "SAP Commerce, SSO, BCrypt, Spring Security, 72 bytes limit, Password Encoding, Enterprise Security"
+title: "SAP Commerce (SAP Hybris) SSO error: password cannot be more than 72 bytes (BCrypt Error)"
+description: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce (SAP Hybris)."
+keywords: "SAP Commerce, SAP Hybris, SSO, BCrypt, Spring Security, 72 bytes limit, Password Encoding, Enterprise Security"
 date: 2025-08-02
 date_modified: 2025-08-02
 canonical_url: "https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/"
@@ -11,8 +11,8 @@ breadcrumb: "Articles"
 breadcrumb_short: "SSO BCrypt Error"
 permalink: /articles/sap-commerce-sso-bcrypt-error
 image: /images/articles/sap-commerce-sso-bcrypt-error/cover.jpg
-snippet: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce, alongside the implemented encryption bypass solution."
-snippet_id: "Rincian arsitektur mengenai batasan Single Sign-On (SSO) yang ditemui saat menggunakan Spring Security dan BCrypt di SAP Commerce, beserta penerapan solusi bypass enkripsi yang digunakan."
+snippet: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce (SAP Hybris), alongside the implemented encryption bypass solution."
+snippet_id: "Rincian arsitektur mengenai batasan Single Sign-On (SSO) yang ditemui saat menggunakan Spring Security dan BCrypt di SAP Commerce (SAP Hybris), beserta penerapan solusi bypass enkripsi yang digunakan."
 ---
 
 ![SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)](/images/articles/sap-commerce-sso-bcrypt-error/cover.jpg)
@@ -20,7 +20,7 @@ snippet_id: "Rincian arsitektur mengenai batasan Single Sign-On (SSO) yang ditem
 
 ## The Problem
 
-We've just updated our SAP Commerce patch version, from 2205.36 to 2205.40. After updating, we soon discovered the user is unable to log in to Backoffice, HAC, and Smartedit using SSO. There's this error in the log:
+We've just updated our SAP Commerce (SAP Hybris) patch version, from 2205.36 to 2205.40. After updating, we soon discovered the user is unable to log in to Backoffice, HAC, and Smartedit using SSO. There's this error in the log:
 
 ```
 java.lang.IllegalArgumentException: password cannot be more than 72 bytes
