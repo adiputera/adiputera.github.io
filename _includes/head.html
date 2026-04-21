@@ -1,104 +1,119 @@
-{% assign lang_data = site.data[page.lang] | default: site.data.en %}
-<link rel="preload" as="style" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
-<link rel="preload" as="script" href="{{ site.baseurl }}/src/index.min.js?v={{ site.asset_version }}" />
-<link rel="preload" as="image" href="{{ site.baseurl }}/images/astra.svg" />
+    {%- assign lang_data = site.data[page.lang] | default: site.data.en -%}
+    <link rel="preload" as="style" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
+    <link rel="preload" as="script" href="{{ site.baseurl }}/src/index.min.js?v={{ site.asset_version }}" />
+    <link rel="preload" as="image" href="{{ site.baseurl }}/images/astra.svg" />
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>{{ page.title | default: lang_data.site.title }}</title>
-<meta name="title" content="{{ page.title | default: lang_data.site.title }}" />
-<meta name="description" content="{{ page.description | default: lang_data.site.description }}" />
-<meta name="keywords" content="{{ page.keywords | default: lang_data.site.keywords }}" />
-<meta name="author" content="{{ site.data.meta.meta.author }}" />
-<meta name="robots" content="{{ site.data.meta.meta.robots }}" />
+    <title>{{ page.title | default: lang_data.site.title }}</title>
+    <meta name="title" content="{{ page.title | default: lang_data.site.title }}" />
+    <meta name="description" content="{{ page.description | default: lang_data.site.description }}" />
+    <meta name="keywords" content="{{ page.keywords | default: lang_data.site.keywords }}" />
+    <meta name="author" content="{{ site.data.meta.meta.author }}" />
+    <meta name="robots" content="{{ site.data.meta.meta.robots }}" />
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.data.meta.google_analytics_id }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ site.data.meta.google_analytics_id }}');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.data.meta.google_analytics_id }}"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.data.meta.google_analytics_id }}');
+    </script>
 
-<!-- Favicons & Icons -->
-<link rel="icon" href="{{ site.baseurl }}/favicon.ico" />
-<link rel="apple-touch-icon" href="{{ site.baseurl }}/images/192.png">
-<link rel="apple-touch-startup-image" href="{{ site.baseurl }}/images/512.png">
+    <!-- Favicons & Icons -->
+    <link rel="icon" href="{{ site.baseurl }}/favicon.ico" />
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/images/192.png">
+    <link rel="apple-touch-startup-image" href="{{ site.baseurl }}/images/512.png">
 
-<!-- Canonical & Alternates -->
-{% if page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}" />
-{% else %}<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-{% endif %}
+    <!-- Canonical & Alternates -->
+    {%- if page.canonical_url -%}
+    <link rel="canonical" href="{{ page.canonical_url }}" />
+    {%- else -%}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+    {%- endif -%}
 
-{% unless page.layout == 'article' %}
-{% if page.lang == 'id' %}
-<link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.permalink_en | default: '/' }}" />
-<link rel="alternate" hreflang="id" href="{{ site.url }}{{ page.permalink | default: '/id' }}" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.permalink_en | default: '/' }}" />
-{% else %}
-<link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.permalink | default: '/' }}" />
-<link rel="alternate" hreflang="id" href="{{ site.url }}{{ page.permalink_id | default: '/id' }}" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.permalink | default: '/' }}" />
-{% endif %}
-{% endunless %}
+    {%- unless page.layout == 'article' -%}
+    {%- if page.lang == 'id' -%}
+    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.permalink_en | default: '/' }}" />
+    <link rel="alternate" hreflang="id" href="{{ site.url }}{{ page.permalink | default: '/id' }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.permalink_en | default: '/' }}" />
+    {%- else -%}
+    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.permalink | default: '/' }}" />
+    <link rel="alternate" hreflang="id" href="{{ site.url }}{{ page.permalink_id | default: '/id' }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.permalink | default: '/' }}" />
+    {%- endif -%}
+    {%- endunless -%}
 
-<!-- PWA Manifest -->
-<link rel="manifest" href="{{ site.baseurl }}/manifest.json" />
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{{ site.baseurl }}/manifest.json" />
 
-<!-- Stylesheets -->
-<link rel="stylesheet" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
 
-<!-- Job & Skills Meta -->
-<meta name="jobtitle" content="{{ site.data.meta.meta.job_title }}" />
-<meta name="skills" content="{{ site.data.meta.meta.skills }}" />
+    <!-- Job & Skills Meta -->
+    <meta name="jobtitle" content="{{ site.data.meta.meta.job_title }}" />
+    <meta name="skills" content="{{ site.data.meta.meta.skills }}" />
 
-<!-- PWA & Mobile App Meta -->
-<meta name="apple-mobile-web-app-capable" content="{{ site.data.meta.pwa.apple_mobile_capable }}">
-<meta name="mobile-web-app-capable" content="{{ site.data.meta.pwa.mobile_app_capable }}">
-<meta name="apple-mobile-web-app-title" content="{{ site.title }}">
-<meta name="apple-mobile-web-app-status-bar-style" content="{{ site.data.meta.pwa.apple_status_bar_style }}">
+    <!-- PWA & Mobile App Meta -->
+    <meta name="apple-mobile-web-app-capable" content="{{ site.data.meta.pwa.apple_mobile_capable }}">
+    <meta name="mobile-web-app-capable" content="{{ site.data.meta.pwa.mobile_app_capable }}">
+    <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="{{ site.data.meta.pwa.apple_status_bar_style }}">
 
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
-<meta property="og:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />
-<meta property="og:image" content="{{ page.og_image | default: site.data.meta.og_defaults.image }}" />
-<meta property="og:image:width" content="{{ site.data.meta.og_defaults.image_width }}" />
-<meta property="og:image:height" content="{{ site.data.meta.og_defaults.image_height }}" />
-<meta property="og:image:type" content="{{ site.data.meta.og_defaults.image_type }}" />
-<meta property="og:image:alt" content="{% if page.lang == 'id' %}Foto Yusuf Adiputera – Lead Software Engineer{% else %}{{ site.data.meta.og_defaults.image_alt }}{% endif %}" />
-<meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}{{ page.og_type | default: site.data.meta.og_defaults.type }}{% endif %}" />
-<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-<meta property="og:locale" content="{% if page.lang == 'id' %}id_ID{% else %}en_US{% endif %}" />
-<meta property="og:site_name" content="{{ site.data.meta.og_defaults.site_name }}" />
+    <!-- Open Graph Meta Tags -->
+    {%- if page.layout == 'article' -%}
+        {%- assign article_fallback = site.url | append: site.baseurl | append: '/images/badgeNonTransparent.webp' -%}
+        {%- assign current_og_image = page.og_image | default: article_fallback -%}
+        {%- assign current_og_image_alt = page.og_image_alt | default: 'Yusuf Adiputera Site Logo' -%}
+    {%- else -%}
+        {%- assign current_og_image = page.og_image | default: site.data.meta.og_defaults.image -%}
+        {%- if page.lang == 'id' -%}
+            {%- assign default_alt = 'Foto Yusuf Adiputera – Lead Software Engineer' -%}
+        {%- else -%}
+            {%- assign default_alt = site.data.meta.og_defaults.image_alt -%}
+        {%- endif -%}
+        {%- assign current_og_image_alt = page.og_image_alt | default: default_alt -%}
+    {%- endif -%}
+    <meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
+    <meta property="og:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />
+    <meta property="og:image" content="{{ current_og_image }}" />
+    <meta property="og:image:width" content="{{ site.data.meta.og_defaults.image_width }}" />
+    <meta property="og:image:height" content="{{ site.data.meta.og_defaults.image_height }}" />
+    <meta property="og:image:type" content="{{ site.data.meta.og_defaults.image_type }}" />
+    <meta property="og:image:alt" content="{{ current_og_image_alt }}" />
+    <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}{{ page.og_type | default: site.data.meta.og_defaults.type }}{% endif %}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:locale" content="{% if page.lang == 'id' %}id_ID{% else %}en_US{% endif %}" />
+    <meta property="og:site_name" content="{{ site.data.meta.og_defaults.site_name }}" />
 
-<!-- Profile Meta (for profile type pages) -->
-{% unless page.layout == 'article' %}{% if page.og_type == 'profile' or site.data.meta.og_defaults.type == 'profile' %}
-<meta property="profile:first_name" content="{{ site.data.meta.profile.first_name }}" />
-<meta property="profile:last_name" content="{{ site.data.meta.profile.last_name }}" />
-<meta property="profile:username" content="{{ site.data.meta.profile.username }}" />
-<meta property="profile:gender" content="{{ site.data.meta.profile.gender }}" />
-{% endif %}{% endunless %}
+    <!-- Profile Meta (for profile type pages) -->
+    {%- unless page.layout == 'article' -%}{%- if page.og_type == 'profile' or site.data.meta.og_defaults.type == 'profile' -%}
+    <meta property="profile:first_name" content="{{ site.data.meta.profile.first_name }}" />
+    <meta property="profile:last_name" content="{{ site.data.meta.profile.last_name }}" />
+    <meta property="profile:username" content="{{ site.data.meta.profile.username }}" />
+    <meta property="profile:gender" content="{{ site.data.meta.profile.gender }}" />
+    {%- endif -%}{%- endunless -%}
 
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="{{ site.data.meta.twitter_defaults.card }}" />
-<meta name="twitter:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
-<meta name="twitter:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />
-<meta name="twitter:image" content="{{ page.twitter_image | default: site.data.meta.twitter_defaults.image }}" />
-<meta name="twitter:image:alt" content="{{ site.data.meta.twitter_defaults.image_alt }}" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="{{ site.data.meta.twitter_defaults.card }}" />
+    <meta name="twitter:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
+    <meta name="twitter:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />
+    <meta name="twitter:image" content="{{ current_og_image }}" />
+    <meta name="twitter:image:alt" content="{{ current_og_image_alt }}" />
 
-<!-- Theme Color -->
-<meta name="theme-color" content="{{ site.data.meta.pwa.theme_color_light }}" />
+    <!-- Theme Color -->
+    <meta name="theme-color" content="{{ site.data.meta.pwa.theme_color_light }}" />
 
-{% include schema-person.html %}
+    {%- include schema-person.html -%}
 
-{% include schema-article.html %}
+    {%- include schema-article.html -%}
 
-{% include schema-profilepage.html %}
+    {%- include schema-profilepage.html -%}
 
-{% unless page.layout == 'article' %}{% include schema-breadcrumb.html %}{% endunless %}
+    {%- unless page.layout == 'article' -%}{%- include schema-breadcrumb.html -%}{%- endunless -%}
 
-{% include schema-articlelist.html %}
+    {%- include schema-articlelist.html -%}
 
-{% include schema-skills.html %}
+    {%- include schema-skills.html -%}

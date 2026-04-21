@@ -1,6 +1,7 @@
-{% if page.permalink == '/skills' or page.permalink == '/skills-id' %}
-{% assign sp_key = "skills_page_" | append: page.lang %}
-{% assign sp = site.data[sp_key] %}
+{%- if page.permalink == '/skills' or page.permalink == '/skills-id' -%}
+{%- assign sp_key = "skills_page_" | append: page.lang -%}
+{%- assign sp = site.data[sp_key] -%}
+
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -37,4 +38,4 @@
     }
 }
 </script>
-{% endif %}
+{%- endif -%}
