@@ -1,15 +1,15 @@
 section_experience: "Professional Experience"
 section_courses: "Key Courses"
 title: "Yusuf Adiputera – Lead Software Engineer (Condensed Version)"
-description: "Condensed resume of Yusuf Adiputera, Lead Software Engineer with more than 8 years of experience in Java and SAP Commerce."
-subtitle: "Lead Software Engineer | Java, SAP Commerce & Spring Framework"
+description: "Condensed resume of Yusuf Adiputera, Lead Software Engineer with more than 8 years of experience in Java and Enterprise Commerce."
+subtitle: "Lead Software Engineer | Java, Distributed Systems & Enterprise Commerce"
 summary_html: |
   <p>
-      Lead Software Engineer with more than 8 years of experience specializing in <strong>Java and SAP
-          Commerce (Hybris) architecture</strong>.
-      Proven track record in designing and delivering enterprise-scale e-commerce platforms for Astra
+      Lead Software Engineer with more than 8 years of experience specializing in <strong>Java architecture
+          and enterprise e-commerce platforms</strong>.
+      Proven track record in designing and delivering enterprise-scale systems for Astra
       Group, focusing on scalability,
-      platform modernization, and high-performance system integration.
+      platform modernization, and high-performance microservices integration.
   </p>
   <p>
       Expertise includes Spring-based microservices, dynamic rules engines (Rules-as-a-Service),
@@ -28,7 +28,7 @@ key_achievements:
   - label: "Performance"
     text: "Achieved sub-second response times through EHCache full-page caching and storefront optimizations."
   - label: "Modernization"
-    text: "Leading the migration of legacy SAP Commerce monoliths to Spring Boot–based microservices."
+    text: "Leading the migration of legacy e-commerce monoliths to Spring Boot–based microservices."
   - label: "Enterprise Integration"
     text: "Delivered integrations for SAP CDP, Emarsys, and S/4HANA ABAP."
 skills:
@@ -48,7 +48,7 @@ experience:
       - label: "Engineering Leadership"
         text: "Lead a team of 12 engineers in delivering enterprise platforms from analysis through launch (motorkux.id)."
       - label: "Modernization"
-        text: "Heading the strategic initiative to migrate SAP Commerce to microservices, supervising 3 parallel projects."
+        text: "Heading the strategic initiative to migrate legacy e-commerce platforms to microservices, supervising 3 parallel projects."
       - label: "Rules Engine"
         text: "Built a dynamic rule platform (Drools) enabling client-defined actions without code deployment."
       - label: "Scalability"

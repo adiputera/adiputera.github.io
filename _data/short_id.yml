@@ -1,15 +1,15 @@
 section_experience: "Pengalaman Profesional"
 section_courses: "Kursus Utama"
 title: "Yusuf Adiputera – Lead Software Engineer (Versi Ringkas)"
-description: "Resume ringkas Yusuf Adiputera, Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java dan SAP Commerce."
-subtitle: "Lead Software Engineer | Java, SAP Commerce & Spring Framework"
+description: "Resume ringkas Yusuf Adiputera, Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java dan Enterprise Commerce."
+subtitle: "Lead Software Engineer | Java, Distributed Systems & Enterprise Commerce"
 summary_html: |
   <p>
       Lead Software Engineer dengan lebih dari 8 tahun pengalaman spesialisasi dalam <strong>arsitektur
-          Java dan SAP Commerce (Hybris)</strong>.
-      Memiliki rekam jejak terbukti dalam merancang dan mengirimkan platform e-commerce skala enterprise
+          Java dan enterprise e-commerce platforms</strong>.
+      Memiliki rekam jejak terbukti dalam merancang dan mengirimkan sistem skala enterprise
       untuk Astra Group, berfokus pada skalabilitas,
-      modernisasi platform, dan integrasi sistem berperforma tinggi.
+      modernisasi platform, dan integrasi microservices berperforma tinggi.
   </p>
   <p>
       Keahlian mencakup microservices berbasis Spring, dynamic rules engine (Rules-as-a-Service),
@@ -28,7 +28,7 @@ key_achievements:
   - label: "Performa"
     text: "Mencapai waktu respons sub-detik melalui EHCache full-page caching dan optimasi storefront."
   - label: "Modernisasi"
-    text: "Memimpin inisiatif strategis migrasi monolit SAP Commerce ke microservices berbasis Spring Boot."
+    text: "Memimpin inisiatif strategis migrasi monolit e-commerce lama ke microservices berbasis Spring Boot."
   - label: "Integrasi Enterprise"
     text: "Memberikan integrasi untuk SAP CDP, Emarsys, dan S/4HANA ABAP."
 skills:
@@ -48,7 +48,7 @@ experience:
       - label: "Engineering Leadership"
         text: "Memimpin tim hingga 12 engineer dalam pengiriman platform enterprise dari analisis hingga rilis (motorkux.id)."
       - label: "Modernisasi"
-        text: "Memimpin inisiatif strategis migrasi SAP Commerce ke microservices, mengawasi 3 proyek paralel."
+        text: "Memimpin inisiatif strategis migrasi platform e-commerce lama ke microservices, mengawasi 3 proyek paralel."
       - label: "Rules Engine"
         text: "Membangun platform aturan dinamis (Drools) yang memungkinkan aksi ditentukan klien tanpa deployment kode."
       - label: "Skalabilitas"

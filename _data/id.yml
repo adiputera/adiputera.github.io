@@ -3,8 +3,8 @@
 site:
   title: "Yusuf Adiputera – Lead Software Engineer"
   name: "Yusuf Adiputera"
-  tagline: "Lead Software Engineer berspesialisasi dalam Java, SAP Commerce (Hybris), dan Spring Framework"
-  description: "Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java, SAP Commerce (Hybris), Spring MVC, dan Spring Boot. Berlokasi di Jakarta, terbuka untuk relokasi."
+  tagline: "Lead Software Engineer berspesialisasi dalam Java, Distributed Systems, dan Enterprise Commerce"
+  description: "Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java, Microservices, Spring Boot, dan Enterprise Commerce. Berlokasi di Jakarta, terbuka untuk relokasi."
   keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Lead Software Developer, SAP Hybris, SAP Hybris Commerce, SAP Commerce, SAP CX, SAP CX Commerce, Java, Spring MVC, Spring Framework, Spring Boot, OCC API, Drools, Solr, Kafka, Apache Kafka, SAP Customer Data Platform, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), REST API, Git, Serverless, Azure Function App, Function App, Backend Engineer, Senior Backend Engineer, Backend Developer, Senior Backend Developer, Backend Software Engineer, Senior Backend Software Engineer, Backend Software Developer, Senior Backend Software Developer, Full Stack Developer, Senior Full stack Developer, Full Stack Software Developer, Senior Full Stack Software Developer, Full Stack Engineer, Senior Full Stack Engineer, Full Stack Software Engineer, Senior Full Stack Software Engineer, Jakarta Developer, Indonesian Software Engineer, Southeast Asia Developer, Hire Java Developer, Java Developer Portfolio, SAP Commerce Resume, Hybris Developer Resume"
   email: "yusuf@adiputera.id"
   linkedin: "https://www.linkedin.com/in/yusuf-adiputera"
@@ -94,17 +94,17 @@ breadcrumb:
   short: "Versi Ringkas"
 
 summary: |
-  Yusuf adalah Lead Software Engineer yang berspesialisasi dalam enterprise e-commerce platforms, distributed systems, dan arsitektur SAP Commerce (Hybris), dengan lebih dari 8 tahun pengalaman profesional dalam membangun sistem yang scalable dan high-performance di dalam ekosistem SAP.
+  Yusuf adalah Lead Software Engineer yang berspesialisasi dalam enterprise e-commerce platforms, distributed systems, dan arsitektur Java, dengan lebih dari 8 tahun pengalaman profesional dalam membangun sistem yang scalable dan high-performance.
   
-  Dia memimpin desain arsitektur dan delivery platform skala enterprise, dengan fokus pada system scalability, platform modernization, dan strategi teknis jangka panjang. Keahliannya mencakup pengembangan SAP Commerce, arsitektur microservices berbasis Spring, Role-Based Access Control (RBAC) yang aman, dan integrasi sistem enterprise di seluruh lanskap SAP CX.
+  Dia memimpin desain arsitektur dan delivery platform skala enterprise, dengan fokus pada system scalability, platform modernization, dan strategi teknis jangka panjang. Keahliannya mencakup arsitektur microservices berbasis Spring, Role-Based Access Control (RBAC) yang aman, dan integrasi sistem enterprise, termasuk pengalaman mendalam dengan SAP Commerce (Hybris).
   
-  Yusuf telah memimpin beberapa implementasi SAP Commerce skala besar dan platform upgrades di seluruh platform digital Astra Group, termasuk seva.id, auto2000.co.id, astra-daihatsu.id, dan motorkux.id. Dia memimpin pengembangan end-to-end motorkux.id dari analisis hingga peluncuran produksi dan terus mendorong evolusi platform berdasarkan kebutuhan bisnis dan teknis.
+  Yusuf telah memimpin beberapa implementasi e-commerce skala besar dan platform upgrades di seluruh platform digital Astra Group, termasuk seva.id, auto2000.co.id, astra-daihatsu.id, dan motorkux.id. Dia memimpin pengembangan end-to-end motorkux.id dari analisis hingga peluncuran produksi dan terus mendorong evolusi platform berdasarkan kebutuhan bisnis dan teknis.
   
-  Saat ini dia memimpin inisiatif modernisasi strategis untuk memigrasikan SAP Commerce ke arsitektur microservices berbasis Spring Boot, merancang arsitektur sistem inti dan kapabilitas platform yang reusable termasuk dynamic rules engine (rules-as-a-service) dan fondasi layanan yang scalable.
+  Saat ini dia memimpin inisiatif modernisasi strategis untuk memigrasikan monolit SAP Commerce lama ke arsitektur microservices berbasis Spring Boot modern. Dalam peran ini, ia merancang arsitektur sistem inti dan kapabilitas platform yang reusable termasuk dynamic rules engine (rules-as-a-service) dan fondasi layanan yang scalable.
   
-  Pekerjaannya menekankan pada performance dan scalability engineering, termasuk arsitektur full-page caching, optimalisasi storefront, dan perbaikan infrastruktur yang memungkinkan platform menangani lonjakan traffic yang signifikan dengan keandalan tinggi.
+  Pekerjaannya menekankan pada performance dan scalability engineering, termasuk arsitektur full-page caching, optimalisasi aplikasi, dan perbaikan infrastruktur yang memungkinkan platform menangani lonjakan traffic yang signifikan dengan keandalan tinggi.
   
-  Yusuf juga berkontribusi pada inisiatif integrasi enterprise termasuk SAP Customer Data Platform (CDP), SAP Engagement Cloud (formerly SAP Emarsys), dan SAP S/4HANA, mendukung data pelanggan yang terpadu, otomatisasi pemasaran, dan integrasi ERP.
+  Yusuf juga berkontribusi pada inisiatif integrasi enterprise, bekerja dengan event-driven architectures (Kafka) dan integrasi data yang kompleks (SAP CDP, SAP Emarsys, SAP S/4HANA), mendukung data pelanggan yang terpadu dan otomatisasi pemasaran.
   
   Dia sangat antusias dalam membangun maintainable systems, membimbing tim engineering, dan merancang scalable architectures yang mendukung pertumbuhan bisnis jangka panjang.
 
@@ -166,7 +166,7 @@ experience:
     end_display: "Sekarang"
     duration: "Feb 2021 - Sekarang"
     description_html: |
-      <p>Memimpin arsitektur dan <i>delivery</i> platform <i>e-commerce</i> SAP Commerce (Hybris) skala enterprise, dengan fokus pada <i>scalability</i> sistem, modernisasi platform, dan integrasi perusahaan. Bertanggung jawab atas <i>engineering leadership</i>, desain sistem inti, dan evolusi platform jangka panjang di berbagai domain bisnis.</p>
+      <p>Memimpin arsitektur dan <i>delivery</i> platform <i>e-commerce</i> skala enterprise menggunakan Java, Spring Boot, dan Microservices, termasuk proyek modernisasi SAP Commerce (Hybris) yang kompleks. Bertanggung jawab atas <i>engineering leadership</i>, desain sistem inti, dan evolusi platform jangka panjang di berbagai domain bisnis.</p>
 
       <h4>Engineering Leadership</h4>
       <ul>
@@ -179,7 +179,7 @@ experience:
 
       <h4>Platform Modernization & Architecture (Sedang berlangsung)</h4>
       <ul>
-        <li>Memimpin inisiatif modernisasi perusahaan untuk memigrasikan platform SAP Commerce ke arsitektur <i>microservices</i> berbasis Spring Boot.</li>
+        <li>Memimpin inisiatif modernisasi perusahaan untuk memigrasikan platform <i>e-commerce</i> ke arsitektur <i>microservices</i> berbasis Spring Boot.</li>
         <li>Merancang arsitektur sistem inti yang mendukung berbagai domain bisnis dan mengawasi 3 proyek <i>rewrite</i> paralel.</li>
         <li>Menetapkan <i>service boundaries</i>, standar arsitektur, dan pedoman implementasi.</li>
         <li>Merancang model <i>Role-Based Access Control</i> (RBAC) yang aman untuk otorisasi layanan dan perlindungan sumber daya.</li>
