@@ -4,16 +4,16 @@ title: "Signal or Timeout: Handling Payment Confirmation in a Temporal Workflow"
 description: "How to use Temporal's Workflow.await with a duration to wait for a signal with a fallback activity - durable, replay-safe, and fully visible in the workflow history."
 keywords: "Temporal, Spring Boot, Workflow.await, Signal, Timeout, Durable Timer, Java SDK"
 date: 2026-04-24
-date_modified: 2026-04-24
+date_modified: 2026-04-26
 permalink: /articles/temporal-workflow-await-signal-or-timeout
 breadcrumb: "Articles"
 breadcrumb_short: "Temporal Signal or Timeout"
 snippet: "A focused look at Temporal's Workflow.await(Duration, Supplier) - the cleanest way I know to wait for an external signal with a bounded timeout, and fall back to an activity if it never arrives."
 snippet_id: "Penjelasan mendetail mengenai Workflow.await(Duration, Supplier) di Temporal - cara terbersih untuk menunggu signal eksternal dengan batas waktu, lalu jatuh ke aktivitas cadangan jika signal tak pernah datang."
-published: false
+published: true
 ---
 
-> **Disclaimer:** The [spring-temporal](https://github.com/adiputera/spring-temporal) project referenced in this article is a simplified, dummy sample. It is designed specifically to demonstrate the workflow and orchestration concepts, not to serve as production-ready business logic.
+> **Disclaimer:** The [spring-boot-temporal](https://github.com/adiputera/spring-boot-temporal) project referenced in this article is a simplified, dummy sample. It is designed specifically to demonstrate the workflow and orchestration concepts, not to serve as production-ready business logic.
 
 ## The Problem
 
@@ -156,4 +156,4 @@ In both cases the `TimerStarted` / `TimerFired` vs `WorkflowExecutionSignaled` s
 
 `Workflow.await(Duration, () -> flag)` is the pattern I reach for any time a workflow has to wait for an external event with a bounded timeout. It's three lines, it's replay-safe, it produces a clean history, and branching on the return value gives you a single place to decide what to do when the event doesn't come.
 
-The full source for this workflow is in the [spring-temporal](https://github.com/adiputera/spring-temporal) sample - have a look at `OrderWorkflowImpl` for the whole signal-or-timeout branch including the downstream child workflow that kicks off on payment success.
+The full source for this workflow is in the [spring-boot-temporal](https://github.com/adiputera/spring-boot-temporal) sample - have a look at `OrderWorkflowImpl` for the whole signal-or-timeout branch including the downstream child workflow that kicks off on payment success.

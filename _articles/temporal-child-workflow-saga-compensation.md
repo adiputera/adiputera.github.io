@@ -4,16 +4,16 @@ title: "Saga Compensation in Temporal: Refunding an Undelivered Order with a Chi
 description: "How to run a blocking child workflow in Temporal, inspect its result, and run compensation activities in the parent when the child returns a failure outcome."
 keywords: "Temporal, Saga Pattern, Child Workflow, Compensation, Spring Boot, Java, Workflow Orchestration"
 date: 2026-04-24
-date_modified: 2026-04-24
+date_modified: 2026-04-27
 permalink: /articles/temporal-child-workflow-saga-compensation
 breadcrumb: "Articles"
 breadcrumb_short: "Temporal Saga Child Workflow"
 snippet: "A saga pattern worked out in code: a parent workflow dispatches a child consignment workflow, blocks until it returns, and runs refund + cancellation activities if the child reports an undelivered outcome."
 snippet_id: "Pola saga yang dikerjakan dalam kode: workflow induk memanggil child workflow pengiriman, menunggu hasilnya, lalu menjalankan aktivitas refund + pembatalan jika child melaporkan status tidak terkirim."
-published: false
+published: true
 ---
 
-> **Disclaimer:** The [spring-temporal](https://github.com/adiputera/spring-temporal) project referenced in this article is a simplified, dummy sample. It is designed specifically to demonstrate the workflow and orchestration concepts, not to serve as production-ready business logic.
+> **Disclaimer:** The [spring-boot-temporal](https://github.com/adiputera/spring-boot-temporal) project referenced in this article is a simplified, dummy sample. It is designed specifically to demonstrate the workflow and orchestration concepts, not to serve as production-ready business logic.
 
 ## The Problem
 
@@ -23,7 +23,7 @@ Option A: the service that detects the failed delivery calls `POST /refund` on t
 
 Option B: model the business process as a workflow, model the fulfilment sub-process as a **child workflow**, and put the compensation in the parent. When the child returns a failure result, the parent runs refund + email as ordinary activities. Retry, idempotency, and resume-on-crash are handled by Temporal.
 
-This article walks through Option B, implemented in the [spring-temporal](https://github.com/adiputera/spring-temporal) sample.
+This article walks through Option B, implemented in the [spring-boot-temporal](https://github.com/adiputera/spring-boot-temporal) sample.
 
 ## The Shape of the Parent
 
@@ -154,4 +154,4 @@ The saga pattern doesn't require a saga coordinator library. A Temporal parent w
 - **Retries** and **idempotency** are handled by Temporal's activity retry options plus deterministic workflow ids.
 - **Audit** is the workflow history, exposed via the Temporal UI or an endpoint like cms-service's `GET /workflows/{id}`.
 
-The full sample is on [GitHub](https://github.com/adiputera/spring-temporal). Have a look at `OrderWorkflowImpl.runConsignment` and `ConsignmentWorkflowImpl` together - it's under 100 lines of workflow code and it models the whole place-order-through-delivery saga.
+The full sample is on [GitHub](https://github.com/adiputera/spring-boot-temporal). Have a look at `OrderWorkflowImpl.runConsignment` and `ConsignmentWorkflowImpl` together - it's under 100 lines of workflow code and it models the whole place-order-through-delivery saga.
