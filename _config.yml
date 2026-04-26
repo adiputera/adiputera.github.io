@@ -48,6 +48,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - FAQ.md
+  - FAQ_SUGGESTIONS.md
+  - SEO_RECOMMENDATIONS.md
   - README_RESUME.md
   - CLAUDE.md
   - CONTENT_MANAGEMENT.md
@@ -63,5 +66,4 @@ exclude:
   - package.json
   - package-lock.json
   - scripts
-  - articles
   - static-html

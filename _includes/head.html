@@ -63,11 +63,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="{{ site.data.meta.pwa.apple_status_bar_style }}">
 
     <!-- Open Graph Meta Tags -->
-    {%- if page.layout == 'article' -%}
-        {%- assign article_fallback = site.url | append: site.baseurl | append: '/images/badgeNonTransparent.webp' -%}
-        {%- assign current_og_image = page.og_image | default: article_fallback -%}
-        {%- assign current_og_image_alt = page.og_image_alt | default: 'Yusuf Adiputera Site Logo' -%}
-    {%- else -%}
+    {%- if page.permalink == '/' or page.permalink == '/id' or page.permalink == '/short' or page.permalink == '/short-id' -%}
         {%- assign current_og_image = page.og_image | default: site.data.meta.og_defaults.image -%}
         {%- if page.lang == 'id' -%}
             {%- assign default_alt = 'Foto Yusuf Adiputera – Lead Software Engineer' -%}
@@ -75,6 +71,10 @@
             {%- assign default_alt = site.data.meta.og_defaults.image_alt -%}
         {%- endif -%}
         {%- assign current_og_image_alt = page.og_image_alt | default: default_alt -%}
+    {%- else -%}
+        {%- assign badge_fallback = site.url | append: site.baseurl | append: '/images/badgeNonTransparent.webp' -%}
+        {%- assign current_og_image = page.og_image | default: badge_fallback -%}
+        {%- assign current_og_image_alt = page.og_image_alt | default: 'Yusuf Adiputera Site Logo' -%}
     {%- endif -%}
     <meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title }}" />
     <meta property="og:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description }}" />

@@ -3,7 +3,7 @@ layout: article
 title: "Saga Compensation in Temporal: Refunding an Undelivered Order with a Child Workflow"
 description: "How to run a blocking child workflow in Temporal, inspect its result, and run compensation activities in the parent when the child returns a failure outcome."
 keywords: "Temporal, Saga Pattern, Child Workflow, Compensation, Spring Boot, Java, Workflow Orchestration"
-date: 2026-04-24
+date: 2026-04-27
 date_modified: 2026-04-27
 permalink: /articles/temporal-child-workflow-saga-compensation
 breadcrumb: "Articles"

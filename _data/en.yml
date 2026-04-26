@@ -74,7 +74,7 @@ navigation:
     - text: "Skills"
       url: "/skills"
     - text: "Articles"
-      url: "/#articles"
+      url: "/articles/"
     - text: "FAQ"
       url: "/faq"
 
@@ -86,6 +86,7 @@ links:
   detailed_skills_url: "/skills"
   faq: "Have questions? Check FAQ &rarr;"
   faq_url: "/faq"
+  all_articles: "View all technical articles &rarr;"
 
 breadcrumb:
   home: "Home"

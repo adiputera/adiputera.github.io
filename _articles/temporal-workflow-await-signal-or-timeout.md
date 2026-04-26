@@ -3,7 +3,7 @@ layout: article
 title: "Signal or Timeout: Handling Payment Confirmation in a Temporal Workflow"
 description: "How to use Temporal's Workflow.await with a duration to wait for a signal with a fallback activity - durable, replay-safe, and fully visible in the workflow history."
 keywords: "Temporal, Spring Boot, Workflow.await, Signal, Timeout, Durable Timer, Java SDK"
-date: 2026-04-24
+date: 2026-04-26
 date_modified: 2026-04-26
 permalink: /articles/temporal-workflow-await-signal-or-timeout
 breadcrumb: "Articles"
