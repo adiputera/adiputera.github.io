@@ -30,7 +30,8 @@
     "https://github.com/adiputera",
     "https://stackoverflow.com/users/3603194/adiputera",
     "https://profile.sap.com/u/adiputera",
-    "https://community.sap.com/t5/user/viewprofilepage/user-id/14778"
+    "https://community.sap.com/t5/user/viewprofilepage/user-id/14778",
+    "https://www.hackerrank.com/profile/yfa_adiputera"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -136,8 +137,19 @@
     }
   ],
   "knowsLanguage": [
-    { "@type": "Language", "name": "English" },
-    { "@type": "Language", "name": "Indonesian", "alternateName": "Bahasa Indonesia" },
-    { "@type": "Language", "name": "Javanese", "alternateName": "Bahasa Jawa" }
+    {
+      "@type": "Language",
+      "name": "English"
+    },
+    {
+      "@type": "Language",
+      "name": "Indonesian",
+      "alternateName": "Bahasa Indonesia"
+    },
+    {
+      "@type": "Language",
+      "name": "Javanese",
+      "alternateName": "Bahasa Jawa"
+    }
   ]
 }
