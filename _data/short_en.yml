@@ -18,11 +18,11 @@ summary_html: |
   </p>
 key_achievements:
   - label: "Lead Architect"
-    text: "Successfully built and launched <i>motorkux.id</i> (2021–Present) and <i>seva.id</i> marketplace (2019–2021)."
+    text: "Architected and launched <i>motorkux.id</i> (2021–Present) and <i>seva.id</i> marketplace (2019–2021)."
   - label: "Award Recipient"
-    text: "Won internal \"Best Project Development Quality\" award (2024)."
+    text: "Received the internal \"Best Project Development Quality\" award (2024)."
   - label: "Rules-as-a-Service"
-    text: "Designed and implemented a dynamic rules engine using Drools, decoupling business logic from code."
+    text: "Designed a dynamic rules engine using Drools, effectively decoupling core business logic from application code."
   - label: "Performance"
     text: "Achieved sub-second response times through EHCache full-page caching and storefront optimizations."
   - label: "Modernization"

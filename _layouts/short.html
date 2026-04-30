@@ -86,5 +86,18 @@ layout: default
             <h2 id="courses">{{ short.section_courses }}</h2>
             <p>{{ short.courses }}</p>
 
+            {% if data.certifications %}
+            <h2 id="certifications">{{ data.sections.certifications }}</h2>
+            <ul>
+                {% for cert in data.certifications %}
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>{{ cert.name }}</strong> ({{ cert.credential_type }})<br>
+                    <span style="font-size: 0.9em;">Issued: {{ cert.valid_from }} · Expires: {{ cert.valid_to }}{% if cert.credential_id %} | ID: {{ cert.credential_id }}{% endif %}
+                    {% if cert.url %} | <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="hide-for-print">View Credential</a>{% endif %}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
         </main>
     </div>

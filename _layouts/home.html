@@ -145,6 +145,22 @@ layout: default
             {% endfor %}
         </ul>
 
+        {% if data.certifications %}
+        <h2 id="certifications">{{ data.sections.certifications }}</h2>
+        <ul>
+            {% for cert in data.certifications %}
+            <li>
+                <h3 class="normal-text"><strong>{{ cert.name }}</strong><br>{{ cert.credential_type }}
+                {% if cert.credential_id %}<br><span style="font-size: 0.9em; font-weight: normal;">Credential ID: {{ cert.credential_id }}</span>{% endif %}
+                </h3>
+                <p style="margin-top: 0.5rem; margin-bottom: 0;">Issued {{ cert.valid_from }} · Expires {{ cert.valid_to }}
+                {% if cert.url %}<br><a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;" class="hide-for-print">View Credential</a>{% endif %}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <h2 id="articles" class="hide-for-print">{{ data.sections.articles }}</h2>
         <p class="hide-for-print"><a href="/articles">{{ data.links.all_articles }}</a></p>
 

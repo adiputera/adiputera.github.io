@@ -18,11 +18,11 @@ summary_html: |
   </p>
 key_achievements:
   - label: "Lead Architect"
-    text: "Berhasil membangun dan meluncurkan <i>motorkux.id</i> (2021–Sekarang) dan <i>seva.id</i> marketplace (2019–2021)."
+    text: "Merancang dan meluncurkan <i>motorkux.id</i> (2021–Sekarang) dan <i>seva.id</i> marketplace (2019–2021)."
   - label: "Penghargaan"
-    text: "Memenangkan penghargaan internal \"Best Project Development Quality\" (2024)."
+    text: "Menerima penghargaan internal \"Best Project Development Quality\" (2024)."
   - label: "Rules-as-a-Service"
-    text: "Merancang dan implementasi dynamic rules engine menggunakan Drools, memisahkan logika bisnis dari kode."
+    text: "Merancang dynamic rules engine menggunakan Drools, secara efektif memisahkan logika bisnis dari kode aplikasi."
   - label: "Performa"
     text: "Mencapai waktu respons sub-detik melalui EHCache full-page caching dan optimasi storefront."
   - label: "Modernisasi"
