@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% assign data = site.data[page.lang] %}
+<div class="container">
+    {% include navigation.html %}
+
+    <header>
+        <h1 class="main-heading">
+            <a href="{% if page.lang == 'id' %}/id{% else %}/{% endif %}" style="text-decoration: none; color: inherit;">{{ data.site.name }}</a>
+            <span class="title">{{ data.site.tagline }}</span>
+        </h1>
+    </header>
+
+    <main>
+        <h2 id="articles">{{ data.sections.articles }}</h2>
+        <ul class="article-list">
+            {% assign sorted_articles = site.articles | sort: 'date' | reverse %}
+            {% for article in sorted_articles %}
+            <li>
+                <a href="{{ article.permalink }}">
+                    <h3 class="normal-text">{{ article.title }}</h3>
+                </a>
+                <time class="article-meta" style="display: block; margin-bottom: 0.5rem;" datetime="{{ article.date | date: '%Y-%m-%d' }}">{{ article.date | date: "%B %-d, %Y" }}</time>
+                <p class="article-snippet">{% if page.lang == 'id' and article.snippet_id %}{{ article.snippet_id }}{% else %}{{ article.snippet }}{% endif %}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    {% include footer.html %}
+</div>

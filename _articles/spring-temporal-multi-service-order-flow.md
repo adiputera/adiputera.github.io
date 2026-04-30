@@ -4,7 +4,7 @@ title: "Orchestrating a Place-Order Flow Across Five Spring Boot Services with T
 description: "Walk through a Spring Boot + Temporal sample that orchestrates a place-order flow across five services with no HTTP calls between them - each service runs its own Temporal worker on a dedicated task queue."
 keywords: "Temporal, Spring Boot, Java, Microservices, Workflow Orchestration, Saga, Task Queue, temporal-spring-boot-starter"
 date: 2026-04-24
-date_modified: 2026-04-24
+date_modified: 2026-04-25
 permalink: /articles/spring-temporal-multi-service-order-flow
 breadcrumb: "Articles"
 breadcrumb_short: "Spring Temporal Orchestration"
@@ -13,7 +13,7 @@ snippet_id: "Penjelasan sebuah proyek sampel Spring Boot di mana lima service me
 published: true
 ---
 
-> **Disclaimer:** The [spring-temporal](https://github.com/adiputera/spring-temporal) project referenced in this article is a simplified, dummy sample. It is designed specifically to demonstrate the workflow and orchestration concepts, not to serve as production-ready business logic.
+> **Disclaimer:** The [spring-boot-temporal](https://github.com/adiputera/spring-boot-temporal) project referenced in this article is a simplified, dummy sample. It is designed specifically to demonstrate the workflow and orchestration concepts, not to serve as production-ready business logic.
 
 ## The Background
 
@@ -21,7 +21,7 @@ On a typical microservices codebase, when `order-service` needs `email-service` 
 
 Temporal flips the model. Instead of services calling each other directly, a **workflow** owns the business process, and each service contributes **activities** (leaf work) or **signals** (external events) through a Temporal worker. The workflow's history - every signal, every activity start, every timer - is persisted by Temporal, so retries, timeouts, and resumes are handled by the framework instead of application code.
 
-I built a sample project, **[spring-temporal](https://github.com/adiputera/spring-temporal)**, to make this concrete: a five-service `place-order` flow where no service calls another over HTTP. Every inter-service hop goes through Temporal. This article walks through the shape of that project and the three architectural decisions that matter most.
+I built a sample project, **[spring-boot-temporal](https://github.com/adiputera/spring-boot-temporal)**, to make this concrete: a five-service `place-order` flow where no service calls another over HTTP. Every inter-service hop goes through Temporal. This article walks through the shape of that project and the three architectural decisions that matter most.
 
 ## The Stack
 

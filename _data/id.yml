@@ -72,7 +72,7 @@ navigation:
     - text: "Keahlian"
       url: "/skills-id"
     - text: "Artikel"
-      url: "/id#articles"
+      url: "/articles/"
     - text: "FAQ"
       url: "/faq-id"
 
@@ -84,6 +84,7 @@ links:
   detailed_skills_url: "/skills-id"
   faq: "Punya pertanyaan? Cek FAQ &rarr;"
   faq_url: "/faq-id"
+  all_articles: "Lihat semua artikel teknis &rarr;"
 
 breadcrumb:
   home: "Beranda"
