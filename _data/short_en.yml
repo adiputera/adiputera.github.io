@@ -5,18 +5,16 @@ description: "Condensed resume of Yusuf Adiputera, Lead Software Engineer with m
 subtitle: "Lead Software Engineer | Java, Distributed Systems & Enterprise Commerce"
 summary_html: |
   <p>
-      Lead Software Engineer with more than 8 years of experience specializing in <strong>Java architecture
-          and enterprise e-commerce platforms</strong>.
-      Proven track record in designing and delivering enterprise-scale systems for Astra
-      Group, focusing on scalability,
-      platform modernization, and high-performance microservices integration.
+      Lead Software Engineer with over 8 years of experience specializing in <strong>Java &amp; Spring architecture
+      and enterprise e-commerce platforms</strong>.
+      Experienced in designing and delivering major systems for Astra Group, with a focus on scalability,
+      platform modernization, and microservices integration.
   </p>
   <p>
-      Expertise includes Spring-based microservices, dynamic rules engines (Rules-as-a-Service),
-      performance engineering (EHCache, lazy loading),
-      and enterprise integration within the SAP landscape (SAP CDP, SAP Engagement/Emarsys, S/4HANA).
-      Passionate about engineering leadership,
-      technical strategy, and building maintainable, high-availability systems.
+      Expertise spans Spring-based microservices, dynamic rules engines (Rules-as-a-Service),
+      and performance engineering (achieving sub-second load times). Brings deep experience in 
+      infrastructure (CI/CD, database migrations) and enterprise SAP integrations (CDP, Emarsys, S/4HANA).
+      Dedicated to engineering leadership, technical strategy, and building maintainable systems.
   </p>
 key_achievements:
   - label: "Lead Architect"
@@ -43,44 +41,65 @@ skills:
 experience:
   - title: "Lead Software Engineer"
     company: "PT Astra International Tbk"
-    duration: "Feb 2021 – Present"
+    duration: "Apr 2020 – Present"
     items:
-      - label: "Engineering Leadership"
-        text: "Lead a team of 12 engineers in delivering enterprise platforms from analysis through launch (motorkux.id)."
+      - label: "Architecture"
+        list:
+          - "Defined microservices architecture for high-traffic commerce platforms."
+          - "Owned cross-domain system design across core, CMS, and product services."
+          - "Established service boundaries, platform standards, and long-term evolution strategy."
       - label: "Modernization"
-        text: "Heading the strategic initiative to migrate legacy e-commerce platforms to microservices, supervising 3 parallel projects."
-      - label: "Rules Engine"
-        text: "Built a dynamic rule platform (Drools) enabling client-defined actions without code deployment."
+        list:
+          - "Leading migration from SAP Commerce monolith to Spring Boot microservices."
+          - "Supervising 3 parallel rewrite tracks across multiple business domains."
       - label: "Scalability"
-        text: "Optimized performance (caching, image resizer proxy, lazy loading) to handle 3x traffic spikes with sub-second response."
-      - label: "Integrations"
-        text: "Support SAP CDP, Emarsys marketing automation, and S/4HANA integration."
+        list:
+          - "Reduced page load from ~2s to sub-second via EHCache full-page caching."
+          - "Improved system resilience to handle 3× traffic spikes without downtime."
+          - "Reduced image payload by up to 80% through custom image proxy service."
+      - label: "Security"
+        list:
+          - "Designed RBAC for service-level authorization."
+          - "Implemented secure access lifecycle including role expiration mechanisms."
+      - label: "Integration"
+        list:
+          - "Contributed to SAP CDP and SAP Emarsys implementation for unified customer data."
+          - "Supporting SAP S/4HANA integration and ABAP development for ERP."
+      - label: "Leadership"
+        list:
+          - "Led 12 engineers delivering end-to-end platform development."
+          - "Acted as internal technical consultant across parallel projects."
+          - "Awarded Best Project Development Quality (2024)."
+      - label: "Achievements"
+        list:
+          - "Delivered motorkux.id go-live (2022) and seva.id marketplace launch (2020)."
+          - "Built Rules-as-a-Service platform using Drools for dynamic business logic."
+          - "Led SAP Commerce upgrades across enterprise platforms (6.6 → 2205)."
   - title: "Bootcamp Trainer (Java & SAP Commerce)"
     company: "PT Astra International Tbk"
     duration: "Nov 2021 – Dec 2022"
     description: "Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP Commerce/Hybris fundamentals."
-  - title: "Lead Software Developer"
-    company: "PT Astra International Tbk"
-    duration: "Apr 2020 – Jan 2021"
-    items:
-      - label: "Platform Launch"
-        text: "Successfully launched seva.id marketplace with payment, shipping, and 3rd party SOAP integrations."
-      - label: "DevOps"
-        text: "Established CI/CD pipelines on Azure DevOps and Jenkins; managed SAP Commerce version upgrades."
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
     duration: "Apr 2019 – Apr 2020"
     items:
-      - label: "Database Migration"
-        text: "Executed seamless migration from SAP HANA to Aurora MySQL for automotive and marketplace projects."
-      - label: "Automation"
-        text: "Transitioned manual deployments to automated CI/CD pipelines across Dev/QA/Pre-Prod environments."
+      - label: "Database Architecture"
+        list:
+          - "Migrated databases from SAP HANA to Aurora MySQL for high-traffic automotive platforms."
+      - label: "DevOps & Reliability"
+        list:
+          - "Transitioned manual deployments to automated CI/CD pipelines across all environments."
+          - "Maintained system availability and handled production releases for major e-commerce traffic."
   - title: "Software Developer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
     duration: "Apr 2018 – Apr 2019"
     items:
-      - label: "Seva.id Property"
-        text: "Built and launched the property marketplace module; implemented OAuth social login."
+      - label: "Feature Development"
+        list:
+          - "Built and launched the seva.id property marketplace."
+      - label: "System Integration"
+        list:
+          - "Integrated 3rd-party APIs and implemented OAuth social login."
 education: "Bachelor's Degree in Computer Science"
 education_institution: "Universitas Diponegoro, Indonesia"
 courses: "SAP Hybris Commerce Developer I & II • Confluent Developer Skills for Building Apache Kafka® (Confluent) • Java Spring Bootcamp • Oracle Academy Java Programming"

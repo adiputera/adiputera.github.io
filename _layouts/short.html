@@ -58,7 +58,18 @@ layout: default
                         {% if job.items %}
                         <ul>
                             {% for item in job.items %}
-                            <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
+                            <li>
+                                <strong>{{ item.label }}:</strong>
+                                {% if item.list %}
+                                <ul>
+                                    {% for subitem in item.list %}
+                                    <li>{{ subitem }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                {{ item.text }}
+                                {% endif %}
+                            </li>
                             {% endfor %}
                         </ul>
                         {% elsif job.description %}

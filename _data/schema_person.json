@@ -37,7 +37,7 @@
     "addressLocality": "Jakarta",
     "addressCountry": "ID"
   },
-  "description": "Yusuf Adiputera is a Lead Software Engineer with expertise in Java, Microservices, Spring Boot, and Enterprise Commerce. Experienced in more than 8 years of enterprise system performance and high-reliability integrations using REST and SOAP.",
+  "description": "Yusuf Adiputera is a Lead Software Engineer specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He brings over 8 years of experience designing high-traffic systems, microservices, and enterprise integrations.",
   "knowsAbout": [
     "Java",
     "Spring Framework",
@@ -114,29 +114,23 @@
     {
       "@type": "EmployeeRole",
       "roleName": "Lead Software Engineer",
-      "startDate": "2021-02"
+      "startDate": "2020-04"
     },
     {
       "@type": "EmployeeRole",
-      "roleName": "Bootcamp Trainer - SAP Hybris Commerce",
+      "roleName": "Bootcamp Trainer",
       "startDate": "2021-11",
       "endDate": "2022-12"
     },
     {
       "@type": "EmployeeRole",
-      "roleName": "Lead Software Developer",
-      "startDate": "2020-04",
-      "endDate": "2021-01"
-    },
-    {
-      "@type": "EmployeeRole",
-      "roleName": "Tech Lead - SAP Hybris Commerce & DevOps Engineer",
+      "roleName": "Tech Lead & DevOps Engineer",
       "startDate": "2019-04",
       "endDate": "2020-04"
     },
     {
       "@type": "EmployeeRole",
-      "roleName": "Software Developer - SAP Hybris Commerce",
+      "roleName": "Software Developer",
       "startDate": "2018-04",
       "endDate": "2019-04"
     }

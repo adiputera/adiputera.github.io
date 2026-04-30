@@ -15,13 +15,11 @@ site:
   about_me: "https://about.me/adiputera"
   location: "Jakarta, Indonesia"
   summary_html: |
-    <p>Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed systems, and Java architecture, with more than 8 years of professional experience in building scalable, high-performance systems.</p>
-    <p>He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes Spring-based microservices architecture, secure Role-Based Access Control (RBAC), and enterprise system integration, including deep experience with SAP Commerce (Hybris).</p>
-    <p>Yusuf has led multiple large-scale e-commerce implementations and platform upgrades across Astra Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He led the end-to-end development of motorkux.id from analysis through production launch and continues to drive platform evolution based on business and technical requirements.</p>
-    <p>He is currently leading a strategic modernization initiative to migrate a legacy SAP Commerce monolith into a modern Spring Boot–based microservices architecture. In this role, he designs core system architecture and reusable platform capabilities, including a dynamic rules engine (rules-as-a-service) and a scalable service foundation.</p>
-    <p>His work emphasizes performance and scalability engineering, including full-page caching architecture, application optimization, and infrastructure improvements enabling platforms to handle significant traffic spikes with high reliability.</p>
-    <p>Yusuf also contributes to enterprise integration initiatives, working with event-driven architectures (Kafka) and complex data integrations (SAP CDP, SAP Emarsys, SAP S/4HANA), supporting unified customer data and marketing automation.</p>
-    <p>He is passionate about building maintainable systems, mentoring engineering teams, and designing scalable architectures that support long-term business growth.</p>
+    <p>Yusuf is a Lead Software Engineer with over 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering high-traffic platforms for Astra Group, including seva.id, auto2000.co.id, and motorkux.id.</p>
+    <p>Currently, he leads a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, he designs reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
+    <p>His engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, he has successfully reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
+    <p>Beyond application code, Yusuf brings strong expertise in infrastructure and data architecture. He has executed complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.</p>
+    <p>As an engineering leader, Yusuf acts as an internal technical consultant across parallel projects. He enjoys leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
 
 contact:
   email: "yusuf@adiputera.id"
@@ -94,19 +92,15 @@ breadcrumb:
   short: "Short Version"
 
 summary: |
-  Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed systems, and Java architecture, with more than 8 years of professional experience in building scalable, high-performance systems.
+  Yusuf is a Lead Software Engineer with over 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering high-traffic platforms for Astra Group, including seva.id, auto2000.co.id, and motorkux.id.
   
-  He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes Spring-based microservices architecture, secure Role-Based Access Control (RBAC), and enterprise system integration, including deep experience with SAP Commerce (Hybris).
+  Currently, he leads a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, he designs reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
   
-  Yusuf has led multiple large-scale e-commerce implementations and platform upgrades across Astra Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He led the end-to-end development of motorkux.id from analysis through production launch and continues to drive platform evolution based on business and technical requirements.
+  His engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, he has successfully reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes. 
   
-  He is currently leading a strategic modernization initiative to migrate a legacy SAP Commerce monolith into a modern Spring Boot–based microservices architecture. In this role, he designs core system architecture and reusable platform capabilities, including a dynamic rules engine (rules-as-a-service) and a scalable service foundation.
+  Beyond application code, Yusuf brings strong expertise in infrastructure and data architecture. He has executed complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.
   
-  His work emphasizes performance and scalability engineering, including full-page caching architecture, application optimization, and infrastructure improvements enabling platforms to handle significant traffic spikes with high reliability.
-  
-  Yusuf also contributes to enterprise integration initiatives, working with event-driven architectures (Kafka) and complex data integrations (SAP CDP, SAP Emarsys, SAP S/4HANA), supporting unified customer data and marketing automation.
-  
-  He is passionate about building maintainable systems, mentoring engineering teams, and designing scalable architectures that support long-term business growth.
+  As an engineering leader, Yusuf acts as an internal technical consultant across parallel projects. He enjoys leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.
 
 skills:
   - category: "Languages"
@@ -160,79 +154,69 @@ experience:
     company: "PT Astra International Tbk"
     logo: "images/astra.svg"
     logo_alt: "PT Astra International Tbk Logo"
-    start_date: "2021-02"
-    start_display: "Feb 2021"
+    start_date: "2020-04"
+    start_display: "Apr 2020"
     end_date: null
     end_display: "Present"
-    duration: "Feb 2021 - Present"
+    duration: "Apr 2020 - Present"
     description_html: |
-      <p>Lead architecture and delivery of enterprise-scale e-commerce platforms using Java, Spring Boot, and Microservices, including complex SAP Commerce (Hybris) modernization projects. Responsible for engineering leadership, core system design, and long-term platform evolution across multiple business domains.</p>
+      <p>Lead architecture and evolution of enterprise-scale e-commerce platforms, driving modernization from monolithic SAP Commerce systems to a scalable microservices ecosystem across multiple business domains.</p>
 
-      <h4>Engineering Leadership</h4>
+      <h4>Architecture &amp; Platform Ownership</h4>
       <ul>
-        <li>Led a team of up to 12 engineers delivering enterprise e-commerce platforms from analysis through production (motorkux.id go-live June 2022).</li>
-        <li>Owned end-to-end delivery including architecture design, project planning, sprint execution, and release management.</li>
-        <li>Established coding standards and enforced engineering quality through code reviews, technical mentoring, and knowledge sharing.</li>
-        <li>Coordinated cross-team collaboration across product, infrastructure, and enterprise integration teams.</li>
-        <li>Won internal “Best Project Development Quality” award (2024).</li>
+        <li>Defined and led microservices architecture for high-traffic commerce platforms.</li>
+        <li>Owned cross-domain system design across core, CMS, and product services.</li>
+        <li>Established service boundaries, platform standards, and long-term system evolution strategy.</li>
+        <li>Built reusable platform capabilities including rules engine and shared infrastructure components.</li>
       </ul>
 
-      <h4>Platform Modernization & Architecture (on going)</h4>
+      <h4>Platform Modernization</h4>
       <ul>
-        <li>Leading enterprise modernization initiative to migrate legacy e-commerce platforms to a Spring Boot–based microservices architecture.</li>
-        <li>Designed core system architecture supporting multiple business domains and supervising 3 parallel rewrite projects.</li>
-        <li>Defined service boundaries, architecture standards, and implementation guidelines.</li>
-        <li>Designed secure Role-Based Access Control (RBAC) model for service authorization and resource protection.</li>
+        <li>Leading enterprise-wide migration from SAP Commerce monolith to Spring Boot–based microservices.</li>
+        <li>Supervising 3 parallel rewrite tracks across multiple business domains.</li>
+        <li>Defined engineering standards and implementation guidelines for distributed systems.</li>
       </ul>
 
-      <h4>Rule Engine Platform (Rules-as-a-Service)</h4>
+      <h4>Scalability &amp; Performance Engineering</h4>
       <ul>
-        <li>Designed dynamic rule engine using Drools enabling client-defined conditions and actions without code deployment.</li>
-        <li>Built reusable rules platform decoupling business logic from application services.</li>
-        <li>Implemented flexible rule model not tightly coupled to domain objects.</li>
-        <li>Delivered as core platform capability for SAP Commerce modernization and future service architecture.</li>
-        <li>Developed payload validator on the fly, using Drools (2025).</li>
+        <li>Reduced page load time from ~2s to sub-second via full-page caching architecture (EHCache).</li>
+        <li>Improved system resilience to handle 3× traffic spikes without downtime.</li>
+        <li>Reduced image payload size by up to 80% through custom image proxy service.</li>
+        <li>Optimized storefront performance via CMS lazy loading and rendering improvements.</li>
       </ul>
 
-      <h4>Performance & Scalability Engineering</h4>
+      <h4>Security &amp; Access Control</h4>
       <ul>
-        <li>Designed and implemented full-page caching architecture (EHCache), reducing page load time from ~2s to sub-second response.</li>
-        <li>Improved platform resilience enabling system to handle more than 3× traffic spikes without downtime.</li>
-        <li>Optimized storefront performance through CMS lazy loading strategy and rendering optimization.</li>
-        <li>Built image resizer proxy reducing payload size up to 80% and improving page load performance.</li>
-        <li>Improved JSP storefront performance.</li>
-        <li>Developed image resizer proxy (2024).</li>
-      </ul>
-
-      <h4>SAP Commerce Platform Engineering</h4>
-      <ul>
-        <li>Led multiple SAP Commerce platform upgrades across enterprise systems:
-          <ul>
-            <li>seva.id marketplace & otomotif (6.6 → 20.11)</li>
-            <li>auto2000 & Astra-Daihatsu (19.05 → 20.11)</li>
-            <li>motorkux.id (2105 → 2205)</li>
-          </ul>
-        </li>
-        <li>Developed custom promotion engine supporting location-based quota without coupon dependency (2023).</li>
-        <li>Implemented employee role expiration mechanism for enterprise access control.</li>
+        <li>Designed and implemented Role-Based Access Control (RBAC) for service-level authorization.</li>
+        <li>Implemented secure access lifecycle including employee role expiration mechanisms.</li>
       </ul>
 
       <h4>Enterprise Integration</h4>
       <ul>
-        <li>Contributed to SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) implementation for customer data and marketing automation.</li>
+        <li>Contributed to SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation for unified customer data and marketing automation.</li>
         <li>Supporting SAP S/4HANA integration initiatives and expanding ABAP expertise for ERP integration.</li>
       </ul>
 
-      <h4>Core Responsibilities</h4>
+      <h4>Engineering Leadership &amp; Technical Influence</h4>
       <ul>
-        <li>Architecture design and system evolution planning</li>
-        <li>Project planning and delivery management</li>
-        <li>Engineering standards governance and code review</li>
-        <li>Platform upgrade and deployment strategy</li>
-        <li>Performance optimization and scalability improvements</li>
+        <li>Led a team of up to 12 engineers delivering end-to-end platform development.</li>
+        <li>Acted as internal technical consultant across multiple teams, providing architectural guidance and solution design for parallel projects.</li>
+        <li>Drove cross-team technical alignment, ensuring consistency in architecture, standards, and best practices.</li>
+        <li>Mentored engineers and senior developers on system design, performance, and scalable architecture.</li>
+        <li>Collaborated with product, infrastructure, and enterprise integration teams to align technical solutions with business goals.</li>
+        <li>Owned CI/CD pipeline design and deployment strategy across Azure DevOps and Jenkins.</li>
+        <li>Awarded <strong>Best Project Development Quality (2024)</strong>.</li>
       </ul>
 
-      <p><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices Architecture, Drools, EHCache, JSP, SAP CDP, SAP Emarsys, SAP S/4HANA.</p>
+      <h4>Selected Achievements</h4>
+      <ul>
+        <li>Delivered <strong>motorkux.id</strong> go-live (2022) and <strong>seva.id marketplace</strong> launch (2020) with payment, shipping, and 3rd-party integrations.</li>
+        <li>Designed Rules-as-a-Service platform using Drools for dynamic business logic without code deployment.</li>
+        <li>Led multiple SAP Commerce upgrades across enterprise platforms (seva.id, auto2000, motorkux.id - versions 6.6 → 2205).</li>
+        <li>Developed custom promotion engine supporting location-based quota without coupon dependency.</li>
+      </ul>
+
+      <p><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Microservices Architecture, SAP Commerce (Hybris), Drools, EHCache, JSP, SAP CDP, SAP Emarsys, SAP S/4HANA, Azure DevOps, Jenkins, MySQL.</p>
 
   - title: "Bootcamp Trainer"
     company: "PT Astra International Tbk"
@@ -247,30 +231,6 @@ experience:
       <p>Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP Commerce/Hybris fundamentals.</p>
       <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring MVC, SAP Commerce (Hybris)</p>
 
-  - title: "Lead Software Developer"
-    company: "PT Astra International Tbk"
-    logo: "images/astra.svg"
-    logo_alt: "PT Astra International Tbk Logo"
-    start_date: "2020-04"
-    start_display: "Apr 2020"
-    end_date: "2021-01"
-    end_display: "Jan 2021"
-    duration: "Apr 2020 - Jan 2021"
-    description_html: |
-      <h4>Key Achievement:</h4>
-      Our team successfully launched seva.id marketplace on October 2020 with payment integration (credit card and virtual account transfer), shipping cost integration, 3rd party integration using SOAP web services, and a partial checkout feature.
-
-      <h4>Responsibilities:</h4>
-      <ul>
-        <li>Maintained coding standards documentation and enforced quality through code reviews and knowledge sharing sessions for the development team.</li>
-        <li>Led project planning, including man-days estimation, development timelines, and breaking down user stories into smaller tasks for sprint planning.</li>
-        <li>Developed new features and resolved critical production bugs to ensure platform stability and continuous delivery.</li>
-        <li>Managed deployment to lower environments and prepared comprehensive release notes.</li>
-        <li>Set up and maintained CI/CD pipelines using Azure DevOps and Jenkins, automating build, deployment, and patch application processes.</li>
-        <li>Led SAP Hybris Commerce/SAP Commerce version upgrades and patch applications.</li>
-      </ul>
-      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, Azure DevOps, Jenkins, MySQL</p>
-
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
     logo: "images/astra.svg"
@@ -281,20 +241,27 @@ experience:
     end_display: "Apr 2020"
     duration: "Apr 2019 - Apr 2020"
     description_html: |
-      <h4>Key achievement:</h4>
-      Successfully migrating the database of seva.id otomotif, seva.id marketplace, and astra-daihatsu from SAP HANA to Aurora MySQL.
+      <p>Led development and deployment operations for automotive and marketplace platforms, focusing on database architecture and CI/CD automation.</p>
 
-      <h4>Responsibilities:</h4>
+      <h4>Database &amp; Architecture</h4>
+      <ul>
+        <li>Migrated databases from SAP HANA to Aurora MySQL for major e-commerce platforms.</li>
+        <li>Developed scalable features and conducted code reviews to maintain architectural standards.</li>
+      </ul>
+
+      <h4>DevOps &amp; System Reliability</h4>
+      <ul>
+        <li>Transitioned manual deployment processes to automated CI/CD pipelines using Azure DevOps and Jenkins across all environments.</li>
+        <li>Served on the production deployment team, handling zero-downtime releases.</li>
+        <li>Traced and resolved complex bugs to maintain high availability for high-traffic platforms.</li>
+      </ul>
+
+      <h4>System Integration</h4>
       <ul>
         <li>Integrated 3rd-party REST/SOAP APIs and parent site services to support marketplace and automotive operations.</li>
-        <li>Transitioned manual deployment processes to automated CI/CD pipelines using Azure DevOps and Jenkins for Dev, QA, and Pre-Prod environments.</li>
-        <li>Served on the production deployment team, ensuring smooth and reliable releases with comprehensive release notes.</li>
-        <li>Conducted code reviews to maintain high code quality and architectural standards.</li>
-        <li>Traced and resolved complex bugs to maintain high availability for e-commerce traffic.</li>
-        <li>Executed complex database migrations, including seamless migration from SAP HANA to Aurora MySQL.</li>
-        <li>Developed scalable features to meet business requirements.</li>
       </ul>
-      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, Jenkins, Azure DevOps, SAP HANA, Aurora MySQL</p>
+
+      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, Jenkins, Azure DevOps, SAP HANA, Aurora MySQL.</p>
 
   - title: "Software Developer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
@@ -306,14 +273,23 @@ experience:
     end_display: "Apr 2019"
     duration: "Apr 2018 - Apr 2019"
     description_html: |
-      <h4>Key achievement:</h4>
-      Our team successfully built and launched seva.id property
+      <p>Contributed to the development of enterprise property marketplaces, focusing on core feature delivery and system integrations.</p>
 
-      <h4>Responsibility:</h4>
+      <h4>Feature Development &amp; Delivery</h4>
       <ul>
-        <li>Integrated 3rd-party APIs and parent site resources to build core functionalities and content delivery.</li>
-        <li>Developed and maintained core e-commerce features, actively resolving bugs and optimizing existing codebase for property marketplace.</li>
-        <li>Implemented social media login integration (OAuth) to streamline user onboarding and authentication.</li>
+        <li>Part of the core team that built and launched the <em>seva.id property</em> marketplace.</li>
+        <li>Developed and maintained e-commerce features, optimizing the existing codebase.</li>
       </ul>
-      <p style="margin-top: 1rem;"><strong>Technology Stack:</strong> SAP Hybris Commerce, Java, Spring MVC, REST/SOAP APIs, OAuth</p>
+
+      <h4>Authentication &amp; Security</h4>
+      <ul>
+        <li>Implemented OAuth social media login integration to simplify user login and registration.</li>
+      </ul>
+
+      <h4>System Integration</h4>
+      <ul>
+        <li>Integrated 3rd-party APIs and parent site resources to support marketplace features and manage content delivery.</li>
+      </ul>
+
+      <p class="tech-stack"><strong>Technology Stack:</strong> SAP Commerce (Hybris), Java, Spring MVC, REST/SOAP APIs, OAuth.</p>
 
