@@ -39,6 +39,8 @@ layout: default
             </ul>
 
             <h2 id="skills">{{ data.sections.skills }}</h2>
+            <p class="hide-for-print" style="margin-bottom: 1rem;"><a href="{{ data.links.detailed_skills_url }}">{{
+                    data.links.detailed_skills }}</a></p>
             <ul class="skills-group">
                 {% for skill in short.skills %}
                 <li class="skills-item"><strong>{{ skill.category }}:</strong> {{ skill.items }}</li>
@@ -103,6 +105,9 @@ layout: default
                 {% endfor %}
             </ul>
             {% endif %}
+
+            <h2 id="articles" class="hide-for-print">{{ data.sections.articles }}</h2>
+            <p class="hide-for-print"><a href="/articles">{{ data.links.all_articles }}</a></p>
 
         </main>
     </div>
