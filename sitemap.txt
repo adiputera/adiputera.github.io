@@ -8,8 +8,8 @@ permalink: /sitemap.txt
 {{ site.url }}/faq-id
 {{ site.url }}/skills
 {{ site.url }}/skills-id
-{{ site.url }}/short
-{{ site.url }}/short-id
+{{ site.url }}/full
+{{ site.url }}/full-id
 {%- for article in site.articles %}
 {{ site.url }}{{ article.url }}
 {%- endfor %}

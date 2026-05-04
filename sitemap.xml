@@ -80,23 +80,23 @@ layout: null
         <priority>0.8</priority>
     </url>
 
-    <!-- Short version pages -->
+    <!-- Full version pages -->
     <url>
-        <loc>{{ site.url }}/short</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/short" />
-        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/short-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/short" />
-        <lastmod>{{ lm.short_en }}</lastmod>
+        <loc>{{ site.url }}/full</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/full" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/full-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/full" />
+        <lastmod>{{ lm.full_en }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>{{ site.url }}/short-id</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/short" />
-        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/short-id" />
-        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/short" />
-        <lastmod>{{ lm.short_id }}</lastmod>
+        <loc>{{ site.url }}/full-id</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}/full" />
+        <xhtml:link rel="alternate" hreflang="id" href="{{ site.url }}/full-id" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/full" />
+        <lastmod>{{ lm.full_id }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

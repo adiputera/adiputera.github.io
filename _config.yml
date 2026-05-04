@@ -42,6 +42,7 @@ highlighter: rouge
 # Plugins (GitHub Pages compatible only)
 plugins:
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 # Exclude from processing
 exclude:

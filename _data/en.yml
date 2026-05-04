@@ -77,9 +77,9 @@ navigation:
       url: "/faq"
 
 links:
-  short_version_label: "Too long?"
-  short_version_link: "Read the short version &rarr;"
-  short_version_url: "/short"
+  short_version_label: "Want more details?"
+  short_version_link: "Read the full version &rarr;"
+  short_version_url: "/full"
   detailed_skills: "View detailed technical expertise & technologies &rarr;"
   detailed_skills_url: "/skills"
   faq: "Have questions? Check FAQ &rarr;"
@@ -90,7 +90,7 @@ breadcrumb:
   home: "Home"
   faq: "FAQ"
   skills: "Skills"
-  short: "Short Version"
+  full: "Full Version"
 
 summary: |
   Yusuf is a Lead Software Engineer with over 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering high-traffic platforms for Astra Group, including seva.id, auto2000.co.id, and motorkux.id.

@@ -63,7 +63,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="{{ site.data.meta.pwa.apple_status_bar_style }}">
 
     <!-- Open Graph Meta Tags -->
-    {%- if page.permalink == '/' or page.permalink == '/id' or page.permalink == '/short' or page.permalink == '/short-id' -%}
+    {%- if page.permalink == '/' or page.permalink == '/id' or page.permalink == '/full' or page.permalink == '/full-id' -%}
         {%- assign current_og_image = page.og_image | default: site.data.meta.og_defaults.image -%}
         {%- if page.lang == 'id' -%}
             {%- assign default_alt = 'Foto Yusuf Adiputera – Lead Software Engineer' -%}
