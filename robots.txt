@@ -7,7 +7,6 @@ Disallow: /FAQ.md
 Disallow: /CLAUDE.md
 Disallow: /SEO_RECOMMENDATIONS.md
 Disallow: /FAQ_SUGGESTIONS.md
-Disallow: /src/
 Disallow: /articles/template
 Disallow: /articles/template.html
 

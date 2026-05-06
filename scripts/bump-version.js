@@ -24,7 +24,9 @@ fs.writeFileSync(configPath, updatedConfig, "utf8");
 
 // Update sw.js query strings
 const sw = fs.readFileSync(swPath, "utf8");
-const updatedSw = sw.replace(/\?v=\d+/g, `?v=${version}`);
+const updatedSw = sw
+  .replace(/\?v=\d+/g, `?v=${version}`)
+  .replace(/static-\d+/g, `static-${version}`);
 fs.writeFileSync(swPath, updatedSw, "utf8");
 
 console.log(`asset_version bumped to ${version} (_config.yml + sw.js)`);

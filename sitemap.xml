@@ -101,6 +101,14 @@ layout: null
         <priority>0.8</priority>
     </url>
 
+    <!-- Articles index -->
+    <url>
+        <loc>{{ site.url }}/articles/</loc>
+        <lastmod>{{ lm.articles | default: site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Articles collection - dynamically generated -->
     {%- for article in site.articles -%}
     <url>

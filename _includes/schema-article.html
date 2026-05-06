@@ -4,19 +4,19 @@
     {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "{{ page.title }}",
-    "description": "{{ page.description }}",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page.description | jsonify }},
     "datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
     "dateModified": "{{ page.date_modified | default: page.date | date: '%Y-%m-%d' }}",
     "author": {
         "@type": "Person",
         "@id": "{{ site.url }}/#person",
-        "name": "{{ site.author }}"
+        "name": {{ site.author | jsonify }}
     },
     "publisher": {
         "@type": "Person",
         "@id": "{{ site.url }}/#person",
-        "name": "{{ site.author }}"
+        "name": {{ site.author | jsonify }}
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -51,7 +51,7 @@
         {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ page.title }}",
+        "name": {{ page.title | jsonify }},
         "item": "{{ site.url }}{{ page.url }}"
         }
     ]

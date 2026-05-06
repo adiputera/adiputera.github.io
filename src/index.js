@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
-            const targetElement = document.querySelector(targetId);
+            const targetElement = document.getElementById(decodeURIComponent(targetId.slice(1)));
             if (targetElement) {
                 e.preventDefault();
                 const navWrapper = document.querySelector('.nav-wrapper');

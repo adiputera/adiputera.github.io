@@ -1,14 +1,27 @@
+const CACHE_NAME = "static-202604141805";
+const PRECACHE_URLS = [
+    "./images/astra.svg",
+    "./src/master.min.css?v=202604141805",
+    "./src/index.min.js?v=202604141805"
+];
+
 self.addEventListener("install", e => {
     self.skipWaiting();
     e.waitUntil(
-        caches.open("static").then(cache => {
-            return cache.addAll(["./images/astra.svg", "./src/master.min.css?v=202604141805", "./src/index.min.js?v=202604141805"]);
-        })
+        caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_URLS))
     );
 });
 
 self.addEventListener("activate", event => {
-    event.waitUntil(self.clients.claim());
+    event.waitUntil(
+        caches.keys()
+            .then(keys => Promise.all(
+                keys
+                    .filter(key => key !== CACHE_NAME)
+                    .map(key => caches.delete(key))
+            ))
+            .then(() => self.clients.claim())
+    );
 });
 
 self.addEventListener("fetch", e => {
