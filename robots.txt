@@ -17,5 +17,9 @@ Disallow: /_includes/
 Disallow: /_layouts/
 Disallow: /*.backup
 
+# Disallow no longer exists page
+Disallow: /short
+Disallow: /short-id
+
 # Sitemap
 Sitemap: https://adiputera.github.io/sitemap.xml
