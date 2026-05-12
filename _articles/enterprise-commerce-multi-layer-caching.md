@@ -3,8 +3,8 @@ layout: article
 title: "Achieving Sub-Second API Performance with Multi-Layer Caching in Java Enterprise Commerce Platforms"
 description: "An architectural overview of multi-layer caching in Java enterprise commerce applications, explaining how CDN, Caffeine, and Redis work together to achieve sub-second API performance."
 keywords: "Java, Enterprise Commerce, Spring Boot, Caching, Performance, CDN, Caffeine, Ehcache, Redis, Architecture"
-date: 2025-10-17
-date_modified: 2025-10-17
+date: 2025-12-14
+date_modified: 2025-12-14
 canonical_url: ""
 canonical_source: ""
 breadcrumb: "Articles"
