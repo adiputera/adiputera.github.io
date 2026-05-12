@@ -12,7 +12,7 @@ snippet: "Why the abstraction principle in OOP is not the same as an abstract cl
 snippet_id: "Mengapa prinsip abstraksi dalam OOP tidak sama dengan abstract class, dan bagaimana kita menggunakan abstraksi di setiap level tanpa menyadarinya."
 canonical_url: ""
 canonical_source: ""
-published: false
+published: true
 ---
 
 ## The Background
