@@ -31,13 +31,13 @@ key_achievements:
     text: "Delivered integrations for SAP CDP, Emarsys, and S/4HANA ABAP."
 skills:
   - category: "Languages"
-    items: "Java, JavaScript, HTML, ABAP"
+    items: "Java, JavaScript, TypeScript, ABAP"
   - category: "Frameworks"
     items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, jQuery, Azure Functions"
   - category: "Platforms"
     items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys), SAP S/4HANA"
   - category: "Tools & Infra"
-    items: "Kafka, Apache Solr, Drools, Redis, Kafka, Azure DevOps, Jenkins, Git"
+    items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Git"
 experience:
   - title: "Lead Software Engineer"
     company: "PT Astra International Tbk"
