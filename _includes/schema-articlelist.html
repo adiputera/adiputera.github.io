@@ -1,4 +1,12 @@
-{%- if page.permalink == '/' or page.permalink == '/id' or page.permalink == '/articles/' -%}
+{%- if page.permalink == '/' or page.permalink == '/id' or page.layout == 'articles' -%}
+
+    {%- if page.layout == 'articles' -%}
+        {%- assign article_items = paginator.posts -%}
+        {%- assign position_offset = paginator.page | minus: 1 | times: paginator.per_page -%}
+    {%- else -%}
+        {%- assign article_items = site.articles -%}
+        {%- assign position_offset = 0 -%}
+    {%- endif -%}
 
     <script type="application/ld+json">
     {
@@ -6,10 +14,10 @@
         "@type": "ItemList",
         "name": "{% if page.lang == 'id' %}Artikel Teknis oleh Yusuf Adiputera{% else %}Technical Articles by Yusuf Adiputera{% endif %}",
         "description": "{% if page.lang == 'id' %}Artikel teknis tentang SAP Commerce yang ditulis oleh Yusuf Adiputera{% else %}Technical articles about SAP Commerce written by Yusuf Adiputera{% endif %}",
-        "itemListElement": [{% for article in site.articles %}
+        "itemListElement": [{% for article in article_items %}
             {
                 "@type": "Article",
-                "position": {{ forloop.index }},
+                "position": {{ forloop.index | plus: position_offset }},
                 "headline": {{ article.title | jsonify }},
                 "url": "{{ site.url }}{{ article.permalink }}",
                 "datePublished": "{{ article.date | date: '%Y-%m-%d' }}",

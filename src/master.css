@@ -906,3 +906,40 @@ footer {
         --border: #ccc;
     }
 }
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    margin: 2rem 0 0.5rem;
+}
+
+.pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.pagination-link:hover {
+    background: var(--card);
+}
+
+.pagination-link.is-current {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.pagination-link.is-disabled {
+    opacity: 0.4;
+    cursor: default;
+}

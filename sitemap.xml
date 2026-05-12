@@ -101,13 +101,20 @@ layout: null
         <priority>0.8</priority>
     </url>
 
-    <!-- Articles index -->
+    <!-- Articles index (page 1 + any paginated pages from jekyll-paginate-v2) -->
+    {%- assign per_page = site.pagination.per_page | default: 6 -%}
+    {%- assign article_count = site.articles | size -%}
+    {%- assign total_pages = article_count | divided_by: per_page -%}
+    {%- assign remainder = article_count | modulo: per_page -%}
+    {%- if remainder > 0 -%}{%- assign total_pages = total_pages | plus: 1 -%}{%- endif -%}
+    {%- for i in (1..total_pages) %}
     <url>
-        <loc>{{ site.url }}/articles/</loc>
+        <loc>{{ site.url }}/articles/{% if i > 1 %}page{{ i }}/{% endif %}</loc>
         <lastmod>{{ lm.articles | default: site.time | date: "%Y-%m-%d" }}</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>{% if i == 1 %}0.8{% else %}0.6{% endif %}</priority>
     </url>
+    {% endfor %}
 
     <!-- Articles collection - dynamically generated -->
     {%- for article in site.articles -%}

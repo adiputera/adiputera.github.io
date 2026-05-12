@@ -1,8 +1,8 @@
-const CACHE_NAME = "static-202604141805";
+const CACHE_NAME = "static-202605121623";
 const PRECACHE_URLS = [
     "./images/astra.svg",
-    "./src/master.min.css?v=202604141805",
-    "./src/index.min.js?v=202604141805"
+    "./src/master.min.css?v=202605121623",
+    "./src/index.min.js?v=202605121623"
 ];
 
 self.addEventListener("install", e => {

@@ -1,7 +1,14 @@
 source "https://rubygems.org"
 
-# GitHub Pages gem - includes Jekyll and GitHub Pages compatible plugins
-gem "github-pages", group: :jekyll_plugins
+# Built via GitHub Actions (Pages source = "GitHub Actions"), so we pin Jekyll
+# and plugins directly instead of going through the github-pages meta-gem.
+gem "jekyll", "~> 4.3"
+
+group :jekyll_plugins do
+  gem "jekyll-sitemap"
+  gem "jekyll-redirect-from"
+  gem "jekyll-paginate-v2"
+end
 
 # Required for Ruby 4.0+ (removed from stdlib)
 gem "csv"

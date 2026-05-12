@@ -46,6 +46,16 @@
     {%- endif -%}
     {%- endunless -%}
 
+    <!-- Pagination (rel prev/next) -->
+    {%- if paginator -%}
+    {%- if paginator.previous_page_path -%}
+    <link rel="prev" href="{{ site.url }}{{ paginator.previous_page_path }}" />
+    {%- endif -%}
+    {%- if paginator.next_page_path -%}
+    <link rel="next" href="{{ site.url }}{{ paginator.next_page_path }}" />
+    {%- endif -%}
+    {%- endif -%}
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/manifest.json" />
 

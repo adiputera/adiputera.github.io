@@ -8,7 +8,7 @@ baseurl: ""
 timezone: Asia/Jakarta
 
 # Asset Versioning (for cache-busting)
-asset_version: "202604141805"
+asset_version: "202605121623"
 
 # Collections
 collections:
@@ -39,10 +39,20 @@ kramdown:
     ndash: "--"
 highlighter: rouge
 
-# Plugins (GitHub Pages compatible only)
+# Plugins
 plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jekyll-paginate-v2
+
+# Pagination defaults (jekyll-paginate-v2). Opt-in per page via `pagination:` front matter.
+pagination:
+  enabled: true
+  collection: 'articles'
+  per_page: 6
+  permalink: '/page:num/'
+  sort_field: 'date'
+  sort_reverse: true
 
 # Exclude from processing
 exclude:

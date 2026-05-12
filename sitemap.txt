@@ -10,6 +10,14 @@ permalink: /sitemap.txt
 {{ site.url }}/skills-id
 {{ site.url }}/full
 {{ site.url }}/full-id
+{%- assign per_page = site.pagination.per_page | default: 6 -%}
+{%- assign article_count = site.articles | size -%}
+{%- assign total_pages = article_count | divided_by: per_page -%}
+{%- assign remainder = article_count | modulo: per_page -%}
+{%- if remainder > 0 -%}{%- assign total_pages = total_pages | plus: 1 -%}{%- endif -%}
+{%- for i in (1..total_pages) %}
+{{ site.url }}/articles/{% if i > 1 %}page{{ i }}/{% endif %}
+{%- endfor %}
 {%- for article in site.articles %}
 {{ site.url }}{{ article.url }}
 {%- endfor %}

@@ -15,8 +15,7 @@ layout: default
     <main>
         <h2 id="articles">{{ data.sections.articles }}</h2>
         <ul class="article-list">
-            {% assign sorted_articles = site.articles | sort: 'date' | reverse %}
-            {% for article in sorted_articles %}
+            {% for article in paginator.posts %}
             <li>
                 <a href="{{ article.permalink }}">
                     <h3 class="normal-text">{{ article.title }}</h3>
@@ -26,6 +25,32 @@ layout: default
             </li>
             {% endfor %}
         </ul>
+
+        {% if paginator.total_pages > 1 %}
+        <nav class="pagination hide-for-print" aria-label="Pagination">
+            {% if paginator.previous_page %}
+            <a class="pagination-link" href="{{ paginator.previous_page_path | relative_url }}" rel="prev" aria-label="Previous page">&laquo;</a>
+            {% else %}
+            <span class="pagination-link is-disabled" aria-hidden="true">&laquo;</span>
+            {% endif %}
+
+            {% for page_num in (1..paginator.total_pages) %}
+                {% if page_num == paginator.page %}
+                <span class="pagination-link is-current" aria-current="page">{{ page_num }}</span>
+                {% elsif page_num == 1 %}
+                <a class="pagination-link" href="{{ '/articles/' | relative_url }}">{{ page_num }}</a>
+                {% else %}
+                <a class="pagination-link" href="{{ '/articles/page' | append: page_num | append: '/' | relative_url }}">{{ page_num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if paginator.next_page %}
+            <a class="pagination-link" href="{{ paginator.next_page_path | relative_url }}" rel="next" aria-label="Next page">&raquo;</a>
+            {% else %}
+            <span class="pagination-link is-disabled" aria-hidden="true">&raquo;</span>
+            {% endif %}
+        </nav>
+        {% endif %}
     </main>
 
     {% include footer.html %}
