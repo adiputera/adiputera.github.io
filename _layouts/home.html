@@ -127,7 +127,7 @@ layout: default
             {% for edu in data.education %}
             <li>
                 <h3 class="normal-text"><strong>{{ edu.degree }}</strong><br>{{ edu.institution }}{% if edu.location %}
-                    ({{ edu.location }}){% endif %}</h3>
+                    ({{ edu.location }}){% endif %}{% if edu.duration %} &bull; {{ edu.duration }}{% endif %}</h3>
             </li>
             {% endfor %}
         </ul>

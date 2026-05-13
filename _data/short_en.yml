@@ -5,9 +5,9 @@ description: "Condensed resume of Yusuf Adiputera, Lead Software Engineer with m
 subtitle: "Lead Software Engineer | Java, Distributed Systems & Enterprise Commerce"
 summary_html: |
   <p>
-      Lead Software Engineer with over 8 years of experience specializing in <strong>Java &amp; Spring architecture
+      Lead Software Engineer with more than 8 years of experience specializing in <strong>Java &amp; Spring architecture
       and enterprise e-commerce platforms</strong>.
-      Experienced in designing and delivering major systems for Astra Group, with a focus on scalability,
+      Experienced in designing and delivering major systems for Astra Group (IDX:ASII), with a focus on scalability,
       platform modernization, and microservices integration.
   </p>
   <p>
@@ -22,22 +22,22 @@ key_achievements:
   - label: "Award Recipient"
     text: "Received the internal \"Best Project Development Quality\" award (2024)."
   - label: "Rules-as-a-Service"
-    text: "Designed a dynamic rules engine using Drools, effectively decoupling core business logic from application code."
+    text: "Architected a Rules-as-a-Service decisioning platform with a custom JSON-to-DRL DSL, eliminating backend development for new rules."
   - label: "Performance"
-    text: "Achieved sub-second response times through EHCache full-page caching and storefront optimizations."
+    text: "Diagnosed 10× request amplification via Datadog and achieved sub-second latency (~800ms P95) through EHCache full-page caching."
   - label: "Modernization"
     text: "Leading the migration of legacy e-commerce monoliths to Spring Boot–based microservices."
   - label: "Enterprise Integration"
     text: "Delivered integrations for SAP CDP, Emarsys, and S/4HANA ABAP."
 skills:
   - category: "Languages"
-    items: "Java, JavaScript, TypeScript, ABAP"
+    items: "Java (8–25), JavaScript, TypeScript, ABAP"
   - category: "Frameworks"
-    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, jQuery, Azure Functions"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, jQuery, Azure Functions"
   - category: "Platforms"
     items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys), SAP S/4HANA"
   - category: "Tools & Infra"
-    items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Git"
+    items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 experience:
   - title: "Lead Software Engineer"
     company: "PT Astra International Tbk"
@@ -54,13 +54,13 @@ experience:
           - "Supervising 3 parallel rewrite tracks across multiple business domains."
       - label: "Scalability"
         list:
-          - "Reduced page load from ~2s to sub-second via EHCache full-page caching."
-          - "Improved system resilience to handle 3× traffic spikes without downtime."
+          - "Diagnosed 10× request amplification and reduced P95 latency to ~800ms via EHCache full-page caching."
+          - "Improved system resilience to handle 3–5× traffic spikes without downtime or horizontal scaling."
           - "Reduced image payload by up to 80% through custom image proxy service."
       - label: "Security"
         list:
-          - "Designed RBAC for service-level authorization."
-          - "Implemented secure access lifecycle including role expiration mechanisms."
+          - "Designed JWT/OAuth2 access control across microservices using permission-based @Secured annotations rather than broad roles."
+          - "Implemented Redis-backed token revocation and time-bounded role grants."
       - label: "Integration"
         list:
           - "Contributed to SAP CDP and SAP Emarsys implementation for unified customer data."
@@ -73,12 +73,12 @@ experience:
       - label: "Achievements"
         list:
           - "Delivered motorkux.id go-live (2022) and seva.id marketplace launch (2020)."
-          - "Built Rules-as-a-Service platform using Drools for dynamic business logic."
+          - "Built a two-service Rules-as-a-Service platform with a custom DSL and Kafka-driven hot-reload, shifting 100% of rule onboarding effort to the client side."
           - "Led SAP Commerce upgrades across enterprise platforms (6.6 → 2205)."
   - title: "Bootcamp Trainer (Java & SAP Commerce)"
     company: "PT Astra International Tbk"
     duration: "Nov 2021 – Dec 2022"
-    description: "Trained 3 internal batches of SAP Commerce bootcamps covering Java, Spring MVC, and SAP Commerce/Hybris fundamentals."
+    description: "Trained 30+ engineers across 4 internal SAP Commerce bootcamp batches, covering Java, Spring MVC, and SAP Commerce/Hybris fundamentals."
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
     duration: "Apr 2019 – Apr 2020"
@@ -100,6 +100,6 @@ experience:
       - label: "System Integration"
         list:
           - "Integrated 3rd-party APIs and implemented OAuth social login."
-education: "Bachelor's Degree in Computer Science"
+education: "Bachelor's Degree in Computer Science (2017)"
 education_institution: "Universitas Diponegoro, Indonesia"
 courses: "SAP Hybris Commerce Developer I & II • Confluent Developer Skills for Building Apache Kafka® (Confluent) • Java Spring Bootcamp • Oracle Academy Java Programming"

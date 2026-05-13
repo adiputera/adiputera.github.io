@@ -7,7 +7,7 @@ summary_html: |
   <p>
       Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam <strong>arsitektur
       Java &amp; Spring dan platform e-commerce enterprise</strong>.
-      Berpengalaman dalam merancang dan mengirimkan sistem utama untuk Astra Group, dengan fokus pada skalabilitas,
+      Berpengalaman dalam merancang dan mengirimkan sistem utama untuk Astra Group (IDX:ASII), dengan fokus pada skalabilitas,
       modernisasi platform, dan integrasi microservices.
   </p>
   <p>
@@ -22,22 +22,22 @@ key_achievements:
   - label: "Penghargaan"
     text: "Menerima penghargaan internal \"Best Project Development Quality\" (2024)."
   - label: "Rules-as-a-Service"
-    text: "Merancang dynamic rules engine menggunakan Drools, secara efektif memisahkan logika bisnis dari kode aplikasi."
+    text: "Merancang platform keputusan Rules-as-a-Service dengan DSL JSON-to-DRL kustom, menghilangkan pengembangan backend untuk aturan baru."
   - label: "Performa"
-    text: "Mencapai waktu respons sub-detik melalui EHCache full-page caching dan optimasi storefront."
+    text: "Mendiagnosis amplifikasi permintaan 10× via Datadog dan mencapai latensi sub-detik (~800ms P95) melalui EHCache full-page caching."
   - label: "Modernisasi"
     text: "Memimpin inisiatif strategis migrasi monolit e-commerce lama ke microservices berbasis Spring Boot."
   - label: "Integrasi Enterprise"
     text: "Memberikan integrasi untuk SAP CDP, Emarsys, dan S/4HANA ABAP."
 skills:
   - category: "Bahasa"
-    items: "Java, JavaScript, TypeScript, ABAP"
+    items: "Java (8–25), JavaScript, TypeScript, ABAP"
   - category: "Framework"
-    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, jQuery, Azure Functions"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, jQuery, Azure Functions"
   - category: "Platform"
     items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys), SAP S/4HANA"
   - category: "Alat & Infra"
-    items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Git"
+    items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 experience:
   - title: "Lead Software Engineer"
     company: "PT Astra International Tbk"
@@ -54,13 +54,13 @@ experience:
           - "Mengawasi 3 jalur rewrite paralel di berbagai domain bisnis."
       - label: "Skalabilitas"
         list:
-          - "Mengurangi page load dari ~2 detik menjadi sub-detik melalui EHCache full-page caching."
-          - "Meningkatkan ketahanan sistem untuk menangani lonjakan trafik 3× tanpa downtime."
+          - "Mendiagnosis amplifikasi permintaan 10× dan mengurangi latensi P95 menjadi ~800ms melalui EHCache full-page caching."
+          - "Meningkatkan ketahanan sistem untuk menangani lonjakan trafik 3–5× tanpa downtime atau penskalaan horizontal."
           - "Mengurangi payload gambar hingga 80% melalui layanan image proxy kustom."
       - label: "Keamanan"
         list:
-          - "Merancang RBAC untuk otorisasi di level layanan."
-          - "Mengimplementasikan siklus akses yang aman termasuk mekanisme role expiration."
+          - "Merancang kontrol akses JWT/OAuth2 di seluruh microservices menggunakan anotasi @Secured berbasis izin, bukan peran umum."
+          - "Mengimplementasikan pencabutan token berbasis Redis dan pemberian peran berbatas waktu."
       - label: "Integrasi"
         list:
           - "Berkontribusi pada implementasi SAP CDP dan SAP Emarsys untuk data pelanggan terpadu."
@@ -73,12 +73,12 @@ experience:
       - label: "Pencapaian"
         list:
           - "Meluncurkan motorkux.id go-live (2022) dan seva.id marketplace (2020)."
-          - "Membangun platform Rules-as-a-Service menggunakan Drools untuk logika bisnis dinamis."
+          - "Membangun platform Rules-as-a-Service dengan arsitektur dua layanan, DSL kustom, dan hot-reload Kafka, mengalihkan 100% upaya onboarding aturan ke sisi klien."
           - "Memimpin upgrade SAP Commerce di seluruh platform enterprise (6.6 → 2205)."
   - title: "Pelatih Bootcamp (Java & SAP Commerce)"
     company: "PT Astra International Tbk"
     duration: "Nov 2021 – Des 2022"
-    description: "Melatih 3 batch internal SAP Commerce bootcamp yang mencakup dasar-dasar Java, Spring MVC, dan SAP Commerce/Hybris."
+    description: "Melatih 30+ engineer di 4 batch internal SAP Commerce bootcamp, mencakup dasar-dasar Java, Spring MVC, dan SAP Commerce/Hybris."
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
     duration: "Apr 2019 – Apr 2020"
@@ -100,6 +100,6 @@ experience:
       - label: "Integrasi Sistem"
         list:
           - "Mengintegrasikan API pihak ketiga dan mengimplementasikan OAuth social login."
-education: "Sarjana Ilmu Komputer"
+education: "Sarjana Ilmu Komputer (2017)"
 education_institution: "Universitas Diponegoro, Indonesia"
 courses: "SAP Hybris Commerce Developer I & II • Confluent Developer Skills for Building Apache Kafka® (Confluent) • Java Spring Bootcamp • Oracle Academy Java Programming"
