@@ -22,7 +22,9 @@ html {
     --nav-bg: rgba(30, 30, 30, 0.8);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -438,8 +440,13 @@ footer {
     transition: transform 0.3s;
 }
 
-.hamburger::before { top: -7px; }
-.hamburger::after { bottom: -7px; }
+.hamburger::before {
+    top: -7px;
+}
+
+.hamburger::after {
+    bottom: -7px;
+}
 
 .mobile-menu-toggle[aria-expanded="true"] .hamburger {
     background: transparent;
@@ -476,7 +483,7 @@ footer {
         gap: 1rem;
         border-bottom: 1px solid var(--border);
         display: none;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
     }
 
@@ -515,7 +522,8 @@ footer {
     }
 
     .nav-site-name {
-        display: none; /* Hide name on small screens, keep badge */
+        display: none;
+        /* Hide name on small screens, keep badge */
     }
 }
 
@@ -638,6 +646,7 @@ footer {
 /* Article page content */
 .article-content {
     line-height: 1.7;
+    overflow-wrap: break-word;
 }
 
 .article-content h2 {
@@ -681,6 +690,7 @@ footer {
     border-radius: 3px;
     padding: 0.1em 0.4em;
     font-size: 0.875em;
+    overflow-wrap: break-word;
 }
 
 .article-content img {
@@ -701,7 +711,7 @@ footer {
 }
 
 .article-content figcaption,
-.article-content img + em {
+.article-content img+em {
     display: block;
     margin-top: 0.5rem;
     font-size: 0.875rem;
@@ -872,13 +882,35 @@ footer {
     background-color: var(--border);
 }
 
-.share-btn.facebook:hover svg { stroke: #1877f2; }
-.share-btn.x-twitter:hover svg { stroke: #000000; }
-[data-theme="dark"] .share-btn.x-twitter:hover svg { stroke: #ffffff; }
-.share-btn.whatsapp svg { fill: var(--text); stroke: none; }
-.share-btn.whatsapp:hover svg { fill: #25d366; stroke: none; }
-.share-btn.copy-link:hover svg { stroke: var(--link); }
-.share-btn.system-share:hover svg { stroke: var(--link); }
+.share-btn.facebook:hover svg {
+    stroke: #1877f2;
+}
+
+.share-btn.x-twitter:hover svg {
+    stroke: #000000;
+}
+
+[data-theme="dark"] .share-btn.x-twitter:hover svg {
+    stroke: #ffffff;
+}
+
+.share-btn.whatsapp svg {
+    fill: var(--text);
+    stroke: none;
+}
+
+.share-btn.whatsapp:hover svg {
+    fill: #25d366;
+    stroke: none;
+}
+
+.share-btn.copy-link:hover svg {
+    stroke: var(--link);
+}
+
+.share-btn.system-share:hover svg {
+    stroke: var(--link);
+}
 
 .share-btn.copy-link.success {
     background-color: #28a745;

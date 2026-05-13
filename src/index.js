@@ -91,6 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Fix long paths in inline code blocks overflowing on mobile
+    document.querySelectorAll(".article-content code:not(pre code)").forEach(codeEl => {
+        if (codeEl.textContent.includes('/')) {
+            // Replace / with /<wbr> to allow browser to break long paths naturally
+            codeEl.innerHTML = codeEl.innerHTML.replace(/\//g, '/<wbr>');
+        }
+    });
+
     // Share buttons logic
     const copyBtn = document.getElementById('copy-link-btn');
     if (copyBtn) {
