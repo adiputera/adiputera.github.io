@@ -120,7 +120,7 @@ achievements:
   - "Received the internal \"Best Project Development Quality\" award (2024)"
   - "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog (20–30 inbound RPS saturating 200–300 internal ops/sec). Implemented EHCache full-page caching, reducing internal operations by ~85% and P95 latency from 2.1s to ~800ms, enabling 3–5× traffic absorption without horizontal scaling."
   - "Integrated SAP Customer Data Platform (CDP) and SAP Emarsys for unified customer profiles and marketing (2025)"
-  - "Contributed to SAP S/4HANA ERP integrations leveraging ABAP (Ongoing)"
+  - "Contributed to SAP S/4HANA ERP integrations using ABAP (Ongoing)"
   - "Designed and implemented a comprehensive Role-Based Access Control (RBAC) framework to govern service-level authorization and secure access lifecycles."
   - "Built a custom image proxy service to dramatically reduce payload sizes and bandwidth (2024)"
   - "Architected a two-service Rules-as-a-Service decisioning platform with a custom JSON-to-DRL DSL. Enabled Kafka-driven hot-reload of business rules with zero backend development required for new rules, shifting all integration effort to the client side."
