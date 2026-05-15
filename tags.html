@@ -1,0 +1,49 @@
+---
+layout: default
+lang: en
+permalink: /tags/
+title: "Tags – Yusuf Adiputera | Lead Software Engineer"
+description: "Browse technical articles and case studies by topic."
+breadcrumb: "Tags"
+---
+{% assign data = site.data[page.lang] | default: site.data.en %}
+{%- assign all_tags = "" | split: "" -%}
+{%- for article in site.articles -%}
+  {%- for tag in article.tags -%}
+    {%- unless all_tags contains tag -%}
+      {%- assign all_tags = all_tags | push: tag -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign sorted_tags = all_tags | sort -%}
+<div class="container">
+    {% include navigation.html %}
+
+    <header>
+        <h1 class="main-heading">
+            <a href="/" style="text-decoration: none; color: inherit;">{{ data.site.name }}</a>
+            <span class="title">{{ data.site.tagline }}</span>
+        </h1>
+    </header>
+
+    <main>
+        <h2>Tags</h2>
+        {% if sorted_tags.size == 0 %}
+        <p class="article-meta">No tags yet.</p>
+        {% else %}
+        <ul class="article-list">
+            {% for tag in sorted_tags %}
+            {%- assign tagged = site.articles | where_exp: "a", "a.tags contains tag" -%}
+            <li>
+                <a href="/tags/{{ tag | slugify }}/">
+                    <h3 class="normal-text">{{ tag }}</h3>
+                </a>
+                <p class="article-meta">{{ tagged | size }} article{% if tagged.size != 1 %}s{% endif %}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </main>
+
+    {% include footer.html %}
+</div>

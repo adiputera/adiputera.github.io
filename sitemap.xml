@@ -126,4 +126,47 @@ layout: null
     </url>
     {%- endfor -%}
 
+    <!-- Case studies index (page 1 + any paginated pages) -->
+    {%- assign cs_articles = site.articles | where: "category", "case-study" -%}
+    {%- assign cs_count = cs_articles | size -%}
+    {%- assign cs_total_pages = cs_count | divided_by: per_page -%}
+    {%- assign cs_remainder = cs_count | modulo: per_page -%}
+    {%- if cs_remainder > 0 -%}{%- assign cs_total_pages = cs_total_pages | plus: 1 -%}{%- endif -%}
+    {%- for i in (1..cs_total_pages) %}
+    <url>
+        <loc>{{ site.url }}/case-studies/{% if i > 1 %}page{{ i }}/{% endif %}</loc>
+        <lastmod>{{ lm.case_studies | default: site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>{% if i == 1 %}0.8{% else %}0.6{% endif %}</priority>
+    </url>
+    {% endfor %}
+
+    <!-- Tags index -->
+    {%- assign all_tags = "" | split: "" -%}
+    {%- for article in site.articles -%}
+        {%- for tag in article.tags -%}
+            {%- unless all_tags contains tag -%}
+                {%- assign all_tags = all_tags | push: tag -%}
+            {%- endunless -%}
+        {%- endfor -%}
+    {%- endfor -%}
+    {%- if all_tags.size > 0 %}
+    <url>
+        <loc>{{ site.url }}/tags/</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    {%- endif -%}
+
+    <!-- Tag index pages - one per unique tag across all articles -->
+    {%- for tag in all_tags -%}
+    <url>
+        <loc>{{ site.url }}/tags/{{ tag | slugify }}/</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {%- endfor -%}
+
 </urlset>

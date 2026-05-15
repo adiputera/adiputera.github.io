@@ -1,4 +1,9 @@
     {%- assign lang_data = site.data[page.lang] | default: site.data.en -%}
+    {%- if page.autopage.display_name -%}
+        {%- assign derived_description = "A collection of technical articles tagged " | append: page.autopage.display_name | append: "." -%}
+    {%- else -%}
+        {%- assign derived_description = page.description | default: lang_data.site.description -%}
+    {%- endif -%}
     <link rel="preload" as="style" href="{{ site.baseurl }}/src/master.min.css?v={{ site.asset_version }}" />
     <link rel="preload" as="script" href="{{ site.baseurl }}/src/index.min.js?v={{ site.asset_version }}" />
     <link rel="preload" as="image" href="{{ site.baseurl }}/images/astra.svg" />
@@ -8,7 +13,7 @@
 
     <title>{{ page.title | default: lang_data.site.title | escape }}</title>
     <meta name="title" content="{{ page.title | default: lang_data.site.title | escape }}" />
-    <meta name="description" content="{{ page.description | default: lang_data.site.description | escape }}" />
+    <meta name="description" content="{{ derived_description | escape }}" />
     <meta name="keywords" content="{{ page.keywords | default: lang_data.site.keywords | escape }}" />
     <meta name="author" content="{{ site.data.meta.meta.author | escape }}" />
     <meta name="robots" content="{{ site.data.meta.meta.robots | escape }}" />
@@ -87,7 +92,7 @@
         {%- assign current_og_image_alt = page.og_image_alt | default: 'Yusuf Adiputera Site Logo' -%}
     {%- endif -%}
     <meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title | escape }}" />
-    <meta property="og:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description | escape }}" />
+    <meta property="og:description" content="{{ page.og_description | default: derived_description | escape }}" />
     <meta property="og:image" content="{{ current_og_image | escape }}" />
     <meta property="og:image:width" content="{{ site.data.meta.og_defaults.image_width | escape }}" />
     <meta property="og:image:height" content="{{ site.data.meta.og_defaults.image_height | escape }}" />
@@ -109,7 +114,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="{{ site.data.meta.twitter_defaults.card | escape }}" />
     <meta name="twitter:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title | escape }}" />
-    <meta name="twitter:description" content="{{ page.og_description | default: page.description | default: lang_data.site.description | escape }}" />
+    <meta name="twitter:description" content="{{ page.og_description | default: derived_description | escape }}" />
     <meta name="twitter:image" content="{{ current_og_image | escape }}" />
     <meta name="twitter:image:alt" content="{{ current_og_image_alt | escape }}" />
 

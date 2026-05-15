@@ -6,7 +6,10 @@ date: 2026-05-13
 date_modified: 2026-05-13
 keywords: "SAP Commerce upgrade, SAP Hybris upgrade, 6.6 to 2205, Apache Solr 9, zero downtime migration, on-premise SAP Commerce"
 permalink: /case-studies/sap-commerce-2205-upgrade
+category: case-study
+tags: [sap-commerce, upgrade]
 breadcrumb: "Case Studies"
+breadcrumb_url: /case-studies/
 breadcrumb_short: "SAP Commerce 2205 Upgrade"
 snippet: "Upgrading three live SAP Commerce platforms from 6.6 to 2205 on-premise, including a Solr 8.11 → 9.10 jump, without a single second of production downtime."
 snippet_id: "Mengupgrade tiga platform SAP Commerce yang berjalan dari 6.6 ke 2205 secara on-premise, termasuk lompatan Solr 8.11 → 9.10, tanpa downtime produksi sedetik pun."

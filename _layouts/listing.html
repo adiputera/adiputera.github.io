@@ -1,7 +1,13 @@
 ---
 layout: default
 ---
-{% assign data = site.data[page.lang] %}
+{% assign data = site.data[page.lang] | default: site.data.en %}
+{% assign heading = page.listing_heading | default: page.title %}
+{% comment %}
+  paginator.first_page_path is the base path of the listing (e.g. "/articles/",
+  "/case-studies/", "/tags/java/"). All three pages reuse this layout.
+{% endcomment %}
+{% assign base_path = paginator.first_page_path | default: page.url %}
 <div class="container">
     {% include navigation.html %}
 
@@ -13,7 +19,12 @@ layout: default
     </header>
 
     <main>
-        <h2 id="articles">{{ data.sections.articles }}</h2>
+        <h2>{{ heading }}</h2>
+        {% if page.autopage.display_name %}
+        <p class="article-meta">A collection of technical articles tagged <strong>{{ page.autopage.display_name }}</strong>.</p>
+        {% elsif page.listing_intro %}
+        <p class="article-meta">{{ page.listing_intro }}</p>
+        {% endif %}
         <ul class="article-list">
             {% for article in paginator.posts %}
             <li>
@@ -38,9 +49,9 @@ layout: default
                 {% if page_num == paginator.page %}
                 <span class="pagination-link is-current" aria-current="page">{{ page_num }}</span>
                 {% elsif page_num == 1 %}
-                <a class="pagination-link" href="{{ '/articles/' | relative_url }}">{{ page_num }}</a>
+                <a class="pagination-link" href="{{ base_path | relative_url }}">{{ page_num }}</a>
                 {% else %}
-                <a class="pagination-link" href="{{ '/articles/page' | append: page_num | append: '/' | relative_url }}">{{ page_num }}</a>
+                <a class="pagination-link" href="{{ base_path | append: 'page' | append: page_num | append: '/' | relative_url }}">{{ page_num }}</a>
                 {% endif %}
             {% endfor %}
 

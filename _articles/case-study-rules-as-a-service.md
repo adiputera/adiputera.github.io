@@ -6,7 +6,10 @@ date: 2026-05-13
 date_modified: 2026-05-13
 keywords: "Rules-as-a-Service, Drools, DSL design, Quarkus, Java 25, Kafka, MongoDB, AKS, microservices, decisioning engine, business rules"
 permalink: /case-studies/rules-as-a-service
+category: case-study
+tags: [drools, java, microservices]
 breadcrumb: "Case Studies"
+breadcrumb_url: /case-studies/
 breadcrumb_short: "Rules-as-a-Service"
 snippet: "How I built a two-service Rules-as-a-Service decisioning platform with a custom JSON-to-DRL DSL - so business teams can ship new rules without backend engineers in the loop."
 snippet_id: "Bagaimana saya membangun platform Rules-as-a-Service dua-layanan dengan DSL JSON-to-DRL kustom - agar tim bisnis bisa merilis aturan baru tanpa harus melibatkan engineer backend."
