@@ -4,6 +4,7 @@ title: "Abstraction Is Not an Abstract Class"
 description: "Why the abstraction principle in OOP is not the same as an abstract class, and how we use abstraction at every layer without realizing it."
 date: 2026-04-02
 date_modified: 2026-04-02
+tags: [java, oop, software-design]
 keywords: "Java, OOP, Abstraction, Abstract Class, Interface, Software Engineering, Architecture"
 permalink: /articles/java-oop-abstraction-vs-abstract-class
 breadcrumb: "Articles"

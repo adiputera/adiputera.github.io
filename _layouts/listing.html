@@ -33,6 +33,13 @@ layout: default
                 </a>
                 <time class="article-meta" style="display: block; margin-bottom: 0.5rem;" datetime="{{ article.date | date: '%Y-%m-%d' }}">{{ article.date | date: "%B %-d, %Y" }}</time>
                 <p class="article-snippet">{% if page.lang == 'id' and article.snippet_id %}{{ article.snippet_id }}{% else %}{{ article.snippet }}{% endif %}</p>
+                {% if article.tags and article.tags.size > 0 %}
+                <div class="article-tags" aria-label="Article tags">
+                    {% for tag in article.tags %}
+                    <a class="article-tag" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>

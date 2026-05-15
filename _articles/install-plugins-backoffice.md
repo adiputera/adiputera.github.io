@@ -5,6 +5,7 @@ description: "Technical guide on installing custom CKEditor plugins into SAP Com
 keywords: "SAP Commerce, SAP Hybris, Backoffice, WYSIWYG, CKEditor Plugins, Java Engineer, Hybris Development"
 date: 2023-11-29
 date_modified: 2026-04-17
+tags: [sap-commerce, backoffice, ckeditor]
 canonical_url: "https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-install-additional-plugins-to-backoffice-s-wysiwyg-editor/ba-p/13581050"
 canonical_source: "SAP Community"
 breadcrumb: "Articles"

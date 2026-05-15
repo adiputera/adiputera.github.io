@@ -5,6 +5,7 @@ description: "A real-world comparison of SAP Commerce (Hybris) build times on Wi
 keywords: "SAP Commerce, SAP Hybris, Build Time, Windows vs Linux, Performance, ant clean all, ant all"
 date: 2023-02-20
 date_modified: 2026-04-22
+tags: [sap-commerce, performance, developer-productivity]
 breadcrumb: "Articles"
 breadcrumb_short: "Hybris Windows vs Linux"
 permalink: /articles/hybris-windows-linux-time-comparison

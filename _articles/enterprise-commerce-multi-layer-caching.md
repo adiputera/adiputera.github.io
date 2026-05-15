@@ -5,6 +5,7 @@ description: "An architectural overview of multi-layer caching in Java enterpris
 keywords: "Java, Enterprise Commerce, Spring Boot, Caching, Performance, CDN, Caffeine, Ehcache, Redis, Architecture"
 date: 2025-12-14
 date_modified: 2025-12-14
+tags: [java, caching, performance]
 canonical_url: ""
 canonical_source: ""
 breadcrumb: "Articles"

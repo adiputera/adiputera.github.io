@@ -5,6 +5,7 @@ description: "A review of SAP Emarsys for marketing campaigns, covering its auto
 keywords: "SAP Emarsys, Marketing Campaigns, Automation, Web Campaigns, Mobile App Campaigns, Integration, Debugging"
 date: 2026-02-25
 date_modified: 2026-04-30
+tags: [sap-emarsys, sap-engagement-cloud, marketing-automation, integration]
 canonical_url: ""
 canonical_source: ""
 breadcrumb: "Articles"

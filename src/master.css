@@ -638,9 +638,49 @@ footer {
 
 .article-snippet {
     margin-top: 0;
+    margin-bottom: 0.6rem;
     font-size: 0.95rem;
     color: var(--text);
     line-height: 1.5;
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.article-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--card);
+    color: var(--subtext);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+.article-tag:hover {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.article-detail-tags {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.article-detail-tags-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--subtext);
 }
 
 /* Article page content */
@@ -892,6 +932,11 @@ footer {
 
 [data-theme="dark"] .share-btn.x-twitter:hover svg {
     stroke: #ffffff;
+}
+
+.share-btn.linkedin:hover svg {
+    fill: #0a66c2;
+    stroke: none;
 }
 
 .share-btn.whatsapp svg {

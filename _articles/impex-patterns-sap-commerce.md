@@ -5,6 +5,7 @@ description: "A practical guide to ImpEx in SAP Commerce (SAP Hybris), covering 
 date: 2026-04-28
 date_modified: 2026-04-28
 keywords: "SAP Commerce, SAP Hybris, ImpEx, Data Import, HAC, Macros, Localized Attributes, Java Engineer, Hybris Development"
+tags: [sap-commerce, impex, data-import]
 permalink: /articles/impex-patterns-sap-commerce
 breadcrumb: "Articles"
 breadcrumb_short: "ImpEx Patterns"

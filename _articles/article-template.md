@@ -4,6 +4,7 @@ title: "Article Title Here"
 description: "Brief description for SEO meta tags (150-160 characters recommended)"
 date: 2026-01-01
 date_modified: 2026-01-01
+tags: [tag-one, tag-two]
 permalink: /articles/article-slug-here
 breadcrumb: "Articles"
 breadcrumb_short: "Short Title for Breadcrumb"

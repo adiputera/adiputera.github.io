@@ -5,6 +5,7 @@ description: "Walk through a Spring Boot + Temporal sample that orchestrates a p
 keywords: "Temporal, Spring Boot, Java, Microservices, Workflow Orchestration, Saga, Task Queue, temporal-spring-boot-starter"
 date: 2026-04-24
 date_modified: 2026-04-25
+tags: [temporal, spring-boot, microservices, java, spring]
 permalink: /articles/spring-temporal-multi-service-order-flow
 breadcrumb: "Articles"
 breadcrumb_short: "Spring Temporal Orchestration"

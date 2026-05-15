@@ -5,6 +5,7 @@ description: "A practical look at Java virtual threads from JDK 21 onwards, what
 date: 2026-04-28
 date_modified: 2026-04-28
 keywords: "Java, JDK 21, Project Loom, Virtual Threads, Concurrency, Spring Boot, Carrier Thread, ScopedValue"
+tags: [java, virtual-threads, concurrency]
 permalink: /articles/java-virtual-threads-production
 breadcrumb: "Articles"
 breadcrumb_short: "Virtual Threads"

@@ -5,6 +5,7 @@ description: "How to use Temporal's Workflow.await with a duration to wait for a
 keywords: "Temporal, Spring Boot, Workflow.await, Signal, Timeout, Durable Timer, Java SDK"
 date: 2026-04-26
 date_modified: 2026-04-26
+tags: [temporal, workflow-orchestration, spring-boot, workflow, spring, java]
 permalink: /articles/temporal-workflow-await-signal-or-timeout
 breadcrumb: "Articles"
 breadcrumb_short: "Temporal Signal or Timeout"

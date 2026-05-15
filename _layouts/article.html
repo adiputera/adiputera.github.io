@@ -23,6 +23,17 @@ layout: default
         </p>
         {% endif %}
 
+        {% if page.tags and page.tags.size > 0 %}
+        <section class="article-detail-tags" aria-label="Article tags">
+            <span class="article-detail-tags-label">Tags</span>
+            <div class="article-tags">
+                {% for tag in page.tags %}
+                <a class="article-tag" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
         {% include share-buttons.html %}
     </main>
 

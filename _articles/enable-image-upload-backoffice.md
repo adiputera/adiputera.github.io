@@ -5,6 +5,7 @@ description: "Step-by-step guide on enabling image upload in SAP Commerce (SAP H
 keywords: "SAP Commerce, SAP Hybris, Backoffice, WYSIWYG, Image Upload, CKEditor, Java Engineer, Hybris Development"
 date: 2023-11-07
 date_modified: 2026-04-17
+tags: [sap-commerce, backoffice, ckeditor]
 canonical_url: "https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-enable-image-upload-in-backoffice-wysiwyg-editor/ba-p/13572198"
 canonical_source: "SAP Community"
 breadcrumb: "Articles"

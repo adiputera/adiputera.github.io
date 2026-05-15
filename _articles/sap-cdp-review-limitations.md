@@ -5,6 +5,7 @@ description: "A review of SAP Customer Data Platform (CDP) based on months of ex
 keywords: "SAP CDP, SAP Customer Data Platform, Customer 360, CX Flows, Event-Driven Automation, Integration, Architecture"
 date: 2026-03-10
 date_modified: 2026-04-30
+tags: [sap-cdp, customer-data-platform, architecture]
 canonical_url: ""
 canonical_source: ""
 breadcrumb: "Articles"

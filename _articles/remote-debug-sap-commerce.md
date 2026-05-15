@@ -5,6 +5,7 @@ description: "A comprehensive guide on setting up remote debugging for SAP Comme
 keywords: "SAP Commerce, SAP Hybris, Remote Debugging, IntelliJ IDEA, Eclipse, Hybris Debugging, Java Backend Engineer"
 date: 2022-09-15
 date_modified: 2026-04-17
+tags: [sap-commerce, debugging, intellij-idea, eclipse]
 canonical_url: "https://community.sap.com/t5/crm-and-cx-blog-posts-by-members/how-to-remote-debug-sap-commerce-on-premise-version-on-intellij-idea-and/ba-p/13542943"
 canonical_source: "SAP Community"
 breadcrumb: "Articles"

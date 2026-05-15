@@ -5,6 +5,7 @@ description: "A practical guide to using FlexibleSearch in SAP Commerce (SAP Hyb
 date: 2026-04-27
 date_modified: 2026-04-27
 keywords: "SAP Commerce, SAP Hybris, FlexibleSearch, Flexible Search, SAP Commerce Query, HAC, Groovy Script"
+tags: [sap-commerce, flexiblesearch, querying]
 permalink: /articles/flexible-search-sap-commerce
 breadcrumb: "Articles"
 breadcrumb_short: "FlexibleSearch Guide"
