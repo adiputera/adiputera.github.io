@@ -51,11 +51,25 @@ document.addEventListener("DOMContentLoaded", () => {
             navLinksContainer.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
+        // Close menu when a link is clicked (ignore dropdown toggles)
         navLinksContainer.querySelectorAll('a').forEach(link => {
+            if (link.classList.contains('dropdown-toggle')) return;
             link.addEventListener('click', () => {
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
                 navLinksContainer.classList.remove('active');
+            });
+        });
+
+        // Mobile dropdown toggle logic
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 850) {
+                    e.preventDefault();
+                    const parentLi = toggle.closest('.nav-dropdown');
+                    parentLi.classList.toggle('active');
+                    toggle.setAttribute('aria-expanded', parentLi.classList.contains('active'));
+                }
             });
         });
     }

@@ -8,7 +8,7 @@ baseurl: ""
 timezone: Asia/Jakarta
 
 # Asset Versioning (for cache-busting)
-asset_version: "202605160046"
+asset_version: "202605170238"
 
 # Collections
 collections:

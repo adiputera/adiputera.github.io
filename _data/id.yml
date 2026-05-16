@@ -73,6 +73,13 @@ navigation:
       url: "/skills-id"
     - text: "Artikel"
       url: "/articles/"
+      subitems:
+        - text: "Semua Artikel"
+          url: "/articles/"
+        - text: "Studi Kasus"
+          url: "/case-studies"
+        - text: "Telusuri Tag"
+          url: "/tags"
     - text: "FAQ"
       url: "/faq-id"
 

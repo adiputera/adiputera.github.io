@@ -73,6 +73,13 @@ navigation:
       url: "/skills"
     - text: "Articles"
       url: "/articles/"
+      subitems:
+        - text: "All Articles"
+          url: "/articles/"
+        - text: "Case Studies"
+          url: "/case-studies"
+        - text: "Browse by Tags"
+          url: "/tags"
     - text: "FAQ"
       url: "/faq"
 

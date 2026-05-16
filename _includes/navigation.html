@@ -15,7 +15,21 @@
             <div class="nav-links-container">
                 <ul class="nav-links">
                     {% for item in lang_data.navigation.items %}
+                    {% if item.subitems %}
+                    <li class="nav-dropdown">
+                        <a href="{{ site.baseurl }}{{ item.url }}" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            {{ item.text }}
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for subitem in item.subitems %}
+                            <li><a href="{{ site.baseurl }}{{ subitem.url }}">{{ subitem.text }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
                     <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.text }}</a></li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </div>
