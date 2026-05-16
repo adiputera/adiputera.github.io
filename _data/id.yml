@@ -125,10 +125,10 @@ achievements:
   - "Memimpin tim engineering untuk pengembangan motorkux.id (2021–Sekarang) dan seva.id marketplace (2019–2021)"
   - "Berkontribusi pada pengembangan inti platform seva.id property (2018–2019)"
   - "Menerima penghargaan internal \"Best Project Development Quality\" (2024)"
-  - "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator melalui Datadog (20–30 RPS inbound hingga memenuhi 200–300 operasi internal/detik). Mengimplementasikan full-page caching EHCache, mengurangi operasi internal sebesar ~85% dan latensi P95 dari 2,1 detik menjadi ~800ms, memungkinkan penyerapan trafik 3–5× tanpa penskalaan horizontal."
+  - "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator melalui Datadog (20–30 RPS inbound hingga memenuhi 200–300 operasi internal/detik). Mengimplementasikan full-page caching EHCache, mengurangi operasi internal sebesar ~70-85% dan latensi P95 dari 2,1 detik menjadi ~800ms, memungkinkan penyerapan trafik 3–5× tanpa penskalaan horizontal."
   - "Mengintegrasikan SAP Customer Data Platform (CDP) dan SAP Emarsys untuk profil pelanggan dan pemasaran terpadu (2025)"
   - "Mendukung integrasi SAP S/4HANA ERP menggunakan ABAP (Sedang Berlangsung)"
-  - "Merancang dan mengimplementasikan kerangka kerja Role-Based Access Control (RBAC) yang komprehensif untuk mengatur otorisasi level layanan dan siklus akses yang aman."
+  - "Merancang dan mengimplementasikan kerangka kerja otorisasi berbasis izin (PBAC fine-grained di atas penugasan peran) untuk mengatur otorisasi level layanan dan siklus akses yang aman."
   - "Membangun layanan proxy gambar kustom untuk mengurangi ukuran payload dan bandwidth (2024)"
   - "Merancang platform keputusan Rules-as-a-Service dengan arsitektur dua layanan dan DSL JSON-to-DRL kustom. Memungkinkan hot-reload aturan bisnis berbasis Kafka tanpa memerlukan pengembangan backend untuk aturan baru, mengalihkan 100% upaya integrasi ke sisi klien."
   - "Mengembangkan modul promosi kustom berbasis lokasi di SAP Commerce (2023)"
@@ -198,7 +198,7 @@ experience:
       <h4>Skalabilitas &amp; <i>Performance Engineering</i></h4>
       <ul>
         <li>Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator melalui Datadog (20–30 RPS inbound hingga 200–300 operasi internal/detik).</li>
-        <li>Mengimplementasikan <i>full-page caching</i> EHCache dengan invalidasi selektif, mengurangi operasi internal sebesar ~85% dan latensi P95 dari 2,1 detik menjadi ~800ms.</li>
+        <li>Mengimplementasikan <i>full-page caching</i> EHCache dengan invalidasi selektif, mengurangi operasi internal sebesar ~70-85% dan latensi P95 dari 2,1 detik menjadi ~800ms.</li>
         <li>Meningkatkan ketahanan sistem untuk menangani lonjakan <i>traffic</i> 3–5× tanpa <i>downtime</i> atau penskalaan horizontal.</li>
         <li>Mengurangi ukuran <i>payload</i> gambar hingga 80% melalui layanan <i>image proxy</i> kustom.</li>
         <li>Mengoptimalkan kinerja <i>storefront</i> melalui <i>CMS lazy loading</i> dan perbaikan <i>rendering</i>.</li>
@@ -231,25 +231,12 @@ experience:
       <ul>
         <li>Meluncurkan <strong>motorkux.id</strong> go-live (2022) dan <strong>seva.id marketplace</strong> (2020) dengan integrasi pembayaran, pengiriman, dan pihak ketiga.</li>
         <li>Merancang platform keputusan Rules-as-a-Service (Publishing Service & Evaluation Service) dengan DSL JSON-to-DRL kustom dan <i>hot-reload</i> berbasis Kafka, menghilangkan pengembangan <i>backend</i> untuk aturan baru.</li>
-        <li>Merancang platform dan memimpin implementasi awal oleh tim, kemudian mengambil alih kepemilikan teknis (<i>hands-on</i>) untuk mendorong peningkatan terperinci (taksonomi operator, kuantifier koleksi, semantik multi-objek, mekanisme <i>hot-reload</i>) hingga siap produksi.</li>
+        <li>Terpilih untuk memimpin langsung fase penyempurnaan rules engine karena kepentingan strategisnya — mengelola taksonomi operator, kuantifier koleksi, semantik multi-objek, dan mekanisme hot-reload hingga siap produksi.</li>
         <li>Memimpin beberapa <i>upgrade</i> SAP Commerce di seluruh platform enterprise (seva.id, auto2000, motorkux.id - versi 6.6 → 2205).</li>
         <li>Mengembangkan <i>promotion engine</i> kustom yang mendukung kuota berbasis lokasi tanpa ketergantungan kupon.</li>
       </ul>
 
       <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Microservices Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, SAP S/4HANA, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
-
-  - title: "Bootcamp Trainer"
-    company: "PT Astra International Tbk"
-    logo: "images/astra.svg"
-    logo_alt: "PT Astra International Tbk Logo"
-    start_date: "2021-11"
-    start_display: "Nov 2021"
-    end_date: "2022-12"
-    end_display: "Des 2022"
-    duration: "Nov 2021 - Des 2022"
-    description_html: |
-      <p>Melatih 30+ engineer di 4 batch internal SAP Commerce bootcamp, mencakup Java, Spring MVC, dan SAP Commerce/Hybris fundamental.</p>
-      <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring MVC, SAP Commerce (Hybris)</p>
 
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"

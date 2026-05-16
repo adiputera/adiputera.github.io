@@ -31,7 +31,7 @@ key_achievements:
     text: "Delivered integrations for SAP CDP, Emarsys, and S/4HANA ABAP."
 skills:
   - category: "Languages"
-    items: "Java (8–25), JavaScript, TypeScript, ABAP"
+    items: "Java (8–17, 21+ features), JavaScript, TypeScript, ABAP"
   - category: "Frameworks"
     items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, jQuery, Azure Functions"
   - category: "Platforms"
@@ -69,16 +69,14 @@ experience:
         list:
           - "Led 12 engineers delivering end-to-end platform development."
           - "Acted as internal technical consultant across parallel projects."
+          - "Led 4 internal SAP Commerce bootcamp batches (2021–2022), training 30+ engineers."
           - "Awarded Best Project Development Quality (2024)."
       - label: "Achievements"
         list:
           - "Delivered motorkux.id go-live (2022) and seva.id marketplace launch (2020)."
           - "Built a two-service Rules-as-a-Service platform with a custom DSL and Kafka-driven hot-reload, shifting 100% of rule onboarding effort to the client side."
           - "Led SAP Commerce upgrades across enterprise platforms (6.6 → 2205)."
-  - title: "Bootcamp Trainer (Java & SAP Commerce)"
-    company: "PT Astra International Tbk"
-    duration: "Nov 2021 – Dec 2022"
-    description: "Trained 30+ engineers across 4 internal SAP Commerce bootcamp batches, covering Java, Spring MVC, and SAP Commerce/Hybris fundamentals."
+
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"
     duration: "Apr 2019 – Apr 2020"
