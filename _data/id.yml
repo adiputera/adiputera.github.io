@@ -15,7 +15,7 @@ site:
   about_me: "https://about.me/adiputera"
   location: "Jakarta, Indonesia"
   summary_html: |
-    <p>Yusuf adalah Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Ia memiliki rekam jejak yang terbukti dalam merancang dan mengirimkan platform bertrafik tinggi untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.</p>
+    <p>Yusuf adalah Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Ia memiliki rekam jejak yang terbukti dalam merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.</p>
     <p>Saat ini, ia memimpin inisiatif modernisasi besar untuk memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, ia merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.</p>
     <p>Filosofi rekayasanya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, ia telah berhasil mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.</p>
     <p>Di luar kode aplikasi, Yusuf membawa keahlian yang kuat dalam infrastruktur dan arsitektur data. Ia telah mengeksekusi migrasi database yang kompleks (SAP HANA ke Aurora MySQL), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP, Emarsys, dan S/4HANA.</p>
@@ -93,7 +93,7 @@ breadcrumb:
   full: "Versi Lengkap"
 
 summary: |
-  Yusuf adalah Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Ia memiliki rekam jejak yang terbukti dalam merancang dan mengirimkan platform bertrafik tinggi untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.
+  Yusuf adalah Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Ia memiliki rekam jejak yang terbukti dalam merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.
   
   Saat ini, ia memimpin inisiatif modernisasi besar untuk memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, ia merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.
   
@@ -175,7 +175,7 @@ experience:
 
       <h4>Arsitektur &amp; Kepemilikan Platform</h4>
       <ul>
-        <li>Mendefinisikan dan memimpin arsitektur <i>microservices</i> untuk platform <i>commerce</i> dengan <i>traffic</i> tinggi.</li>
+        <li>Mendefinisikan dan memimpin arsitektur <i>microservices</i> untuk platform <i>commerce</i> skala enterprise.</li>
         <li>Bertanggung jawab atas desain sistem lintas domain meliputi layanan <i>core</i>, CMS, dan produk.</li>
         <li>Menetapkan <i>service boundaries</i>, standar platform, dan strategi evolusi sistem jangka panjang.</li>
         <li>Membangun kapabilitas platform yang <i>reusable</i> termasuk <i>rules engine</i> dan komponen infrastruktur bersama.</li>
@@ -266,7 +266,7 @@ experience:
       <ul>
         <li>Melakukan transisi dari proses <i>deployment</i> manual ke <i>pipeline</i> CI/CD otomatis menggunakan Azure DevOps dan Jenkins di semua lingkungan (<i>environment</i>).</li>
         <li>Bertugas dalam tim <i>deployment</i> produksi, menangani rilis produksi tanpa <i>downtime</i>.</li>
-        <li>Melakukan <i>tracing</i> dan menyelesaikan <i>bug</i> kompleks untuk mempertahankan ketersediaan tinggi pada platform <i>e-commerce</i> dengan traffic tinggi.</li>
+        <li>Melakukan <i>tracing</i> dan menyelesaikan <i>bug</i> kompleks untuk mempertahankan ketersediaan tinggi pada platform <i>e-commerce</i> yang melayani pelanggan.</li>
       </ul>
 
       <h4>Integrasi Sistem</h4>

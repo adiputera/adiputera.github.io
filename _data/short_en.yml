@@ -45,7 +45,7 @@ experience:
     items:
       - label: "Architecture"
         list:
-          - "Defined microservices architecture for high-traffic commerce platforms."
+          - "Defined microservices architecture for enterprise-scale commerce platforms."
           - "Owned cross-domain system design across core, CMS, and product services."
           - "Established service boundaries, platform standards, and long-term evolution strategy."
       - label: "Modernization"
@@ -85,7 +85,7 @@ experience:
     items:
       - label: "Database Architecture"
         list:
-          - "Migrated databases from SAP HANA to Aurora MySQL for high-traffic automotive platforms."
+          - "Migrated databases from SAP HANA to Aurora MySQL for customer-facing automotive platforms."
       - label: "DevOps & Reliability"
         list:
           - "Transitioned manual deployments to automated CI/CD pipelines across all environments."

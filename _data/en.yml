@@ -15,7 +15,7 @@ site:
   about_me: "https://about.me/adiputera"
   location: "Jakarta, Indonesia"
   summary_html: |
-    <p>Yusuf is a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering high-traffic platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
+    <p>Yusuf is a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
     <p>Currently, he leads a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, he designs reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
     <p>His engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, he has successfully reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
     <p>Beyond application code, Yusuf brings strong expertise in infrastructure and data architecture. He has executed complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.</p>
@@ -93,7 +93,7 @@ breadcrumb:
   full: "Full Version"
 
 summary: |
-  Yusuf is a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering high-traffic platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
+  Yusuf is a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
   
   Currently, he leads a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, he designs reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
   
@@ -175,7 +175,7 @@ experience:
 
       <h4>Architecture &amp; Platform Ownership</h4>
       <ul>
-        <li>Defined and led microservices architecture for high-traffic commerce platforms.</li>
+        <li>Defined and led microservices architecture for enterprise-scale commerce platforms.</li>
         <li>Owned cross-domain system design across core, CMS, and product services.</li>
         <li>Established service boundaries, platform standards, and long-term system evolution strategy.</li>
         <li>Built reusable platform capabilities including rules engine and shared infrastructure components.</li>
@@ -266,7 +266,7 @@ experience:
       <ul>
         <li>Transitioned manual deployment processes to automated CI/CD pipelines using Azure DevOps and Jenkins across all environments.</li>
         <li>Served on the production deployment team, handling zero-downtime releases.</li>
-        <li>Traced and resolved complex bugs to maintain high availability for high-traffic platforms.</li>
+        <li>Traced and resolved complex bugs to maintain high availability for customer-facing platforms.</li>
       </ul>
 
       <h4>System Integration</h4>

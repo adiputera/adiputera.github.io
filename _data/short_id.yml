@@ -45,7 +45,7 @@ experience:
     items:
       - label: "Arsitektur"
         list:
-          - "Mendefinisikan arsitektur microservices untuk platform commerce dengan traffic tinggi."
+          - "Mendefinisikan arsitektur microservices untuk platform commerce skala enterprise."
           - "Bertanggung jawab atas desain sistem lintas domain meliputi layanan core, CMS, dan produk."
           - "Menetapkan service boundaries, standar platform, dan strategi evolusi jangka panjang."
       - label: "Modernisasi"
@@ -85,7 +85,7 @@ experience:
     items:
       - label: "Arsitektur Database"
         list:
-          - "Melakukan migrasi database dari SAP HANA ke Aurora MySQL untuk platform otomotif bertrafik tinggi."
+          - "Melakukan migrasi database dari SAP HANA ke Aurora MySQL untuk platform otomotif skala enterprise."
       - label: "DevOps & Keandalan"
         list:
           - "Melakukan transisi deployment manual ke pipeline CI/CD otomatis di semua lingkungan."

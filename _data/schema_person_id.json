@@ -38,7 +38,7 @@
     "addressLocality": "Jakarta",
     "addressCountry": "ID"
   },
-  "description": "Yusuf Adiputera adalah Lead Software Engineer yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Ia memiliki lebih dari 8 tahun pengalaman dalam merancang sistem bertrafik tinggi, microservices, dan integrasi enterprise.",
+  "description": "Yusuf Adiputera adalah Lead Software Engineer yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Ia memiliki lebih dari 8 tahun pengalaman dalam merancang sistem berskala enterprise, microservices, dan integrasi enterprise.",
   "knowsAbout": [
     "Java",
     "Spring Framework",
@@ -54,7 +54,11 @@
     "Integrasi REST & SOAP",
     "Optimasi Performa",
     "Redis & Ehcache",
-    "Azure Function App"
+    "Azure Function App",
+    "Temporal.io",
+    "Docker & Kubernetes",
+    "CI/CD & DevOps Automation",
+    "OAuth2 & JWT"
   ],
   "nationality": {
     "@type": "Country",
