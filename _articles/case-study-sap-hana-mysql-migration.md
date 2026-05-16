@@ -1,24 +1,24 @@
 ---
 layout: article
 title: "Migrating SAP Commerce from HANA to MySQL Without Official Tooling"
-description: "How we migrated two SAP Commerce projects from HANA to MySQL using a custom cronjob, cutting database costs by 73% before SAP Commerce DB Sync existed."
+description: "How we migrated two SAP Commerce projects from HANA to MySQL in 2019-2020 using a custom cronjob, cutting database costs by 73% before SAP Commerce DB Sync existed."
 keywords: "SAP Commerce migration, SAP Hybris HANA to MySQL, SAP Commerce DB Sync, custom migration cronjob, JDBC batching, items.xml schema, SAP Commerce cost reduction"
-date: 2026-05-15
-date_modified: 2026-05-15
+date: 2026-05-17
+date_modified: 2026-05-17
 permalink: /case-studies/sap-commerce-hana-to-mysql-migration
 category: case-study
-tags: [sap-commerce, database-migration, mysql]
+tags: [sap-commerce, database-migration, mysql, hana]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "SAP Commerce DB Migration to MySQL"
-snippet: "How I migrated two SAP Commerce projects from HANA to MySQL using a custom cronjob. 73% DB cost savings."
-snippet_id: "Bagaimana saya memigrasi dua proyek SAP Commerce dari HANA ke MySQL menggunakan cronjob kustom. Hemat 73% biaya DB."
-published: false
+snippet: "How I migrated two SAP Commerce projects from HANA to MySQL in 2019-2020 using a custom cronjob. 73% DB cost savings."
+snippet_id: "Bagaimana saya memigrasi dua proyek SAP Commerce dari HANA ke MySQL di tahun 2019-2020 menggunakan cronjob kustom. Hemat 73% biaya DB."
+published: true
 ---
 
 ## The Background
 
-We had two SAP Commerce 6.6 projects, both running on SAP HANA. In both cases, we assumed we had to use HANA simply because it was an SAP system. And HANA wasn't cheap.
+In late 2019, we had two SAP Commerce 6.6 projects, both running on SAP HANA. In both cases, we assumed we had to use HANA simply because it was an SAP system. And HANA wasn't cheap.
 
 SAP Commerce officially supports four databases: HANA, Oracle, SQL Server, and MySQL. MySQL was the cheapest option of the four, so that's where we wanted to land.
 
@@ -26,7 +26,7 @@ The blocker was that there was no official tool for this. No [SAP Commerce DB Sy
 
 We could have hired a third-party vendor to handle the migration for us, but that would have meant another sizeable bill on top of the one we were trying to escape. The point of moving off HANA was to cut costs, not just move them sideways. So we built it ourselves.
 
-We started exploring options towards the end of 2019, looking at ETL tools and other approaches before landing on the custom cronjob solution. By March 2020, both projects were running on MySQL in production.
+We started exploring options, looking at ETL tools and other approaches before landing on the custom cronjob solution. By March 2020, both projects were running on MySQL in production.
 
 ## The Approach: Building a Custom Migration Job
 
@@ -111,7 +111,7 @@ We load-tested the new MySQL instance before flipping production. The test was d
 
 The application stayed on HANA during the bulk copy. The cronjob read from the live source and wrote into MySQL over about 20 hours per project, scheduled into a low-traffic window. Writes kept landing on HANA the whole time: orders, carts, sessions, the usual.
 
-The cutover handled that gap manually. We took a short write-freeze window at the end, then pulled the latest customers and orders from HANA. For newly-created SAP Commerce records `creationDate` equals `modifiedDate`, so a single timestamp filter gave us the delta cleanly. We copied those rows across by hand and flipped the datasource config to MySQL. Once row counts matched and the migrated deltas spot-checked clean, traffic went back to the application, now pointed at MySQL.
+After the job is done, we compare the rows in both databases, for delta records, we will check the records based on `modifiedDate`. For newly-created SAP Commerce records `creationDate` equals `modifiedDate`, so a single timestamp filter gave us the delta cleanly. We copied those rows across by hand and flipped the datasource config to MySQL.
 
 Not glamorous, but the alternative was writing a delta-sync job for a one-off migration. The manual pass took less time than building one.
 
@@ -130,7 +130,7 @@ A few things I'd carry into the next migration:
 - **Let the platform create its own schema.** Booting SAP Commerce against an empty MySQL instance gave us the right target schema for the current item model, with no hand-mapping from HANA. The platform already knows how to do it. Use that.
 - **Drive table enumeration from the target.** Pulling the table list at runtime from the target made the same job work across two projects with different customizations, with zero hard-coded schema knowledge. Column differences still needed a few case-by-case fixes.
 - **Set the DB charset before init.** Provisioning the MySQL instance with `utf8mb4` from the start would have saved us a full restart of the bulk copy.
-- **Make restart the recovery strategy.** Truncate-then-reload kept the job small, and meant every fix (including the charset one) cost us time, not state. Resumability would have been more code than it was worth.
+- **Make restart the recovery strategy.** Truncate-then-reload kept the job small, and meant every fix (including the charset one) cost us time, not state. We didn't build resumability for a one-off migration.
 - **Drop indexes during load, recreate after.** I didn't do this. Inserting into a fully-indexed schema ate a chunk of the 20-hour window. Next time, I'd defer index creation until after the data was in.
 - **Go multithreaded next time.** My cronjob processed one table at a time, sequentially. It worked, but the whole migration took about 20 hours. If I did this again, I'd run multiple target tables in parallel and cut that window down significantly.
 

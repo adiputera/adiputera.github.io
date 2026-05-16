@@ -5,7 +5,7 @@ description: "A practical guide to spotting and fixing the N+1 query problem in 
 date: 2026-04-28
 date_modified: 2026-04-28
 keywords: "Spring Data JPA, Hibernate, N+1 Query, EntityGraph, JOIN FETCH, DTO Projection, Batch Fetch, Spring Boot"
-tags: [spring-data-jpa, hibernate, performance]
+tags: [java, spring-boot, spring-data-jpa, hibernate, performance]
 permalink: /articles/spring-data-jpa-n-plus-one
 breadcrumb: "Articles"
 breadcrumb_short: "JPA N+1"

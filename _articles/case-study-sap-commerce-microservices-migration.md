@@ -7,7 +7,7 @@ date_modified: 2026-05-13
 keywords: "SAP Commerce modernization, Spring Boot microservices, strangler fig, event-driven architecture, platform engineering, monolith decomposition"
 permalink: /case-studies/sap-commerce-microservices-migration
 category: case-study
-tags: [sap-commerce, microservices, spring-boot]
+tags: [java, sap-commerce, microservices, spring-boot]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "SAP Commerce → Microservices"

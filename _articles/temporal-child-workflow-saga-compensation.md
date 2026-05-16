@@ -5,7 +5,7 @@ description: "How to run a blocking child workflow in Temporal, inspect its resu
 keywords: "Temporal, Saga Pattern, Child Workflow, Compensation, Spring Boot, Java, Workflow Orchestration"
 date: 2026-04-27
 date_modified: 2026-04-27
-tags: [temporal, saga-pattern, spring-boot, spring, java, workflow-orchestration, workflow]
+tags: [temporal, saga-pattern, spring-boot, java, workflow-orchestration]
 permalink: /articles/temporal-child-workflow-saga-compensation
 breadcrumb: "Articles"
 breadcrumb_short: "Temporal Saga Child Workflow"

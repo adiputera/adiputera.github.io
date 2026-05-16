@@ -5,7 +5,7 @@ description: "An architectural breakdown of a Single Sign-On (SSO) limitation en
 keywords: "SAP Commerce, SAP Hybris, SSO, BCrypt, Spring Security, 72 bytes limit, Password Encoding, Enterprise Security"
 date: 2025-08-02
 date_modified: 2026-04-17
-tags: [sap-commerce, sso, spring-security]
+tags: [java, sap-commerce, sso, spring-security]
 canonical_url: "https://www.linkedin.com/pulse/sap-commerce-sso-error-password-cannot-more-than-72-bytes-adiputera-mvdhc/"
 canonical_source: "LinkedIn Pulse"
 breadcrumb: "Articles"
