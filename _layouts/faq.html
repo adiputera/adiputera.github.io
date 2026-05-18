@@ -21,20 +21,22 @@ layout: default
         <main>
             <section id="faq" class="faq-section">
 {% for section in faq.sections %}
-                <h3 class="faq-subtitle">{{ section.subtitle }}</h3>
-                <section id="{{ section.id }}" class="faq-subsection">
+                <div class="faq-section-group open">
+                    <h3 class="faq-subtitle">{{ section.subtitle }}</h3>
+                    <section id="{{ section.id }}" class="faq-subsection">
 {% for item in section.items %}
-                    <div class="faq-item open">
-                        <h4 class="faq-question">{{ item.question }}</h4>
-                        <div class="faq-answer">
-                            {{ item.answer }}
+                        <div class="faq-item open">
+                            <h4 class="faq-question">{{ item.question }}</h4>
+                            <div class="faq-answer">
+                                {{ item.answer }}
+                            </div>
                         </div>
-                    </div>
 {% endfor %}
-                </section>
+                    </section>
+                </div>
 {% endfor %}
-                    <p style="margin-top: 2rem;">{{ faq.footer_text }}</p>
-                </section>
+                <p style="margin-top: 2rem;">{{ faq.footer_text }}</p>
+            </section>
         </main>
 
         {% include schema-faqpage.html %}

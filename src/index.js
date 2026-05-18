@@ -105,6 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    document.querySelectorAll(".faq-subtitle").forEach(sub => {
+        sub.addEventListener("click", () => {
+            const group = sub.closest(".faq-section-group");
+            if (group) {
+                group.classList.toggle("open");
+            }
+        });
+    });
+
     // Fix long paths in inline code blocks overflowing on mobile
     document.querySelectorAll(".article-content code:not(pre code)").forEach(codeEl => {
         if (codeEl.textContent.includes('/')) {

@@ -15,22 +15,22 @@ sections:
     items:
       - question: "Who is Yusuf Adiputera?"
         answer: |
-          <p>Yusuf Adiputera is a Lead Software Engineer specializing in Java, SAP Commerce (Hybris), and the Spring Framework. With more than 8 years of professional experience in software engineering, he has delivered large-scale e-commerce projects for leading automotive brands under Astra Group. Yusuf is known for his structured approach to backend development, focus on system quality, performance, and security. Recently, Yusuf has also been involved in implementing SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys), gaining practical exposure in customer data management and marketing automation within the SAP CX ecosystem. He has also expanded into SAP S/4HANA ABAP development.</p>
+          <p>Yusuf Adiputera is a Lead Software Engineer specializing in Java, Spring, SAP Commerce (Hybris), and distributed enterprise systems. With more than 8 years of professional experience, he has delivered large-scale digital commerce platforms for Astra Group and currently leads modernization work that moves legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. His work spans performance engineering, Rules-as-a-Service with Drools and Kafka, SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA integration.</p>
       - question: "Why is Yusuf Adiputera considered an experienced software engineer?"
         answer: |
-          <p>Yusuf has more than 8 years of hands-on experience in enterprise software engineering, focusing on building scalable and maintainable backend systems using Java. He has been involved in several SAP Commerce implementations, optimizing performance and leading backend initiatives for Astra's digital platforms. His balanced technical skills and leadership make him a reliable contributor in complex enterprise environments.</p>
+          <p>Yusuf has more than 8 years of hands-on experience in enterprise software engineering, focusing on scalable Java and Spring-based backend systems. He has led SAP Commerce implementation, upgrade, performance optimization, and modernization initiatives across Astra's digital platforms, while also mentoring engineers and setting technical standards for complex enterprise delivery.</p>
       - question: "What makes Yusuf Adiputera stand out as a software engineer?"
         answer: |
-          <p>Yusuf stands out for his consistent focus on quality and maintainability. He values clean architecture, collaboration, and measurable results. His leadership style emphasizes mentoring team members, reviewing code for long-term stability, and aligning technical work with business goals — ensuring both performance and reliability in enterprise projects.</p>
+          <p>Yusuf stands out for combining hands-on backend engineering with architectural ownership. He values clean architecture, measurable performance improvements, and long-term maintainability. His leadership style emphasizes mentoring, rigorous code review, secure design, and aligning technical decisions with business outcomes.</p>
       - question: "What programming languages and frameworks does Yusuf Adiputera use?"
         answer: |
-          <p>Yusuf primarily works with Java, SAP Commerce (Hybris), and the Spring ecosystem, including Spring Boot and Spring MVC. He also has practical experience working with tools such as Drools for business rules, Kafka for asynchronous processing, and Apache Solr for search and indexing in SAP Commerce environments. Recently, he has been involved in implementation of SAP Customer Data Platform (SAP CDP) and SAP Engagement Cloud (formerly SAP Emarsys) within the SAP CX landscape. He has also expanded into SAP S/4HANA ABAP development.</p>
+          <p>Yusuf primarily works with Java, SAP Commerce (Hybris), and the Spring ecosystem, including Spring Boot and Spring MVC. He also uses Drools for business rules, Kafka for event-driven processing, Apache Solr for search, Redis and EHCache for caching, and Quarkus for cloud-native service work. He has practical experience with SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA ABAP integration, Docker, AKS, Azure DevOps, and Jenkins.</p>
       - question: "Has Yusuf Adiputera received recognition for his work?"
         answer: |
-          <p>Yes. In 2024, one of the projects Yusuf contributed to received an internal <strong>Best Project Quality</strong> award. This recognition highlights his commitment to delivering stable, high-quality software and his contributions to Astra Group's digital transformation projects, improving both performance and engineering practices across teams.</p>
+          <p>Yes. In 2024, one of the projects Yusuf contributed to received an internal <strong>Best Project Development Quality</strong> award. This recognition highlights his commitment to delivering stable, high-quality software and his contributions to Astra Group's digital transformation projects, improving both performance and engineering practices across teams.</p>
       - question: "What does Yusuf Adiputera specialize in?"
         answer: |
-          <p>Yusuf focuses on enterprise-grade software engineering using Java, Spring MVC, Spring Boot, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, and backend optimization. He has also recently involved in implementation of SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), and has expanded into SAP S/4HANA ABAP development.</p>
+          <p>Yusuf focuses on enterprise-grade software engineering using Java, Spring Boot, Spring MVC, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, performance optimization, microservices modernization, event-driven integration, permission-based security, and SAP CX/SAP S/4HANA integration.</p>
       - question: "What projects has Yusuf Adiputera worked on?"
         answer: |
           <p>Yusuf has been involved in major digital commerce projects such as <strong>motorkuX.id</strong>, <strong>auto2000.co.id</strong>, <strong>astra-daihatsu.id</strong>, and <strong>seva.id</strong>. These projects, part of Astra Group's digital transformation, demonstrate his experience in building and maintaining large-scale, customer-facing enterprise platforms.</p>
@@ -101,7 +101,7 @@ sections:
     items:
       - question: "What are some of Yusuf's notable achievements?"
         answer: |
-          <p>Throughout his career, Yusuf has contributed to multiple large-scale digital transformation projects within Astra Group. He played a key role in enhancing backend performance, scalability, and maintainability across several enterprise platforms. In 2024, one of the projects Yusuf contributed to received an internal <strong><a href="/#key-achievements">Best Project Quality Award</a></strong>, recognizing the team's commitment to engineering excellence and reliable delivery.</p>
+          <p>Throughout his career, Yusuf has contributed to multiple large-scale digital transformation projects within Astra Group. He played a key role in enhancing backend performance, scalability, and maintainability across several enterprise platforms. In 2024, one of the projects Yusuf contributed to received an internal <strong><a href="/#key-achievements">Best Project Development Quality Award</a></strong>, recognizing the team's commitment to engineering excellence and reliable delivery.</p>
       - question: "Which companies has Yusuf worked with?"
         answer: |
           <p>Yusuf has worked with <strong><a href="/#experience">PT Astra International Tbk</a></strong>, collaborating closely with teams in product, marketing, and technology. His work focuses on delivering innovative digital commerce solutions and maintaining high engineering standards within large enterprise environments.</p>
@@ -145,19 +145,25 @@ sections:
           <p>While both roles overlap, a software engineer focuses on overall system design and architecture, while a Java developer specializes in implementing and maintaining applications using the Java ecosystem. Yusuf combines both — engineering complete backend systems while writing high-quality Java code.</p>
       - question: "Has Yusuf Adiputera published any technical articles?"
         answer: |
-          <p>Yes. Yusuf has published several technical articles for developers in the SAP Community and on LinkedIn, where he shares hands-on tutorials and troubleshooting guides for SAP Commerce (Hybris) developers. His publications cover topics such as debugging, WYSIWYG customization, and authentication issues.</p>
+          <p>Yes. Yusuf publishes practical technical articles and case studies covering Java, Spring Boot, SAP Commerce, performance engineering, Temporal workflow orchestration, SAP CDP, SAP Engagement Cloud, and enterprise architecture. His writing includes tutorials, troubleshooting notes, architecture reviews, and real-world migration case studies.</p>
       - question: "What technical articles has Yusuf Adiputera written?"
         answer: |
-          <p>Yusuf has written multiple articles for the SAP Community and LinkedIn, including:</p>
-          <ul>
-              <li><a href="articles/remote-debug-sap-commerce"><h5 class="normal-text">How to Remote Debug SAP Commerce (on premise version) on IntelliJ IDEA and Eclipse – (September 2022)</h5></a></li>
-              <li><a href="articles/enable-image-upload-backoffice"><h5 class="normal-text">How to Enable Image Upload in Backoffice WYSIWYG editor – (November 2023)</h5></a></li>
-              <li><a href="articles/install-plugins-backoffice"><h5 class="normal-text">How to install additional plugins to Backoffice's WYSIWYG editor – (November 2023)</h5></a></li>
-              <li><a href="articles/sap-commerce-sso-bcrypt-error"><h5 class="normal-text">SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error) – (August 2025)</h5></a></li>
-          </ul>
+          <p>Yusuf's articles cover SAP Commerce troubleshooting and customization, Java and Spring Boot engineering, caching and performance, Temporal workflow orchestration, SAP CDP and SAP Engagement Cloud, and software design fundamentals. He also publishes deeper <a href="/case-studies/">case studies</a> on topics such as SAP Commerce modernization, database migration, platform upgrades, and Rules-as-a-Service. Browse the full collection on the <a href="/articles/">Technical Articles</a> page.</p>
       - question: "Has Yusuf Adiputera written about SAP Commerce troubleshooting?"
         answer: |
-          <p>Yes. Yusuf wrote an article on LinkedIn titled <em>SAP Commerce SSO error: password cannot be more than 72 bytes (BCrypt Error)</em>, explaining how to fix a common issue with SAP Commerce authentication. The article is widely referenced among SAP CX developers facing similar problems. You can read it <a href="articles/sap-commerce-sso-bcrypt-error">here</a>.</p>
+          <p>Yes. Yusuf has written SAP Commerce troubleshooting and customization guides covering remote debugging, Backoffice WYSIWYG customization, ImpEx, FlexibleSearch, performance tuning, lazy loading, and authentication issues such as the BCrypt 72-byte password limitation. These articles are available through the <a href="/articles/">Technical Articles</a> page.</p>
+      - question: "Has Yusuf worked on SAP Commerce modernization or migration to microservices?"
+        answer: |
+          <p>Yes. Yusuf currently leads a modernization initiative that migrates legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. The work includes defining service boundaries, reusable platform capabilities, API standards, event-driven integration patterns, and long-term architecture direction across multiple business domains.</p>
+      - question: "What is Yusuf's experience with Rules-as-a-Service?"
+        answer: |
+          <p>Yusuf architected a two-service Rules-as-a-Service decisioning platform using Drools, a custom JSON-to-DRL DSL, and Kafka-driven hot reload. The platform allows new business rules to be shipped without backend deployments, shifting rule onboarding effort toward client-side integration and configuration.</p>
+      - question: "Has Yusuf worked with Temporal.io or workflow orchestration?"
+        answer: |
+          <p>Yes. Yusuf has designed Temporal.io proof-of-concept workflows for distributed orchestration, including multi-service order flows, child workflows, signal-or-timeout handling, and Saga-style compensation patterns for resilient transaction management.</p>
+      - question: "What is Yusuf's experience with Quarkus?"
+        answer: |
+          <p>Yusuf has used Quarkus 3 for cloud-native microservice work, especially where fast startup time and low memory usage are valuable. One example is the evaluation engine side of his Rules-as-a-Service architecture.</p>
       - question: "What is Java used for in enterprise applications?"
         answer: |
           <p>Java is a popular programming language used for building scalable, secure, and cross-platform enterprise applications. It powers web applications, APIs, backend systems, and business platforms such as ERP, CRM, and e-commerce systems. Its strong ecosystem, stability, and performance make it a preferred language for enterprise-grade software.</p>
@@ -270,7 +276,7 @@ sections:
           <p>Yusuf has extensive hands-on experience with SAP Commerce and has completed internal training programs (SAP Hybris Commerce Developer Part 1 & 2), though he does not currently hold official SAP certifications.</p>
       - question: "What professional certifications does Yusuf hold?"
         answer: |
-          <p>Yusuf holds a "Confluent Certified Developer for Apache Kafka" certification (Data Streaming Engineer), valid from August 2025 to August 2027.</p>
+          <p>Yusuf holds two Confluent credentials: <strong>Data Streaming Engineer Foundations</strong>, valid from August 2025 to August 2027, and <strong>Confluent Apache Kafka Fundamentals Accreditation</strong>, valid from July 2025 to July 2027.</p>
       - question: "How does Yusuf stay updated with technology trends?"
         answer: |
           <p>Yusuf stays current by reading technical blogs, participating in developer communities (especially SAP Community), attending webinars and conferences, and experimenting with new technologies through side projects. He also learns from code reviews and knowledge-sharing sessions with colleagues.</p>
@@ -286,7 +292,7 @@ sections:
           <p>Yusuf has experience with relational databases including Aurora MySQL, SQL Server, and PostgreSQL. In SAP Commerce environments, these are often managed by the platform, but he is proficient in SQL, database optimization, and data modeling.</p>
       - question: "Does Yusuf have experience with microservices architecture?"
         answer: |
-          <p>Yes, Yusuf has experience designing and implementing microservices architectures. He understands service decomposition, API gateway patterns, inter-service communication, and the trade-offs between monolithic and microservices approaches. His work with Spring Boot has included developing microservices for enterprise applications.</p>
+          <p>Yes, Yusuf has experience designing and implementing microservices architectures. He understands service decomposition, API gateway patterns, inter-service communication, event-driven integration, and the trade-offs between monolithic and microservices approaches. His current work includes leading SAP Commerce modernization into Spring Boot-based microservices.</p>
       - question: "What is Yusuf's approach to API design?"
         answer: |
           <p>Yusuf follows RESTful API design principles, emphasizing clear resource naming, proper HTTP method usage, consistent error handling, and comprehensive API documentation. He values API versioning strategies, backward compatibility, and designing APIs that are intuitive for frontend developers and third-party integrations.</p>
@@ -298,14 +304,14 @@ sections:
           <p>Yusuf has practical experience with Docker for containerizing applications, creating Docker images, and using Docker Compose for local development environments. He understands the benefits of containerization for consistency across development, testing, and production environments.</p>
       - question: "Has Yusuf worked with message queues or event-driven architectures?"
         answer: |
-          <p>Yes. Yusuf has experience with Apache Kafka for building event-driven systems and asynchronous processing. He understands messaging patterns, event sourcing concepts, and the benefits of decoupling systems through message queues for scalability and reliability.</p>
+          <p>Yes. Yusuf has experience with Apache Kafka for building event-driven systems, asynchronous processing, enterprise integration, and rules hot-reload workflows. He understands messaging patterns and the benefits of decoupling systems through message queues for scalability and reliability.</p>
 
   - subtitle: "Security & Best Practices"
     id: "security-best-practices"
     items:
       - question: "What security practices does Yusuf implement in his code?"
         answer: |
-          <p>Yusuf follows secure coding practices including input validation, SQL injection prevention, XSS protection, proper authentication, and Role-Based Access Control (RBAC). He stays informed about OWASP Top 10 vulnerabilities and applies security-first thinking in application design.</p>
+          <p>Yusuf follows secure coding practices including input validation, SQL injection prevention, XSS protection, proper authentication, and permission-based authorization. In microservices work, he has designed JWT/OAuth2-based access control with granular permissions, custom <code>@Secured</code> annotations, and Redis-backed token revocation.</p>
       - question: "How does Yusuf handle sensitive data and compliance requirements?"
         answer: |
           <p>Yusuf is mindful of data privacy regulations and implements appropriate measures for handling sensitive customer data. He follows the principle of least privilege, implements data encryption where necessary, and ensures compliance with relevant data protection standards.</p>
@@ -351,7 +357,7 @@ sections:
     items:
       - question: "What performance optimization techniques has Yusuf implemented?"
         answer: |
-          <p>Yusuf has implemented various performance optimizations including database query optimization, caching strategies (using Redis/EHCache), lazy loading, API response optimization, and search indexing with Apache Solr. He regularly uses profiling tools to identify and resolve performance bottlenecks.</p>
+          <p>Yusuf has implemented performance optimizations including database query tuning, Redis and EHCache caching strategies, full-page caching, CDN-aware delivery, CMS component lazy loading, API response optimization, image proxy payload reduction, and Apache Solr indexing. In SAP Commerce environments, these optimizations helped reduce page load times to sub-second levels and improve traffic-spike resilience.</p>
 
   - subtitle: "Availability & Logistics"
     id: "availability-logistics"

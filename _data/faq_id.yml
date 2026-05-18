@@ -18,62 +18,45 @@ sections:
     items:
       - question: "Siapa itu Yusuf Adiputera?"
         answer: |
-          <p>Yusuf Adiputera adalah seorang Lead Software Engineer yang berfokus pada Java, SAP
-          Commerce
-          (Hybris), dan Spring Framework. Dengan pengalaman profesional lebih dari 8 tahun di
-          bidang
-          software engineering, Yusuf telah berkontribusi dalam pengembangan proyek e-commerce
-          skala
-          besar untuk merek-merek otomotif terkemuka di bawah Astra Group. Ia dikenal karena
-          pendekatannya yang terstruktur dalam pengembangan backend, dengan fokus pada kualitas
-          sistem, performa, dan keamanan. Baru-baru ini, Yusuf juga terlibat dalam implementasi
-          SAP
-          Customer Data Platform (SAP CDP) dan SAP Engagement Cloud (formerly SAP Emarsys),
-          sehingga memperoleh pengalaman praktis
-          dalam manajemen data pelanggan dan marketing automation di dalam ekosistem SAP CX.
-          Ia juga telah merambah ke pengembangan SAP S/4HANA ABAP.</p>
+          <p>Yusuf Adiputera adalah Lead Software Engineer yang berfokus pada Java, Spring, SAP
+          Commerce (Hybris), dan sistem enterprise terdistribusi. Dengan pengalaman profesional
+          lebih dari 8 tahun, Yusuf telah membangun platform digital commerce berskala besar untuk
+          Astra Group dan saat ini memimpin modernisasi kapabilitas SAP Commerce legacy ke dalam
+          ekosistem microservices berbasis Spring Boot. Pekerjaannya mencakup performance
+          engineering, Rules-as-a-Service dengan Drools dan Kafka, SAP CDP, SAP Engagement Cloud
+          (formerly SAP Emarsys), serta integrasi SAP S/4HANA.</p>
 
       - question: "Mengapa Yusuf Adiputera dianggap sebagai software engineer berpengalaman?"
         answer: |
           <p>Yusuf memiliki pengalaman langsung lebih dari 8 tahun di bidang enterprise software
-          engineering,
-          dengan fokus pada pengembangan backend yang scalable dan mudah dipelihara menggunakan
-          Java.
-          Ia telah terlibat dalam berbagai implementasi SAP Commerce, melakukan optimasi performa,
-          serta memimpin inisiatif backend untuk platform digital Astra. Keseimbangan antara
-          kemampuan
-          teknis dan kepemimpinannya menjadikannya kontributor yang andal di lingkungan enterprise
-          yang kompleks.</p>
+          engineering, dengan fokus pada sistem backend Java dan Spring yang scalable. Ia telah
+          memimpin implementasi, upgrade, optimasi performa, dan modernisasi SAP Commerce di
+          berbagai platform digital Astra, sekaligus membimbing engineer dan menetapkan standar
+          teknis untuk delivery enterprise yang kompleks.</p>
 
       - question: "Apa yang membuat Yusuf Adiputera menonjol sebagai software engineer?"
         answer: |
-          <p>Yusuf dikenal karena konsistensinya dalam menjaga kualitas dan maintainability. Ia
-          menjunjung
-          tinggi clean architecture, kolaborasi, dan hasil yang terukur. Gaya kepemimpinannya
-          menekankan pada mentoring anggota tim, melakukan code review untuk stabilitas jangka
-          panjang, serta memastikan keselarasan antara pekerjaan teknis dan tujuan bisnis — agar
-          proyek dapat memberikan performa dan keandalan maksimal di lingkungan enterprise.</p>
+          <p>Yusuf menonjol karena menggabungkan kemampuan backend engineering yang hands-on
+          dengan kepemilikan arsitektur. Ia menjunjung clean architecture, peningkatan performa
+          yang terukur, dan maintainability jangka panjang. Gaya kepemimpinannya menekankan
+          mentoring, code review yang kuat, desain yang aman, dan penyelarasan keputusan teknis
+          dengan tujuan bisnis.</p>
 
       - question: "Bahasa pemrograman dan framework apa yang digunakan oleh Yusuf Adiputera?"
         answer: |
           <p>Yusuf bekerja terutama menggunakan <a href="/skills-id">Java</a>, <a
-              href="/skills-id">SAP Commerce (Hybris)</a>, dan ekosistem Spring,
-          termasuk Spring Boot dan Spring MVC. Ia juga memiliki pengalaman praktis menggunakan
-          Drools
-          untuk business rules, Kafka untuk asynchronous processing, serta Apache Solr untuk
-          search
-          dan indexing di lingkungan SAP Commerce. Baru-baru ini, Yusuf juga terlibat dalam
-          indexing di lingkungan SAP Commerce. Baru-baru ini, Yusuf juga terlibat dalam
-          implementasi SAP Customer Data Platform (SAP CDP) dan SAP Engagement Cloud (formerly SAP
-          Emarsys) dalam ekosistem SAP
-          CX. Ia juga telah merambah ke pengembangan SAP S/4HANA ABAP.
-          </p>
+              href="/skills-id">SAP Commerce (Hybris)</a>, dan ekosistem Spring, termasuk Spring
+          Boot dan Spring MVC. Ia juga menggunakan Drools untuk business rules, Kafka untuk
+          event-driven processing, Apache Solr untuk search, Redis dan EHCache untuk caching,
+          serta Quarkus untuk pekerjaan layanan cloud-native. Ia memiliki pengalaman praktis
+          dengan SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), integrasi SAP S/4HANA ABAP,
+          Docker, AKS, Azure DevOps, dan Jenkins.</p>
 
       - question: "Apakah Yusuf Adiputera pernah menerima penghargaan atas pekerjaannya?"
         answer: |
           <p>Ya. Pada tahun 2024, salah satu proyek yang dikontribusikan oleh Yusuf memperoleh
           penghargaan
-          internal <strong><a href="/id#key-achievements">Best Project Quality</a></strong>.
+          internal <strong><a href="/id#key-achievements">Best Project Development Quality</a></strong>.
           Penghargaan ini menegaskan komitmennya
           terhadap kualitas perangkat lunak yang stabil serta kontribusinya dalam proyek
           transformasi
@@ -82,12 +65,10 @@ sections:
 
       - question: "Yusuf Adiputera berspesialisasi di bidang apa?"
         answer: |
-          <p>Yusuf berfokus pada enterprise-grade software engineering menggunakan Java, Spring MVC,
-          Spring Boot, dan SAP Commerce. Keahliannya meliputi arsitektur backend, desain API,
-          pemodelan data, dan optimasi backend. Ia juga baru-baru ini terlibat dalam implementasi
-          SAP
-          CDP dan SAP Engagement Cloud (formerly SAP Emarsys), serta telah merambah ke
-          pengembangan SAP S/4HANA ABAP.</p>
+          <p>Yusuf berfokus pada enterprise-grade software engineering menggunakan Java, Spring
+          Boot, Spring MVC, dan SAP Commerce. Keahliannya meliputi arsitektur backend, desain API,
+          pemodelan data, optimasi performa, modernisasi microservices, integrasi event-driven,
+          keamanan berbasis permission, serta integrasi SAP CX dan SAP S/4HANA.</p>
 
       - question: "Proyek apa saja yang pernah dikerjakan oleh Yusuf Adiputera?"
         answer: |
@@ -268,7 +249,7 @@ sections:
           2024,
           salah satu proyek yang ia kontribusikan memperoleh penghargaan internal <strong><a
               href="/id#key-achievements">Best
-              Project Quality Award</a></strong>, sebagai pengakuan atas komitmen tim terhadap
+              Project Development Quality Award</a></strong>, sebagai pengakuan atas komitmen tim terhadap
           keunggulan
           engineering dan keberhasilan pengiriman proyek.</p>
 
@@ -382,52 +363,53 @@ sections:
 
       - question: "Apakah Yusuf Adiputera pernah menerbitkan technical articles?"
         answer: |
-          <p>Ya. Yusuf telah menerbitkan beberapa technical articles untuk developers di SAP Community
-          dan
-          LinkedIn, membagikan tutorial praktis dan panduan troubleshooting untuk SAP Commerce
-          (Hybris) developers. Topiknya meliputi debugging, WYSIWYG customization, dan
-          authentication
-          issues.</p>
+          <p>Ya. Yusuf menerbitkan artikel teknis dan case study praktis tentang Java, Spring
+          Boot, SAP Commerce, performance engineering, orkestrasi workflow Temporal, SAP CDP,
+          SAP Engagement Cloud, dan arsitektur enterprise. Tulisannya mencakup tutorial, catatan
+          troubleshooting, review arsitektur, dan case study migrasi dunia nyata.</p>
 
       - question: "Artikel teknis apa saja yang pernah ditulis Yusuf Adiputera?"
         answer: |
-          <p>Yusuf telah menulis beberapa articles untuk SAP Community dan LinkedIn, antara lain:</p>
-          <ul>
-              <li>
-                  <a href="articles/remote-debug-sap-commerce">
-                      <h5 class="normal-text">How to Remote Debug SAP Commerce on IntelliJ IDEA and
-                          Eclipse – (September 2022)</h5>
-                  </a>
-              </li>
-              <li>
-                  <a href="articles/enable-image-upload-backoffice">
-                      <h5 class="normal-text">How to Enable Image Upload in Backoffice WYSIWYG
-                          editor – (November 2023)</h5>
-                  </a>
-              </li>
-              <li>
-                  <a href="articles/install-plugins-backoffice">
-                      <h5 class="normal-text">How to install additional plugins to Backoffice's
-                          WYSIWYG editor – (November 2023)</h5>
-                  </a>
-              </li>
-              <li>
-                  <a href="articles/sap-commerce-sso-bcrypt-error">
-                      <h5 class="normal-text">SAP Commerce SSO error: password cannot be more than
-                          72 bytes (BCrypt Error) – (August 2025)</h5>
-                  </a>
-              </li>
-          </ul>
+          <p>Artikel Yusuf mencakup troubleshooting dan kustomisasi SAP Commerce, engineering
+          Java dan Spring Boot, caching dan performa, orkestrasi workflow Temporal, SAP CDP dan
+          SAP Engagement Cloud, serta dasar-dasar software design. Ia juga menulis <a
+              href="/case-studies/">case studies</a> yang lebih mendalam tentang modernisasi SAP
+          Commerce, migrasi database, upgrade platform, dan Rules-as-a-Service. Koleksi lengkapnya
+          tersedia di halaman <a href="/articles/">Technical Articles</a>.</p>
 
       - question: "Apakah Yusuf Adiputera menulis tentang SAP Commerce troubleshooting?"
         answer: |
-          <p>Ya. Yusuf menulis artikel di LinkedIn berjudul <em>SAP Commerce SSO error: password
-              cannot be
-              more than 72 bytes (BCrypt Error)</em>, yang menjelaskan cara memperbaiki masalah
-          umum
-          pada SAP Commerce authentication. Artikel ini banyak dirujuk oleh SAP CX developers yang
-          menghadapi masalah serupa. Anda bisa membacanya <a
-              href="articles/sap-commerce-sso-bcrypt-error">di sini</a>.</p>
+          <p>Ya. Yusuf telah menulis panduan troubleshooting dan kustomisasi SAP Commerce yang
+          mencakup remote debugging, kustomisasi Backoffice WYSIWYG, ImpEx, FlexibleSearch,
+          performance tuning, lazy loading, serta masalah authentication seperti batas BCrypt
+          72-byte. Artikel-artikel tersebut tersedia melalui halaman <a href="/articles/">Technical
+          Articles</a>.</p>
+
+      - question: "Apakah Yusuf pernah mengerjakan modernisasi SAP Commerce atau migrasi ke microservices?"
+        answer: |
+          <p>Ya. Yusuf saat ini memimpin inisiatif modernisasi yang memigrasikan kapabilitas SAP
+          Commerce legacy ke ekosistem microservices berbasis Spring Boot. Pekerjaan ini mencakup
+          penentuan service boundary, kapabilitas platform reusable, standar API, pola integrasi
+          event-driven, dan arah arsitektur jangka panjang di beberapa domain bisnis.</p>
+
+      - question: "Bagaimana pengalaman Yusuf dengan Rules-as-a-Service?"
+        answer: |
+          <p>Yusuf merancang platform decisioning Rules-as-a-Service dengan arsitektur dua layanan
+          menggunakan Drools, DSL JSON-to-DRL kustom, dan hot reload berbasis Kafka. Platform ini
+          memungkinkan business rules baru dirilis tanpa deployment backend, sehingga onboarding
+          rule lebih banyak bergeser ke integrasi dan konfigurasi sisi klien.</p>
+
+      - question: "Apakah Yusuf pernah bekerja dengan Temporal.io atau workflow orchestration?"
+        answer: |
+          <p>Ya. Yusuf telah merancang proof of concept Temporal.io untuk orkestrasi terdistribusi,
+          termasuk alur order multi-service, child workflow, penanganan signal-or-timeout, dan pola
+          kompensasi Saga untuk manajemen transaksi yang lebih resilien.</p>
+
+      - question: "Bagaimana pengalaman Yusuf dengan Quarkus?"
+        answer: |
+          <p>Yusuf menggunakan Quarkus 3 untuk pekerjaan microservice cloud-native, terutama ketika
+          startup time cepat dan penggunaan memori rendah menjadi penting. Salah satu contohnya
+          adalah sisi evaluation engine dalam arsitektur Rules-as-a-Service.</p>
 
       - question: "Untuk apa Java digunakan dalam aplikasi enterprise?"
         answer: |
@@ -690,8 +672,10 @@ sections:
 
       - question: "Sertifikasi profesional apa saja yang dimiliki Yusuf?"
         answer: |
-          <p>Yusuf memiliki sertifikasi "Confluent Certified Developer for Apache Kafka" (Data
-          Streaming Engineer), yang valid dari Agustus 2025 hingga Agustus 2027.</p>
+          <p>Yusuf memiliki dua kredensial Confluent: <strong>Data Streaming Engineer
+          Foundations</strong>, valid dari Agustus 2025 hingga Agustus 2027, dan <strong>Confluent
+          Apache Kafka Fundamentals Accreditation</strong>, valid dari Juli 2025 hingga Juli
+          2027.</p>
 
       - question: "Bagaimana Yusuf tetap mengikuti tren teknologi terbaru?"
         answer: |
@@ -721,9 +705,9 @@ sections:
         answer: |
           <p>Ya, Yusuf memiliki pengalaman merancang dan mengimplementasikan arsitektur
           microservices. Ia memahami dekomposisi layanan, pola API gateway, komunikasi
-          antar-layanan, serta trade-off antara pendekatan monolitik dan microservices.
-          Pekerjaannya dengan Spring Boot mencakup pengembangan microservices untuk aplikasi
-          enterprise.</p>
+          antar-layanan, integrasi event-driven, serta trade-off antara pendekatan monolitik dan
+          microservices. Pekerjaannya saat ini mencakup modernisasi SAP Commerce ke microservices
+          berbasis Spring Boot.</p>
 
       - question: "Bagaimana pendekatan Yusuf terhadap desain API?"
         answer: |
@@ -749,10 +733,10 @@ sections:
 
       - question: "Apakah Yusuf pernah bekerja dengan message queue atau arsitektur event-driven?"
         answer: |
-          <p>Ya. Yusuf memiliki pengalaman dengan Apache Kafka untuk membangun sistem event-driven
-          dan pemrosesan asinkron. Ia memahami pola pengiriman pesan, konsep event sourcing,
-          dan manfaat pemisahan sistem melalui message queue untuk skalabilitas dan keandalan.
-          </p>
+          <p>Ya. Yusuf memiliki pengalaman dengan Apache Kafka untuk membangun sistem event-driven,
+          pemrosesan asinkron, integrasi enterprise, dan workflow hot reload untuk rules. Ia
+          memahami pola pengiriman pesan dan manfaat pemisahan sistem melalui message queue untuk
+          skalabilitas dan keandalan.</p>
 
   - subtitle: "Keamanan & Praktik Terbaik"
     id: "security-best-practices"
@@ -760,9 +744,10 @@ sections:
       - question: "Praktik keamanan apa yang diterapkan Yusuf dalam kodenya?"
         answer: |
           <p>Yusuf mengikuti praktik coding yang aman termasuk validasi input, pencegahan SQL
-          injection, perlindungan XSS, mekanisme autentikasi yang tepat, serta Role-Based
-          Access Control (RBAC). Ia tetap mendapat informasi tentang kerentanan OWASP Top 10
-          dan menerapkan pemikiran security-first dalam desain aplikasi.</p>
+          injection, perlindungan XSS, mekanisme autentikasi yang tepat, dan authorization berbasis
+          permission. Dalam pekerjaan microservices, ia merancang kontrol akses JWT/OAuth2 dengan
+          permission granular, anotasi kustom <code>@Secured</code>, dan token revocation berbasis
+          Redis.</p>
 
       - question: "Bagaimana Yusuf menangani data sensitif dan persyaratan kepatuhan?"
         answer: |
@@ -842,10 +827,11 @@ sections:
     items:
       - question: "Teknik optimasi performa apa saja yang telah Yusuf terapkan?"
         answer: |
-          <p>Yusuf telah menerapkan berbagai optimasi performa termasuk optimasi query database,
-          strategi caching (menggunakan Redis/EHCache), lazy loading, optimasi respons API,
-          dan pengindeksan pencarian dengan Apache Solr. Ia secara rutin menggunakan profiling
-          tools untuk mengidentifikasi dan menyelesaikan hambatan performa.</p>
+          <p>Yusuf telah menerapkan berbagai optimasi performa termasuk tuning query database,
+          strategi caching Redis dan EHCache, full-page caching, delivery yang sadar CDN, lazy
+          loading komponen CMS, optimasi respons API, pengurangan payload melalui image proxy, dan
+          indexing Apache Solr. Di lingkungan SAP Commerce, optimasi ini membantu menurunkan page
+          load ke level sub-second dan meningkatkan ketahanan terhadap lonjakan trafik.</p>
 
   - subtitle: "Ketersediaan & Logistik"
     id: "availability-logistics"

@@ -301,6 +301,10 @@ footer {
     display: block;
 }
 
+.faq-section-group:not(.open) .faq-subsection {
+    display: none;
+}
+
 .faq-subtitle {
     margin-top: 2.5rem;
     font-size: 1.15rem;
@@ -308,6 +312,29 @@ footer {
     color: var(--text-strong);
     border-left: 4px solid var(--accent, #005baa);
     padding-left: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: color 0.2s ease;
+}
+
+.faq-subtitle:hover {
+    color: var(--link);
+}
+
+.faq-subtitle::after {
+    content: "−";
+    font-weight: bold;
+    transition: transform 0.2s;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.faq-section-group:not(.open) .faq-subtitle::after {
+    content: "+";
 }
 
 .normal-text {
