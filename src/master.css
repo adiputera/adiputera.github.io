@@ -954,6 +954,63 @@ footer {
     margin-top: 1rem;
 }
 
+/* Skill Level Legend */
+.skill-level-legend {
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.skill-level-legend h2 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    color: var(--subtext);
+    font-weight: 600;
+    border: none;
+    padding: 0;
+}
+
+.skill-level-definitions {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.65rem 1rem;
+    margin: 0;
+    align-items: baseline;
+}
+
+.skill-level-definitions dt {
+    padding: 0.2rem 0.5rem;
+    background: var(--border);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+    align-self: start;
+}
+
+.skill-level-definitions dd {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+@media (max-width: 600px) {
+    .skill-level-definitions {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+    .skill-level-definitions dt {
+        justify-self: start;
+        margin-top: 0.5rem;
+    }
+    .skill-level-definitions dt:first-child {
+        margin-top: 0;
+    }
+}
+
 /* Skills Category Layout */
 .skills-category-section {
     margin-bottom: 3rem;

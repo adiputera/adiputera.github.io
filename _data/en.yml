@@ -5,7 +5,7 @@ site:
   name: "Yusuf Adiputera"
   tagline: "Lead Software Engineer specialized in Java, Distributed Systems, and Enterprise Commerce"
   description: "Lead Software Engineer with more than 8 years of experience in Java, Microservices, Spring Boot, and Enterprise Commerce. Based in Jakarta, open to relocation."
-  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Lead Software Developer, SAP Hybris, SAP Hybris Commerce, SAP Commerce, SAP CX, SAP CX Commerce, Java, Spring MVC, Spring Framework, Spring Boot, OCC API, Drools, Solr, Kafka, Apache Kafka, SAP Customer Data Platform, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), REST API, Git, Serverless, Azure Function App, Function App, Backend Engineer, Senior Backend Engineer, Backend Developer, Senior Backend Developer, Backend Software Engineer, Senior Backend Software Engineer, Backend Software Developer, Senior Backend Software Developer, Full Stack Developer, Senior Full stack Developer, Full Stack Software Developer, Senior Full Stack Software Developer, Full Stack Engineer, Senior Full Stack Engineer, Full Stack Software Engineer, Senior Full Stack Software Engineer, Jakarta Developer, Indonesian Software Engineer, Southeast Asia Developer, Hire Java Developer, Java Developer Portfolio, SAP Commerce Resume, Hybris Developer Resume"
+  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Java, Spring Boot, SAP Commerce, Hybris, Microservices, Apache Kafka, Drools, Jakarta Developer"
   email: "yusuf@adiputera.id"
   linkedin: "https://www.linkedin.com/in/yusuf-adiputera"
   linkedin_display: "linkedin.com/in/yusuf-adiputera"
@@ -15,11 +15,11 @@ site:
   about_me: "https://about.me/adiputera"
   location: "Jakarta, Indonesia"
   summary_html: |
-    <p>Yusuf is a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
-    <p>Currently, he leads a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, he designs reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
-    <p>His engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, he has successfully reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
-    <p>Beyond application code, Yusuf brings strong expertise in infrastructure and data architecture. He has executed complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.</p>
-    <p>As an engineering leader, Yusuf acts as an internal technical consultant across parallel projects. He enjoys leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
+    <p>I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
+    <p>I'm currently the technical lead on a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
+    <p>My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
+    <p>I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.</p>
+    <p>As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
 
 contact:
   email: "yusuf@adiputera.id"
@@ -100,37 +100,37 @@ breadcrumb:
   full: "Full Version"
 
 summary: |
-  Yusuf is a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. He has a proven history of designing and delivering enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
-  
-  Currently, he leads a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, he designs reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
-  
-  His engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, he has successfully reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes. 
-  
-  Beyond application code, Yusuf brings strong expertise in infrastructure and data architecture. He has executed complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.
-  
-  As an engineering leader, Yusuf acts as an internal technical consultant across parallel projects. He enjoys leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.
+  I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
+
+  I'm currently the technical lead on a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
+
+  My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.
+
+  I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.
+
+  As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.
 
 skills:
   - category: "Languages"
-    items: "Java (8–25), JavaScript, HTML"
+    items: "Java (8–17, 21+ features), JavaScript, TypeScript"
   - category: "Frameworks & Platforms"
-    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, jQuery, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA ABAP"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud (formerly SAP Emarsys)"
   - category: "Architecture & Integration"
     items: "Microservices, REST API, Event-Driven Architecture, DSL Design, OAuth2"
   - category: "Tools & Infrastructure"
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 
 achievements:
-  - "Leading the enterprise-wide modernization strategy, migrating a legacy SAP Commerce monolith into a scalable Spring Boot microservices ecosystem across 3 parallel business domains."
+  - "Technical lead on the enterprise-wide migration from a legacy SAP Commerce monolith to a scalable Spring Boot microservices ecosystem across 3 parallel business domains."
   - "Led the engineering teams for motorkux.id (2021–Present) and seva.id marketplace (2019–2021)"
   - "Contributed to the core development of the seva.id property platform (2018–2019)"
   - "Received the internal \"Best Project Development Quality\" award (2024)"
-  - "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog (20–30 inbound RPS saturating 200–300 internal ops/sec). Implemented EHCache full-page caching, reducing internal operations by ~70-85% and P95 latency from 2.1s to ~800ms, enabling 3–5× traffic absorption without horizontal scaling."
+  - "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog (20–30 inbound RPS saturating 200–300 internal ops/sec). Implemented EHCache full-page caching, reducing internal operations by ~70-85% and P95 latency from 2.1s to ~800ms, enabling 3× traffic absorption without horizontal scaling."
   - "Integrated SAP Customer Data Platform (CDP) and SAP Emarsys for unified customer profiles and marketing (2025)"
   - "Contributed to SAP S/4HANA ERP integrations using ABAP (Ongoing)"
   - "Designed and implemented a comprehensive permission-based authorization framework (fine-grained PBAC on top of role assignment) to govern service-level authorization and secure access lifecycles."
   - "Built a custom image proxy service to dramatically reduce payload sizes and bandwidth (2024)"
-  - "Architected a two-service Rules-as-a-Service decisioning platform with a custom JSON-to-DRL DSL. Enabled Kafka-driven hot-reload of business rules with zero backend development required for new rules, shifting all integration effort to the client side."
+  - "Designed a Rules-as-a-Service platform that lets business teams author new pricing, promotion, and eligibility rules directly, without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's why new rules onboard without engineering work. Backend involvement is only needed for genuinely new categories of rule logic, which is rare."
   - "Developed location-based custom promotion modules in SAP Commerce (2023)"
   - "Executed large-scale database migrations from SAP HANA to MySQL across multiple environments (2019–2020)"
   - "Led enterprise-wide SAP Commerce platform upgrades (2020–2022)"
@@ -182,16 +182,16 @@ experience:
 
       <h4>Architecture &amp; Platform Ownership</h4>
       <ul>
-        <li>Defined and led microservices architecture for enterprise-scale commerce platforms.</li>
-        <li>Owned cross-domain system design across core, CMS, and product services.</li>
+        <li>Designed and implemented the core platform layer for enterprise-scale commerce; co-defined service boundaries and integration contracts with the Solution Architect.</li>
+        <li>Owned the shared core layer that core, CMS, and product services depend on.</li>
         <li>Established service boundaries, platform standards, and long-term system evolution strategy.</li>
         <li>Built reusable platform capabilities including rules engine and shared infrastructure components.</li>
       </ul>
 
       <h4>Platform Modernization</h4>
       <ul>
-        <li>Leading enterprise-wide migration from SAP Commerce monolith to Spring Boot–based microservices.</li>
-        <li>Supervising 3 parallel rewrite tracks across multiple business domains.</li>
+        <li>Technical lead on the enterprise-wide migration from SAP Commerce monolith to Spring Boot–based microservices.</li>
+        <li>Technical authority for the core platform library consumed by 3 product teams across multiple business domains.</li>
         <li>Defined engineering standards and implementation guidelines for distributed systems.</li>
       </ul>
 
@@ -199,7 +199,7 @@ experience:
       <ul>
         <li>Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog (20–30 inbound RPS to 200–300 internal ops/sec).</li>
         <li>Implemented EHCache full-page caching with selective invalidation, reducing internal operations by ~70-85% and P95 latency from 2.1s to ~800ms.</li>
-        <li>Improved system resilience to handle 3–5× traffic spikes without downtime or horizontal scaling.</li>
+        <li>Improved system resilience to handle 3× traffic spikes without downtime or horizontal scaling.</li>
         <li>Reduced image payload size by up to 80% through custom image proxy service.</li>
         <li>Optimized storefront performance via CMS lazy loading and rendering improvements.</li>
       </ul>
@@ -230,8 +230,11 @@ experience:
       <h4>Selected Achievements</h4>
       <ul>
         <li>Delivered <strong>motorkux.id</strong> go-live (2022) and <strong>seva.id marketplace</strong> launch (2020) with payment, shipping, and 3rd-party integrations.</li>
-        <li>Architected a two-service Rules-as-a-Service decisioning platform (Publishing Service & Evaluation Service) with a custom JSON-to-DRL DSL and Kafka-driven hot-reload, eliminating backend development for new rules.</li>
-        <li>Selected to personally drive the rules engine refinement phase given its strategic importance — owning operator taxonomy, collection quantifiers, multi-object semantics, and hot-reload mechanism through to production.</li>
+      </ul>
+
+      <p><strong>Rules-as-a-Service.</strong> Designed a Rules-as-a-Service platform that lets business teams author and ship new pricing, promotion, and eligibility rules directly, without going through backend release cycles. The key design choice was keeping the engine intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's the invariant that lets new rules onboard without engineering work. Backend involvement is bounded to genuinely new categories of rule logic (such as adding a new type of condition), which is rare and easy to distinguish from "add a new rule."</p>
+
+      <ul>
         <li>Led multiple SAP Commerce upgrades across enterprise platforms (seva.id, auto2000, motorkux.id - versions 6.6 → 2205).</li>
         <li>Developed custom promotion engine supporting location-based quota without coupon dependency.</li>
       </ul>

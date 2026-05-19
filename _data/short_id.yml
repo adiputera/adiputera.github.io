@@ -5,37 +5,38 @@ description: "Resume ringkas Yusuf Adiputera, Lead Software Engineer dengan lebi
 subtitle: "Lead Software Engineer | Java, Distributed Systems & Enterprise Commerce"
 summary_html: |
   <p>
-      Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam <strong>arsitektur
+      Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam <strong>arsitektur
       Java &amp; Spring dan platform e-commerce enterprise</strong>.
-      Berpengalaman dalam merancang dan mengirimkan sistem utama untuk Astra Group (IDX:ASII), dengan fokus pada skalabilitas,
+      Saya telah merancang dan mengirimkan sistem utama untuk Astra Group (IDX:ASII), dengan fokus pada skalabilitas,
       modernisasi platform, dan integrasi microservices.
   </p>
   <p>
-      Keahlian mencakup microservices berbasis Spring, dynamic rules engine (Rules-as-a-Service),
-      dan rekayasa performa (mencapai waktu muat sub-detik). Membawa pengalaman mendalam dalam 
-      infrastruktur (CI/CD, migrasi database) dan integrasi SAP enterprise (CDP, Emarsys, S/4HANA).
-      Berdedikasi pada kepemimpinan engineering, strategi teknis, dan membangun sistem yang mudah dipelihara.
+      Merancang platform Rules-as-a-Service yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, sehingga aturan baru bisa di-onboard tanpa keterlibatan engineering.
+  </p>
+  <p>
+      Keahlian saya juga mencakup microservices berbasis Spring dan rekayasa performa (mencapai waktu muat sub-detik). Saya juga telah mengirimkan pipeline CI/CD, migrasi database, dan integrasi SAP enterprise (CDP, Emarsys, S/4HANA).
+      Saya berdedikasi pada kepemimpinan engineering, arah teknis, dan membangun sistem yang mudah dipelihara.
   </p>
 key_achievements:
-  - label: "Lead Architect"
-    text: "Merancang dan meluncurkan <i>motorkux.id</i> (2021–Sekarang) dan <i>seva.id</i> marketplace (2019–2021)."
+  - label: "Lead Engineer"
+    text: "Memimpin pengembangan <i>engineering</i> untuk <i>motorkux.id</i> (2021–Sekarang) dan <i>seva.id</i> marketplace (2019–2021)."
   - label: "Penghargaan"
     text: "Menerima penghargaan internal \"Best Project Development Quality\" (2024)."
   - label: "Rules-as-a-Service"
-    text: "Merancang platform keputusan Rules-as-a-Service dengan DSL JSON-to-DRL kustom, menghilangkan pengembangan backend untuk aturan baru."
+    text: "Merancang platform di mana tim bisnis dapat membuat aturan harga, promosi, dan eligibility baru secara langsung, tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, hanya mengevaluasi kondisi pada data apa pun yang dikirim klien. Itulah mengapa aturan baru bisa di-onboard tanpa keterlibatan engineering. Keterlibatan backend hanya dibutuhkan untuk kategori logika aturan yang benar-benar baru, yang jarang terjadi."
   - label: "Performa"
-    text: "Mendiagnosis amplifikasi permintaan 10× via Datadog dan mencapai latensi sub-detik (~800ms P95) melalui EHCache full-page caching."
+    text: "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator via Datadog dan mengurangi latensi P95 dari 2,1 detik menjadi ~800ms via EHCache full-page caching, memungkinkan penyerapan trafik 3× tanpa penskalaan horizontal."
   - label: "Modernisasi"
-    text: "Memimpin inisiatif strategis migrasi monolit e-commerce lama ke microservices berbasis Spring Boot."
+    text: "Memimpin secara teknis migrasi dari monolit e-commerce lama ke microservices berbasis Spring Boot."
   - label: "Integrasi Enterprise"
     text: "Memberikan integrasi untuk SAP CDP, Emarsys, dan S/4HANA ABAP."
 skills:
   - category: "Bahasa"
-    items: "Java (8–17, fitur 21+), JavaScript, TypeScript, ABAP"
+    items: "Java (8–17, fitur 21+), JavaScript, TypeScript"
   - category: "Framework"
-    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, jQuery, Azure Functions"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, Azure Functions"
   - category: "Platform"
-    items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys), SAP S/4HANA"
+    items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys)"
   - category: "Alat & Infra"
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 experience:
@@ -45,17 +46,17 @@ experience:
     items:
       - label: "Arsitektur"
         list:
-          - "Mendefinisikan arsitektur microservices untuk platform commerce skala enterprise."
-          - "Bertanggung jawab atas desain sistem lintas domain meliputi layanan core, CMS, dan produk."
+          - "Merancang dan mengimplementasikan lapisan platform inti; ikut mendefinisikan service boundaries bersama Solution Architect."
+          - "Memiliki lapisan core bersama yang menjadi dasar layanan core, CMS, dan produk."
           - "Menetapkan service boundaries, standar platform, dan strategi evolusi jangka panjang."
       - label: "Modernisasi"
         list:
-          - "Memimpin migrasi dari monolit SAP Commerce ke microservices Spring Boot."
-          - "Mengawasi 3 jalur rewrite paralel di berbagai domain bisnis."
+          - "Memimpin secara teknis migrasi dari monolit SAP Commerce ke microservices Spring Boot."
+          - "Otoritas teknis atas library platform inti yang digunakan 3 tim produk di berbagai domain bisnis."
       - label: "Skalabilitas"
         list:
-          - "Mendiagnosis amplifikasi permintaan 10× dan mengurangi latensi P95 menjadi ~800ms melalui EHCache full-page caching."
-          - "Meningkatkan ketahanan sistem untuk menangani lonjakan trafik 3–5× tanpa downtime atau penskalaan horizontal."
+          - "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator via Datadog dan mengurangi latensi P95 dari 2,1 detik menjadi ~800ms melalui EHCache full-page caching."
+          - "Meningkatkan ketahanan sistem untuk menangani lonjakan trafik 3× tanpa downtime atau penskalaan horizontal."
           - "Mengurangi payload gambar hingga 80% melalui layanan image proxy kustom."
       - label: "Keamanan"
         list:
@@ -74,7 +75,7 @@ experience:
       - label: "Pencapaian"
         list:
           - "Meluncurkan motorkux.id go-live (2022) dan seva.id marketplace (2020)."
-          - "Membangun platform Rules-as-a-Service dengan arsitektur dua layanan, DSL kustom, dan hot-reload Kafka, mengalihkan 100% upaya onboarding aturan ke sisi klien."
+          - "Membangun platform Rules-as-a-Service yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend."
           - "Memimpin upgrade SAP Commerce di seluruh platform enterprise (6.6 → 2205)."
 
   - title: "Tech Lead & DevOps Engineer"

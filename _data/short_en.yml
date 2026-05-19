@@ -5,37 +5,38 @@ description: "Condensed resume of Yusuf Adiputera, Lead Software Engineer with m
 subtitle: "Lead Software Engineer | Java, Distributed Systems & Enterprise Commerce"
 summary_html: |
   <p>
-      Lead Software Engineer with more than 8 years of experience specializing in <strong>Java &amp; Spring architecture
+      I'm a Lead Software Engineer with more than 8 years of experience specializing in <strong>Java &amp; Spring architecture
       and enterprise e-commerce platforms</strong>.
-      Experienced in designing and delivering major systems for Astra Group (IDX:ASII), with a focus on scalability,
+      I've been designing and delivering major systems for Astra Group (IDX:ASII), with a focus on scalability,
       platform modernization, and microservices integration.
   </p>
   <p>
-      Expertise spans Spring-based microservices, dynamic rules engines (Rules-as-a-Service),
-      and performance engineering (achieving sub-second load times). Brings deep experience in 
-      infrastructure (CI/CD, database migrations) and enterprise SAP integrations (CDP, Emarsys, S/4HANA).
-      Dedicated to engineering leadership, technical strategy, and building maintainable systems.
+      Designed a Rules-as-a-Service platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, so new rules onboard without engineering work.
+  </p>
+  <p>
+      My expertise also spans Spring-based microservices and performance engineering (achieving sub-second load times). I've delivered CI/CD pipelines, database migrations, and enterprise SAP integrations (CDP, Emarsys, S/4HANA).
+      I'm dedicated to engineering leadership, technical direction, and building maintainable systems.
   </p>
 key_achievements:
-  - label: "Lead Architect"
-    text: "Architected and launched <i>motorkux.id</i> (2021–Present) and <i>seva.id</i> marketplace (2019–2021)."
+  - label: "Lead Engineer"
+    text: "Led engineering for <i>motorkux.id</i> (2021–Present) and <i>seva.id</i> marketplace (2019–2021)."
   - label: "Award Recipient"
     text: "Received the internal \"Best Project Development Quality\" award (2024)."
   - label: "Rules-as-a-Service"
-    text: "Architected a Rules-as-a-Service decisioning platform with a custom JSON-to-DRL DSL, eliminating backend development for new rules."
+    text: "Designed a platform that lets business teams author new pricing, promotion, and eligibility rules directly, without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's why new rules onboard without engineering work. Backend involvement is only needed for genuinely new categories of rule logic, which is rare."
   - label: "Performance"
-    text: "Diagnosed 10× request amplification via Datadog and achieved sub-second latency (~800ms P95) through EHCache full-page caching."
+    text: "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog and reduced P95 latency from 2.1s to ~800ms via EHCache full-page caching, enabling 3× traffic absorption without horizontal scaling."
   - label: "Modernization"
-    text: "Leading the migration of legacy e-commerce monoliths to Spring Boot–based microservices."
+    text: "Technical lead on the migration from legacy e-commerce monoliths to Spring Boot–based microservices."
   - label: "Enterprise Integration"
     text: "Delivered integrations for SAP CDP, Emarsys, and S/4HANA ABAP."
 skills:
   - category: "Languages"
-    items: "Java (8–17, 21+ features), JavaScript, TypeScript, ABAP"
+    items: "Java (8–17, 21+ features), JavaScript, TypeScript"
   - category: "Frameworks"
-    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, jQuery, Azure Functions"
+    items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, Azure Functions"
   - category: "Platforms"
-    items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys), SAP S/4HANA"
+    items: "SAP Customer Data Platform (CDP), SAP Engagement Cloud (Emarsys)"
   - category: "Tools & Infra"
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 experience:
@@ -45,17 +46,17 @@ experience:
     items:
       - label: "Architecture"
         list:
-          - "Defined microservices architecture for enterprise-scale commerce platforms."
-          - "Owned cross-domain system design across core, CMS, and product services."
+          - "Designed and implemented the core platform layer; co-defined service boundaries with the Solution Architect."
+          - "Owned the shared core layer that core, CMS, and product services depend on."
           - "Established service boundaries, platform standards, and long-term evolution strategy."
       - label: "Modernization"
         list:
-          - "Leading migration from SAP Commerce monolith to Spring Boot microservices."
-          - "Supervising 3 parallel rewrite tracks across multiple business domains."
+          - "Technical lead on the migration from SAP Commerce monolith to Spring Boot microservices."
+          - "Technical authority for the core platform library consumed by 3 product teams across multiple business domains."
       - label: "Scalability"
         list:
-          - "Diagnosed 10× request amplification and reduced P95 latency to ~800ms via EHCache full-page caching."
-          - "Improved system resilience to handle 3–5× traffic spikes without downtime or horizontal scaling."
+          - "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog and reduced P95 latency from 2.1s to ~800ms via EHCache full-page caching."
+          - "Improved system resilience to handle 3× traffic spikes without downtime or horizontal scaling."
           - "Reduced image payload by up to 80% through custom image proxy service."
       - label: "Security"
         list:
@@ -74,7 +75,7 @@ experience:
       - label: "Achievements"
         list:
           - "Delivered motorkux.id go-live (2022) and seva.id marketplace launch (2020)."
-          - "Built a two-service Rules-as-a-Service platform with a custom DSL and Kafka-driven hot-reload, shifting 100% of rule onboarding effort to the client side."
+          - "Built a Rules-as-a-Service platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys."
           - "Led SAP Commerce upgrades across enterprise platforms (6.6 → 2205)."
 
   - title: "Tech Lead & DevOps Engineer"

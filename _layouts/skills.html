@@ -20,6 +20,18 @@ layout: default
         <p>{{ sp.hero }}</p>
       </section>
 
+      {% if sp.skill_levels %}
+      <section class="skill-level-legend">
+        <h2>{{ sp.skill_levels.heading }}</h2>
+        <dl class="skill-level-definitions">
+          {% for level in sp.skill_levels.levels %}
+          <dt>{{ level.name }}</dt>
+          <dd>{{ level.definition }}</dd>
+          {% endfor %}
+        </dl>
+      </section>
+      {% endif %}
+
       <div class="skills-categories">
         {% for cat in sp.categories %}
         <section class="skills-category-section">

@@ -2,8 +2,8 @@
 layout: article
 title: "Rules-as-a-Service: A Two-Service Decisioning Platform with a Custom DSL"
 description: "How I built a Drools-based decisioning platform with a JSON-to-DRL DSL, ~30 operators, universal and existential quantifiers, multi-object grouping, and Kafka-driven hot-reload - so business teams can ship new rules without backend engineers in the loop."
-date: 2026-05-13
-date_modified: 2026-05-13
+date: 2026-05-23
+date_modified: 2026-05-23
 keywords: "Rules-as-a-Service, Drools, DSL design, Quarkus, Java 25, Kafka, MongoDB, AKS, microservices, decisioning engine, business rules"
 permalink: /case-studies/rules-as-a-service
 category: case-study
@@ -20,9 +20,9 @@ published: false
 
 ## The Background
 
-Across the commerce platforms I work on, every new business rule used to follow the same loop. A business team would describe what they wanted, a backend engineer would translate it into a POJO fact class and an action handler, the rule got hard-coded into a service, and the next release window would push it to production. A rule change - even a value tweak - was a code change with a release attached to it.
+Across the platforms I work on, every new business rule used to follow the same loop. A business team would describe what they wanted, a backend engineer would translate it into a POJO fact class and an action handler, the rule got hard-coded into a service, and the next release window would push it to production. A rule change - even a value tweak - was a code change that needed a release.
 
-After watching three different platforms each rebuild their own Drools integration with the same general shape, I started to think this wanted to be a platform, not a per-project utility. Three teams paying the same tax, three near-identical codebases drifting apart, and engineering quietly turning into the bottleneck for what were, fundamentally, business decisions.
+After watching some platforms deploy their own Drools integration with the same general shape, my manager pitched the idea: this wanted to be a platform, not a per-project utility. He had the vision - one platform shared across teams - and handed me the technical brief. Different teams maintaining separate Drools integrations for different rulesets, and engineering quietly turning into the bottleneck for what were really business decisions.
 
 So I designed one.
 
@@ -81,6 +81,8 @@ The thing that makes this platform usable for non-engineers is the JSON DSL. A r
 
 There are no Java types to model, no schema to migrate when a new attribute shows up, and no DRL to write by hand. The author thinks in conditions and actions; the compiler thinks in DRL.
 
+The action is just JSON. The platform doesn't interpret it - the client chooses the shape that fits the consuming service. It might be a simple string like `"allow"`, an object like `{ "discount": 15, "message": "..." }`, or a nested structure. As long as it's valid JSON, the engine returns it untouched.
+
 ### Operators
 
 There are about 30 operators across 8 categories. The set is small enough that authors can learn it, big enough that I haven't needed to add a new one in months.
@@ -96,7 +98,7 @@ There are about 30 operators across 8 categories. The set is small enough that a
 | Type | `NUMERIC`, `NOT_NUMERIC`, `TRUE`, `NOT_TRUE` |
 | Validation | `VALID_EMAIL`, `NOT_VALID_EMAIL`, `VALID_DATE`, `VALID_DATE_TIME`, `NOT_VALID_DATE_TIME` |
 
-Each operator declares its own coercion rules. `EQUAL` accepts anything. Comparison operators parse operands as numbers. Validation operators have their own format contracts. The author never models types - the operator does.
+Each operator declares its own coercion rules. The author never models types - the operator does.
 
 ### Quantifiers Over Lists
 
@@ -105,11 +107,11 @@ A condition can reach into a list using one of two suffixes:
 - `items[].price` - every item's price must satisfy the condition (universal).
 - `items[?].category` - at least one item must satisfy it (existential).
 
-Same idea, two different scopes. The notation reads naturally once you've seen it twice, and it works recursively through nested objects (`addresses[].city`, `items[?].variants[].sku`).
+Same idea, two different scopes. The notation works recursively through nested objects (`addresses[].city`, `items[?].variants[].sku`).
 
 ### Multiple Facts of the Same Type
 
-If the caller sends multiple facts of the same type in one evaluation, the platform groups them into an array automatically. The rule then chooses what to do with the array:
+If the caller sends multiple facts of the same type in one evaluation, the platform groups them into an array automatically:
 
 | Notation | Behaviour |
 |----------|-----------|
@@ -117,96 +119,83 @@ If the caller sends multiple facts of the same type in one evaluation, the platf
 | `product[]` | All products must match. |
 | `product[?]` | At least one product must match. |
 
-A premium-customer-with-electronics-purchase rule looks like this:
+## A Simple Evaluation
 
-```json
-{ "operator": "AND", "children": [
-  { "object": "Customer", "attribute": "membershipLevel",
-    "operator": "IN", "value": ["GOLD", "PLATINUM"] },
-  { "object": "Product[?]", "attribute": "category",
-    "operator": "EQUAL", "value": "Electronics" },
-  { "object": "Product[]", "attribute": "price",
-    "operator": "MORE_THAN", "value": 0 }
-] }
+Once a rule is published, calling code sends facts and gets back actions. The engine returns a decision payload, not side effects.
+
+```http
+POST /rules/check
+{
+  "factAttributes": [
+    { "type": "Customer", "attributes": { "membershipLevel": "GOLD" }},
+    { "type": "Cart", "attributes": {
+      "items": [
+        { "price": 8000000, "category": "Electronics" },
+        { "price": 500000, "category": "Fashion" }
+      ]
+    }}
+  ]
+}
 ```
 
-It reads almost like English, and it compiles to DRL the author never has to see.
+If the rule above matches, the response is:
+
+```json
+{
+  "actions": [
+    { "discount": 15, "message": "Premium member with valid cart" }
+  ]
+}
+```
+
+The caller decides what to do with the action. The engine never reaches out to apply it.
 
 ## Three Decisions I'd Defend
 
 ### Why Two Services and Not One
 
-I said earlier this was the most important call. Here's why.
+The two sides want very different things from their runtime. Authoring is low volume and write-heavy - a person clicking through a form. Evaluation is high volume and stateless, called from a handful of consuming services on every relevant request.
 
-The two sides of the platform want very different things from their runtime. Authoring is low volume and write-heavy - a person clicking through a form. Evaluation is high volume and stateless - hot path, called from a handful of consuming services on every relevant request.
-
-If I put them in one service, every authoring spike would compete with production evaluation traffic for the same JVM. The MongoDB driver, the Drools engine, the request handlers - everything shared. And worse, the deploy story would be coupled: every authoring feature would force a redeploy of the evaluation tier, which is the one I most want to keep stable.
-
-Splitting them lets each have its own AKS deployment, its own HPA, and its own failure domain. The Publishing Service can crash and the Evaluation Service keeps serving. The Evaluation Service can scale to ten pods without thinking about whether MongoDB connections will saturate. They share a Kafka topic and a filesystem, and that's it.
+Splitting them lets each have its own AKS deployment, its own autoscaler, and its own failure domain. The Publishing Service can crash and the Evaluation Service keeps serving. They share a Kafka topic and a filesystem, and that's it.
 
 ### Why It Only Decides, It Doesn't Execute
 
 The Evaluation Service returns a JSON decision payload. It does not perform the action. The caller is responsible for what to actually do with the result.
 
-This was a deliberate scope choice. It would have been easy to let rules trigger HTTP callbacks or emit follow-up Kafka messages - "the rule fires AND the rule does the thing." I didn't.
+It would have been easy to let rules trigger HTTP callbacks or emit follow-up Kafka messages - "the rule fires AND the rule does the thing." I didn't.
 
-The reason is the same one OPA and most well-designed IAM systems use: keep the policy engine pure. If the platform performs side effects, then a Kafka redelivery could fire the side effect twice. A retry from a caller could fire it twice. A rule change at the wrong moment could fire the wrong side effect. None of those are problems if the engine just returns a decision and the caller is the one with the responsibility.
+The reason is the same one Open Policy Agent (OPA) and most well-designed authorization systems take: keep the policy engine pure. If the platform performs side effects, a Kafka redelivery could fire the side effect twice. A retry from a caller could fire it twice. None of those are problems if the engine just returns a decision and the caller is the one with the responsibility.
 
-The trade-off is that callers carry more code. They have to interpret the decision payload. I think that's the right place for it - the caller already has the context, the auth, the database connection, and the observability for whatever it's doing. The engine doesn't.
+The smaller scope is a feature, not a limitation.
 
-A less experienced version of the platform would have tried to do both and shipped something half-built. The smaller scope is a feature, not a limitation.
+### Why the Engine Doesn't Know Your Domain
 
-### Why I Store Operands as Strings
+There are no Java types for Customer, Product, or Cart on the server side. Facts come in as generic `{ type, attributes }` records and rules reference fields by name.
 
-This one is the most "huh, why?" decision in the codebase. Operand values in the rule store are canonical strings, regardless of the JSON type the author wrote.
+This was the invariant that made "no backend per new rule" actually true. The moment you model the domain into the engine, every new business concept needs backend work to teach the engine about it. Keeping the engine generic moves all the domain knowledge to the client side, where it belongs anyway.
 
-Yes, this gives up some compile-time type safety. The cost is real: I can't tell at write time whether `MORE_THAN "abc"` is a programming mistake.
+The trade-off is that the author has to think in attribute names rather than typed classes. In practice that's exactly how a non-engineer already thinks about a rule.
 
-What I get for that cost is twofold. First, adding a new operator is purely additive - I don't need a schema migration to introduce one that takes a new value shape. Second, each operator owns its own input contract and parses what it needs at evaluation time. A parse failure returns a typed evaluation error to the caller. I never throw in the middle of a rule.
+## Hot-Reload
 
-The author doesn't model types. The operator does. That has held up across the whole operator set.
+Publishing a rule writes the new DRL to the shared filesystem and emits a Kafka event. Every Evaluation Service pod picks up the event, rebuilds its in-memory rule set from disk, and atomically swaps it in. Requests in flight finish against the old set; new requests use the new one.
 
-## Hot-Reload Without a Restart
-
-When the Publishing Service publishes or unpublishes a rule, four things happen in order:
-
-1. The new DRL file is written to the shared volume.
-2. A Kafka event lands on the topic the Evaluation Service is listening to.
-3. Every Evaluation Service pod picks up the event, rebuilds its in-memory rule set from the filesystem, and atomically swaps it in.
-4. Requests already in flight finish against the old rule set. New requests use the new one.
-
-End-to-end, from clicking publish to the new rule being live across every pod, is usually a few seconds. No restart, no deploy window, no request drops. This is the part that earns the platform its name from the business side - they click publish and it's just live.
-
-## The Rest of the Plumbing
-
-A few things that aren't headline features but matter once it's in production:
-
-- **Auth.** OAuth2 client_credentials with short-lived JWTs (5 minutes). A custom `@Secured` annotation enforces permission-based authorization at each endpoint, not broad roles. That comes up later in the platform's life when someone wants to give a team read-only access to one rule set without inventing a whole new role for it.
-- **Correlation IDs.** Threaded through every request via a filter, propagated to downstream calls and Kafka events. When an auth failure or a rule evaluation goes wrong, one ID stitches the story together across both services.
-- **Error envelope.** Every error response is `{ "errors": [{ "type": "...", "message": "..." }] }`, with a typed `type` discriminator. Clients can switch on the type rather than parse English. Boring, but it makes the consuming services much easier to write.
-- **Kubernetes health probes.** Liveness, readiness, and a readiness check that verifies the Drools engine is operational and rules are loaded. AKS handles the rest.
+End-to-end, from clicking publish to the rule being live on every pod, is usually a few seconds. No restart, no deploy window. From the business side, this is what "as a service" means - they click publish and it's just live.
 
 ## The Stack
 
-| Layer | Choice |
-|-------|--------|
-| Runtime | Quarkus 3 / Java 25 |
-| Rule engine | Drools 10 |
-| Authoring store | MongoDB, with custom `JsonNode` codecs |
-| Event bus | Apache Kafka |
-| Deployment | Docker images on Azure Kubernetes Service (AKS) |
-| Auth | OAuth2 client_credentials, JWT bearer tokens |
+Quarkus 3 on Java 25 for both services, Drools 10 for the rule engine, MongoDB for the authoring store, Kafka for the publish event bus, AKS for deployment, OAuth2 client_credentials with short-lived JWTs for auth.
 
-I picked Quarkus over Spring Boot for fast startup and low memory footprint - both matter for the Evaluation Service, which is the tier that scales horizontally on AKS.
+I picked Quarkus over Spring Boot for fast startup and low memory footprint - both matter for the Evaluation Service, which is the tier that scales horizontally.
 
 ## What It Changed
 
 - Backend engineers are no longer in the loop for a new business rule. The business team owns the rule, the platform owns the runtime.
-- Three platforms that used to maintain their own Drools integration now consume one.
+- Platforms that used to maintain their own Drools integration now consume one.
 - A rule change goes from "release ticket, code change, deploy window" to "click publish, wait a few seconds." That difference in posture matters more than the time saved.
 
 ## Final Thoughts
 
-The thing I keep coming back to is that this platform is small. It does one job - take facts, return decisions - and it does that one job in a way that scales independently of who's authoring rules. It doesn't try to be a workflow engine. It doesn't try to be an action router. It doesn't try to be a feature flagging system.
+The thing I keep coming back to is that this platform is small. It does one job - take facts, return decisions - and it does that one job in a way that scales independently of the authoring side. It doesn't try to be a workflow engine. It doesn't try to be an action router. It doesn't try to be a feature flagging system.
 
-When I see a platform team building something for the third time and the second one is already starting to drift, that's usually the sign the thing wants to be its own service. Pulling it out and giving it a clean DSL surface is a lot more work up front than copy-pasting it would have been, but the compounding payoff - every team using it gets the next feature for free - is what keeps the engineering org from collapsing under its own weight.
+When I see a platform team building something for the third time and the second one is already starting to drift, that's usually the sign the thing wants to be its own service. Pulling it out and giving it a clean DSL surface is a lot more work up front than copy-pasting it would have been, but every team using it gets the next feature for free. That's the math that makes a shared platform worth the up-front cost.
