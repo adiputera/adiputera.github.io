@@ -16,7 +16,7 @@ site:
   location: "Jakarta, Indonesia"
   summary_html: |
     <p>I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
-    <p>I'm currently the technical lead on a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
+    <p>I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
     <p>My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
     <p>I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.</p>
     <p>As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
@@ -102,7 +102,7 @@ breadcrumb:
 summary: |
   I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
 
-  I'm currently the technical lead on a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
+  I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
 
   My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.
 
@@ -121,7 +121,7 @@ skills:
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 
 achievements:
-  - "Technical lead on the enterprise-wide migration from a legacy SAP Commerce monolith to a scalable Spring Boot microservices ecosystem across 3 parallel business domains."
+  - "Leading the enterprise-wide migration from a legacy SAP Commerce monolith to a scalable Spring Boot microservices ecosystem across 3 parallel business domains."
   - "Led the engineering teams for motorkux.id (2021–Present) and seva.id marketplace (2019–2021)"
   - "Contributed to the core development of the seva.id property platform (2018–2019)"
   - "Received the internal \"Best Project Development Quality\" award (2024)"
@@ -189,7 +189,7 @@ experience:
 
       <h4>Platform Modernization</h4>
       <ul>
-        <li>Technical lead on the enterprise-wide migration from SAP Commerce monolith to Spring Boot–based microservices.</li>
+        <li>Leading the enterprise-wide migration from SAP Commerce monolith to Spring Boot–based microservices.</li>
         <li>Technical authority for the core platform library consumed by 3 product teams across multiple business domains.</li>
         <li>Defined engineering standards and implementation guidelines for distributed systems.</li>
       </ul>

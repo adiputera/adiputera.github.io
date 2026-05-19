@@ -27,7 +27,7 @@ key_achievements:
   - label: "Performance"
     text: "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog and reduced P95 latency from 2.1s to ~800ms via EHCache full-page caching, enabling 3× traffic absorption without horizontal scaling."
   - label: "Modernization"
-    text: "Technical lead on the migration from legacy e-commerce monoliths to Spring Boot–based microservices."
+    text: "Leading the migration from legacy e-commerce monoliths to Spring Boot–based microservices."
   - label: "Enterprise Integration"
     text: "Delivered integrations for SAP CDP and Emarsys."
 skills:
@@ -51,7 +51,7 @@ experience:
           - "Established service boundaries, platform standards, and long-term evolution strategy."
       - label: "Modernization"
         list:
-          - "Technical lead on the migration from SAP Commerce monolith to Spring Boot microservices."
+          - "Leading the migration from SAP Commerce monolith to Spring Boot microservices."
           - "Technical authority for the core platform library consumed by 3 product teams across multiple business domains."
       - label: "Scalability"
         list:

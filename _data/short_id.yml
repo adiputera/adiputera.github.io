@@ -27,7 +27,7 @@ key_achievements:
   - label: "Performa"
     text: "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator via Datadog dan mengurangi latensi P95 dari 2,1 detik menjadi ~800ms via EHCache full-page caching, memungkinkan penyerapan trafik 3× tanpa penskalaan horizontal."
   - label: "Modernisasi"
-    text: "Memimpin secara teknis migrasi dari monolit e-commerce lama ke microservices berbasis Spring Boot."
+    text: "Memimpin migrasi dari monolit e-commerce lama ke microservices berbasis Spring Boot."
   - label: "Integrasi Enterprise"
     text: "Memberikan integrasi untuk SAP CDP dan Emarsys."
 skills:
@@ -51,7 +51,7 @@ experience:
           - "Menetapkan service boundaries, standar platform, dan strategi evolusi jangka panjang."
       - label: "Modernisasi"
         list:
-          - "Memimpin secara teknis migrasi dari monolit SAP Commerce ke microservices Spring Boot."
+          - "Memimpin migrasi dari monolit SAP Commerce ke microservices Spring Boot."
           - "Otoritas teknis atas library platform inti yang digunakan 3 tim produk di berbagai domain bisnis."
       - label: "Skalabilitas"
         list:

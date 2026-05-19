@@ -16,7 +16,7 @@ site:
   location: "Jakarta, Indonesia"
   summary_html: |
     <p>Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Saya telah merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.</p>
-    <p>Saat ini, saya menjadi technical lead pada inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.</p>
+    <p>Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.</p>
     <p>Filosofi rekayasa saya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, saya telah mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.</p>
     <p>Saya juga telah mengeksekusi migrasi database yang kompleks (SAP HANA ke Aurora MySQL), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP dan Emarsys.</p>
     <p>Sebagai pemimpin engineering, saya bertindak sebagai konsultan teknis internal di berbagai proyek paralel. Saya senang memimpin tim engineering, membimbing para developer, dan menetapkan standar teknis yang mendorong pertumbuhan bisnis jangka panjang.</p>
@@ -102,7 +102,7 @@ breadcrumb:
 summary: |
   Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Saya telah merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.
 
-  Saat ini, saya menjadi technical lead pada inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.
+  Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.
 
   Filosofi rekayasa saya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, saya telah mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.
 
@@ -121,7 +121,7 @@ skills:
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 
 achievements:
-  - "Memimpin secara teknis migrasi skala enterprise dari monolit SAP Commerce lama ke ekosistem microservices Spring Boot yang scalable di 3 domain bisnis paralel."
+  - "Memimpin migrasi skala enterprise dari monolit SAP Commerce lama ke ekosistem microservices Spring Boot yang scalable di 3 domain bisnis paralel."
   - "Memimpin tim engineering untuk pengembangan motorkux.id (2021–Sekarang) dan seva.id marketplace (2019–2021)"
   - "Berkontribusi pada pengembangan inti platform seva.id property (2018–2019)"
   - "Menerima penghargaan internal \"Best Project Development Quality\" (2024)"
@@ -189,7 +189,7 @@ experience:
 
       <h4>Modernisasi Platform</h4>
       <ul>
-        <li>Memimpin secara teknis migrasi skala enterprise dari monolit SAP Commerce ke <i>microservices</i> berbasis Spring Boot.</li>
+        <li>Memimpin migrasi skala enterprise dari monolit SAP Commerce ke <i>microservices</i> berbasis Spring Boot.</li>
         <li>Otoritas teknis atas <i>library</i> platform inti yang digunakan 3 tim produk di berbagai domain bisnis.</li>
         <li>Mendefinisikan standar engineering dan pedoman implementasi untuk <i>distributed systems</i>.</li>
       </ul>

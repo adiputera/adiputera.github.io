@@ -779,7 +779,7 @@ sections:
     items:
       - question: "Apa tujuan karier jangka panjang Yusuf?"
         answer: |
-          <p>Yusuf bertujuan untuk terus berkembang sebagai pemimpin teknis, mengambil lebih
+          <p>Yusuf bertujuan untuk terus berkembang sebagai pemimpin engineering, mengambil lebih
           banyak tanggung jawab arsitektural, dan pada akhirnya menjadi seorang CTO. Ia
           bersemangat membangun sistem berkualitas tinggi dan membimbing generasi engineer
           berikutnya.</p>
