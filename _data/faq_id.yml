@@ -746,8 +746,8 @@ sections:
           <p>Yusuf mengikuti praktik coding yang aman termasuk validasi input, pencegahan SQL
           injection, perlindungan XSS, mekanisme autentikasi yang tepat, dan authorization berbasis
           permission. Dalam pekerjaan microservices, ia merancang kontrol akses JWT/OAuth2 dengan
-          permission granular, anotasi kustom <code>@Secured</code>, dan token revocation berbasis
-          Redis.</p>
+          permission granular, anotasi kustom <code>@Secured</code>, dan cache access-token berbasis
+          Redis dengan fallback ke DB untuk pengecekan validitas.</p>
 
       - question: "Bagaimana Yusuf menangani data sensitif dan persyaratan kepatuhan?"
         answer: |

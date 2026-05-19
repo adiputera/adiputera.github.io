@@ -18,7 +18,7 @@ site:
     <p>I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
     <p>I'm currently the technical lead on a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
     <p>My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
-    <p>I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.</p>
+    <p>I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.</p>
     <p>As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
 
 contact:
@@ -106,7 +106,7 @@ summary: |
 
   My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.
 
-  I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP, Emarsys, and S/4HANA.
+  I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.
 
   As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.
 
@@ -127,8 +127,7 @@ achievements:
   - "Received the internal \"Best Project Development Quality\" award (2024)"
   - "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog (20–30 inbound RPS saturating 200–300 internal ops/sec). Implemented EHCache full-page caching, reducing internal operations by ~70-85% and P95 latency from 2.1s to ~800ms, enabling 3× traffic absorption without horizontal scaling."
   - "Integrated SAP Customer Data Platform (CDP) and SAP Emarsys for unified customer profiles and marketing (2025)"
-  - "Contributed to SAP S/4HANA ERP integrations using ABAP (Ongoing)"
-  - "Designed and implemented a comprehensive permission-based authorization framework (fine-grained PBAC on top of role assignment) to govern service-level authorization and secure access lifecycles."
+  - "Designed and implemented a comprehensive Permission-Based Access Control (PBAC) framework, with fine-grained permissions on top of role assignment, to govern service-level authorization and secure access lifecycles."
   - "Built a custom image proxy service to dramatically reduce payload sizes and bandwidth (2024)"
   - "Designed a Rules-as-a-Service platform that lets business teams author new pricing, promotion, and eligibility rules directly, without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's why new rules onboard without engineering work. Backend involvement is only needed for genuinely new categories of rule logic, which is rare."
   - "Developed location-based custom promotion modules in SAP Commerce (2023)"
@@ -206,14 +205,13 @@ experience:
 
       <h4>Security &amp; Access Control</h4>
       <ul>
-        <li>Designed JWT/OAuth2-based access control across microservices using a permission-based role model, where API endpoints are secured by granular permissions via custom <code>@Secured</code> annotations rather than broad roles.</li>
-        <li>Implemented Redis-backed token revocation and time-bounded role grants, eliminating manual access-revocation operations.</li>
+        <li>Designed JWT/OAuth2-based access control across microservices using a Permission-Based Access Control (PBAC) model, where API endpoints are secured by granular permissions via custom <code>@Secured</code> annotations rather than broad roles.</li>
+        <li>Implemented a Redis-backed access-token cache with DB fallback for validity checks, and time-bounded role grants.</li>
       </ul>
 
       <h4>Enterprise Integration</h4>
       <ul>
         <li>Contributed to SAP Customer Data Platform (SAP CDP) and SAP Emarsys implementation for unified customer data and marketing automation.</li>
-        <li>Supporting SAP S/4HANA integration initiatives and expanding ABAP expertise for ERP integration (ongoing).</li>
       </ul>
 
       <h4>Engineering Leadership &amp; Technical Influence</h4>
@@ -230,16 +228,12 @@ experience:
       <h4>Selected Achievements</h4>
       <ul>
         <li>Delivered <strong>motorkux.id</strong> go-live (2022) and <strong>seva.id marketplace</strong> launch (2020) with payment, shipping, and 3rd-party integrations.</li>
-      </ul>
-
-      <p><strong>Rules-as-a-Service.</strong> Designed a Rules-as-a-Service platform that lets business teams author and ship new pricing, promotion, and eligibility rules directly, without going through backend release cycles. The key design choice was keeping the engine intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's the invariant that lets new rules onboard without engineering work. Backend involvement is bounded to genuinely new categories of rule logic (such as adding a new type of condition), which is rare and easy to distinguish from "add a new rule."</p>
-
-      <ul>
+        <li><strong>Rules-as-a-Service.</strong> Designed a Rules-as-a-Service platform that lets business teams author and ship new pricing, promotion, and eligibility rules directly, without going through backend release cycles. The key design choice was keeping the engine intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's the invariant that lets new rules onboard without engineering work. Backend involvement is bounded to genuinely new categories of rule logic (such as adding a new type of condition), which is rare and easy to distinguish from "add a new rule."</li>
         <li>Led multiple SAP Commerce upgrades across enterprise platforms (seva.id, auto2000, motorkux.id - versions 6.6 → 2205).</li>
         <li>Developed custom promotion engine supporting location-based quota without coupon dependency.</li>
       </ul>
 
-      <p><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Microservices Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, SAP S/4HANA, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
+      <p><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Microservices Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
 
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"

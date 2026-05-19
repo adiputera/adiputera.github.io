@@ -14,7 +14,7 @@ summary_html: |
       Designed a Rules-as-a-Service platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, so new rules onboard without engineering work.
   </p>
   <p>
-      My expertise also spans Spring-based microservices and performance engineering (achieving sub-second load times). I've delivered CI/CD pipelines, database migrations, and enterprise SAP integrations (CDP, Emarsys, S/4HANA).
+      My expertise also spans Spring-based microservices and performance engineering (achieving sub-second load times). I've delivered CI/CD pipelines, database migrations, and enterprise SAP integrations (CDP, Emarsys).
       I'm dedicated to engineering leadership, technical direction, and building maintainable systems.
   </p>
 key_achievements:
@@ -29,7 +29,7 @@ key_achievements:
   - label: "Modernization"
     text: "Technical lead on the migration from legacy e-commerce monoliths to Spring Boot–based microservices."
   - label: "Enterprise Integration"
-    text: "Delivered integrations for SAP CDP, Emarsys, and S/4HANA ABAP."
+    text: "Delivered integrations for SAP CDP and Emarsys."
 skills:
   - category: "Languages"
     items: "Java (8–17, 21+ features), JavaScript, TypeScript"
@@ -61,11 +61,10 @@ experience:
       - label: "Security"
         list:
           - "Designed JWT/OAuth2 access control across microservices using permission-based @Secured annotations rather than broad roles."
-          - "Implemented Redis-backed token revocation and time-bounded role grants."
+          - "Implemented a Redis-backed access-token cache (with DB fallback) and time-bounded role grants."
       - label: "Integration"
         list:
           - "Contributed to SAP CDP and SAP Emarsys implementation for unified customer data."
-          - "Supporting SAP S/4HANA integration and ABAP development for ERP."
       - label: "Leadership"
         list:
           - "Led 12 engineers delivering end-to-end platform development."

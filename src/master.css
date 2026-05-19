@@ -901,6 +901,34 @@ footer {
     color: var(--subtext);
 }
 
+.article-content table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    display: block;
+    overflow-x: auto;
+}
+
+.article-content thead {
+    background: var(--card);
+}
+
+.article-content tbody tr:nth-child(even) {
+    background: var(--card);
+}
+
+.article-content th,
+.article-content td {
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.article-content th {
+    font-weight: 600;
+}
+
 
 /* Skills Styles */
 .skills-hero {

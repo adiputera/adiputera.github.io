@@ -12,7 +12,7 @@
 
 Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed systems, and SAP Commerce (Hybris) architecture, with more than 8 years of professional experience in building scalable, high-performance systems within the SAP ecosystem.
 
-He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes SAP Commerce development, Spring-based microservices architecture, secure Role-Based Access Control (RBAC), and enterprise system integration across the SAP CX landscape.
+He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes SAP Commerce development, Spring-based microservices architecture, secure Permission-Based Access Control (PBAC), and enterprise system integration across the SAP CX landscape.
 
 Yusuf has led multiple large-scale SAP Commerce implementations and platform upgrades across Astra Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He led the end-to-end development of motorkux.id from analysis through production launch and continues to drive platform evolution based on business and technical requirements.
 
@@ -71,7 +71,7 @@ Lead architecture and delivery of enterprise-scale SAP Commerce (Hybris) e-comme
 - Leading enterprise modernization initiative to migrate SAP Commerce platform to Spring Boot–based microservices architecture.
 - Designed core system architecture supporting multiple business domains and supervising 3 parallel rewrite projects.
 - Defined service boundaries, architecture standards, and implementation guidelines.
-- Designed secure Role-Based Access Control (RBAC) model for service authorization and resource protection.
+- Designed secure Permission-Based Access Control (PBAC) model for service authorization and resource protection.
 
 #### Rule Engine Platform (Rules-as-a-Service)
 - Designed dynamic rule engine using Drools enabling client-defined conditions and actions without code deployment.

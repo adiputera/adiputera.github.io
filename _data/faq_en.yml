@@ -311,7 +311,7 @@ sections:
     items:
       - question: "What security practices does Yusuf implement in his code?"
         answer: |
-          <p>Yusuf follows secure coding practices including input validation, SQL injection prevention, XSS protection, proper authentication, and permission-based authorization. In microservices work, he has designed JWT/OAuth2-based access control with granular permissions, custom <code>@Secured</code> annotations, and Redis-backed token revocation.</p>
+          <p>Yusuf follows secure coding practices including input validation, SQL injection prevention, XSS protection, proper authentication, and permission-based authorization. In microservices work, he has designed JWT/OAuth2-based access control with granular permissions, custom <code>@Secured</code> annotations, and a Redis-backed access-token cache with DB fallback for validity checks.</p>
       - question: "How does Yusuf handle sensitive data and compliance requirements?"
         answer: |
           <p>Yusuf is mindful of data privacy regulations and implements appropriate measures for handling sensitive customer data. He follows the principle of least privilege, implements data encryption where necessary, and ensures compliance with relevant data protection standards.</p>

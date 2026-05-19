@@ -72,7 +72,7 @@ Per-brand domain services on top, a Kafka backbone for asynchronous cross-domain
 This is the part that compounds. Every domain team gets to consume primitives instead of rebuilding them.
 
 - **[Rules-as-a-Service](/case-studies/rules-as-a-service)** is the first one shipped. Business rules go through a custom DSL and a two-service decisioning platform; the domain teams don't write Drools integrations any more. Going live with this modernization.
-- > **TODO:** List the other shared services in scope - candidates: identity / RBAC, notification, audit, feature flagging, image proxy, observability standards layer. Each one is its own case study eventually.
+- > **TODO:** List the other shared services in scope - candidates: identity / Permission-Based Access Control (PBAC), notification, audit, feature flagging, image proxy, observability standards layer. Each one is its own case study eventually.
 
 ## How I'm Getting There
 

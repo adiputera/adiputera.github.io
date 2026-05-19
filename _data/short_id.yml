@@ -14,7 +14,7 @@ summary_html: |
       Merancang platform Rules-as-a-Service yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, sehingga aturan baru bisa di-onboard tanpa keterlibatan engineering.
   </p>
   <p>
-      Keahlian saya juga mencakup microservices berbasis Spring dan rekayasa performa (mencapai waktu muat sub-detik). Saya juga telah mengirimkan pipeline CI/CD, migrasi database, dan integrasi SAP enterprise (CDP, Emarsys, S/4HANA).
+      Keahlian saya juga mencakup microservices berbasis Spring dan rekayasa performa (mencapai waktu muat sub-detik). Saya juga telah mengirimkan pipeline CI/CD, migrasi database, dan integrasi SAP enterprise (CDP, Emarsys).
       Saya berdedikasi pada kepemimpinan engineering, arah teknis, dan membangun sistem yang mudah dipelihara.
   </p>
 key_achievements:
@@ -29,7 +29,7 @@ key_achievements:
   - label: "Modernisasi"
     text: "Memimpin secara teknis migrasi dari monolit e-commerce lama ke microservices berbasis Spring Boot."
   - label: "Integrasi Enterprise"
-    text: "Memberikan integrasi untuk SAP CDP, Emarsys, dan S/4HANA ABAP."
+    text: "Memberikan integrasi untuk SAP CDP dan Emarsys."
 skills:
   - category: "Bahasa"
     items: "Java (8–17, fitur 21+), JavaScript, TypeScript"
@@ -61,11 +61,10 @@ experience:
       - label: "Keamanan"
         list:
           - "Merancang kontrol akses JWT/OAuth2 di seluruh microservices menggunakan anotasi @Secured berbasis izin, bukan peran umum."
-          - "Mengimplementasikan pencabutan token berbasis Redis dan pemberian peran berbatas waktu."
+          - "Mengimplementasikan cache access-token berbasis Redis (dengan fallback ke DB) dan pemberian peran berbatas waktu."
       - label: "Integrasi"
         list:
           - "Berkontribusi pada implementasi SAP CDP dan SAP Emarsys untuk data pelanggan terpadu."
-          - "Mendukung integrasi SAP S/4HANA dan pengembangan ABAP untuk ERP."
       - label: "Kepemimpinan"
         list:
           - "Memimpin 12 engineers dalam pengembangan platform secara end-to-end."
