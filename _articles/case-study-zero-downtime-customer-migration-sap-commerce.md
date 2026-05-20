@@ -4,7 +4,7 @@ title: "Designing a Zero-Downtime Customer Migration off SAP Commerce With Kafka
 description: "How I'm designing a streaming Kafka pipeline to move millions of customer records out of a live SAP Commerce platform into a Spring Boot service - without downtime, using composite-cursor pagination and last-write-wins reconciliation."
 keywords: "SAP Commerce migration, zero downtime migration, Kafka streaming, last-write-wins, idempotent consumer, composite cursor pagination, Spring Boot, event-driven migration"
 date: 2026-05-19
-date_modified: 2026-05-19
+date_modified: 2026-05-20
 permalink: /case-studies/zero-downtime-customer-migration-sap-commerce
 category: case-study
 tags: [sap-commerce, kafka, migration, spring-boot, distributed-systems, event-driven]
@@ -50,7 +50,7 @@ SAP Commerce (source)
     │
     ├── Migration Cronjob  ── composite cursor, 100 rows / message ──┐
     │                                                                │
-    └── After-Save Listener ── live updates, per save ───────────────┤
+    └── After-Save Listener ── saves and removes, per row ───────────┤
                                                                      ▼
                                                               Kafka topic
                                                                      │
@@ -64,17 +64,17 @@ SAP Commerce (source)
 
 Three pieces, joined by Kafka:
 
-- **The cronjob** runs inside SAP Commerce and handles the back-catalogue. On each iteration it pulls up to 100 rows from the source customer table via a composite cursor, converts them into DTOs, packs the whole page into a single Kafka message as a batch, updates the cursor on its own cronjob model, and loops until the query returns no more new rows.
-- **The listener** is an after-save listener on `Customer`. It fires once the row is persisted and publishes a one-row DTO to the same Kafka topic. Mechanics in the next section.
+- **The cronjob** runs inside SAP Commerce and handles the back-catalogue. On each iteration it pulls up to 100 rows from the source customer table via a composite cursor, converts them into DTOs, packs the whole page into a single Kafka message as a batch, updates the cursor on its own cronjob model, and loops until a page returns fewer than 100 rows.
+- **The listener** is an after-save listener on `Customer`. It fires once the row is persisted or removed and publishes a one-row DTO to the same Kafka topic. Saves and tombstones both flow through it. Mechanics in *How Live Updates Reach Kafka* below.
 - **The consumer** is a Spring Boot service that subscribes to the topic, unpacks each message, applies last-write-wins reconciliation per row, and writes into the new platform's store.
 
 Both source-side pieces live inside SAP Commerce, so they reuse the same authenticated DB access the platform already has - no extra credentials or network paths to manage.
 
 The 100-rows-per-message batching is deliberate. At 9M rows, one Kafka message per row would put 9M messages on the topic - more broker bookkeeping than the migration needs. One message per 100-row page collapses that to ~90,000 messages while keeping individual messages well under typical broker limits.
 
-Kafka in the middle does three things at once: it absorbs producer/consumer speed mismatch, it gives the consumer an offset to restart from, and it lets me scale consumer pods independently without coordinating with the source side. None of that is novel - it's just what Kafka is good at. But it's the difference between "one fragile job" and "three pieces that each retry their own failures."
+Kafka in the middle does three things at once: it absorbs producer/consumer speed mismatch, it gives the consumer an offset to restart from, and it lets me scale consumer pods independently without coordinating with the source side. None of that is novel - it's just what Kafka is good at. But it's the difference between "one fragile job" and "independent pieces that retry their own failures."
 
-The same topic carries two kinds of traffic: batches from the cronjob, and one-row events from the listener. From the consumer's perspective, they're the same shape - one or more customer DTOs with `customerId` and `modifiedTime`.
+The same topic carries three kinds of event: batches from the cronjob, one-row save events from the listener, and one-row tombstones from the listener on remove. From the consumer's perspective, they're variations of the same shape - one or more customer DTOs with `hybrisPk`, `modifiedTime`, and `deleted`. Saves also carry `customerId`; tombstones don't, because the row is gone by the time the listener fires. `hybrisPk` is the SAP Commerce row PK and the migration correlation key the consumer joins on; `customerId` is the business identifier (uid/email) the downstream platform cares about.
 
 This article focuses on the customer table because it's the largest and the one most exposed to live writes. The same shape applies to other source tables - a separate cronjob with its own composite cursor and cronjob model, the same kind of after-save listener on the corresponding item type, all feeding Kafka. The logic doesn't change; only the DTO and the item type do.
 
@@ -82,13 +82,13 @@ This article focuses on the customer table because it's the largest and the one 
 
 The cronjob handles the back-catalogue. The live half needs its own path, because SAP Commerce doesn't publish to Kafka on its own. The cleanest place to hook in is the platform's own save lifecycle.
 
-An `AfterSaveListener` is registered for the `Customer` item type. SAP Commerce invokes it once the row has been persisted; the listener builds the same customer DTO the cronjob emits and publishes it straight to the same Kafka topic. From the consumer's perspective, a live update is indistinguishable from a cronjob batch except for size - typically one row instead of a hundred - and both carry `customerId` and `modifiedTime`.
+An `AfterSaveListener` is registered for the `Customer` item type. SAP Commerce invokes it after every save *and* every remove on the row. The listener inspects the event type, builds the appropriate DTO, and publishes it to the same Kafka topic. From the consumer's perspective, a live event is indistinguishable from a cronjob batch except for size - typically one row instead of a hundred. Every event carries `hybrisPk`, `modifiedTime`, and `deleted`. Saves also carry `customerId`; tombstones don't (see *Deletes*).
 
-The choice of *after-save* over a `PrepareInterceptor` or `ValidateInterceptor` matters here. Interceptors fire *before* the save commits, so if validation rejects the model or the transaction rolls back, an interceptor would still have already published an event for a write that never landed. After-save listeners only fire when the row is actually on disk, which keeps the Kafka stream aligned with the source's real state.
+The choice of *after-save* over a `PrepareInterceptor` or `ValidateInterceptor` matters here. Interceptors fire *before* the save commits, so if validation rejects the model or the transaction rolls back, an interceptor would still have already published an event for a write that never landed. The after-save listener only fires when the change is actually on disk - for a save, the row is persisted; for a remove, the row is gone - which keeps the Kafka stream aligned with the source's real state.
 
 ### Deployment
 
-The listener and the cronjob are part of the same SAP Commerce deployment - they go live together. The cronjob doesn't auto-start; it's manually triggered once the deployment is finished. By the time it's kicked off, the listener has almost certainly already fired on a few saves, since live traffic doesn't pause for deployments. There's no separate "turn on live stream, then turn on back-catalogue" phasing to coordinate.
+The listener and the cronjob are part of the same SAP Commerce deployment - they go live together. The cronjob doesn't auto-start; it's manually triggered once the deployment is finished. By the time it's kicked off, the listener has almost certainly already fired on a few saves or removes, since live traffic doesn't pause for deployments. There's no separate "turn on live stream, then turn on back-catalogue" phasing to coordinate.
 
 What does need to be sequenced earlier is the **consumer** (see *Running the Consumer Early* below) - it has to be running well before the cutover date so the back-catalogue has time to drain.
 
@@ -104,7 +104,7 @@ LIMIT 100
 
 This works on a lot of systems. It does not work on SAP Commerce.
 
-The platform's `PK` is a 64-bit composite (type code + counter), and the counter isn't strictly monotonic with creation time. Sampling real data on the source makes that obvious:
+The platform's `PK` (the same value we put on the DTO as `hybrisPk`) is a 64-bit composite (type code + counter), and the counter isn't strictly monotonic with creation time. Sampling real data on the source makes that obvious:
 
 | PK | Creation Time |
 |---|---|
@@ -126,9 +126,71 @@ ORDER BY {creationtime} ASC, {pk} ASC
 LIMIT 100
 ```
 
-The cronjob persists `(lastCreationTime, lastPk)` on its own cronjob model after every successful page. That gives a deterministic walk with a tiebreaker for rows sharing a timestamp, and it survives restarts cleanly - the next run picks up exactly where the previous one left off, with no risk of double-publishing the boundary page or skipping it. The job loops on the cursor until the query returns no new rows, at which point the back-catalogue is drained and only the listener stream is left running.
+The cronjob persists `(lastCreationTime, lastPk)` on its own cronjob model after every successful page. That gives a deterministic walk with a tiebreaker for rows sharing a timestamp, and it survives restarts cleanly - the next run picks up exactly where the previous one left off, with no risk of double-publishing the boundary page or skipping it. The job loops on the cursor until a page returns fewer than 100 rows, at which point the back-catalogue is drained and only the listener stream is left running.
 
 The composite-cursor pattern is standard keyset pagination. The lesson worth pulling out is specific: assumptions about PK ordering don't survive contact with production data, and the cheapest way to find that out is to actually look at it before writing the cursor.
+
+## The Cronjob Loop
+
+The full loop on top of that cursor is short:
+
+```java
+public void migrate(MigrationCronjobModel cronjob) {
+    Date lastCreationTime = cronjob.getLastCreationTime();
+    if (lastCreationTime == null) {
+        lastCreationTime = new Date(0);   // 1970-01-01
+    }
+
+    PK lastPk = cronjob.getLastPk();
+    if (lastPk == null) {
+        lastPk = PK.fromLong(0L);
+    }
+
+    boolean done = false;
+
+    while (!done) {
+        FlexibleSearchQuery query = new FlexibleSearchQuery(
+            "SELECT {pk} FROM {Customer} " +
+            "WHERE {creationtime} > ?lastCreationTime " +
+            "   OR ({creationtime} = ?lastCreationTime AND {pk} > ?lastPk) " +
+            "ORDER BY {creationtime} ASC, {pk} ASC"
+        );
+        query.addQueryParameter("lastCreationTime", lastCreationTime);
+        query.addQueryParameter("lastPk", lastPk);
+        query.setCount(100);
+
+        List<CustomerModel> page = flexibleSearchService.search(query).getResult();
+
+        if (page.isEmpty()) {
+            done = true;
+            break;
+        }
+
+        List<CustomerDto> batch = new ArrayList<>(page.size());
+        for (CustomerModel customer : page) {
+            batch.add(toDto(customer));
+            lastCreationTime = customer.getCreationtime();
+            lastPk = customer.getPk();
+        }
+
+        kafkaPublisher.publish(batch);   // one Kafka message per page
+
+        cronjob.setLastCreationTime(lastCreationTime);
+        cronjob.setLastPk(lastPk);
+        modelService.save(cronjob);
+
+        if (page.size() < 100) {
+            done = true;   // partial page: back-catalogue drained, listener handles the rest
+        }
+    }
+}
+```
+
+Three details worth naming:
+
+- The composite cursor (`lastCreationTime`, `lastPk`) is updated *per row* as the batch is built, but persisted to the cronjob model *after* the publish. If the job dies between `kafkaPublisher.publish(batch)` and `modelService.save(cronjob)`, the next run re-publishes the same page. LWW absorbs the duplicates on the consumer side, so the cost is a small redundant batch, not a correctness bug.
+- The loop terminates as soon as a page returns fewer than 100 rows. That's the signal the back-catalogue is drained: anything beyond the cursor is either already on Kafka via the listener (created during the cronjob's run) or will be when it happens. The empty-page case is just `size() == 0`, the same rule with nothing left to process.
+- On a fresh cronjob model both `lastCreationTime` and `lastPk` are null, so the code defaults them to `1970-01-01` and `0` at the top of the method. The cursor starts from the floor on first run; every later run reads the persisted values.
 
 ## What I'm Deliberately Not Doing: an `isMigrated` Flag
 
@@ -150,17 +212,38 @@ Picture this sequence:
 
 If the consumer naively applies the snapshot, it overwrites the more recent update with stale data. This is the failure mode the design is built around.
 
-The fix is to give up on global ordering entirely and rely on the timestamp instead. Every event - whether it came from the cursor or from a live update - carries the row's `modifiedTime`. The consumer applies a simple rule:
+The fix is to give up on global ordering entirely and rely on the timestamp instead. Every event - whether it came from the cursor, a live save, or a remove - carries the row's `modifiedTime`. The consumer applies a simple rule:
 
 ```java
-if (existing == null) {
-    insert(incoming);
-} else if (incoming.modifiedTime.after(existing.modifiedTime)) {
-    update(incoming);
-} else {
-    // older or equal - drop it
+@Transactional
+void apply(CustomerEvent incoming) {
+    Customer existing = repo.findByHybrisPk(incoming.hybrisPk).orElse(null);
+
+    if (existing == null) {
+        // First time we've seen this hybrisPk. If the event is a tombstone,
+        // we still insert (deleted = true) - that's the race case.
+        repo.save(toEntity(incoming));
+        return;
+    }
+
+    if (existing.isDeleted()) {
+        // Absorbing: once deleted, always deleted.
+        return;
+    }
+
+    if (!incoming.modifiedTime.isAfter(existing.modifiedTime)) {
+        // Older or equal - drop it.
+        return;
+    }
+
+    existing.applyFrom(incoming);  // copies fields, including the deleted flag
+    repo.save(existing);
 }
 ```
+
+Four branches in priority order: first-time-insert, absorbing-tombstone, stale-event-drop, fresh-event-apply. The order matters - the absorbing check has to come before the timestamp check, otherwise a newer event would un-delete a tombstoned customer.
+
+Concurrency between consumer threads comes for free from JPA. A `@Version` field on `Customer` turns conflicting updates into `OptimisticLockException`. Concurrent first-time inserts (two threads both seeing `existing == null` and both calling `save`) surface as `DataIntegrityViolationException` on the unique constraint. The consumer catches both and re-runs `apply()` against the row's new state. By the time the retry reads `existing`, the winning event is already on disk and the four branches land on the right answer.
 
 Three properties fall out of this:
 
@@ -170,7 +253,7 @@ Three properties fall out of this:
 
 "Newest wins" makes ordering irrelevant as long as the timestamp is accurate. It pushes almost all the complexity out of the consumer.
 
-That accuracy is free here: SAP Commerce maintains `modifiedtime` on every item type automatically, so the consumer never has to second-guess the timestamp.
+For saves and updates, that accuracy is free: SAP Commerce stamps `modifiedtime` on every item type. Tombstones get a listener-stamped `now` instead (see *Deletes*); that wrinkle is the one place the timestamp story leans on a non-DB clock.
 
 ## The Idempotency Contract
 
@@ -179,8 +262,31 @@ Once last-write-wins is in place, idempotency is almost free, but it's worth bei
 - Replaying the same event N times converges to the same target state as replaying it once.
 - A strictly older event never overwrites a strictly newer one.
 - A retry from Kafka is indistinguishable from the original delivery.
+- A tombstone is always applied, and a deleted row stays deleted.
 
-These three lines are basically the consumer's whole contract. Everything else - error handling, retries, dead-lettering - just feeds back into them.
+These four lines are basically the consumer's whole contract. Everything else - error handling, retries, dead-lettering - just feeds back into them.
+
+## Deletes
+
+`AfterSaveListener` covers removes as well as saves, but with one quirk: when it fires for a remove, the row is already gone, so the model can't be loaded. Only the PK is exposed on the event.
+
+That's the reason every event on the topic carries `hybrisPk`. For a save, `hybrisPk` is read from the persisted row alongside the rest of the fields. For a remove, it's the only thing the listener has, and the tombstone DTO is just `hybrisPk`, `modifiedTime` (the listener's `now` at fire time), and `deleted: true`. The row's real `modifiedtime` would be the more honest stamp, but it's gone with the row. The listener's clock is close enough in practice: the listener fires post-commit, so `now` lands after the delete and after any prior DB-stamped `modifiedtime` on that row, assuming JVM and DB clocks aren't wildly out of sync.
+
+### The absorbing rule
+
+On the target side, the consumer treats tombstones as absorbing. Once `deleted = true` lands for a `hybrisPk`, that row stays deleted for the lifetime of the PK. Any later event for the same `hybrisPk` is dropped, regardless of timestamp.
+
+That rule is safe here because SAP Commerce's PK counter doesn't recycle. A deleted customer's `hybrisPk` is never reused for a new customer. On a source where PKs could be reissued, the same rule would silently swallow legitimate re-registrations, and you'd want plain LWW on the `deleted` field instead.
+
+### The race case
+
+The back-catalogue cursor and the tombstone path can publish events for the same customer in any order. The interesting case is when the tombstone reaches the consumer *before* the snapshot does, and the customer doesn't exist on the target yet.
+
+The consumer inserts the row anyway, with `deleted = true`. The target keeps `customerId` NOT NULL for normal rows, so the race-case insert writes the `hybrisPk` value into the `customerId` column as a placeholder. The row is permanently tombstoned and the absorbing rule guarantees nothing ever reads it, so the placeholder is invisible to anything else.
+
+That way when the stale snapshot arrives behind it, the absorbing rule kicks in and drops the snapshot. The alternative (no-op on a tombstone for an unknown `hybrisPk`) would let the late snapshot create the customer as a live record, which is exactly the bug the tombstone exists to prevent.
+
+This race case is the reason the Idempotency Contract carries a tombstone bullet at all.
 
 ## Running the Consumer Early
 
