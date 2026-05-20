@@ -189,7 +189,7 @@ public void migrate(MigrationCronjobModel cronjob) {
 Three details worth naming:
 
 - The composite cursor (`lastCreationTime`, `lastPk`) is updated *per row* as the batch is built, but persisted to the cronjob model *after* the publish. If the job dies between `kafkaPublisher.publish(batch)` and `modelService.save(cronjob)`, the next run re-publishes the same page. LWW absorbs the duplicates on the consumer side, so the cost is a small redundant batch, not a correctness bug.
-- The loop terminates as soon as a page returns fewer than 100 rows. That's the signal the back-catalogue is drained: anything beyond the cursor is either already on Kafka via the listener (created during the cronjob's run) or will be when it happens. The empty-page case is just `size() == 0`, the same rule with nothing left to process.
+- The loop has two termination conditions, both meaning the back-catalogue is drained: an empty page (`size() == 0`, ending the loop before publishing) and a partial page (`size() < 100`, ending it after publishing the partial). Anything beyond the cursor at that point is either already on Kafka via the listener (created during the cronjob's run) or will be when the listener fires.
 - On a fresh cronjob model both `lastCreationTime` and `lastPk` are null, so the code defaults them to `1970-01-01` and `0` at the top of the method. The cursor starts from the floor on first run; every later run reads the persisted values.
 
 ## What I'm Deliberately Not Doing: an `isMigrated` Flag
@@ -236,14 +236,18 @@ void apply(CustomerEvent incoming) {
         return;
     }
 
-    existing.applyFrom(incoming);  // copies fields, including the deleted flag
+    existing.applyFrom(incoming);  // merge: overwrites the fields the DTO carries (deleted included)
     repo.save(existing);
 }
 ```
 
 Four branches in priority order: first-time-insert, absorbing-tombstone, stale-event-drop, fresh-event-apply. The order matters - the absorbing check has to come before the timestamp check, otherwise a newer event would un-delete a tombstoned customer.
 
+`applyFrom` is merge-style: it overwrites the fields the incoming DTO carries and leaves the rest alone. That matters for tombstones, which only carry `hybrisPk`, `modifiedTime`, and `deleted = true`. Applying a tombstone to a live row flips `deleted` and bumps `modifiedTime` without touching `customerId` or any other column.
+
 Concurrency between consumer threads comes for free from JPA. A `@Version` field on `Customer` turns conflicting updates into `OptimisticLockException`. Concurrent first-time inserts (two threads both seeing `existing == null` and both calling `save`) surface as `DataIntegrityViolationException` on the unique constraint. The consumer catches both and re-runs `apply()` against the row's new state. By the time the retry reads `existing`, the winning event is already on disk and the four branches land on the right answer.
+
+Anything the consumer can't handle (a DTO that fails to deserialize, a downstream constraint the four branches don't anticipate, an I/O failure that outlives its retry budget) is written into a `failed_migration` table instead of being dropped or blocking the topic. Each row captures the raw event payload, `hybrisPk`, the exception class and message, and a timestamp, so the bad event is preserved for manual inspection later while the consumer keeps moving on the rest of the stream.
 
 Three properties fall out of this:
 
@@ -262,7 +266,7 @@ Once last-write-wins is in place, idempotency is almost free, but it's worth bei
 - Replaying the same event N times converges to the same target state as replaying it once.
 - A strictly older event never overwrites a strictly newer one.
 - A retry from Kafka is indistinguishable from the original delivery.
-- A tombstone is always applied, and a deleted row stays deleted.
+- The first tombstone for a row is always applied, and a deleted row stays deleted.
 
 These four lines are basically the consumer's whole contract. Everything else - error handling, retries, dead-lettering - just feeds back into them.
 
@@ -282,7 +286,7 @@ That rule is safe here because SAP Commerce's PK counter doesn't recycle. A dele
 
 The back-catalogue cursor and the tombstone path can publish events for the same customer in any order. The interesting case is when the tombstone reaches the consumer *before* the snapshot does, and the customer doesn't exist on the target yet.
 
-The consumer inserts the row anyway, with `deleted = true`. The target keeps `customerId` NOT NULL for normal rows, so the race-case insert writes the `hybrisPk` value into the `customerId` column as a placeholder. The row is permanently tombstoned and the absorbing rule guarantees nothing ever reads it, so the placeholder is invisible to anything else.
+The consumer inserts the row anyway, with `deleted = true`. The target requires `customerId` NOT NULL on every row, but the tombstone has nothing to put there: by the time the after-save listener fires, the source row is gone and the only field SAP Commerce exposes on the event is the PK. So the race-case insert satisfies the constraint by writing `hybrisPk` into `customerId` as a placeholder. The row is permanently tombstoned and the absorbing rule guarantees nothing ever reads it, so the placeholder is invisible to anything else.
 
 That way when the stale snapshot arrives behind it, the absorbing rule kicks in and drops the snapshot. The alternative (no-op on a tombstone for an unknown `hybrisPk`) would let the late snapshot create the customer as a live record, which is exactly the bug the tombstone exists to prevent.
 
