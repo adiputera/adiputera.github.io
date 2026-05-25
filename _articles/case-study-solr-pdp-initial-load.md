@@ -90,13 +90,13 @@ This avoided inconsistent facet grouping caused by marketing naming variations.
 
 ### Credit Simulation Data
 
-Financing simulation was another expensive runtime operation. Instead of calculating financing dynamically during PDP load, we indexed the minimum values directly.
+Financing simulation was another expensive runtime operation. Instead of calculating financing dynamically during PDP load, we indexed the minimum display values directly.
 
 **Minimum Down Payment:** `downPayment_jakarta_string`
 **Maximum Tenor:** `tenor_jakarta_string`
 **Minimum Installment:** `installment_jakarta_string`
 
-Tenor and installment were related, so both needed to stay synchronized in the indexed document. This allowed frontend applications to immediately display financing highlights without waiting for another backend computation.
+The `_string` suffix was intentional here. These values were preformatted for display, especially currency values, not used for numeric sorting or range queries at PDP runtime. Tenor and installment were related, so both needed to stay synchronized in the indexed document. This allowed frontend applications to immediately display financing highlights without waiting for another backend computation.
 
 ## Why This Architecture Worked
 
@@ -109,7 +109,7 @@ This gave us:
 - Simpler frontend orchestration
 - Better scalability during traffic spikes
 
-Effectively, Solr became more than just a search engine; it acted as a read cache and a precomputed product projection.
+Effectively, Solr became more than just a search engine; it acted as a read cache and a precomputed product projection. The PDP read this projection directly from Solr. There was no fallback path that reconstructed the same data from database joins or promotion engine calls during page load. That made the dependency very explicit: if Solr was unavailable, PDP rendering was unavailable too.
 
 ## Tradeoffs and Downsides
 
@@ -121,7 +121,9 @@ The Solr document became much larger because of city-specific fields, promotion 
 
 ### Potential Stale Data
 
-Because the PDP relied heavily on indexed data, stale data became a risk. For example, price changes, promotion updates, or financing changes could temporarily diverge from source-of-truth systems until reindexing completed. 
+Because the PDP relied heavily on indexed data, stale data became a risk. For example, price changes, promotion updates, or financing changes could temporarily diverge from source-of-truth systems until reindexing completed.
+
+We reduced that risk with partial indexing. Whenever a promotion was published, we did not run a full index for the entire catalog. We triggered a partial update only for the corresponding affected products, so the Solr projection could be refreshed quickly without paying the cost of a full rebuild.
 
 This is one of the classic tradeoffs of denormalized read models: you get faster reads, but you accept eventual consistency risks. The architecture intentionally accepted small temporary inconsistencies in exchange for substantially better runtime performance.
 
