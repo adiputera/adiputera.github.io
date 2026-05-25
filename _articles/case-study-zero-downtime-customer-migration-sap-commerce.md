@@ -76,7 +76,7 @@ Kafka in the middle does three things at once: it absorbs producer/consumer spee
 
 The same topic carries three kinds of event: batches from the cronjob, one-row save events from the listener, and one-row tombstones from the listener on remove. From the consumer's perspective, they're variations of the same shape - one or more customer DTOs with `hybrisPk`, `modifiedTime`, and `deleted`. Saves also carry `customerId`; tombstones don't, because the row is gone by the time the listener fires. `hybrisPk` is the SAP Commerce row PK and the migration correlation key the consumer joins on; `customerId` is the business identifier (uid/email) the downstream platform cares about.
 
-This article focuses on the customer table because it's the largest and the one most exposed to live writes. The same shape applies to other source tables - a separate cronjob with its own composite cursor and cronjob model, the same kind of after-save listener on the corresponding item type, all feeding Kafka. The logic doesn't change; only the DTO and the item type do.
+Although the example here is SAP Commerce, the pattern is not. This article focuses on the customer table because it's the largest and the one most exposed to live writes. The same shape applies to other source tables - a separate cronjob with its own composite cursor and cronjob model, the same kind of after-save listener on the corresponding item type, all feeding Kafka. The logic doesn't change; only the DTO and the item type do.
 
 ## How Live Updates Reach Kafka
 
@@ -141,9 +141,9 @@ public void migrate(MigrationCronjobModel cronjob) {
         lastCreationTime = new Date(0);   // 1970-01-01
     }
 
-    PK lastPk = cronjob.getLastPk();
+    Long lastPk = cronjob.getLastPk();
     if (lastPk == null) {
-        lastPk = PK.fromLong(0L);
+        lastPk = 0L;
     }
 
     boolean done = false;
