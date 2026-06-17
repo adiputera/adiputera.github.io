@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Designing a Decision-as-a-Service Platform"
-description: "The design constraints and trade-offs behind a Drools-based decisioning platform with a JSON-to-DRL DSL, ~30 operators, universal and existential quantifiers, multi-object grouping, and Kafka-driven hot-reload — so business teams can ship rules without backend engineers in the loop."
+description: "The design constraints and trade-offs behind a Drools-based decisioning platform with a JSON-to-DRL DSL, ~30 operators, universal and existential quantifiers, multi-object grouping, and Kafka-driven hot-reload — so business teams can ship rules without engineers in the loop."
 date: 2026-06-17
 date_modified: 2026-06-17
 keywords: "Decision-as-a-Service, Drools, DSL design, system design, architecture design, Quarkus, Java 25, Kafka, database, Kubernetes, microservices, decisioning engine, business rules"
@@ -11,8 +11,8 @@ tags: [drools, java, microservices]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "Decision-as-a-Service"
-snippet: "The design constraints and trade-offs behind a two-service Decision-as-a-Service platform with a custom JSON-to-DRL DSL — so business teams can ship rules without backend engineers in the loop."
-snippet_id: "Constraint dan trade-off desain di balik platform Decision-as-a-Service dua-layanan dengan DSL JSON-to-DRL kustom — agar tim bisnis bisa merilis aturan baru tanpa harus melibatkan engineer backend."
+snippet: "The design constraints and trade-offs behind a two-service Decision-as-a-Service platform with a custom JSON-to-DRL DSL — so business teams can ship rules without engineers in the loop."
+snippet_id: "Constraint dan trade-off desain di balik platform Decision-as-a-Service dua-layanan dengan DSL JSON-to-DRL kustom — agar tim bisnis bisa merilis aturan baru tanpa harus melibatkan engineer."
 published: true
 ---
 
@@ -69,9 +69,7 @@ The Publishing Service can crash and the Evaluation Service keeps serving. They 
 
 ## The DSL Design
 
-The design constraint that drove the DSL was: **no backend change per new rule**. That means the platform can't model your domain — no Java types for User, Transaction, or Document on the server side. The moment you model the domain into the engine, every new business concept needs backend work to teach the engine about it.
-
-So facts come in as generic `{ type, attributes }` records, and rules reference fields by name.
+The DSL is designed to map a business user's mental model into a structured JSON tree, avoiding the need for authors to write syntax-heavy DRL by hand.
 
 To understand the DSL, start with what a rule looks like in plain language:
 
@@ -252,9 +250,9 @@ The smaller scope is a feature, not a limitation.
 
 ### Why the Engine Doesn't Know Your Domain
 
-This is the invariant that makes "no backend per new rule" actually true. There are no Java types for User, Transaction, or Document on the server side. Facts come in as generic `{ type, attributes }` records and rules reference fields by name.
+This is the invariant that makes "no engine updates per new rule" actually true. There are no Java types for User, Transaction, or Document on the engine side. Facts come in as generic `{ type, attributes }` records and rules reference fields by name.
 
-The moment you model the domain into the engine, every new business concept needs backend work to teach the engine about it. Keeping the engine generic moves all the domain knowledge to the client side, where it belongs anyway.
+The moment you model the domain into the engine, every new business concept needs code changes to teach the engine about it. Keeping the engine generic moves all the domain knowledge to the client side, where it belongs anyway.
 
 The trade-off is that the author has to think in attribute names rather than typed classes. In practice, that's exactly how a non-engineer already thinks about a rule — "if the user's account status is ACTIVE" rather than "if User.getAccountStatus() equals AccountStatus.ACTIVE."
 
@@ -266,7 +264,7 @@ I picked Quarkus over Spring Boot for fast startup and low memory footprint — 
 
 ## What the Design Enables
 
-- The central platform team is no longer a bottleneck for business rules. The business team owns the logic and the platform owns the runtime. Any backend development is strictly localized to the client applications when they need to expose new data attributes to the engine.
+- Engineering is no longer a bottleneck for new business rules. The business team owns the logic and the platform owns the runtime. Any backend development is strictly localized to the client applications when they need to expose new data attributes to the engine.
 - Platforms that used to maintain their own Drools integration now consume one shared platform.
 - Because the DSL is entirely domain-agnostic, the engine can be used for *any* scenario that requires a decision — fraud detection, dynamic pricing, access control, routing logic, or promotional campaigns. The platform doesn't care; it just evaluates facts against conditions and returns the configured action.
 - For existing domains, a rule change goes from "release ticket, code change, deploy window" to "click publish, wait a few seconds." When a completely new domain arrives, the development effort shifts entirely to the client side — they define their own schema and build their UI, while the platform requires zero changes.
