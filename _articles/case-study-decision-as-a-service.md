@@ -119,6 +119,14 @@ Every node is either a logical operator (`AND`, `OR`) with children, or a leaf c
 
 The action is opaque JSON. The platform doesn't interpret it — the client chooses the shape that fits the consuming service. It might be `"allow"`, `{ "riskLevel": "HIGH" }`, `{ "discount": 15 }`, or a nested structure. As long as it's valid JSON, the engine returns it untouched. This keeps the platform's scope narrow: it decides, it doesn't act.
 
+### Compiling JSON to DRL
+
+In Drools, rules are split into a "When" condition (the Left-Hand-Side or LHS) and a "Then" action (Right-Hand-Side or RHS). Natively, the engine is built to perform LHS pattern matching against strongly-typed Java POJOs loaded in memory. Because the platform must remain domain-agnostic, it can't use standard Java classes for facts.
+
+Instead, the Publishing Service translates the JSON DSL by bypassing standard pattern matching altogether. All incoming facts are passed into the engine wrapped in a single, generic `Map`. The compiler flattens the JSON tree into a complex boolean expression wrapped in a single Drools `eval()` block. It leans entirely on a custom Java utility class to safely handle missing keys, nested property extraction, type coercion, and operator logic at runtime. If the `eval()` block resolves to true, the Right-Hand-Side (RHS) of the rule simply appends the opaque JSON action to an `_actions` list within the fact map. 
+
+This approach trades away some of Drools' built-in Rete network optimizations for object matching, but it fulfills the most critical design constraint: the engine can evaluate any domain's rules without ever needing a Java class to model that domain.
+
 ### Operators
 
 There are about 30 operators across 8 categories. The set is small enough that authors can learn it, big enough that I haven't needed to add a new one in months.
@@ -213,19 +221,32 @@ The caller decides what to do with the action. The engine never reaches out to a
 
 ## Key Design Decisions
 
+### Why Drools?
+
+There are many ways to evaluate rules, from simple database-backed expressions to building a custom AST evaluator. I chose Drools for one fundamental reason: it supports dynamic compilation and hot-reloading at runtime. 
+
+By feeding Drools a dynamically generated DRL string (compiled from our JSON DSL), the Evaluation Service can rebuild its entire knowledge base and swap it into the active session atomically. This means every condition, threshold, and logical operator can be completely rewritten on the fly. The engine never requires a deployment, a restart, or a single line of Java code to be changed when a business rule is added or updated.
+
 ### Why Two Services and Not One
 
 This follows directly from the constraints. The two sides want different scaling profiles, different failure domains, and different resource budgets. Splitting them lets each have its own Kubernetes deployment and its own autoscaler. The Publishing Service can crash and the Evaluation Service keeps serving.
 
 If they were one service, scaling for evaluation traffic would also scale the authoring side (wasted resources), and a bug in the authoring code path could take down the evaluation path (wrong failure domain).
 
+### Why Kafka and Not Database Polling
+
+Once the services were split, the Evaluation pods needed a way to know when rules changed. The simplest approach would be database polling: have every Evaluation pod query the database every minute to check if the rules had been updated. I avoided this for two reasons:
+
+1. **Wasted Database I/O at Scale:** The Evaluation Service is designed to scale horizontally to handle high traffic. If 30 or 50 pods are all polling the database every few seconds just to check a `last_updated` timestamp, it generates constant, unnecessary read operations—even when rules haven't changed in weeks.
+2. **The "As-a-Service" Latency:** If the polling interval is extended to 60 seconds to save database load, a business user clicking "Publish" has to wait up to a minute for their rule to go live. Kafka pushes the event instantly. The pods sit passively, and when a publish event arrives, they rebuild their rules immediately. This fulfills the promise of a true "as a service" experience: they click publish, and it's live across all nodes in seconds.
+
 ### Why It Only Decides, It Doesn't Execute
 
 The Evaluation Service returns a JSON decision payload. It does not perform the action. The caller is responsible for what to actually do with the result.
 
-It would have been easy to let rules trigger HTTP callbacks or emit follow-up Kafka messages — "the rule fires AND the rule does the thing." I didn't.
+It would have been easy to let rules trigger HTTP callbacks or emit follow-up Kafka messages — "the rule fires AND the engine performs the action." I didn't.
 
-The reason is the same one Open Policy Agent (OPA) and most well-designed authorization systems follow: keep the policy engine pure. If the platform performs side effects, a Kafka redelivery could fire the side effect twice. A retry from a caller could fire it twice. None of those are problems if the engine just returns a decision and the caller owns the responsibility.
+The reason is rooted in the concept of pure functions: a decision engine should calculate an answer without mutating the world. For example, if the engine's action was to make an HTTP call to grant a user a 20% discount code, a simple network timeout and HTTP retry from the caller could cause the engine to fire the action twice, giving the user two discount codes. By keeping the engine completely stateless and side-effect free, clients can safely retry their evaluation requests as many times as they need. The engine just evaluates the data and returns a decision; the caller owns the responsibility of safely executing the result.
 
 The smaller scope is a feature, not a limitation.
 
@@ -245,7 +266,7 @@ I picked Quarkus over Spring Boot for fast startup and low memory footprint — 
 
 ## What the Design Enables
 
-- Backend engineers are no longer in the loop for a new business rule. The business team owns the rule, the platform owns the runtime.
+- The central platform team is no longer a bottleneck for business rules. The business team owns the logic and the platform owns the runtime. Any backend development is strictly localized to the client applications when they need to expose new data attributes to the engine.
 - Platforms that used to maintain their own Drools integration now consume one shared platform.
 - Because the DSL is entirely domain-agnostic, the engine can be used for *any* scenario that requires a decision — fraud detection, dynamic pricing, access control, routing logic, or promotional campaigns. The platform doesn't care; it just evaluates facts against conditions and returns the configured action.
 - For existing domains, a rule change goes from "release ticket, code change, deploy window" to "click publish, wait a few seconds." When a completely new domain arrives, the development effort shifts entirely to the client side — they define their own schema and build their UI, while the platform requires zero changes.
