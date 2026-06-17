@@ -16,9 +16,9 @@ site:
   location: "Jakarta, Indonesia"
   summary_html: |
     <p>I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
-    <p>I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.</p>
+    <p>I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) and scalable service foundations.</p>
     <p>My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
-    <p>I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.</p>
+    <p>I've also delivered complex database migrations (<a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA to Aurora MySQL</a>), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.</p>
     <p>As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
 
 contact:
@@ -62,6 +62,7 @@ sections:
   education: "Education"
   courses: "Courses"
   certifications: "Certifications"
+  case_studies: "Case Studies"
   articles: "Technical Articles"
   faq: "Frequently Asked Questions"
 
@@ -102,11 +103,11 @@ breadcrumb:
 summary: |
   I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
 
-  I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (Rules-as-a-Service) and scalable service foundations.
+  I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) and scalable service foundations.
 
   My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.
 
-  I've also delivered complex database migrations (SAP HANA to Aurora MySQL), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.
+  I've also delivered complex database migrations (<a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA to Aurora MySQL</a>), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.
 
   As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.
 
@@ -129,9 +130,9 @@ achievements:
   - "Integrated SAP Customer Data Platform (CDP) and SAP Emarsys for unified customer profiles and marketing (2025)"
   - "Designed and implemented a comprehensive Permission-Based Access Control (PBAC) framework, with fine-grained permissions on top of role assignment, to govern service-level authorization and secure access lifecycles."
   - "Built a custom image proxy service to dramatically reduce payload sizes and bandwidth (2024)"
-  - "Designed a Rules-as-a-Service platform that lets business teams author new pricing, promotion, and eligibility rules directly, without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's why new rules onboard without engineering work. Backend involvement is only needed for genuinely new categories of rule logic, which is rare."
+  - "Designed a <a href='/case-studies/decision-as-a-service' class='print-no-link'>Decision-as-a-Service</a> platform that lets business teams author new pricing, promotion, and eligibility rules directly, without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's why new rules onboard without engineering work. Backend involvement is only needed for genuinely new categories of rule logic, which is rare."
   - "Developed location-based custom promotion modules in SAP Commerce (2023)"
-  - "Executed large-scale database migrations from SAP HANA to MySQL across multiple environments (2019–2020)"
+  - "Executed large-scale database migrations from <a href='/case-studies/sap-commerce-hana-to-mysql-migration' class='print-no-link'>SAP HANA to MySQL</a> across multiple projects (2019–2020)."
   - "Led enterprise-wide SAP Commerce platform upgrades (2020–2022)"
   - "Established automated zero-downtime CI/CD pipelines using Jenkins and Azure DevOps (2018–2022)"
   - "Optimized storefront rendering by implementing CMS component lazy loading and JSP performance tuning"
@@ -228,7 +229,7 @@ experience:
       <h4>Selected Achievements</h4>
       <ul>
         <li>Delivered <strong>motorkux.id</strong> go-live (2022) and <strong>seva.id marketplace</strong> launch (2020) with payment, shipping, and 3rd-party integrations.</li>
-        <li><strong>Rules-as-a-Service.</strong> Designed a Rules-as-a-Service platform that lets business teams author and ship new pricing, promotion, and eligibility rules directly, without going through backend release cycles. The key design choice was keeping the engine intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's the invariant that lets new rules onboard without engineering work. Backend involvement is bounded to genuinely new categories of rule logic (such as adding a new type of condition), which is rare and easy to distinguish from "add a new rule."</li>
+        <li><strong>Decision-as-a-Service.</strong> Designed a <a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a> platform that lets business teams author and ship new pricing, promotion, and eligibility rules directly, without going through backend release cycles. The key design choice was keeping the engine intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's the invariant that lets new rules onboard without engineering work. Backend involvement is bounded to genuinely new categories of rule logic (such as adding a new type of condition), which is rare and easy to distinguish from "add a new rule."</li>
         <li>Led multiple SAP Commerce upgrades across enterprise platforms (seva.id, auto2000, motorkux.id - versions 6.6 → 2205).</li>
         <li>Developed custom promotion engine supporting location-based quota without coupon dependency.</li>
       </ul>
@@ -249,7 +250,7 @@ experience:
 
       <h4>Database &amp; Architecture</h4>
       <ul>
-        <li>Migrated databases from SAP HANA to Aurora MySQL for major e-commerce platforms.</li>
+        <li>Migrated databases from <a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA to Aurora MySQL</a> for major e-commerce platforms.</li>
         <li>Developed scalable features and conducted code reviews to maintain architectural standards.</li>
       </ul>
 

@@ -1194,6 +1194,12 @@ footer {
         --card: #f9f9f9;
         --border: #ccc;
     }
+
+    /* Keep normal text style for links that shouldn't look like links in print */
+    .print-no-link {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
 }
 
 .pagination {

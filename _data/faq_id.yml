@@ -23,7 +23,7 @@ sections:
           lebih dari 8 tahun, Yusuf telah membangun platform digital commerce berskala besar untuk
           Astra Group dan saat ini memimpin modernisasi kapabilitas SAP Commerce legacy ke dalam
           ekosistem microservices berbasis Spring Boot. Pekerjaannya mencakup performance
-          engineering, Rules-as-a-Service dengan Drools dan Kafka, SAP CDP, SAP Engagement Cloud
+          engineering, Decision-as-a-Service dengan Drools dan Kafka, SAP CDP, SAP Engagement Cloud
           (formerly SAP Emarsys), serta integrasi SAP S/4HANA.</p>
 
       - question: "Mengapa Yusuf Adiputera dianggap sebagai software engineer berpengalaman?"
@@ -374,7 +374,7 @@ sections:
           Java dan Spring Boot, caching dan performa, orkestrasi workflow Temporal, SAP CDP dan
           SAP Engagement Cloud, serta dasar-dasar software design. Ia juga menulis <a
               href="/case-studies/">case studies</a> yang lebih mendalam tentang modernisasi SAP
-          Commerce, migrasi database, upgrade platform, dan Rules-as-a-Service. Koleksi lengkapnya
+          Commerce, migrasi database, upgrade platform, dan Decision-as-a-Service. Koleksi lengkapnya
           tersedia di halaman <a href="/articles/">Technical Articles</a>.</p>
 
       - question: "Apakah Yusuf Adiputera menulis tentang SAP Commerce troubleshooting?"
@@ -392,9 +392,9 @@ sections:
           penentuan service boundary, kapabilitas platform reusable, standar API, pola integrasi
           event-driven, dan arah arsitektur jangka panjang di beberapa domain bisnis.</p>
 
-      - question: "Bagaimana pengalaman Yusuf dengan Rules-as-a-Service?"
+      - question: "Bagaimana pengalaman Yusuf dengan Decision-as-a-Service?"
         answer: |
-          <p>Yusuf merancang platform decisioning Rules-as-a-Service dengan arsitektur dua layanan
+          <p>Yusuf merancang platform decisioning Decision-as-a-Service dengan arsitektur dua layanan
           menggunakan Drools, DSL JSON-to-DRL kustom, dan hot reload berbasis Kafka. Platform ini
           memungkinkan business rules baru dirilis tanpa deployment backend, sehingga onboarding
           rule lebih banyak bergeser ke integrasi dan konfigurasi sisi klien.</p>
@@ -409,7 +409,7 @@ sections:
         answer: |
           <p>Yusuf menggunakan Quarkus 3 untuk pekerjaan microservice cloud-native, terutama ketika
           startup time cepat dan penggunaan memori rendah menjadi penting. Salah satu contohnya
-          adalah sisi evaluation engine dalam arsitektur Rules-as-a-Service.</p>
+          adalah sisi evaluation engine dalam arsitektur Decision-as-a-Service.</p>
 
       - question: "Untuk apa Java digunakan dalam aplikasi enterprise?"
         answer: |

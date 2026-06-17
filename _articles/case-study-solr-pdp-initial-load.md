@@ -11,8 +11,8 @@ tags: [sap-commerce, solr, pdp, performance, search, distributed-systems]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "Solr PDP Optimization"
-snippet: "How we redesigned PDP initial load in SAP Commerce by denormalizing city-specific pricing, promotions, and financing data directly into Solr documents to reduce runtime processing overhead."
-snippet_id: "Bagaimana kami mendesain ulang initial load PDP di SAP Commerce dengan melakukan denormalisasi pricing, promosi, dan simulasi kredit per kota langsung ke dokumen Solr untuk mengurangi overhead processing saat runtime."
+snippet: "Redesigning PDP initial load in SAP Commerce by denormalizing city-specific pricing and promotions directly into Solr, eliminating runtime processing overhead to achieve sub-second response times."
+snippet_id: "Mendesain ulang initial load PDP di SAP Commerce dengan mendenormalisasi harga dan promosi spesifik per kota ke Solr, mengeliminasi overhead runtime untuk mencapai waktu respons sub-detik."
 published: false
 ---
 

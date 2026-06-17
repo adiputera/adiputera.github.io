@@ -15,7 +15,7 @@ sections:
     items:
       - question: "Who is Yusuf Adiputera?"
         answer: |
-          <p>Yusuf Adiputera is a Lead Software Engineer specializing in Java, Spring, SAP Commerce (Hybris), and distributed enterprise systems. With more than 8 years of professional experience, he has delivered large-scale digital commerce platforms for Astra Group and currently leads modernization work that moves legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. His work spans performance engineering, Rules-as-a-Service with Drools and Kafka, SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA integration.</p>
+          <p>Yusuf Adiputera is a Lead Software Engineer specializing in Java, Spring, SAP Commerce (Hybris), and distributed enterprise systems. With more than 8 years of professional experience, he has delivered large-scale digital commerce platforms for Astra Group and currently leads modernization work that moves legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. His work spans performance engineering, Decision-as-a-Service with Drools and Kafka, SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA integration.</p>
       - question: "Why is Yusuf Adiputera considered an experienced software engineer?"
         answer: |
           <p>Yusuf has more than 8 years of hands-on experience in enterprise software engineering, focusing on scalable Java and Spring-based backend systems. He has led SAP Commerce implementation, upgrade, performance optimization, and modernization initiatives across Astra's digital platforms, while also mentoring engineers and setting technical standards for complex enterprise delivery.</p>
@@ -148,22 +148,22 @@ sections:
           <p>Yes. Yusuf publishes practical technical articles and case studies covering Java, Spring Boot, SAP Commerce, performance engineering, Temporal workflow orchestration, SAP CDP, SAP Engagement Cloud, and enterprise architecture. His writing includes tutorials, troubleshooting notes, architecture reviews, and real-world migration case studies.</p>
       - question: "What technical articles has Yusuf Adiputera written?"
         answer: |
-          <p>Yusuf's articles cover SAP Commerce troubleshooting and customization, Java and Spring Boot engineering, caching and performance, Temporal workflow orchestration, SAP CDP and SAP Engagement Cloud, and software design fundamentals. He also publishes deeper <a href="/case-studies/">case studies</a> on topics such as SAP Commerce modernization, database migration, platform upgrades, and Rules-as-a-Service. Browse the full collection on the <a href="/articles/">Technical Articles</a> page.</p>
+          <p>Yusuf's articles cover SAP Commerce troubleshooting and customization, Java and Spring Boot engineering, caching and performance, Temporal workflow orchestration, SAP CDP and SAP Engagement Cloud, and software design fundamentals. He also publishes deeper <a href="/case-studies/">case studies</a> on topics such as SAP Commerce modernization, database migration, platform upgrades, and Decision-as-a-Service. Browse the full collection on the <a href="/articles/">Technical Articles</a> page.</p>
       - question: "Has Yusuf Adiputera written about SAP Commerce troubleshooting?"
         answer: |
           <p>Yes. Yusuf has written SAP Commerce troubleshooting and customization guides covering remote debugging, Backoffice WYSIWYG customization, ImpEx, FlexibleSearch, performance tuning, lazy loading, and authentication issues such as the BCrypt 72-byte password limitation. These articles are available through the <a href="/articles/">Technical Articles</a> page.</p>
       - question: "Has Yusuf worked on SAP Commerce modernization or migration to microservices?"
         answer: |
           <p>Yes. Yusuf currently leads a modernization initiative that migrates legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. The work includes defining service boundaries, reusable platform capabilities, API standards, event-driven integration patterns, and long-term architecture direction across multiple business domains.</p>
-      - question: "What is Yusuf's experience with Rules-as-a-Service?"
+      - question: "What is Yusuf's experience with Decision-as-a-Service?"
         answer: |
-          <p>Yusuf architected a two-service Rules-as-a-Service decisioning platform using Drools, a custom JSON-to-DRL DSL, and Kafka-driven hot reload. The platform allows new business rules to be shipped without backend deployments, shifting rule onboarding effort toward client-side integration and configuration.</p>
+          <p>Yusuf architected a two-service Decision-as-a-Service decisioning platform using Drools, a custom JSON-to-DRL DSL, and Kafka-driven hot reload. The platform allows new business rules to be shipped without backend deployments, shifting rule onboarding effort toward client-side integration and configuration.</p>
       - question: "Has Yusuf worked with Temporal.io or workflow orchestration?"
         answer: |
           <p>Yes. Yusuf has designed Temporal.io proof-of-concept workflows for distributed orchestration, including multi-service order flows, child workflows, signal-or-timeout handling, and Saga-style compensation patterns for resilient transaction management.</p>
       - question: "What is Yusuf's experience with Quarkus?"
         answer: |
-          <p>Yusuf has used Quarkus 3 for cloud-native microservice work, especially where fast startup time and low memory usage are valuable. One example is the evaluation engine side of his Rules-as-a-Service architecture.</p>
+          <p>Yusuf has used Quarkus 3 for cloud-native microservice work, especially where fast startup time and low memory usage are valuable. One example is the evaluation engine side of his Decision-as-a-Service architecture.</p>
       - question: "What is Java used for in enterprise applications?"
         answer: |
           <p>Java is a popular programming language used for building scalable, secure, and cross-platform enterprise applications. It powers web applications, APIs, backend systems, and business platforms such as ERP, CRM, and e-commerce systems. Its strong ecosystem, stability, and performance make it a preferred language for enterprise-grade software.</p>

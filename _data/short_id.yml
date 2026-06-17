@@ -11,7 +11,7 @@ summary_html: |
       modernisasi platform, dan integrasi microservices.
   </p>
   <p>
-      Merancang platform Rules-as-a-Service yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, sehingga aturan baru bisa di-onboard tanpa keterlibatan engineering.
+      Merancang platform <a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a> yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, sehingga aturan baru bisa di-onboard tanpa keterlibatan engineering.
   </p>
   <p>
       Keahlian saya juga mencakup microservices berbasis Spring dan rekayasa performa (mencapai waktu muat sub-detik). Saya juga telah mengirimkan pipeline CI/CD, migrasi database, dan integrasi SAP enterprise (CDP, Emarsys).
@@ -22,7 +22,7 @@ key_achievements:
     text: "Memimpin pengembangan <i>engineering</i> untuk <i>motorkux.id</i> (2021–Sekarang) dan <i>seva.id</i> marketplace (2019–2021)."
   - label: "Penghargaan"
     text: "Menerima penghargaan internal \"Best Project Development Quality\" (2024)."
-  - label: "Rules-as-a-Service"
+  - label: "Decision-as-a-Service"
     text: "Merancang platform di mana tim bisnis dapat membuat aturan harga, promosi, dan eligibility baru secara langsung, tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, hanya mengevaluasi kondisi pada data apa pun yang dikirim klien. Itulah mengapa aturan baru bisa di-onboard tanpa keterlibatan engineering. Keterlibatan backend hanya dibutuhkan untuk kategori logika aturan yang benar-benar baru, yang jarang terjadi."
   - label: "Performa"
     text: "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator via Datadog dan mengurangi latensi P95 dari 2,1 detik menjadi ~800ms via EHCache full-page caching, memungkinkan penyerapan trafik 3× tanpa penskalaan horizontal."
@@ -74,7 +74,7 @@ experience:
       - label: "Pencapaian"
         list:
           - "Meluncurkan motorkux.id go-live (2022) dan seva.id marketplace (2020)."
-          - "Membangun platform Rules-as-a-Service yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend."
+          - "Membangun platform <a href='/case-studies/decision-as-a-service' class='print-no-link'>Decision-as-a-Service</a> yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend."
           - "Memimpin upgrade SAP Commerce di seluruh platform enterprise (6.6 → 2205)."
 
   - title: "Tech Lead & DevOps Engineer"
@@ -83,7 +83,7 @@ experience:
     items:
       - label: "Arsitektur Database"
         list:
-          - "Melakukan migrasi database dari SAP HANA ke Aurora MySQL untuk platform otomotif skala enterprise."
+          - "Melakukan migrasi database dari <a href='/case-studies/sap-commerce-hana-to-mysql-migration' class='print-no-link'>SAP HANA ke Aurora MySQL</a> untuk platform otomotif skala enterprise."
       - label: "DevOps & Keandalan"
         list:
           - "Melakukan transisi deployment manual ke pipeline CI/CD otomatis di semua lingkungan."

@@ -106,6 +106,22 @@ layout: default
             </ul>
             {% endif %}
 
+            {% if data.sections.case_studies %}
+            <h2 id="case-studies" class="hide-for-print">{{ data.sections.case_studies }}</h2>
+            {% assign case_studies = site.articles | where: 'category', 'case-study' %}
+            <ul class="article-list hide-for-print" style="margin-bottom: 2rem;">
+                {% for article in case_studies %}
+                <li>
+                    <a href="{{ article.permalink }}">
+                        <h3 class="normal-text">{{ article.title }}</h3>
+                    </a>
+                    <time class="article-meta" style="display: block; margin-bottom: 0.5rem;" datetime="{{ article.date | date: '%Y-%m-%d' }}">{{ article.date | date: "%B %-d, %Y" }}</time>
+                    <p class="article-snippet">{% if page.lang == 'id' and article.snippet_id %}{{ article.snippet_id }}{% else %}{{ article.snippet }}{% endif %}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
             <h2 id="articles" class="hide-for-print">{{ data.sections.articles }}</h2>
             <p class="hide-for-print"><a href="/articles">{{ data.links.all_articles }}</a></p>
 

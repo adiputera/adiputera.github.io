@@ -16,9 +16,9 @@ site:
   location: "Jakarta, Indonesia"
   summary_html: |
     <p>Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Saya telah merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.</p>
-    <p>Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.</p>
+    <p>Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) dan fondasi layanan yang skalabel.</p>
     <p>Filosofi rekayasa saya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, saya telah mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.</p>
-    <p>Saya juga telah mengeksekusi migrasi database yang kompleks (SAP HANA ke Aurora MySQL), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP dan Emarsys.</p>
+    <p>Saya juga telah mengeksekusi migrasi database yang kompleks (<a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA ke Aurora MySQL</a>), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP dan Emarsys.</p>
     <p>Sebagai pemimpin engineering, saya bertindak sebagai konsultan teknis internal di berbagai proyek paralel. Saya senang memimpin tim engineering, membimbing para developer, dan menetapkan standar teknis yang mendorong pertumbuhan bisnis jangka panjang.</p>
 
 contact:
@@ -62,6 +62,7 @@ sections:
   education: "Pendidikan"
   courses: "Kursus"
   certifications: "Sertifikasi"
+  case_studies: "Studi Kasus"
   articles: "Artikel Teknis"
   faq: "Pertanyaan Umum"
 
@@ -102,11 +103,11 @@ breadcrumb:
 summary: |
   Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Saya telah merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.
 
-  Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (Rules-as-a-Service) dan fondasi layanan yang skalabel.
+  Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) dan fondasi layanan yang skalabel.
 
   Filosofi rekayasa saya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, saya telah mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.
 
-  Saya juga telah mengeksekusi migrasi database yang kompleks (SAP HANA ke Aurora MySQL), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP dan Emarsys.
+  Saya juga telah mengeksekusi migrasi database yang kompleks (<a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA ke Aurora MySQL</a>), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP dan Emarsys.
 
   Sebagai pemimpin engineering, saya bertindak sebagai konsultan teknis internal di berbagai proyek paralel. Saya senang memimpin tim engineering, membimbing para developer, dan menetapkan standar teknis yang mendorong pertumbuhan bisnis jangka panjang.
 
@@ -129,9 +130,9 @@ achievements:
   - "Mengintegrasikan SAP Customer Data Platform (CDP) dan SAP Emarsys untuk profil pelanggan dan pemasaran terpadu (2025)"
   - "Merancang dan mengimplementasikan kerangka kerja Permission-Based Access Control (PBAC) yang komprehensif, dengan izin fine-grained di atas penugasan peran, untuk mengatur otorisasi level layanan dan siklus akses yang aman."
   - "Membangun layanan proxy gambar kustom untuk mengurangi ukuran payload dan bandwidth (2024)"
-  - "Merancang platform Rules-as-a-Service yang memungkinkan tim bisnis membuat aturan harga, promosi, dan eligibility baru secara langsung, tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, hanya mengevaluasi kondisi pada data apa pun yang dikirim klien. Itulah mengapa aturan baru bisa di-onboard tanpa keterlibatan engineering. Keterlibatan backend hanya dibutuhkan untuk kategori logika aturan yang benar-benar baru, yang jarang terjadi."
+  - "Merancang platform <a href='/case-studies/decision-as-a-service' class='print-no-link'>Decision-as-a-Service</a> yang memungkinkan tim bisnis membuat aturan harga, promosi, dan eligibility baru secara langsung, tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, hanya mengevaluasi kondisi pada data apa pun yang dikirim klien. Itulah mengapa aturan baru bisa di-onboard tanpa keterlibatan engineering. Keterlibatan backend hanya dibutuhkan untuk kategori logika aturan yang benar-benar baru, yang jarang terjadi."
   - "Mengembangkan modul promosi kustom berbasis lokasi di SAP Commerce (2023)"
-  - "Mengeksekusi migrasi database berskala besar dari SAP HANA ke MySQL di berbagai environment (2019–2020)"
+  - "Mengeksekusi migrasi database berskala besar dari <a href='/case-studies/sap-commerce-hana-to-mysql-migration' class='print-no-link'>SAP HANA ke MySQL</a> di beberapa proyek (2019–2020)."
   - "Memimpin proses upgrade platform SAP Commerce skala enterprise (2020–2022)"
   - "Membangun pipeline CI/CD otomatis tanpa downtime menggunakan Jenkins dan Azure DevOps (2018–2022)"
   - "Mengoptimalkan rendering storefront dengan mengimplementasikan lazy loading pada komponen CMS dan tuning performa JSP"
@@ -228,7 +229,7 @@ experience:
       <h4>Pencapaian Terpilih</h4>
       <ul>
         <li>Meluncurkan <strong>motorkux.id</strong> go-live (2022) dan <strong>seva.id marketplace</strong> (2020) dengan integrasi pembayaran, pengiriman, dan pihak ketiga.</li>
-        <li><strong>Rules-as-a-Service.</strong> Merancang platform Rules-as-a-Service yang memungkinkan tim bisnis membuat dan mengirim aturan harga, promosi, dan eligibility baru secara langsung, tanpa melalui siklus rilis backend. Pilihan desain utamanya adalah menjaga engine tetap generik: tidak mengenal apa itu Customer atau Product, hanya mengevaluasi kondisi pada data apa pun yang dikirim klien. Itulah invarian yang membuat aturan baru bisa di-onboard tanpa keterlibatan engineering. Keterlibatan backend hanya dibutuhkan untuk kategori logika aturan yang benar-benar baru (misalnya menambahkan jenis kondisi baru), yang jarang terjadi dan mudah dibedakan dari "tambah aturan baru".</li>
+        <li><strong>Decision-as-a-Service.</strong> Merancang platform <a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a> yang memungkinkan tim bisnis membuat dan mengirim aturan harga, promosi, dan eligibility baru secara langsung, tanpa melalui siklus rilis backend. Pilihan desain utamanya adalah menjaga engine tetap generik: tidak mengenal apa itu Customer atau Product, hanya mengevaluasi kondisi pada data apa pun yang dikirim klien. Itulah invarian yang membuat aturan baru bisa di-onboard tanpa keterlibatan engineering. Keterlibatan backend hanya dibutuhkan untuk kategori logika aturan yang benar-benar baru (misalnya menambahkan jenis kondisi baru), yang jarang terjadi dan mudah dibedakan dari "tambah aturan baru".</li>
         <li>Memimpin beberapa <i>upgrade</i> SAP Commerce di seluruh platform enterprise (seva.id, auto2000, motorkux.id - versi 6.6 → 2205).</li>
         <li>Mengembangkan <i>promotion engine</i> kustom yang mendukung kuota berbasis lokasi tanpa ketergantungan kupon.</li>
       </ul>
@@ -249,7 +250,7 @@ experience:
 
       <h4>Database &amp; Arsitektur</h4>
       <ul>
-        <li>Melakukan migrasi database dari SAP HANA ke Aurora MySQL untuk platform <i>e-commerce</i> utama.</li>
+        <li>Melakukan migrasi database dari <a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA ke Aurora MySQL</a> untuk platform <i>e-commerce</i> utama.</li>
         <li>Mengembangkan fitur-fitur yang <i>scalable</i> dan melakukan <i>code review</i> untuk mempertahankan standar arsitektur.</li>
       </ul>
 

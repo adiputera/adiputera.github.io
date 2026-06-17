@@ -57,7 +57,7 @@ The picture I'm building toward looks roughly like this:
                         │
                         ▼
               [ Shared platform services ]
-              - Rules-as-a-Service ✓
+              - Decision-as-a-Service ✓
               - (more to come)
 ```
 
@@ -71,7 +71,7 @@ Per-brand domain services on top, a Kafka backbone for asynchronous cross-domain
 
 This is the part that compounds. Every domain team gets to consume primitives instead of rebuilding them.
 
-- **[Rules-as-a-Service](/case-studies/rules-as-a-service)** is the first one shipped. Business rules go through a custom DSL and a two-service decisioning platform; the domain teams don't write Drools integrations any more. Going live with this modernization.
+- **[Decision-as-a-Service](/case-studies/decision-as-a-service)** is the first one shipped. Business rules go through a custom DSL and a two-service decisioning platform; the domain teams don't write Drools integrations any more. Going live with this modernization.
 - > **TODO:** List the other shared services in scope - candidates: identity / Permission-Based Access Control (PBAC), notification, audit, feature flagging, image proxy, observability standards layer. Each one is its own case study eventually.
 
 ## How I'm Getting There
@@ -111,7 +111,7 @@ The existing storefronts make calls into the monolith. Those calls have to keep 
 
 - **Three parallel rewrite tracks**, one per brand. The shared platform layer is what keeps them from drifting.
 - Engineering standards for distributed systems defined and in active use across all three tracks.
-- [Rules-as-a-Service](/case-studies/rules-as-a-service) is built and goes live with this modernization.
+- [Decision-as-a-Service](/case-studies/decision-as-a-service) is built and goes live with this modernization.
 - The 2205 upgrade is done. The monolith is on a supported runtime, which is the only reason any of this is tractable.
 
 > **TODO:** Add the concrete progress markers - number of services in prod, number of endpoints migrated off the monolith, percentage of read traffic served by the new services, etc. Even rough numbers are worth more than vague phrases.
@@ -128,7 +128,7 @@ If the migration's only output were three microservices ecosystems, each one dri
 > - API design: REST conventions, idempotency keys for writes, explicit versioning.
 > - Event contracts: Kafka topic naming convention, schema versioning, retry and DLQ policy.
 
-The ones the platform layer already enforces (Rules-as-a-Service uses these) are the same ones the domain teams adopt for their own services. That alignment is half the value of having a platform layer at all.
+The ones the platform layer already enforces (Decision-as-a-Service uses these) are the same ones the domain teams adopt for their own services. That alignment is half the value of having a platform layer at all.
 
 ## Lessons So Far
 

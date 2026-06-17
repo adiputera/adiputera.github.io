@@ -11,7 +11,7 @@ summary_html: |
       platform modernization, and microservices integration.
   </p>
   <p>
-      Designed a Rules-as-a-Service platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, so new rules onboard without engineering work.
+      Designed a <a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a> platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, so new rules onboard without engineering work.
   </p>
   <p>
       My expertise also spans Spring-based microservices and performance engineering (achieving sub-second load times). I've delivered CI/CD pipelines, database migrations, and enterprise SAP integrations (CDP, Emarsys).
@@ -22,7 +22,7 @@ key_achievements:
     text: "Led engineering for <i>motorkux.id</i> (2021–Present) and <i>seva.id</i> marketplace (2019–2021)."
   - label: "Award Recipient"
     text: "Received the internal \"Best Project Development Quality\" award (2024)."
-  - label: "Rules-as-a-Service"
+  - label: "Decision-as-a-Service"
     text: "Designed a platform that lets business teams author new pricing, promotion, and eligibility rules directly, without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, it just evaluates conditions on whatever data the client sends in. That's why new rules onboard without engineering work. Backend involvement is only needed for genuinely new categories of rule logic, which is rare."
   - label: "Performance"
     text: "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog and reduced P95 latency from 2.1s to ~800ms via EHCache full-page caching, enabling 3× traffic absorption without horizontal scaling."
@@ -74,7 +74,7 @@ experience:
       - label: "Achievements"
         list:
           - "Delivered motorkux.id go-live (2022) and seva.id marketplace launch (2020)."
-          - "Built a Rules-as-a-Service platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys."
+          - "Built a <a href='/case-studies/decision-as-a-service' class='print-no-link'>Decision-as-a-Service</a> platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys."
           - "Led SAP Commerce upgrades across enterprise platforms (6.6 → 2205)."
 
   - title: "Tech Lead & DevOps Engineer"
@@ -83,7 +83,7 @@ experience:
     items:
       - label: "Database Architecture"
         list:
-          - "Migrated databases from SAP HANA to Aurora MySQL for customer-facing automotive platforms."
+          - "Migrated databases from <a href='/case-studies/sap-commerce-hana-to-mysql-migration' class='print-no-link'>SAP HANA to Aurora MySQL</a> for customer-facing automotive platforms."
       - label: "DevOps & Reliability"
         list:
           - "Transitioned manual deployments to automated CI/CD pipelines across all environments."
