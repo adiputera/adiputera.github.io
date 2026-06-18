@@ -840,7 +840,7 @@ footer {
 }
 
 .article-content pre code {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-family: "Courier New", Courier, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     background: none;
     border: none;
     padding: 0;
@@ -851,7 +851,7 @@ footer {
 }
 
 .article-content code {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-family: "Courier New", Courier, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 3px;
