@@ -16,6 +16,7 @@ snippet_id: "Constraint dan trade-off desain di balik platform Decision-as-a-Ser
 published: true
 ---
 
+> **Disclaimer:** The Decision-as-a-Service codebase is internal company work and is not public. This case study covers the architecture and the design trade-offs I made, with company-specific names and rule examples sanitized.
 
 ## The Design Problem
 
@@ -222,7 +223,7 @@ The caller decides what to do with the action. The engine never reaches out to a
 
 There are many ways to evaluate rules, from simple database-backed expressions to building a custom logic engine. I chose Drools because it provides a mature DRL compiler, safe rule packaging, and dynamic knowledge-base replacement at runtime. 
 
-By feeding Drools a dynamically generated DRL string (compiled from the JSON DSL), the Evaluation Service can rebuild its entire knowledge base and swap it into the active session atomically. This means every condition, threshold, and logical operator can be completely rewritten on the fly. The engine does not require a deployment, a restart, or a single line of Java code to be changed when a business rule is added or updated.
+By feeding Drools a dynamically generated DRL string (compiled from the JSON DSL), the Evaluation Service can rebuild the application's knowledge base and swap it into the active session atomically. This means every condition, threshold, and logical operator can be completely rewritten on the fly. The engine does not require a deployment, a restart, or a single line of Java code to be changed when a business rule is added or updated.
 
 ### Why Two Services and Not One
 
@@ -272,7 +273,7 @@ I opted against a shared file system primarily to avoid the operational headache
 If Kafka were dropped, the Evaluation pods would need another way to know when rules change. If the database was kept, every pod would have to poll it every minute. If a shared file system was used instead, the system could rely on directory watching or polling. I avoided polling entirely for three reasons:
 
 - **Wasted I/O at Scale:** The Evaluation Service is designed to scale horizontally to handle high traffic. More pods means more read operations—polling a database every few seconds just to check a `last_updated` timestamp generates constant, unnecessary I/O, even when rules haven't changed in weeks.
-- **The "As-a-Service" Latency:** If the polling interval is extended to 60 seconds to save database load, a business user clicking "Publish" has to wait up to a minute for their rule to go live. Kafka pushes the event instantly. The pods sit passively, and when a publish event arrives, they rebuild their rules immediately. This creates a true "as a service" experience: the author clicks publish, and it's live across all nodes in seconds.
+- **The "As-a-Service" Latency:** If the polling interval is extended to 60 seconds to save database load, a business user clicking "Publish" has to wait up to a minute for their rule to go live. Kafka pushes the event within milliseconds. The pods sit passively, and when a publish event arrives, they begin rebuilding their rules. This creates a true "as a service" experience: the author clicks publish, and it's live across all nodes in seconds.
 - **Inconsistent Rollouts:** Because pods poll independently on their own timers, there is a guaranteed window where different pods serve different versions of the rules. Replica 1 might poll and load the new rule immediately, while Replica 10 continues evaluating against the old rule until its next polling cycle hits.
 
 ## The Stack
