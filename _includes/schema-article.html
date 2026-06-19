@@ -45,8 +45,9 @@
         {
         "@type": "ListItem",
         "position": 2,
-        "name": "Articles",
-        "item": "{{ site.url }}/#articles"
+        "name": {{ page.breadcrumb | default: "Articles" | jsonify }},
+        {% capture b_url %}{{ site.url }}{{ page.breadcrumb_url | default: '/#articles' }}{% endcapture %}
+        "item": {{ b_url | jsonify }}
         },
         {
         "@type": "ListItem",

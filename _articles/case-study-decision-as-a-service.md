@@ -3,7 +3,7 @@ layout: article
 title: "Designing a Decision-as-a-Service Platform"
 description: "The design constraints and trade-offs behind a two-service decisioning platform with a custom JSON-to-DRL DSL and Kafka-driven hot-reload, allowing business teams to ship rules without backend deploys."
 date: 2026-06-17
-date_modified: 2026-06-17
+date_modified: 2026-06-19
 keywords: "Decision-as-a-Service, Drools, DSL design, system design, architecture design, Quarkus, Java 25, Kafka, database, Kubernetes, microservices, decisioning engine, business rules"
 permalink: /case-studies/decision-as-a-service
 category: case-study
@@ -57,13 +57,13 @@ So the platform is two Quarkus services with Kafka in the middle:
         └────────────────►   Shared Database   ◄──────┘
 ```
 
-**The Publishing Service** owns the API for managing rules, compiles JSON rule definitions into Drools' DRL on publish, stores the source-of-truth in a database, and saves the compiled DRL payload alongside it. After every publish or unpublish, it emits a Kafka event.
+**The Publishing Service** owns the API for managing rules, compiles JSON rule definitions into Drools' DRL on publish, stores the source of truth in a database, and saves the compiled DRL payload alongside it. After every publish or unpublish, it emits a Kafka event.
 
 **The Evaluation Service** loads the compiled DRL payloads from the database on startup, listens to the Kafka topic, and when a publish event arrives it rebuilds its in-memory rule set and swaps it in. No restart. Every pod holds its own copy of the rule set, so horizontal scaling on Kubernetes is just a replica count.
 
-One deliberate design choice here: the Evaluation Service pods do **not share a Kafka consumer group**. Each pod spins up with a uniquely generated consumer group ID so it receives every message on the topic. To avoid replaying the entire topic history on startup, new pods configure their consumers to start from the latest offset, relying entirely on the database for their initial state. This is the opposite of the usual pattern where work is partitioned across consumers — here, every replica needs to know about every publish event so it can rebuild its own in-memory rule set. If they shared a single consumer group, only one pod would get the event, and the rest would serve stale rules until the next restart.
+One deliberate design choice here: the Evaluation Service pods do not share a **Kafka consumer group**. Each pod spins up with a uniquely generated consumer group ID so it receives every message on the topic. To avoid replaying the entire topic history on startup, new pods configure their consumers to start from the latest offset, relying entirely on the database for their initial state. This is the opposite of the usual pattern where work is partitioned across consumers — here, every replica needs to know about every publish event so it can rebuild its own in-memory rule set. If they shared a single consumer group, only one pod would get the event, and the rest would serve stale rules until the next restart.
 
-Publishing a rule saves the new DRL to the database and emits a Kafka event. Every Evaluation Service pod picks up the event, rebuilds the relevant application's rule set by querying the database, and swaps it in. Requests in flight finish against the previous rule set; new requests use the rebuilt set. End-to-end, from clicking publish to the rule being live on every pod, is usually a few seconds. From the business side, this is what "as a service" means — the author clicks publish and it's live.
+Publishing a rule saves the new DRL to the database and emits a Kafka event identifying the changed application. Every Evaluation Service pod picks up the event, rebuilds the global rule set by querying the database, and swaps it in. Requests in flight finish against the previous rule set; new requests use the rebuilt set. End-to-end, from clicking publish to the rule being live on every pod, is usually a few seconds. From the business side, this is what "as a service" means — the author clicks publish and it's live.
 
 The Publishing Service can crash and the Evaluation Service keeps serving. They communicate via Kafka and share a database, and that's it.
 
@@ -93,23 +93,40 @@ The first child is a leaf condition — one object, one attribute, one operator,
 
 ```json
 {
+  "startDate": "2026-01-01T00:00:00Z",
+  "endDate": "2026-12-31T23:59:59Z",
   "condition": {
     "operator": "AND",
     "children": [
-      { "object": "User", "attribute": "accountStatus",
-        "operator": "EQUAL", "value": "ACTIVE" },
+      { 
+        "object": "User", 
+        "attribute": "accountStatus",
+        "operator": "EQUAL", 
+        "value": "ACTIVE" 
+      },
       {
         "operator": "OR",
         "children": [
-          { "object": "Transaction", "attribute": "amount",
-            "operator": "MORE_THAN", "value": 10000 },
-          { "object": "Transaction", "attribute": "riskScore",
-            "operator": "MORE_THAN", "value": 80 }
+          { 
+            "object": "Transaction", 
+            "attribute": "amount",
+            "operator": "MORE_THAN", 
+            "value": 10000 
+          },
+          { 
+            "object": "Transaction", 
+            "attribute": "riskScore",
+            "operator": "MORE_THAN", 
+            "value": 80 
+          }
         ]
       }
     ]
   },
-  "action": { "status": "FLAGGED", "reason": "High value or high risk transaction" }
+  "action": { 
+    "status": "FLAGGED", 
+    "reason": "High value or high risk transaction" 
+  }
 }
 ```
 
@@ -121,7 +138,24 @@ The action is arbitrary JSON. The platform doesn't interpret it — the client c
 
 In Drools, rules are split into a "When" condition (the Left-Hand-Side or LHS) and a "Then" action (Right-Hand-Side or RHS). Natively, the engine is built to perform LHS pattern matching against strongly-typed Java POJOs loaded in memory. Because the platform must remain domain-agnostic, it can't use standard Java classes for facts.
 
-Instead, the Publishing Service translates the JSON DSL by bypassing standard pattern matching altogether. All incoming facts are passed into the engine wrapped in a single, generic `Map`. The compiler flattens the JSON tree into a complex boolean expression wrapped in a single Drools `eval()` block. If the `eval()` block resolves to true, the Right-Hand-Side (RHS) of the rule simply appends the arbitrary JSON action to an `_actions` list within the fact map.
+Instead, the Publishing Service translates the JSON DSL by bypassing standard pattern matching for the dynamic payload. All incoming facts are passed into the engine wrapped in a single, generic `Map`. The compiler flattens the JSON tree into a complex boolean expression wrapped in a single Drools `eval()` block. 
+
+To ensure the engine can still optimize evaluations, structural metadata—like the rule's `startDate` and `endDate` boundaries—are injected as real pattern constraints *outside* the `eval()` block:
+
+```drools
+rule "Rule_123"
+when
+    $fact : Map( 
+        this["date"] >= 1767225600000L, // 2026-01-01T00:00:00Z
+        this["date"] <= 1798761599000L  // 2026-12-31T23:59:59Z
+    )
+    eval( evaluateComplexJsonTree($fact) )
+then
+    // Append arbitrary JSON action
+end
+```
+
+Before the engine evaluates a request, the Evaluation Service parses the incoming ISO-8601 date string into epoch milliseconds and injects it as `date` into the root `$fact` map. This ensures Drools can perform fast numeric comparisons without string parsing overhead. If the `eval()` block resolves to true, the Right-Hand-Side (RHS) of the rule simply appends the arbitrary JSON action to an `_actions` list within the fact map.
 
 This approach trades away some of Drools' built-in Rete network optimizations for object matching, but it meets the most critical design constraint: the engine can evaluate rules from various domains without ever needing a Java class to model that domain.
 
@@ -170,37 +204,59 @@ The system handles mismatches between rule expectations and evaluation data grac
 | Array (`product[]` / `product[?]`) | 1 product | Wraps as single-element array |
 | Array (`product[]` / `product[?]`) | 2+ products | Evaluates as array |
 
-This means rule authors don't need to coordinate with callers about cardinality. The engine adapts.
+This means rule authors don't need to coordinate with callers about cardinality. The engine adapts. However, silently evaluating only the last object when multiple are sent to a single-object rule is a deliberate compatibility trade-off to prevent evaluation failures. Client engineers must be aware that array ordering becomes semantic in this edge case, and they should ideally align their payload shapes with the rule's expectations.
 
 ### Rule Lifecycle
 
 A rule goes through a simple state machine:
 
 ```
-  CREATE → published=false    PUBLISH → published=true    UPDATE → hasPendingChanges=true    PUBLISH → synced
+CREATE    → published=false, hasPendingChanges=false
+PUBLISH   → published=true,  hasPendingChanges=false
+UPDATE    → published=true,  hasPendingChanges=true
+PUBLISH   → published=true,  hasPendingChanges=false
+UNPUBLISH → published=false, hasPendingChanges=false
 ```
 
 The `hasPendingChanges` flag tracks whether a published rule has been edited since its last publish. This gives authors a safe workflow: they can iterate on a rule without affecting what's live, then explicitly publish when ready. Unpublishing deletes the compiled DRL (while keeping the JSON definition intact) and notifies the Evaluation Service to rebuild without it.
 
-Rules can also carry `startDate` and `endDate` fields for time-bounded validity — temporary access grants, compliance windows, or promotional campaigns that should only fire during a specific period.
+Rules can also carry `startDate` and `endDate` fields for time-bounded validity — temporary access grants, compliance windows, or promotional campaigns that should only fire during a specific period. Because these bounds are compiled as real pattern constraints outside the `eval()` block (as shown earlier), activation and expiry are enforced dynamically at evaluation time without requiring scheduled rebuild events.
 
 ### Multi-Tenant Isolation
 
-Each consuming application gets its own `appName`. Rules and DRL files are scoped by this identifier. Kafka events carry the `appName` so pods only rebuild the relevant application's rules. The engine strictly scopes evaluations to that specific application, meaning two tenants sharing the same platform never see each other's rules. The isolation is at the data level, not just at the API level.
+Each consuming application gets its own `appName`. Rules and DRL files are scoped by this identifier. The engine strictly scopes evaluations to that specific application, meaning two tenants sharing the same platform never see each other's rules. The isolation is at the data level, not just at the API level.
+
+A major design tension in this multi-tenant architecture is how to hold the rules in memory. There are two viable strategies:
+
+1. **Multiple Knowledge Bases:** The Evaluation Service maintains a `Map<String, KieBase>`. When an app publishes a rule, only that app's `KieBase` is rebuilt. This provides fast, targeted hot-reloads and strict isolation, but holding dozens of separate `KieBases` consumes significant heap space.
+2. **Single Global Knowledge Base:** The engine maintains one massive `KieBase` for all tenants. Every DRL rule is injected with an `appName == "X"` condition before the `eval()` block (as a real pattern constraint, identical to the date boundaries shown earlier). This keeps tenant filtering outside the expensive dynamic `eval()` block. This is highly memory-efficient, but introduces a "noisy neighbor" reload penalty: if one app publishes a rule, the engine has to burn CPU to rebuild the entire global knowledge base.
+
+Currently, we opted for the **Single Global Knowledge Base**. Because the platform currently serves a small number of consuming applications and a manageable volume of total rules, the CPU penalty for rebuilding the entire base is negligible. Memory efficiency took precedence over targeted hot-reloads. As the number of onboarded tenants grows, the architecture can gracefully migrate to multiple knowledge bases if reload times ever become an issue.
 
 ## Evaluation API
 
-Once a rule is published, calling code sends facts and gets back actions. The engine returns a decision payload, not side effects.
+Once a rule is published, calling code sends facts and gets back actions. The tenant's `appName` is securely extracted from the caller's OAuth2 JWT token to enforce isolation, so the client only needs to pass the facts themselves. The payload also accepts an optional `date` field. If omitted, the Evaluation Service defaults to the current server time. Allowing the client to explicitly override the evaluation time is a deliberate choice: it fully empowers the calling application to manage its own temporal context, enabling idempotent batch processing or safely evaluating rules against historical data without needing a separate administrative endpoint. The engine returns a decision payload, not side effects.
 
 ```json
 {
+  "date": "2026-06-15T10:00:00Z",
   "factAttributes": [
-    { "type": "User", "attributes": { "accountStatus": "ACTIVE" }},
-    { "type": "Transaction", "attributes": {
-      "amount": 15000,
-      "riskScore": 45,
-      "country": "SG"
-    }}
+    { 
+      "type": "User", 
+      "attributes": 
+        { 
+          "accountStatus": "ACTIVE" 
+        }
+    },
+    { 
+      "type": "Transaction", 
+      "attributes": 
+        { 
+          "amount": 15000,
+          "riskScore": 45,
+          "country": "SG"
+        }
+    }
   ]
 }
 ```
@@ -209,9 +265,13 @@ If the rule matches, the response is:
 
 ```json
 {
-  "actions": [
-    { "status": "FLAGGED", "reason": "High value or high risk transaction" }
-  ]
+  "actions": 
+    [ 
+      { 
+        "status": "FLAGGED", 
+        "reason": "High value or high risk transaction" 
+      }
+    ]
 }
 ```
 
@@ -224,13 +284,6 @@ The caller decides what to do with the action. The engine never reaches out to a
 There are many ways to evaluate rules, from simple database-backed expressions to building a custom logic engine. I chose Drools because it provides a mature DRL compiler, safe rule packaging, and dynamic knowledge-base replacement at runtime. 
 
 By feeding Drools a dynamically generated DRL string (compiled from the JSON DSL), the Evaluation Service can rebuild the application's knowledge base and swap it into the active session atomically. This means every condition, threshold, and logical operator can be completely rewritten on the fly. The engine does not require a deployment, a restart, or a single line of Java code to be changed when a business rule is added or updated.
-
-### Why Two Services and Not One
-
-This follows directly from the constraints. The two sides want different scaling profiles, different failure domains, and different resource budgets. Splitting them lets each have its own Kubernetes deployment and its own autoscaler. The Publishing Service can crash and the Evaluation Service keeps serving.
-
-If they were one service, scaling for evaluation traffic would also scale the authoring side (wasted resources), and a bug in the authoring code path could take down the evaluation path (wrong failure domain).
-
 
 ### Why It Only Decides, It Doesn't Execute
 
@@ -254,17 +307,18 @@ The trade-off is that the author has to think in attribute names rather than typ
 
 ### Failure Handling
 
-Because the system relies on asynchronous Kafka events and dynamic compilation, failure domains are strictly isolated:
+Because the system relies on asynchronous Kafka events and dynamic compilation, failure domains are mostly contained and recoverable:
 
 - **Compilation Failures:** The Publishing Service validates the JSON DSL and attempts a dry-run DRL compilation before saving the compiled DRL payload. If it fails, the API rejects the request. Bad rules never reach Kafka.
 - **Missed Events:** If an Evaluation pod crashes or misses an event, it simply rebuilds its entire state from the database on startup. 
 - **Rebuild Failures:** If a pod receives an event but fails to rebuild its knowledge base, it gracefully aborts the swap and simply continues serving the previous valid rule set.
+- **Publishing Dual-Write Gap:** Saving the DRL to the database and emitting the Kafka event is a dual-write operation. If the database write succeeds but the Kafka publish fails, pods serve stale rules until the next publish event, a pod restart, or a manual trigger of the Evaluation Service's reload API. While a Transactional Outbox pattern would guarantee delivery, this gap is accepted as a known residual risk given the current operational volume and the availability of the manual reload fallback.
 
 ## Alternative Architectures Considered
 
 ### 1. Dropping the Database (Shared File System Distribution)
 
-In a file-system architecture, the database can be stripped out entirely. The Publishing Service saves the authoring source-of-truth as a `.json` file and compiles the result into a `.drl` file directly on a shared drive (like AWS EFS or an NFS mount). The Evaluation pods mount that same drive. When a publish event arrives via Kafka, the Evaluation pods simply read the new `.drl` file from their local mount instead of querying a database.
+In a file-system architecture, the database can be stripped out entirely. The Publishing Service saves the authoring source of truth as a `.json` file and compiles the result into a `.drl` file directly on a shared drive (like AWS EFS or an NFS mount). The Evaluation pods mount that same drive. When a publish event arrives via Kafka, the Evaluation pods simply read the new `.drl` file from their local mount instead of querying a database.
 
 I opted against a shared file system primarily to avoid the operational headaches of managing shared network volumes across multiple availability zones in Kubernetes. There's also the risk of partial reads if the Evaluation pod tries to load the file before the network mount has fully synced the write. A database is a predictable managed dependency that keeps the application pods stateless.
 
