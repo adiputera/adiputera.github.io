@@ -13,7 +13,10 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "Headless CMS Demo Architecture"
 snippet: "Exploring the architecture of a custom headless CMS demo built with Spring Boot and Next.js, featuring schema-driven forms and runtime page composition."
 snippet_id: "Menjelajahi arsitektur demo headless CMS kustom yang dibangun dengan Spring Boot dan Next.js, menampilkan form berbasis skema dan komposisi halaman saat runtime."
-image: /images/articles/case-study-headless-cms-demo/cover.png
+image: /images/articles/case-study-headless-cms-demo/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 published: false
 ---
 

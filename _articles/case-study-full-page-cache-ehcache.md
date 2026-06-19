@@ -13,7 +13,10 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "Full Page Cache (EhCache)"
 snippet: "Building a JVM-local full page cache on EhCache to serve catalog and CMS pages from memory, and the invalidation, personalization, and multi-node consistency problems that come with it."
 snippet_id: "Membangun full page cache di level JVM dengan EhCache untuk melayani halaman katalog dan CMS dari memori, termasuk masalah invalidasi, personalisasi, dan konsistensi multi-node yang menyertainya."
-image: /images/articles/case-study-full-page-cache-ehcache/cover.png
+image: /images/articles/case-study-full-page-cache-ehcache/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 published: false
 ---
 

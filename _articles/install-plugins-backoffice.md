@@ -13,7 +13,10 @@ breadcrumb_short: "Install Backoffice Plugins"
 permalink: /articles/install-plugins-backoffice
 snippet: "A technical exploration on advanced CKEditor customization within the SAP Commerce (SAP Hybris) framework, detailing how to inject custom JavaScript plugins into the Backoffice environment."
 snippet_id: "Eksplorasi teknis mengenai penyesuaian lanjutan CKEditor dalam kerangka kerja SAP Commerce (SAP Hybris), merinci cara menyuntikkan plugin JavaScript kustom ke dalam lingkungan Backoffice."
-image: /images/articles/install-plugins-backoffice/cover.png
+image: /images/articles/install-plugins-backoffice/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 ---
 
 ## Intro

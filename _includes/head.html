@@ -97,9 +97,9 @@
     <meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title | escape }}" />
     <meta property="og:description" content="{{ page.og_description | default: derived_description | escape }}" />
     <meta property="og:image" content="{{ current_og_image | escape }}" />
-    <meta property="og:image:width" content="{{ site.data.meta.og_defaults.image_width | escape }}" />
-    <meta property="og:image:height" content="{{ site.data.meta.og_defaults.image_height | escape }}" />
-    <meta property="og:image:type" content="{{ site.data.meta.og_defaults.image_type | escape }}" />
+    <meta property="og:image:width" content="{{ page.og_image_width | default: site.data.meta.og_defaults.image_width | escape }}" />
+    <meta property="og:image:height" content="{{ page.og_image_height | default: site.data.meta.og_defaults.image_height | escape }}" />
+    <meta property="og:image:type" content="{{ page.og_image_type | default: site.data.meta.og_defaults.image_type | escape }}" />
     <meta property="og:image:alt" content="{{ current_og_image_alt | escape }}" />
     <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}{{ page.og_type | default: site.data.meta.og_defaults.type }}{% endif %}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />

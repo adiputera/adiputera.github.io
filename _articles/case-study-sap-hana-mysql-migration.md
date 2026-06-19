@@ -13,7 +13,10 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "SAP Commerce DB Migration to MySQL"
 snippet: "Migrating two SAP Commerce projects from HANA to MySQL using a custom bulk-copy cronjob, achieving a 73% reduction in database costs."
 snippet_id: "Memigrasi dua proyek SAP Commerce dari HANA ke MySQL menggunakan cronjob kustom, menghasilkan penghematan biaya database hingga 73%."
-image: /images/articles/case-study-sap-hana-mysql-migration/cover.png
+image: /images/articles/case-study-sap-hana-mysql-migration/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 published: true
 ---
 

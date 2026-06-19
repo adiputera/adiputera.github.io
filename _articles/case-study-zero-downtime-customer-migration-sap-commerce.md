@@ -13,7 +13,10 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "Zero-Downtime Customer Migration"
 snippet: "How I'm designing a streaming Kafka pipeline to move millions of customer records off a live SAP Commerce platform onto Spring Boot - without downtime, using last-write-wins reconciliation so a stale snapshot never clobbers a fresh write."
 snippet_id: "Bagaimana saya merancang pipeline streaming Kafka untuk memindahkan jutaan data pelanggan dari platform SAP Commerce yang masih aktif ke Spring Boot - tanpa downtime, dengan rekonsiliasi last-write-wins agar snapshot lama tidak menimpa data terbaru."
-image: /images/articles/case-study-zero-downtime-customer-migration-sap-commerce/cover.png
+image: /images/articles/case-study-zero-downtime-customer-migration-sap-commerce/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 published: true
 ---
 
