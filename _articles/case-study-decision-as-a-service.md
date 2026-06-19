@@ -140,7 +140,7 @@ In Drools, rules are split into a "When" condition (the Left-Hand-Side or LHS) a
 
 Instead, the Publishing Service translates the JSON DSL by bypassing standard pattern matching for the dynamic payload. All incoming facts are passed into the engine wrapped in a single, generic `Map`. The compiler flattens the JSON tree into a complex boolean expression wrapped in a single Drools `eval()` block. 
 
-To ensure the engine can still optimize evaluations, structural metadata—like the rule's `startDate` and `endDate` boundaries—are injected as real pattern constraints *outside* the `eval()` block:
+To ensure the engine can still optimize evaluations, structural metadata—like the rule's optional `startDate` and `endDate` boundaries—are injected as real pattern constraints *outside* the `eval()` block:
 
 ```drools
 rule "Rule_123"
@@ -204,7 +204,7 @@ The system handles mismatches between rule expectations and evaluation data grac
 | Array (`product[]` / `product[?]`) | 1 product | Wraps as single-element array |
 | Array (`product[]` / `product[?]`) | 2+ products | Evaluates as array |
 
-This means rule authors don't need to coordinate with callers about cardinality. The engine adapts. However, silently evaluating only the last object when multiple are sent to a single-object rule is a deliberate compatibility trade-off to prevent evaluation failures. Client engineers must be aware that array ordering becomes semantic in this edge case, and they should ideally align their payload shapes with the rule's expectations.
+This means rule authors don't need to coordinate with callers about cardinality. The engine adapts. However, silently evaluating only the last object when multiple are sent to a single-object rule is a deliberate compatibility trade-off to prevent evaluation failures. Client engineers must be aware that array ordering becomes semantic in this edge case, and they should ideally align their payload shapes with the rule's expectations — after all, it is the client team itself that authors the rules for its domain.
 
 ### Rule Lifecycle
 
@@ -220,7 +220,7 @@ UNPUBLISH → published=false, hasPendingChanges=false
 
 The `hasPendingChanges` flag tracks whether a published rule has been edited since its last publish. This gives authors a safe workflow: they can iterate on a rule without affecting what's live, then explicitly publish when ready. Unpublishing deletes the compiled DRL (while keeping the JSON definition intact) and notifies the Evaluation Service to rebuild without it.
 
-Rules can also carry `startDate` and `endDate` fields for time-bounded validity — temporary access grants, compliance windows, or promotional campaigns that should only fire during a specific period. Because these bounds are compiled as real pattern constraints outside the `eval()` block (as shown earlier), activation and expiry are enforced dynamically at evaluation time without requiring scheduled rebuild events.
+Rules can also carry optional `startDate` and `endDate` fields for time-bounded validity — temporary access grants, compliance windows, or promotional campaigns that should only fire during a specific period. If these fields are not provided, the engine simply skips the temporal boundary checks. Because these bounds are compiled as real pattern constraints outside the `eval()` block (as shown earlier), activation and expiry are enforced dynamically at evaluation time without requiring scheduled rebuild events.
 
 ### Multi-Tenant Isolation
 
@@ -231,7 +231,7 @@ A major design tension in this multi-tenant architecture is how to hold the rule
 1. **Multiple Knowledge Bases:** The Evaluation Service maintains a `Map<String, KieBase>`. When an app publishes a rule, only that app's `KieBase` is rebuilt. This provides fast, targeted hot-reloads and strict isolation, but holding dozens of separate `KieBases` consumes significant heap space.
 2. **Single Global Knowledge Base:** The engine maintains one massive `KieBase` for all tenants. Every DRL rule is injected with an `appName == "X"` condition before the `eval()` block (as a real pattern constraint, identical to the date boundaries shown earlier). This keeps tenant filtering outside the expensive dynamic `eval()` block. This is highly memory-efficient, but introduces a "noisy neighbor" reload penalty: if one app publishes a rule, the engine has to burn CPU to rebuild the entire global knowledge base.
 
-Currently, we opted for the **Single Global Knowledge Base**. Because the platform currently serves a small number of consuming applications and a manageable volume of total rules, the CPU penalty for rebuilding the entire base is negligible. Memory efficiency took precedence over targeted hot-reloads. As the number of onboarded tenants grows, the architecture can gracefully migrate to multiple knowledge bases if reload times ever become an issue.
+We opted for the **Single Global Knowledge Base**. Because the platform currently serves a small number of consuming applications and a manageable volume of total rules, the CPU penalty for rebuilding the entire base is negligible. Memory efficiency took precedence over targeted hot-reloads. As the number of onboarded tenants grows, the architecture can gracefully migrate to multiple knowledge bases if reload times ever become an issue.
 
 ## Evaluation API
 
