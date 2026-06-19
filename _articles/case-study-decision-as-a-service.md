@@ -16,7 +16,7 @@ snippet_id: "Constraint dan trade-off desain di balik platform Decision-as-a-Ser
 published: true
 ---
 
-> **Disclaimer:** The Decision-as-a-Service codebase is internal company work and is not public. This case study covers the architecture and the design trade-offs I made, with company-specific names and rule examples sanitized.
+> **Disclaimer:** The Decision-as-a-Service codebase is internal company work and is not public. This case study covers the architecture and the design trade-offs I made.
 
 ## The Design Problem
 
