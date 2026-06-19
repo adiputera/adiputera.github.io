@@ -108,7 +108,7 @@ layout: default
 
             {% if data.sections.case_studies %}
             <h2 id="case-studies" class="hide-for-print">{{ data.sections.case_studies }}</h2>
-            {% assign case_studies = site.articles | where: 'category', 'case-study' %}
+            {% assign case_studies = site.articles | where: 'category', 'case-study' | sort: 'date' | reverse %}
             <ul class="article-list hide-for-print" style="margin-bottom: 2rem;">
                 {% for article in case_studies %}
                 <li>

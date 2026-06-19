@@ -158,9 +158,9 @@ layout: default
         {% endif %}
 
         {% if data.sections.case_studies %}
-        <h2 id="case-studies" class="hide-for-print">{{ data.sections.case_studies }}</h2>
-        {% assign case_studies = site.articles | where: 'category', 'case-study' %}
-        <ul class="article-list hide-for-print" style="margin-bottom: 2rem;">
+        <h2 id="case-studies">{{ data.sections.case_studies }} <span class="show-for-print">{% if page.lang == 'id' %}(lihat detail di adiputera.github.io){% else %}(see detailed at adiputera.github.io){% endif %}</span></h2>
+        {% assign case_studies = site.articles | where: 'category', 'case-study' | sort: 'date' | reverse %}
+        <ul class="article-list" style="margin-bottom: 2rem;">
             {% for article in case_studies %}
             <li>
                 <a href="{{ article.permalink }}">
