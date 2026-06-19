@@ -13,6 +13,7 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "Solr PDP Optimization"
 snippet: "Redesigning PDP initial load in SAP Commerce by denormalizing city-specific pricing and promotions directly into Solr, eliminating runtime processing overhead to achieve sub-second response times."
 snippet_id: "Mendesain ulang initial load PDP di SAP Commerce dengan mendenormalisasi harga dan promosi spesifik per kota ke Solr, mengeliminasi overhead runtime untuk mencapai waktu respons sub-detik."
+image: /images/articles/case-study-solr-pdp-initial-load/cover.png
 published: false
 ---
 

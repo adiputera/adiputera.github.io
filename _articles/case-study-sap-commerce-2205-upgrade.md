@@ -13,6 +13,7 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "SAP Commerce 2205 Upgrade"
 snippet: "Upgrading three live SAP Commerce platforms from 6.6 to 2205 on-premise, including a Solr 8.11 → 9.10 jump, without a single second of production downtime."
 snippet_id: "Mengupgrade tiga platform SAP Commerce yang berjalan dari 6.6 ke 2205 secara on-premise, termasuk lompatan Solr 8.11 → 9.10, tanpa downtime produksi sedetik pun."
+image: /images/articles/case-study-sap-commerce-2205-upgrade/cover.png
 published: false
 ---
 

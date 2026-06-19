@@ -13,6 +13,7 @@ breadcrumb_url: /case-studies/
 breadcrumb_short: "Decision-as-a-Service"
 snippet: "The design constraints and trade-offs behind a two-service Decision-as-a-Service platform with a custom JSON-to-DRL DSL — so business teams can ship rules without engineers in the loop."
 snippet_id: "Constraint dan trade-off desain di balik platform Decision-as-a-Service dua-layanan dengan DSL JSON-to-DRL kustom — agar tim bisnis bisa merilis aturan baru tanpa harus melibatkan engineer."
+image: /images/articles/case-study-decision-as-a-service/cover.png
 published: true
 ---
 

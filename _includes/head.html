@@ -88,8 +88,11 @@
         {%- assign current_og_image_alt = page.og_image_alt | default: default_alt -%}
     {%- else -%}
         {%- assign badge_fallback = site.url | append: site.baseurl | append: '/images/badgeNonTransparent.webp' -%}
-        {%- assign current_og_image = page.og_image | default: badge_fallback -%}
-        {%- assign current_og_image_alt = page.og_image_alt | default: 'Yusuf Adiputera Site Logo' -%}
+        {%- if page.image -%}
+            {%- assign article_image = site.url | append: site.baseurl | append: page.image -%}
+        {%- endif -%}
+        {%- assign current_og_image = page.og_image | default: article_image | default: badge_fallback -%}
+        {%- assign current_og_image_alt = page.og_image_alt | default: page.title | default: 'Yusuf Adiputera Site Logo' -%}
     {%- endif -%}
     <meta property="og:title" content="{{ page.og_title | default: page.title | default: lang_data.site.title | escape }}" />
     <meta property="og:description" content="{{ page.og_description | default: derived_description | escape }}" />
