@@ -10,6 +10,10 @@ permalink: /articles/spring-temporal-multi-service-order-flow
 breadcrumb: "Articles"
 breadcrumb_short: "Spring Temporal Orchestration"
 snippet: "A walk-through of a Spring Boot sample project where five services coordinate a place-order flow entirely via Temporal - no HTTP between services, each service owns its own task queue, and the workflow itself is the transport."
+image: /images/articles/spring-temporal-multi-service-order-flow/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Penjelasan sebuah proyek sampel Spring Boot di mana lima service mengorkestrasi alur place-order sepenuhnya melalui Temporal - tidak ada panggilan HTTP antar service, setiap service memiliki task queue sendiri, dan alur kerja itu sendiri yang menjadi transport."
 published: true
 ---

@@ -11,7 +11,10 @@ canonical_source: "LinkedIn Pulse"
 breadcrumb: "Articles"
 breadcrumb_short: "SSO BCrypt Error"
 permalink: /articles/sap-commerce-sso-bcrypt-error
-image: /images/articles/sap-commerce-sso-bcrypt-error/cover.jpg
+image: /images/articles/sap-commerce-sso-bcrypt-error/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet: "An architectural breakdown of a Single Sign-On (SSO) limitation encountered using Spring Security and BCrypt in SAP Commerce (SAP Hybris), alongside the implemented encryption bypass solution."
 snippet_id: "Rincian arsitektur mengenai batasan Single Sign-On (SSO) yang ditemui saat menggunakan Spring Security dan BCrypt di SAP Commerce (SAP Hybris), beserta penerapan solusi bypass enkripsi yang digunakan."
 ---

@@ -10,6 +10,10 @@ permalink: /articles/temporal-workflow-await-signal-or-timeout
 breadcrumb: "Articles"
 breadcrumb_short: "Temporal Signal or Timeout"
 snippet: "A focused look at Temporal's Workflow.await(Duration, Supplier) - the cleanest way I know to wait for an external signal with a bounded timeout, and fall back to an activity if it never arrives."
+image: /images/articles/temporal-workflow-await-signal-or-timeout/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Penjelasan mendetail mengenai Workflow.await(Duration, Supplier) di Temporal - cara terbersih untuk menunggu signal eksternal dengan batas waktu, lalu jatuh ke aktivitas cadangan jika signal tak pernah datang."
 published: true
 ---

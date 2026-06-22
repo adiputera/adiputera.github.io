@@ -11,6 +11,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "Virtual Threads"
 snippet: "A practical look at Java virtual threads in production - what they actually fix, the small refactor that turned a 200-thread fixed pool into something much cheaper, and the pitfalls (pinning, ThreadLocal cost, pooling them by mistake) that still trip people up."
 snippet_id: "Tinjauan praktis penggunaan Virtual Threads di produksi - apa yang sebenarnya diperbaiki, refactor kecil yang menggantikan thread pool 200 thread dengan sesuatu yang jauh lebih murah, serta pitfalls (pinning, biaya ThreadLocal, salah pakai pooling) yang masih sering menjebak."
+image: /images/articles/java-virtual-threads-production/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 canonical_url: ""
 canonical_source: ""
 published: false

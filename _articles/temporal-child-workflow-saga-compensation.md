@@ -10,6 +10,10 @@ permalink: /articles/temporal-child-workflow-saga-compensation
 breadcrumb: "Articles"
 breadcrumb_short: "Temporal Saga Child Workflow"
 snippet: "A saga pattern worked out in code: a parent workflow dispatches a child consignment workflow, blocks until it returns, and runs refund + cancellation activities if the child reports an undelivered outcome."
+image: /images/articles/temporal-child-workflow-saga-compensation/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Pola saga yang dikerjakan dalam kode: workflow induk memanggil child workflow pengiriman, menunggu hasilnya, lalu menjalankan aktivitas refund + pembatalan jika child melaporkan status tidak terkirim."
 published: true
 ---

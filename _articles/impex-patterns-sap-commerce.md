@@ -11,6 +11,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "ImpEx Patterns"
 snippet: "A practical guide to ImpEx in SAP Commerce (SAP Hybris), covering the syntax, the four modes, the patterns I reach for daily, and the gotchas that have cost me more debugging time than I'd like to admit."
 snippet_id: "Panduan praktis ImpEx di SAP Commerce (SAP Hybris), mencakup sintaks, empat mode utama, pola yang sering dipakai sehari-hari, dan beberapa gotcha yang sering memakan waktu debugging."
+image: /images/articles/impex-patterns-sap-commerce/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 canonical_url: ""
 canonical_source: ""
 published: false

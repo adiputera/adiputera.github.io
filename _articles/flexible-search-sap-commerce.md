@@ -11,6 +11,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "FlexibleSearch Guide"
 snippet: "A practical guide to FlexibleSearch in SAP Commerce (SAP Hybris), covering the syntax, common query patterns, joins, and a few gotchas that will save you a debugging session."
 snippet_id: "Panduan praktis FlexibleSearch di SAP Commerce (SAP Hybris), mencakup sintaks, pola query umum, join, dan beberapa hal yang perlu diwaspadai agar tidak menghabiskan waktu debugging."
+image: /images/articles/flexible-search-sap-commerce/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 published: false
 ---
 

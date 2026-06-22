@@ -12,6 +12,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "SAP Commerce Performance"
 permalink: /articles/sap-commerce-performance-optimization
 snippet: "A look into practical techniques for boosting SAP Commerce performance, from Solr-backed PDPs to OCC API caching."
+image: /images/articles/sap-commerce-performance-optimization/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Tinjauan tentang teknik praktis untuk meningkatkan performa SAP Commerce, mulai dari PDP berbasis Solr hingga caching OCC API."
 published: true
 ---

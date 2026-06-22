@@ -12,6 +12,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "Remote Debug SAP Commerce"
 permalink: /articles/remote-debug-sap-commerce
 snippet: "A deep-dive tutorial explaining how developers can configure and attach remote debuggers within IntelliJ IDEA and Eclipse to troubleshoot complex SAP Commerce (SAP Hybris) (On-Premise) server issues."
+image: /images/articles/remote-debug-sap-commerce/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Tutorial mendalam yang menjelaskan bagaimana developer dapat mengonfigurasi dan menyambungkan debugger jarak jauh di IntelliJ IDEA dan Eclipse untuk memecahkan masalah kompleks pada server SAP Commerce (SAP Hybris) (On-Premise)."
 ---
 

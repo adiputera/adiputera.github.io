@@ -10,6 +10,10 @@ permalink: /articles/component-lazy-load-sap-commerce
 breadcrumb: "Articles"
 breadcrumb_short: "Component Lazy Load"
 snippet: "A practical guide on implementing CMS component lazy loading in SAP Commerce (SAP Hybris) Accelerator Storefront to reduce initial page load time by deferring off-screen components."
+image: /images/articles/component-lazy-load-sap-commerce/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Panduan praktis mengimplementasikan lazy loading komponen CMS pada SAP Commerce (SAP Hybris) Accelerator Storefront untuk mengurangi waktu muat halaman dengan menunda komponen di luar viewport."
 published: true
 ---

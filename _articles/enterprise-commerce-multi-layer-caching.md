@@ -12,6 +12,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "Enterprise Caching"
 permalink: /articles/enterprise-commerce-multi-layer-caching
 snippet: "An architectural overview of multi-layer caching in Java enterprise commerce applications, explaining how CDN, Caffeine, and Redis protect the database and achieve sub-second latency."
+image: /images/articles/enterprise-commerce-multi-layer-caching/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Tinjauan arsitektur multi-layer caching pada aplikasi e-commerce enterprise Java, menjelaskan bagaimana CDN, Caffeine, dan Redis melindungi database dan mencapai latensi sub-detik."
 published: true
 ---

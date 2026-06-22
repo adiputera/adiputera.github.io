@@ -12,6 +12,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "SAP Emarsys Review"
 permalink: /articles/sap-emarsys-review-limitations
 snippet: "A practical overview of SAP Emarsys, focusing on its campaign automation capabilities and operational constraints like limited audit logs and error visibility."
+image: /images/articles/sap-emarsys-review-limitations/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Tinjauan praktis SAP Emarsys yang berfokus pada kemampuan otomatisasi kampanye dan kendala operasional seperti batasan audit log dan pesan error."
 published: true
 ---

@@ -11,6 +11,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "JPA N+1"
 snippet: "A practical guide to diagnosing and fixing the N+1 query trap in Spring Data JPA, comparing JOIN FETCH, @EntityGraph, DTO projections, and batch fetching - and how to pick the right one for the access pattern."
 snippet_id: "Panduan praktis untuk mendiagnosa dan memperbaiki jebakan N+1 query di Spring Data JPA, membandingkan JOIN FETCH, @EntityGraph, DTO projection, dan batch fetching - serta cara memilih yang paling cocok untuk pola akses datanya."
+image: /images/articles/spring-data-jpa-n-plus-one/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 canonical_url: ""
 canonical_source: ""
 published: false

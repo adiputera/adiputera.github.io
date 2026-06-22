@@ -10,6 +10,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "Hybris Windows vs Linux"
 permalink: /articles/hybris-windows-linux-time-comparison
 snippet: "A detailed benchmark comparing SAP Commerce build times between Windows 11 and Linux, showing how Linux significantly outperforms Windows in daily development tasks."
+image: /images/articles/hybris-windows-linux-time-comparison/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Perbandingan mendetail waktu build SAP Commerce antara Windows 11 dan Linux, menunjukkan bagaimana Linux secara signifikan mengungguli Windows dalam tugas harian."
 published: true
 ---

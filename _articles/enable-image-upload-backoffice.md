@@ -12,6 +12,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "Enable Image Upload"
 permalink: /articles/enable-image-upload-backoffice
 snippet: "Step-by-step configuration guide on extending the default SAP Commerce (SAP Hybris) Backoffice UI to allow internal business users to upload media directly via the CKEditor WYSIWYG tool."
+image: /images/articles/enable-image-upload-backoffice/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Panduan konfigurasi langkah demi langkah tentang cara memperluas antarmuka pengguna bawaan SAP Commerce (SAP Hybris) Backoffice untuk memungkinkan pengguna bisnis internal mengunggah media langsung melalui alat WYSIWYG CKEditor."
 ---
 

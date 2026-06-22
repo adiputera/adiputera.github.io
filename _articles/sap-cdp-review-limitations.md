@@ -12,6 +12,10 @@ breadcrumb: "Articles"
 breadcrumb_short: "SAP CDP Review"
 permalink: /articles/sap-cdp-review-limitations
 snippet: "A practical review of SAP Customer Data Platform (CDP) detailing its customer merging capabilities and the architectural constraints you need to plan for."
+image: /images/articles/sap-cdp-review-limitations/cover.webp
+og_image_width: 1024
+og_image_height: 1024
+og_image_type: image/webp
 snippet_id: "Ulasan praktis tentang SAP Customer Data Platform (CDP) yang merinci kemampuan penggabungan datanya serta batasan arsitektur yang perlu Anda perhatikan."
 published: true
 ---
