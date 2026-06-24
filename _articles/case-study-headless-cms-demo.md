@@ -118,26 +118,30 @@ Despite this broad eviction, the next time a customer hits the Storefront Backen
 
 A flexible CMS needs to support various component types (e.g., `BANNER`, `PARAGRAPH`, `PRODUCT_CAROUSEL`). Storing these cleanly in a relational database can be tricky. You generally have three options: a massive table with nullable columns, a JSON blob column, or table inheritance.
 
-I opted for JPA's `JOINED` inheritance strategy. This gives us a clean base `components` table containing shared fields (`id`, `uid`, `sort_order`, `type`, `slot_id`), and separate subclass tables for specific fields (e.g., `banner_components` has `image_url` and `cta_url`).
+I opted for JPA's `JOINED` inheritance strategy. This gives us a clean base `components` table containing shared fields (`id`, `uid`, `name`, `type`), separate subclass tables for specific fields (e.g., `banner_components` has `image_url` and `cta_url`), and a join table `slot_components` mapping components to slots with a `sort_order` column.
 
 ```java
 @Entity
 @Table(name = "components")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "type")
-public abstract class Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+public abstract class Component extends CatalogAwareModel {
     private String uid;
-    private Integer sortOrder;
+    private String name;
+    private String type;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "slot_id")
-    private Slot slot;
+    @PrePersist
+    @Override
+    protected void onCreate() {
+        super.onCreate();
+        if (type == null) {
+            type = getType().name();
+        }
+    }
     
     public abstract ComponentType getType();
+    
+    @Override
+    public String getSyncKey() { return uid; }
 }
 ```
 
@@ -164,7 +168,7 @@ public class BannerComponent extends Component {
 }
 ```
 
-This ensures referential integrity and strict typing at the database level, unlike dumping everything into a JSONB column. While `JOINED` inheritance does introduce a performance tradeoff—requiring an SQL `JOIN` per subclass on every fetch—this read cost is entirely offset by our aggressive Redis caching layer on the storefront API.
+This ensures referential integrity and strict typing at the database level, unlike dumping everything into a JSONB column. While `JOINED` inheritance does introduce a performance tradeoff—requiring an SQL `JOIN` per subclass on every fetch—this read cost is entirely offset by our aggressive Redis caching layer on the storefront API. Instead of storing the slots reference on the component itself, the codebase decouples them by using a `slot_components` join table mapped in `Slot` via `@ManyToMany` with `@OrderColumn(name = "sort_order")` keeping components ordered.
 
 When returning data through the APIs, we use Jackson's `@JsonTypeInfo` and `@JsonSubTypes` to automatically serialize and deserialize the correct subclasses based on the `type` field. This means the frontend receives strongly typed JSON payloads without the backend needing massive `switch` statements during serialization.
 
@@ -174,12 +178,14 @@ On the Next.js frontend, this polymorphic JSON payload is elegantly modeled usin
 
 ```typescript
 // storefront-frontend/src/types/index.ts
-export type ComponentType = 'BANNER' | 'PARAGRAPH' | 'PRODUCT_CAROUSEL' | 'PRODUCT_DETAIL';
+export type ComponentType = 'BANNER' | 'PARAGRAPH' | 'PRODUCT_CAROUSEL' | 'NAVIGATION' | 'QUICK_MENU' | 'PRODUCT_DETAIL';
 
 export interface BaseComponent {
   type: ComponentType;
   id: number;
   uid: string;
+  name: string;
+  sortOrder: number;
 }
 
 export interface BannerComponent extends BaseComponent {
@@ -199,7 +205,9 @@ export type Component =
   | BannerComponent 
   | ParagraphComponent 
   | ProductCarouselComponent 
-  | ProductDetailComponent;
+  | ProductDetailComponent
+  | NavigationComponent
+  | QuickMenuComponent;
 ```
 
 Because of this strict typing, when the Next.js `ComponentRenderer` iterates through the list of generic components and maps them to their respective React components, the props passed to them are completely type-safe without needing any manual casting.
@@ -348,7 +356,7 @@ graph LR
 
 We use a generic `/products/detail` page slug in the CMS as the master template. This allows editors to drag and drop standard components (banners, text blocks, carousels) around the main `PRODUCT_DETAIL` component.
 
-At runtime, the storefront router intercepts a request for `/products/macbook-pro`. It fetches the `/products/detail` template from the CMS, fetches the product data for `macbook-pro` from the catalog, and binds that data context to the child `PRODUCT_DETAIL` component. 
+At runtime, the storefront router intercepts a request for `/products/macbook-pro`. It first attempts to load a custom product-specific template page matching `/products/${code}` (e.g. `/products/macbook-pro`). If that is not found, it falls back to the `/products/detail` master template page. The router fetches the template, fetches the product data from the catalog, and binds that context to the child components.
 
 If marketing wants to add a Black Friday banner above all products, they simply add a `BANNER` component to the top slot of the template in the CMS. Every product page across the entire catalog updates instantly.
 
@@ -365,24 +373,38 @@ By leveraging Next.js React Server Components (RSC), these fetches happen entire
 In Next.js, we maintain a strict `ComponentRegistry`. When iterating over the components payload, the frontend dynamically loads the corresponding React component based on the `type` string.
 
 ```tsx
-// ComponentRegistry.tsx
-import dynamic from 'next/dynamic';
+// ComponentRenderer.tsx
+import type { Component, Product } from '@/types';
+import BannerComponent from '@/components/cms/BannerComponent';
+import ParagraphComponent from '@/components/cms/ParagraphComponent';
+import ProductCarouselComponent from '@/components/cms/ProductCarouselComponent';
+import NavigationComponent from '@/components/cms/NavigationComponent';
+import QuickMenuComponent from '@/components/cms/QuickMenuComponent';
+import ProductDetailComponent from '@/components/cms/ProductDetailComponent';
 
 const componentRegistry = {
-  BANNER: dynamic(() => import('./components/BannerComponent')),
-  PARAGRAPH: dynamic(() => import('./components/ParagraphComponent')),
-  PRODUCT_CAROUSEL: dynamic(() => import('./components/ProductCarouselComponent')),
-  PRODUCT_DETAIL: dynamic(() => import('./components/ProductDetailComponent')),
+  BANNER: BannerComponent,
+  PARAGRAPH: ParagraphComponent,
+  PRODUCT_CAROUSEL: ProductCarouselComponent,
+  NAVIGATION: NavigationComponent,
+  QUICK_MENU: QuickMenuComponent,
+  PRODUCT_DETAIL: ProductDetailComponent,
 };
 
-export default function ComponentRenderer({ component }) {
-  const ComponentClass = componentRegistry[component.type];
+interface ComponentRendererProps {
+  component: Component;
+  product?: Product;
+}
+
+export default function ComponentRenderer({ component, product }: ComponentRendererProps) {
+  const ComponentToRender = componentRegistry[component.type] as React.ComponentType<any>;
   
-  if (!ComponentClass) {
-    return <div className="error print-no-link">Unknown component: {component.type}</div>;
+  if (!ComponentToRender) {
+    console.error(`Unknown component type: ${component.type}`);
+    return null;
   }
   
-  return <ComponentClass data={component} />;
+  return <ComponentToRender {...component} product={product} />;
 }
 ```
 
