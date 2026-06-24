@@ -1212,6 +1212,11 @@ footer {
     }
 }
 
+/* Mermaid Diagram Dark Mode */
+html[data-theme="dark"] .mermaid {
+    filter: invert(1) hue-rotate(180deg);
+}
+
 .pagination {
     display: flex;
     flex-wrap: wrap;

@@ -25,7 +25,7 @@ mermaid: true
 
 Enterprise CMS platforms are often massive, doing everything from complex workflow approvals to multi-region content synchronization. But at their core, what most developers want is a way for editors to compose pages using a flexible component system, while keeping the frontend entirely decoupled.
 
-I recently built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) from scratch using Java 25, Spring Boot 4.0, and Next.js. The goal wasn't to build a production-ready product, but rather to prototype five core architectural patterns:
+I recently built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) from scratch using Java 25, Spring Boot 4.0, and Next.js. Rather than focusing on production readiness, the project was designed to prototype five core architectural patterns:
 
 1. **Two-Stage Catalogs & Read/Write Separation**
 2. **Polymorphic Component Modeling in JPA**
@@ -39,7 +39,7 @@ Here is a look at the technical decisions that made this work cleanly.
 
 ## The Architecture: Two-Stage Catalogs and Read/Write Separation
 
-One of the biggest pain points in coupled architectures is that administrative actions compete for the same resources as public storefront traffic, and work-in-progress content often leaks to the live site. To avoid this, I implemented a **Catalog-Aware Schema** combined with backend service splitting:
+One of the biggest pain points in coupled architectures is that administrative actions compete for the same resources as public storefront traffic, and work-in-progress content often leaks to the live site. To avoid this, I implemented a **Catalog-Aware Schema** combined with backend service splitting. *(Note: This pattern is applied to both the Content Catalog for pages and components, and the Product Catalog for merchandising data).*
 
 ```mermaid
 graph TD
@@ -81,7 +81,7 @@ When a page is ready for production, editors trigger an automated "Sync to Onlin
 
 Because the CMS supports complex nested relationships (e.g., a Page has Slots, Slots have Components, Components might reference Products or Images), you cannot simply execute a raw SQL copy without violating foreign key constraints. 
 
-To ensure referential integrity during the deep copy, the `CatalogSyncService` builds a dependency graph of all `CatalogAwareModel` entities at startup. It uses **Kahn's Algorithm** to perform a topological sort, guaranteeing that independent entities (like Products) are synced before the entities that depend on them (like Product Carousel Components).
+To ensure referential integrity during the deep copy, the `CatalogSyncService` builds a dependency graph of all `CatalogAwareModel` entities at startup. It uses **Kahn's Algorithm** to perform a topological sort, guaranteeing that independent entities (like Products) are synced before the entities that depend on them (like Product Carousel Components). By flipping the mental "top-down" editor configuration (`Page -> Slot -> Component`) into a "bottom-up" relational insertion order (`Product -> Component -> Slot -> Page`), the algorithm gracefully bypasses foreign-key constraints during the deep copy.
 
 ```java
 // CatalogSyncService.java (Simplified)
@@ -91,7 +91,7 @@ public void syncCatalog(String catalogId) {
     Catalog online = catalogRepository.findByCatalogIdAndVersion(catalogId, CatalogVersion.ONLINE);
 
     // sortedEntityClasses is resolved at startup via topological sort
-    // e.g. Sync Order: Page -> Slot -> Component -> Product...
+    // e.g. Sync Order: Product -> Component -> Slot -> Page
     for (Class<? extends CatalogAwareModel> entityClass : sortedEntityClasses) {
         syncEntityClass(entityClass, staged, online, syncedCache);
     }
@@ -148,7 +148,7 @@ public abstract class Component {
 public class BannerComponent extends Component {
     
     @Column(name = "image_url")
-    @CmsField(displayName = "Image URL", type = "string", required = true)
+    @CmsField(displayName = "Image URL", type = "image", required = true)
     private String imageUrl;
     
     @Column(name = "title")
@@ -233,7 +233,7 @@ public void init() {
 
 The admin UI then makes a call to the backend (`/api/cms/components/types`), which returns the exact fields required for that component as JSON. 
 
-The frontend then loops through this schema, dynamically rendering text inputs, rich textareas, or checkboxes based on the metadata. 
+The frontend then loops through this schema, dynamically rendering text inputs, rich textareas, checkboxes, or searchable multi-selects based on the metadata. 
 
 ```tsx
 // cms-frontend/.../ComponentFormModal.tsx
@@ -255,12 +255,55 @@ const renderDynamicFields = () => {
               required={field.required}
               placeholder={field.placeholder}
             />
+          ) : field.type === 'multiple_products' ? (
+            <div className="space-y-2 mt-2">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={productSearch}
+                onChange={(e) => setProductSearch(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm mb-2"
+              />
+              <div className="max-h-60 overflow-y-auto border border-gray-200 rounded-md p-2 bg-gray-50">
+                {/* In a real system, this would fetch paginated data from an API */}
+                {products.filter(p => p.name.toLowerCase().includes(productSearch.toLowerCase()))
+                  .map(p => {
+                    const isChecked = (fields[field.name] || []).includes(p.code);
+                    return (
+                      <label key={p.id} className="flex items-start space-x-3 cursor-pointer p-1">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={(e) => {
+                            const selected = fields[field.name] || [];
+                            setFields({
+                              ...fields, 
+                              [field.name]: e.target.checked 
+                                ? [...selected, p.code] 
+                                : selected.filter((c: string) => c !== p.code)
+                            });
+                          }}
+                        />
+                        <span className="text-sm">{p.name}</span>
+                      </label>
+                    );
+                })}
+              </div>
+            </div>
           ) : field.type === 'boolean' ? (
             <input
               type="checkbox"
               checked={!!fields[field.name]}
               onChange={(e) => setFields({ ...fields, [field.name]: e.target.checked })}
             />
+          ) : field.type === 'image' ? (
+            <div className="mt-2">
+              <ImageUploader
+                value={fields[field.name] || ''}
+                onChange={(url) => setFields({ ...fields, [field.name]: url })}
+                placeholder={field.placeholder}
+              />
+            </div>
           ) : (
             <input
               type="text"
@@ -277,7 +320,9 @@ const renderDynamicFields = () => {
 };
 ```
 
-Because this frontend code is completely agnostic to the specific component types, if I add a `VideoPlayer` entity to the backend tomorrow, the admin UI automatically knows how to render a configuration form for it. For primitive field types, this eliminates the need to update the admin frontend codebase when adding new components! (Complex field types, like media pickers or relation drop-downs, would naturally still require dedicated widget mapping).
+Because this frontend code is completely agnostic to the specific component types, if I add a `VideoPlayer` entity to the backend tomorrow, the admin UI automatically knows how to render a configuration form for it. As long as the field types are known to the frontend registry, this eliminates the need to update the admin frontend codebase when adding new components. If a new, unknown field type is introduced, then UI development is required to map that type to a React component.
+
+For complex field types, the schema-driven approach is equally powerful. By simply setting `@CmsField(type = "image")` on a component entity's backend property, the CMS Admin UI is instructed to substitute a standard text input with a rich, drag-and-drop React `ImageUploader` component.
 
 ## Core Design 3: The Product Detail Template Pattern
 
@@ -285,19 +330,20 @@ Hardcoding product detail pages (PDPs) is a common mistake in early-stage storef
 
 In this architecture, Product Detail Pages (`/products/[code]`) are mapped to a single CMS page layout template.
 
-```text
-CMS Template (/products/detail)
-├── Slot: Top
-│   └── BANNER (e.g. Black Friday Sale)
-├── Slot: Main
-│   └── PRODUCT_DETAIL (Context-Aware Component)
-└── Slot: Bottom
-    └── PRODUCT_CAROUSEL (e.g. Related Products)
+```mermaid
+graph LR
+    CMS["CMS Template (/products/detail)"]
+    CMS --> Top["Slot: Top"]
+    Top --> Banner["BANNER (e.g. Black Friday Sale)"]
+    CMS --> Main["Slot: Main"]
+    Main --> ProductDetail["PRODUCT_DETAIL (Context-Aware Component)"]
+    CMS --> Bottom["Slot: Bottom"]
+    Bottom --> Carousel["PRODUCT_CAROUSEL (e.g. Related Products)"]
 
-Dynamic Storefront URLs
-├── /products/macbook-pro
-├── /products/iphone-16
-└── /products/galaxy-s25
+    URLs["Dynamic Storefront URLs"]
+    URLs --> Mac["/products/macbook-pro"]
+    URLs --> iPhone["/products/iphone-16"]
+    URLs --> Galaxy["/products/galaxy-s25"]
 ```
 
 We use a generic `/products/detail` page slug in the CMS as the master template. This allows editors to drag and drop standard components (banners, text blocks, carousels) around the main `PRODUCT_DETAIL` component.
@@ -342,6 +388,8 @@ export default function ComponentRenderer({ component }) {
 
 This is true decoupled architecture. The editor drops a `PRODUCT_CAROUSEL` into the "Hero" slot of the homepage via the admin UI and clicks "Sync to Online". The backend synchronizes the catalog, the storefront cache is evicted, and the very next visitor gets the new JSON payload. Next.js renders the carousel seamlessly—all without a single line of frontend code changing or deploying.
 
+
+
 ## The Takeaway
 
 Building a full-scale CMS is an immense undertaking, but prototyping the core mechanics reveals a lot about architectural trade-offs. 
@@ -350,11 +398,10 @@ By aggressively decoupling the read/write paths, leaning into JPA's polymorphic 
 
 ### What I Would Change
 
-If this architecture evolved beyond a prototype into a production product, a few core areas would need immediate refactoring:
+If this architecture evolved beyond a prototype into a production product, a few core areas would need immediate refactoring. For production deployment, I would opt for the more robust architectural patterns below, but since this is just a working concept demo, pragmatic shortcuts were taken to illustrate the core flow:
 
-1. **Targeted Cache Eviction**: Using `allEntries = true` is unacceptable at scale. The sync engine would need to compute the exact catalog IDs affected by a change and selectively evict only those Redis keys.
-2. **Media Management**: Currently, the CMS relies on raw string inputs for image URLs. A real system requires an integrated Media library (e.g. S3 uploads) and a custom frontend React widget to browse and select assets.
-3. **Workflow Approvals**: The Two-Stage catalog is a great foundation, but enterprise teams require an `IN_REVIEW` stage with role-based access control (RBAC) before syncing to `ONLINE`.
-4. **Build-Time Metadata Scanning**: Relying on Java Reflection at startup (`@PostConstruct`) works fine for a prototype, but a production application would ideally replace this with an Annotation Processor to generate the schema definitions at compile-time to optimize startup speed.
+1. **Event-Driven Cache Eviction**: I would implement an event-driven webhook pattern (using Kafka or Redis Pub/Sub) where the CMS Backend publishes a `CatalogSyncedEvent`. This allows the Storefront API to manage its own cache eviction and preserves true service autonomy, replacing the direct `@CacheEvict` shortcut currently used.
+2. **Workflow Approvals**: The Two-Stage catalog is a great foundation, but enterprise teams require an `IN_REVIEW` stage with role-based access control (RBAC) before syncing to `ONLINE`.
+3. **Build-Time Metadata Scanning**: I would use an Annotation Processor to generate the schema definitions at compile-time to align better with Spring's Ahead-Of-Time (AOT) compilation and GraalVM Native Image optimizations, replacing the runtime Java Reflection scanning (`@PostConstruct`).
 
 It's one thing to use a Headless CMS, but engineering one from scratch forces you to respect the complexity hiding behind the "Publish" button.

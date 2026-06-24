@@ -18,6 +18,7 @@ og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
 published: true
+mermaid: true
 ---
 
 > **Scope:** This is the skeleton design - the producer/consumer/Kafka shape and the reconciliation logic. It is not the full implementation plan.
@@ -49,21 +50,23 @@ So I'm dropping the snapshot-and-import model. The migration becomes a streaming
 
 ## The Shape
 
-```text
-SAP Commerce (source)
-    │
-    ├── Migration Cronjob  ── composite cursor, 100 rows / message ──┐
-    │                                                                │
-    └── After-Save Listener ── saves and removes, per row ───────────┤
-                                                                     ▼
-                                                              Kafka topic
-                                                                     │
-                                                                     ▼
-                                                         Spring Boot Consumer
-                                                         (last-write-wins)
-                                                                     │
-                                                                     ▼
-                                                         New Customer Platform
+```mermaid
+graph TD
+    subgraph SAP["SAP Commerce (source)"]
+        Cronjob["Migration Cronjob"]
+        Listener["After-Save Listener"]
+    end
+    
+    Topic["Kafka topic"]
+    
+    Consumer["Spring Boot Consumer<br/>(last-write-wins)"]
+    
+    Platform["New Customer Platform"]
+
+    Cronjob -- "composite cursor, 100 rows / message" --> Topic
+    Listener -- "saves and removes, per row" --> Topic
+    Topic --> Consumer
+    Consumer --> Platform
 ```
 
 Three pieces, joined by Kafka:

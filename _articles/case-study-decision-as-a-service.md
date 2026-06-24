@@ -18,6 +18,7 @@ og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
 published: true
+mermaid: true
 ---
 
 > **Disclaimer:** The Decision-as-a-Service codebase is internal company work and is not public. This case study covers the architecture and the design trade-offs I made.
@@ -48,17 +49,15 @@ Giving them the same deployment means the autoscaler is shared, they share the s
 
 So the platform is two Quarkus services with Kafka in the middle:
 
-```
-+-----------------------+        Kafka         +----------------------+
-|   Publishing Service  |  ───────────────▶   |  Evaluation Service  |
-|                       |    publish event    |                      |
-|   - Rule CRUD         |                     |   - Stateless eval   |
-|   - JSON → DRL        |                     |   - In-memory rules  |
-|   - Database storage  |                     |   - Hot-reload       |
-+-----------------------+                     +----------------------+
-        │                                             ▲
-        │   writes DRL payload                        │ reads
-        └────────────────►   Shared Database   ◄──────┘
+```mermaid
+graph TD
+    Pub["Publishing Service<br/>- Rule CRUD<br/>- JSON → DRL<br/>- Database storage"]
+    Eval["Evaluation Service<br/>- Stateless eval<br/>- In-memory rules<br/>- Hot-reload"]
+    DB[("Shared Database")]
+
+    Pub -- "Kafka: publish event" --> Eval
+    Pub -- "writes DRL payload" --> DB
+    DB -. "reads" .-> Eval
 ```
 
 **The Publishing Service** owns the API for managing rules, compiles JSON rule definitions into Drools' DRL on publish, stores the source of truth in a database, and saves the compiled DRL payload alongside it. After every publish or unpublish, it emits a Kafka event.
@@ -85,7 +84,7 @@ AND
 
 This is a tree. The root operator is `AND`, with two children:
 
-```
+```text
 AND
 ├── User.accountStatus = "ACTIVE"
 └── OR
@@ -214,12 +213,17 @@ This means rule authors don't need to coordinate with callers about cardinality.
 
 A rule goes through a simple state machine:
 
-```
-CREATE    → published=false, hasPendingChanges=false
-PUBLISH   → published=true,  hasPendingChanges=false
-UPDATE    → published=true,  hasPendingChanges=true
-PUBLISH   → published=true,  hasPendingChanges=false
-UNPUBLISH → published=false, hasPendingChanges=false
+```mermaid
+stateDiagram-v2
+    state "published=false, hasPendingChanges=false" as s1
+    state "published=true, hasPendingChanges=false" as s2
+    state "published=true, hasPendingChanges=true" as s3
+    
+    [*] --> s1 : CREATE
+    s1 --> s2 : PUBLISH
+    s2 --> s3 : UPDATE
+    s3 --> s2 : PUBLISH
+    s2 --> s1 : UNPUBLISH
 ```
 
 The `hasPendingChanges` flag tracks whether a published rule has been edited since its last publish. This gives authors a safe workflow: they can iterate on a rule without affecting what's live, then explicitly publish when ready. Unpublishing deletes the compiled DRL (while keeping the JSON definition intact) and notifies the Evaluation Service to rebuild without it.
