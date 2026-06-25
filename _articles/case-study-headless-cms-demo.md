@@ -21,21 +21,21 @@ published: false
 mermaid: true
 ---
 
-## The Premise
+## The Background
 
-Enterprise CMS platforms are often massive, doing everything from complex workflow approvals to multi-region content synchronization. But at their core, what most developers want is a way for editors to compose pages using a flexible component system, while keeping the frontend entirely decoupled.
+Most headless CMS tutorials stop at basic CRUD APIs and static content rendering. They rarely explore the architectural problems that emerge once editors expect production-like capabilities: staged publishing, reusable page composition, runtime schema discovery, and metadata-driven administration interfaces. 
 
-I recently built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) from scratch using Java 25, Spring Boot 4.0, and Next.js. Rather than focusing on production readiness, the project was designed to prototype five core architectural patterns:
+Rather than attempting to build a production-ready CMS, I focused on five architectural problems that commonly appear in enterprise content platforms:
 
 1. **Two-Stage Catalogs & Read/Write Separation**
 2. **Polymorphic Component Modeling in JPA**
-3. **Dynamic Schema-Driven Admin Forms**
+3. **Dynamic Schema-Driven Form Generation**
 4. **Product Detail Template Patterns**
 5. **Runtime Page Composition in Next.js**
 
-Instead of hardcoding layouts in the frontend, the CMS dictates what components appear in which "slots." The frontend simply fetches the schema, maps the component types to a registry, and renders them dynamically. This means content editors can add a carousel, banner, or text block to a page, and the storefront adapts instantly—no code changes, no frontend redeploys.
+By structuring the CMS around these problems, I eliminated hardcoded frontend layouts. Instead, the CMS dictates what components appear in which "slots." The storefront dynamically resolves the content, maps the component types to a local registry, and renders them. This allows content editors to add a carousel, banner, or text block to a page, and the storefront adapts without frontend redeploys.
 
-Here is a look at the technical decisions that made this work cleanly.
+To demonstrate these concepts in action, I built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) using Java 25, Spring Boot 4.0, and Next.js. This case study covers the architecture and the design trade-offs I made.
 
 ## The Architecture: Two-Stage Catalogs and Read/Write Separation
 
@@ -70,10 +70,10 @@ graph TD
     Storefront_API -- "Cache Miss (Fetch)" --> DB
 ```
 
-*   **Storefront Backend (Port 8080):** A highly optimized, read-only API layer scoped strictly to the `ONLINE` catalog. It talks to the database but aggressively caches everything in Redis. It uses `@Transactional(readOnly=true)` and `JOIN FETCH` queries to prevent N+1 issues when eager-loading components.
+*   **Storefront Backend (Port 8080):** A read-optimized API layer scoped strictly to the `ONLINE` catalog. It talks to the database but utilizes a Redis caching layer. It uses `@Transactional(readOnly=true)` and `JOIN FETCH` queries to prevent N+1 issues when eager-loading components.
 *   **CMS Backend (Port 8081):** A write-heavy administrative API scoped to the `STAGED` catalog. This is where content mutations happen (Create/Update/Delete), safely hidden from the public.
 
-This read/write service separation keeps things incredibly simple. Editors work exclusively in the `STAGED` environment. 
+This read/write service separation keeps the boundary clear. Editors work exclusively in the `STAGED` environment. 
 
 ### The Synchronization Engine
 
@@ -81,7 +81,22 @@ When a page is ready for production, editors trigger an automated "Sync to Onlin
 
 Because the CMS supports complex nested relationships (e.g., a Page has Slots, Slots have Components, Components might reference Products or Images), you cannot simply execute a raw SQL copy without violating foreign key constraints. 
 
-To ensure referential integrity during the deep copy, the `CatalogSyncService` builds a dependency graph of all `CatalogAwareModel` entities at startup. It uses **Kahn's Algorithm** to perform a topological sort, guaranteeing that independent entities (like Products) are synced before the entities that depend on them (like Product Carousel Components). By flipping the mental "top-down" editor configuration (`Page -> Slot -> Component`) into a "bottom-up" relational insertion order (`Product -> Component -> Slot -> Page`), the algorithm gracefully bypasses foreign-key constraints during the deep copy.
+To ensure referential integrity during the deep copy, the `CatalogSyncService` builds a dependency graph of all `CatalogAwareModel` entities at startup. It uses **Kahn's Algorithm** to perform a topological sort, guaranteeing that independent base entities (like Products) are synced before the entities that depend on them (like Components, Slots, and Pages).
+
+```text
+Dependency Tree (Top-Down Editor Config)
+Page
+ └── Slots
+      └── Components
+           └── Products (e.g. for Carousels)
+
+↓
+
+Resolved Sync Order (Bottom-Up Relational Insertion)
+Product ──> Component ──> Slot ──> Page
+```
+
+By resolving the top-down content composition hierarchy into a relation-safe database insertion order, the sort algorithm guarantees that dependent child records are never inserted before their parent references.
 
 ```java
 // CatalogSyncService.java (Simplified)
@@ -97,28 +112,39 @@ public void syncCatalog(String catalogId) {
     }
 }
 ```
-
-During this synchronization, the CMS Backend runs targeted `@CacheEvict` commands against Redis to invalidate the storefront's cache:
+Upon completing a catalog synchronization (both universal and single-item sync) in the CMS Backend, the system invalidates the storefront's cache by directly deleting keys from the shared Redis instance. Since cache invalidation spans two independent Spring Boot applications (the CMS backend on port 8081 and the Storefront backend on port 8080), direct Redis key deletion was used instead of local Spring Cache annotations. This is managed by a dedicated `StorefrontCacheEvictionService` called after the sync transaction completes:
 
 ```java
-// CMS Backend (Write API) - CatalogController
-@PostMapping("/api/sync/{catalogId}")
-@CacheEvict(value = {"page", "slot", "products"}, allEntries = true)
-public ResponseEntity<Void> syncCatalog(@PathVariable String catalogId) {
-    catalogSyncService.syncCatalog(catalogId);
-    return ResponseEntity.ok().build();
+// StorefrontCacheEvictionService.java
+@Service
+@RequiredArgsConstructor
+public class StorefrontCacheEvictionService {
+    private final StringRedisTemplate redisTemplate;
+
+    public void evictStorefrontCaches() {
+        evictByPattern("pages::*");
+        evictByPattern("slots::*");
+        evictByPattern("products::*");
+    }
+
+    private void evictByPattern(String pattern) {
+        Set<String> keys = redisTemplate.keys(pattern);
+        if (keys != null && !keys.isEmpty()) {
+            redisTemplate.delete(keys);
+        }
+    }
 }
 ```
 
-It's worth noting the architectural tradeoffs made here. Using `allEntries = true` trades caching efficiency for implementation simplicity. Evicting the entire cache on sync means publishing one page invalidates all other pages—a blast-radius tradeoff accepted for this prototype. Furthermore, this cross-service eviction relies on both the CMS and Storefront applications sharing the same Redis connection and Spring Cache key configuration.
+Evicting the entire cache pattern trades caching efficiency for implementation simplicity. Deferring the storefront cache eviction until the final synchronization to `ONLINE` completes ensures that work-in-progress edits in the `STAGED` catalog do not cause premature cache misses or database hits for customers viewing the active site.
 
-Despite this broad eviction, the next time a customer hits the Storefront Backend for that content, it registers a cache miss, fetches the newly synced `ONLINE` data from the Database, and caches it again (usually with a 15-to-30-minute TTL). This provides immediate consistency for the editor upon publishing, blazing fast reads for the user, and zero risk of exposing half-finished pages.
+Once the cache is evicted after sync, the next customer request hits the storefront, registers a cache miss, fetches the newly synced `ONLINE` data from the database, and caches it again. This isolation keeps administrative modifications completely separate from storefront delivery.
 
 ## Core Design 1: Polymorphic Component Modeling in JPA
 
 A flexible CMS needs to support various component types (e.g., `BANNER`, `PARAGRAPH`, `PRODUCT_CAROUSEL`). Storing these cleanly in a relational database can be tricky. You generally have three options: a massive table with nullable columns, a JSON blob column, or table inheritance.
 
-I opted for JPA's `JOINED` inheritance strategy. This gives us a clean base `components` table containing shared fields (`id`, `uid`, `name`, `type`), separate subclass tables for specific fields (e.g., `banner_components` has `image_url` and `cta_url`), and a join table `slot_components` mapping components to slots with a `sort_order` column.
+I opted for JPA's `JOINED` inheritance strategy. This provided a clean base `components` table containing shared fields (`id`, `uid`, `name`, `type`), separate subclass tables for specific fields (e.g., `banner_components` has `image_url` and `cta_url`), and a join table `slot_components` mapping components to slots with a `sort_order` column.
 
 ```java
 @Entity
@@ -168,13 +194,13 @@ public class BannerComponent extends Component {
 }
 ```
 
-This ensures referential integrity and strict typing at the database level, unlike dumping everything into a JSONB column. While `JOINED` inheritance does introduce a performance tradeoff—requiring an SQL `JOIN` per subclass on every fetch—this read cost is entirely offset by our aggressive Redis caching layer on the storefront API. Instead of storing the slots reference on the component itself, the codebase decouples them by using a `slot_components` join table mapped in `Slot` via `@ManyToMany` with `@OrderColumn(name = "sort_order")` keeping components ordered.
+This ensures referential integrity and strict typing at the database level, unlike dumping everything into a JSONB column. While `JOINED` inheritance does introduce a performance tradeoff—requiring an SQL `JOIN` per subclass on every fetch—this read cost is mitigated by the Redis caching layer on the storefront API. Instead of storing the slots reference on the component itself, the codebase decouples them by using a `slot_components` join table mapped in `Slot` via `@ManyToMany` with `@OrderColumn(name = "sort_order")` keeping components ordered.
 
-When returning data through the APIs, we use Jackson's `@JsonTypeInfo` and `@JsonSubTypes` to automatically serialize and deserialize the correct subclasses based on the `type` field. This means the frontend receives strongly typed JSON payloads without the backend needing massive `switch` statements during serialization.
+When returning data through the APIs, I used Jackson's `@JsonTypeInfo` and `@JsonSubTypes` to automatically serialize and deserialize the correct subclasses based on the `type` field. This means the frontend receives strongly typed JSON payloads without the backend needing massive `switch` statements during serialization.
 
 ### Typing Polymorphism in Next.js
 
-On the Next.js frontend, this polymorphic JSON payload is elegantly modeled using **TypeScript Discriminated Unions**. By defining a literal `type` on each interface, TypeScript can automatically narrow the specific component type at compile-time:
+On the Next.js frontend, this polymorphic JSON payload is mapped using **TypeScript Discriminated Unions**. By defining a literal `type` on each interface, TypeScript can automatically narrow the specific component type at compile-time:
 
 ```typescript
 // storefront-frontend/src/types/index.ts
@@ -210,7 +236,7 @@ export type Component =
   | QuickMenuComponent;
 ```
 
-Because of this strict typing, when the Next.js `ComponentRenderer` iterates through the list of generic components and maps them to their respective React components, the props passed to them are completely type-safe without needing any manual casting.
+Because of this strict typing, when the Next.js `ComponentRenderer` iterates through the list of generic components and maps them to their respective React components, the props passed to them are type-safe without needing any manual casting.
 
 ## Core Design 2: Dynamic Schema-Driven Admin Forms
 
@@ -239,98 +265,31 @@ public void init() {
 }
 ```
 
-The admin UI then makes a call to the backend (`/api/cms/components/types`), which returns the exact fields required for that component as JSON. 
+The admin UI queries the backend list of component types via `/api/cms/components/types` and fetches the specific field requirements for the selected component via `/api/cms/components/types/{type}/schema`.
 
-The frontend then loops through this schema, dynamically rendering text inputs, rich textareas, checkboxes, or searchable multi-selects based on the metadata. 
+The frontend maps these schema fields to form components dynamically:
 
 ```tsx
-// cms-frontend/.../ComponentFormModal.tsx
-const renderDynamicFields = () => {
-  if (!schema || !schema.fields) return null;
-
-  return (
-    <div className="space-y-4">
-      {schema.fields.map((field: any) => (
-        <div key={field.name} className="field-group">
-          <label>
-            {field.displayName} {field.required && <span className="text-red-500">*</span>}
-          </label>
-          
-          {field.type === 'text' ? (
-            <textarea
-              value={fields[field.name] || ''}
-              onChange={(e) => setFields({ ...fields, [field.name]: e.target.value })}
-              required={field.required}
-              placeholder={field.placeholder}
-            />
-          ) : field.type === 'multiple_products' ? (
-            <div className="space-y-2 mt-2">
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={productSearch}
-                onChange={(e) => setProductSearch(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm mb-2"
-              />
-              <div className="max-h-60 overflow-y-auto border border-gray-200 rounded-md p-2 bg-gray-50">
-                {/* In a real system, this would fetch paginated data from an API */}
-                {products.filter(p => p.name.toLowerCase().includes(productSearch.toLowerCase()))
-                  .map(p => {
-                    const isChecked = (fields[field.name] || []).includes(p.code);
-                    return (
-                      <label key={p.id} className="flex items-start space-x-3 cursor-pointer p-1">
-                        <input
-                          type="checkbox"
-                          checked={isChecked}
-                          onChange={(e) => {
-                            const selected = fields[field.name] || [];
-                            setFields({
-                              ...fields, 
-                              [field.name]: e.target.checked 
-                                ? [...selected, p.code] 
-                                : selected.filter((c: string) => c !== p.code)
-                            });
-                          }}
-                        />
-                        <span className="text-sm">{p.name}</span>
-                      </label>
-                    );
-                })}
-              </div>
-            </div>
-          ) : field.type === 'boolean' ? (
-            <input
-              type="checkbox"
-              checked={!!fields[field.name]}
-              onChange={(e) => setFields({ ...fields, [field.name]: e.target.checked })}
-            />
-          ) : field.type === 'image' ? (
-            <div className="mt-2">
-              <ImageUploader
-                value={fields[field.name] || ''}
-                onChange={(url) => setFields({ ...fields, [field.name]: url })}
-                placeholder={field.placeholder}
-              />
-            </div>
-          ) : (
-            <input
-              type="text"
-              value={fields[field.name] || ''}
-              onChange={(e) => setFields({ ...fields, [field.name]: e.target.value })}
-              required={field.required}
-              placeholder={field.placeholder}
-            />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
+// cms-frontend/.../ComponentFormModal.tsx (Simplified Dynamic Field Mapper)
+const renderDynamicFields = () => (
+  <div className="space-y-4">
+    {schema?.fields.map((field) => (
+      <div key={field.name} className="flex flex-col gap-1 text-sm">
+        <label className="font-semibold">{field.displayName}</label>
+        {field.type === 'image' ? (
+          <ImageUploader value={fields[field.name]} onChange={(url) => setFields({ ...fields, [field.name]: url })} />
+        ) : (
+          <input type="text" value={fields[field.name]} onChange={(e) => setFields({ ...fields, [field.name]: e.target.value })} />
+        )}
+      </div>
+    ))}
+  </div>
+);
 ```
 
-Because this frontend code is completely agnostic to the specific component types, if I add a `VideoPlayer` entity to the backend tomorrow, the admin UI automatically knows how to render a configuration form for it. As long as the field types are known to the frontend registry, this eliminates the need to update the admin frontend codebase when adding new components. If a new, unknown field type is introduced, then UI development is required to map that type to a React component.
+Because this form renderer is schema-driven and agnostic to specific component domains, adding a new component (like a `VideoPlayerComponent`) only requires creating the backend Java entity with correct annotations. As long as the field types (like strings, booleans, and image paths) are already known to the frontend registry, there is no need to update the admin frontend codebase. If a new, unknown field type is introduced, frontend development is only required once to map that specific field type to a React component.
 
-For complex field types, the schema-driven approach is equally powerful. By simply setting `@CmsField(type = "image")` on a component entity's backend property, the CMS Admin UI is instructed to substitute a standard text input with a rich, drag-and-drop React `ImageUploader` component.
+By simply setting `@CmsField(type = "image")` on a component entity's backend property, the CMS Admin UI is instructed to substitute a standard text input with a rich, drag-and-drop React `ImageUploader` component.
 
 ## Core Design 3: The Product Detail Template Pattern
 
@@ -354,23 +313,77 @@ graph LR
     URLs --> Galaxy["/products/galaxy-s25"]
 ```
 
-We use a generic `/products/detail` page slug in the CMS as the master template. This allows editors to drag and drop standard components (banners, text blocks, carousels) around the main `PRODUCT_DETAIL` component.
+I used a generic `/products/detail` page slug in the CMS as the master template. This allows editors to drag and drop standard components (banners, text blocks, carousels) around the main `PRODUCT_DETAIL` component.
+
+This approach cleanly separates bounded contexts: the CMS owns the page composition and slot structure, while the Product Service owns the core business data (pricing, stock levels, product metadata). The `PRODUCT_DETAIL` component acts as the integration point between these domains. At runtime, the storefront fetches the layout composition from the CMS, fetches the product domain data from the product service, and dynamically binds the product context to the layout tree.
+
+### The Request and Sync Lifecycle
+
+To visualize how content moves from editing to public delivery and caching, consider this lifecycle:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Editor
+    actor Customer
+    participant CMS as CMS Backend
+    participant DB as "Database (Postgres)"
+    participant Redis as Redis Cache
+    participant SF as "Storefront UI (Next.js)"
+
+    Editor->>CMS: Triggers Sync
+    activate CMS
+    CMS->>DB: Deep copy STAGED to ONLINE (Kahn's Order)
+    CMS->>Redis: Invalidate cache (StorefrontCacheEvictionService)
+    deactivate CMS
+    
+    Customer->>SF: Visits /products/macbook-pro
+    activate SF
+    SF->>Redis: Query cache (pages/slots)
+    Note over SF,Redis: Cache Miss
+    SF->>DB: Fetch ONLINE data (JOIN FETCH queries)
+    SF->>Redis: Populate cache (TTL 15-30 mins)
+    SF-->>Customer: Renders page with product details
+    deactivate SF
+```
 
 At runtime, the storefront router intercepts a request for `/products/macbook-pro`. It first attempts to load a custom product-specific template page matching `/products/${code}` (e.g. `/products/macbook-pro`). If that is not found, it falls back to the `/products/detail` master template page. The router fetches the template, fetches the product data from the catalog, and binds that context to the child components.
 
-If marketing wants to add a Black Friday banner above all products, they simply add a `BANNER` component to the top slot of the template in the CMS. Every product page across the entire catalog updates instantly.
+If marketing wants to add a Black Friday banner above all products, they simply add a `BANNER` component to the top slot of the template in the CMS. Every product page across the entire catalog updates without needing a developer to touch the product service.
 
 ## Core Design 4: Runtime Page Composition in Next.js
 
-The magic happens on the public storefront. The Next.js app knows absolutely nothing about the layout of a page. 
+On the public storefront, the Next.js application has zero static knowledge of a page's layout or structure. Instead of hardcoding layout structures, the storefront dynamically translates the component composition payload delivered by the CMS backend at runtime.
 
-When a user visits `/about-us`, the Next.js app hits the Storefront API. To avoid N+1 network requests, it does this in two steps:
-1. Fetch the page metadata and available slots (`GET /api/pages/about-us`).
-2. Batch fetch all components for those slots (`POST /api/slots/details`).
+### Server-Side Data Fetching & Waterfall Prevention
 
-By leveraging Next.js React Server Components (RSC), these fetches happen entirely on the server, avoiding client-side waterfalls. 
+When a customer requests a path like `/about-us`, the storefront must render a tree of nested entities: `Page -> Slots -> Components`. If fetched naively from the client side, this nested tree structure triggers a series of sequential HTTP requests, resulting in client-side latency waterfalls.
 
-In Next.js, we maintain a strict `ComponentRegistry`. When iterating over the components payload, the frontend dynamically loads the corresponding React component based on the `type` string.
+To prevent this, the Next.js storefront handles page resolution entirely within **React Server Components (RSC)**. These fetches execute directly on the server side, running closer to the Storefront API and the shared Redis cache. To optimize database queries and network payloads, page resolution is executed in a two-stage server-side fetch:
+
+1. **Page Resolution:** The router fetches the page shell, SEO metadata, and lists of slot IDs (`GET /api/pages/about-us`).
+2. **Batch Slot Fetching:** Instead of fetching slot contents sequentially (an N+1 waterfall), the storefront executes a single, batched request to retrieve all slots and their serialized components in one round trip (`POST /api/slots/details`).
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Browser as "Browser Client"
+    participant Next as "Next.js Router (RSC)"
+    participant API as "Storefront API"
+
+    Browser->>Next: Request /about-us
+    activate Next
+    Next->>API: GET page shell & slots (Page Resolution)
+    API-->>Next: Return Slot IDs
+    Next->>API: POST batched slot details (Batch Slot Fetching)
+    API-->>Next: Return component details
+    Next-->>Browser: Registry Dispatch & Static HTML stream
+    deactivate Next
+```
+
+### Reducing Browser JavaScript Load
+
+Once the slot and component payload is received, the storefront processes the components via a strict, type-safe registry:
 
 ```tsx
 // ComponentRenderer.tsx
@@ -408,22 +421,23 @@ export default function ComponentRenderer({ component, product }: ComponentRende
 }
 ```
 
-This is true decoupled architecture. The editor drops a `PRODUCT_CAROUSEL` into the "Hero" slot of the homepage via the admin UI and clicks "Sync to Online". The backend synchronizes the catalog, the storefront cache is evicted, and the very next visitor gets the new JSON payload. Next.js renders the carousel seamlessly—all without a single line of frontend code changing or deploying.
+This dynamic rendering pattern introduces a major performance benefit when executed within React Server Components: **rendering static CMS content requires no extra interactive JavaScript to run in the browser**.
+
+Because slot resolution, registry dispatching, and type checking are executed entirely on the server side, Next.js streams the server-rendered HTML of static presentation components (like `BANNER` and `PARAGRAPH`) directly to the browser. The customer receives lightweight HTML without downloading or executing extra scripts to rebuild the layout in the browser.
+
+The component registry itself—which dynamically resolves type strings to React component imports—remains server-bound. This keeps component resolution explicit at compile time, preserves compile-time type safety across the TypeScript discriminated union, and allows missing component types to fail predictably on the server using standard Error Boundaries.
 
 
 
-## The Takeaway
+## What I'd Do Differently
 
-Building a full-scale CMS is an immense undertaking, but prototyping the core mechanics reveals a lot about architectural trade-offs. 
+If this architecture evolved beyond a prototype into a production product, a few core areas would need refactoring. Since this is a working concept demo, pragmatic shortcuts were taken:
 
-By aggressively decoupling the read/write paths, leaning into JPA's polymorphic mapping for strict database typing, implementing template-driven pages, and relying on runtime dynamic rendering on the frontend, you get an incredibly resilient and flexible system. The frontend becomes a pure presentation layer, the database enforces strict schemas, and the CMS administration panel dictates the experience dynamically.
+1. **Event-Driven Cache Eviction**: I would implement an event-driven webhook pattern (using Kafka or Redis Pub/Sub) where the CMS Backend publishes a `CatalogSyncedEvent`. This allows the Storefront API to manage its own cache eviction and preserves true service autonomy, replacing the direct Redis pattern deletion shortcut currently used by the CMS backend.
+2. **Fine-Grained Cache Invalidation**: Instead of evicting entire Redis patterns (`pages::*`, `slots::*`) upon editing, a production system should use content-level invalidation keyed by specific page slugs or component IDs. This would prevent the storefront from experiencing database-heavy cache stampedes whenever a single page is edited.
+3. **Workflow Approvals**: The Two-Stage catalog is a great foundation, but enterprise teams require an `IN_REVIEW` stage with role-based access control (RBAC) before syncing to `ONLINE`.
+4. **Build-Time Metadata Scanning**: I would use an Annotation Processor to generate the schema definitions at compile-time to align better with Spring's Ahead-Of-Time (AOT) compilation and GraalVM Native Image optimizations, replacing the runtime Java Reflection scanning (`@PostConstruct`).
 
-### What I Would Change
+## Final Thoughts
 
-If this architecture evolved beyond a prototype into a production product, a few core areas would need immediate refactoring. For production deployment, I would opt for the more robust architectural patterns below, but since this is just a working concept demo, pragmatic shortcuts were taken to illustrate the core flow:
-
-1. **Event-Driven Cache Eviction**: I would implement an event-driven webhook pattern (using Kafka or Redis Pub/Sub) where the CMS Backend publishes a `CatalogSyncedEvent`. This allows the Storefront API to manage its own cache eviction and preserves true service autonomy, replacing the direct `@CacheEvict` shortcut currently used.
-2. **Workflow Approvals**: The Two-Stage catalog is a great foundation, but enterprise teams require an `IN_REVIEW` stage with role-based access control (RBAC) before syncing to `ONLINE`.
-3. **Build-Time Metadata Scanning**: I would use an Annotation Processor to generate the schema definitions at compile-time to align better with Spring's Ahead-Of-Time (AOT) compilation and GraalVM Native Image optimizations, replacing the runtime Java Reflection scanning (`@PostConstruct`).
-
-It's one thing to use a Headless CMS, but engineering one from scratch forces you to respect the complexity hiding behind the "Publish" button.
+Building the editor interface is relatively straightforward. Building the publishing pipeline, synchronization model, cache strategy, and runtime composition is where a CMS becomes an architectural problem rather than a CRUD application.
