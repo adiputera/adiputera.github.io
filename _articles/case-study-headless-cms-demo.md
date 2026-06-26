@@ -3,8 +3,8 @@ layout: article
 title: "Building a Headless CMS Demo: Catalog Publishing, Runtime Composition, and Dynamic Forms"
 description: "A technical walkthrough of a headless CMS demo application exploring two-stage catalog publishing, runtime page composition, polymorphic models, and schema-driven forms."
 keywords: "Headless CMS, runtime page composition, Next.js, Spring Boot, polymorphic JPA, cache eviction"
-date: 2026-06-17
-date_modified: 2026-06-17
+date: 2026-06-26
+date_modified: 2026-06-26
 permalink: /case-studies/headless-cms-demo-runtime-composition
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, redis]
@@ -25,7 +25,7 @@ mermaid: true
 
 Most headless CMS tutorials stop at basic CRUD APIs and static content rendering. They rarely explore the architectural problems that emerge once editors expect production-like capabilities: staged publishing, reusable page composition, runtime schema discovery, and metadata-driven administration interfaces. 
 
-Rather than attempting to build a production-ready CMS, I focused on five architectural problems that commonly appear in enterprise content platforms:
+Rather than attempting to build a production-ready system, this project serves as a Proof of Concept (PoC) or simulation. I focused on addressing five fundamental architectural problems that commonly appear in enterprise content platforms in a pragmatic way:
 
 1. **Two-Stage Catalogs & Read/Write Separation**
 2. **Polymorphic Component Modeling in JPA**
@@ -33,9 +33,9 @@ Rather than attempting to build a production-ready CMS, I focused on five archit
 4. **Product Detail Template Patterns**
 5. **Runtime Page Composition in Next.js**
 
-By structuring the CMS around these problems, I eliminated hardcoded frontend layouts. Instead, the CMS dictates what components appear in which "slots." The storefront dynamically resolves the content, maps the component types to a local registry, and renders them. This allows content editors to add a carousel, banner, or text block to a page, and the storefront adapts without frontend redeploys.
+By structuring the CMS around these problems, I eliminated hardcoded frontend layouts. Instead, the CMS dictates what components appear in which "slots." The storefront dynamically resolves the content, maps the component types to a local registry, and renders them. This allows content editors to add a carousel, banner, or text block to a page, and the storefront adapts without frontend redeploys (provided the component type and its fields are already registered in the storefront's registry).
 
-To demonstrate these concepts in action, I built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) using Java 25, Spring Boot 4.0, and Next.js. This case study covers the architecture and the design trade-offs I made.
+To demonstrate these concepts in action, I built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) using the latest Java and Spring Boot (Java 25 and Spring Boot 4.0) alongside Next.js. This case study covers the architecture and the design trade-offs I made.
 
 ## The Architecture: Two-Stage Catalogs and Read/Write Separation
 
@@ -77,11 +77,11 @@ This read/write service separation keeps the boundary clear. Editors work exclus
 
 ### The Synchronization Engine
 
-When a page is ready for production, editors trigger an automated "Sync to Online" operation. This is arguably the most unique part of the architecture, heavily inspired by enterprise systems like SAP Commerce.
+When a page is ready for production, editors trigger an automated "Sync to Online" operation. This is arguably the most unique part of the architecture.
 
 Because the CMS supports complex nested relationships (e.g., a Page has Slots, Slots have Components, Components might reference Products or Images), you cannot simply execute a raw SQL copy without violating foreign key constraints. 
 
-To ensure referential integrity during the deep copy, the `CatalogSyncService` builds a dependency graph of all `CatalogAwareModel` entities at startup. It uses **Kahn's Algorithm** to perform a topological sort, guaranteeing that independent base entities (like Products) are synced before the entities that depend on them (like Components, Slots, and Pages).
+To ensure referential integrity during the deep copy, the `CatalogSyncService` builds a dependency graph of all `CatalogAwareModel` entities at startup. It uses **Kahn's Algorithm** to perform a topological sort, guaranteeing that independent base entities (like Products) are synced before the entities that depend on them (like Components, Slots, and Pages). *(Note: This demo operates under a directed acyclic graph (DAG) model, where circular references between components are intentionally left out of scope).*
 
 ```text
 Dependency Tree (Top-Down Editor Config)
@@ -128,6 +128,8 @@ public class StorefrontCacheEvictionService {
     }
 
     private void evictByPattern(String pattern) {
+        // Note: redisTemplate.keys() is used here for structural simplicity in this demo.
+        // In a live production environment, non-blocking SCAN commands should be used to avoid blocking the Redis event loop.
         Set<String> keys = redisTemplate.keys(pattern);
         if (keys != null && !keys.isEmpty()) {
             redisTemplate.delete(keys);
@@ -138,7 +140,7 @@ public class StorefrontCacheEvictionService {
 
 Evicting the entire cache pattern trades caching efficiency for implementation simplicity. Deferring the storefront cache eviction until the final synchronization to `ONLINE` completes ensures that work-in-progress edits in the `STAGED` catalog do not cause premature cache misses or database hits for customers viewing the active site.
 
-Once the cache is evicted after sync, the next customer request hits the storefront, registers a cache miss, fetches the newly synced `ONLINE` data from the database, and caches it again. This isolation keeps administrative modifications completely separate from storefront delivery.
+Once the cache is evicted after sync, the next customer request hits the storefront, registers a cache miss, fetches the newly synced `ONLINE` data from the database, and caches it again. This isolation keeps administrative write traffic isolated from storefront read traffic at the application layer, even though they share database and cache instances.
 
 ## Core Design 1: Polymorphic Component Modeling in JPA
 
@@ -421,11 +423,11 @@ export default function ComponentRenderer({ component, product }: ComponentRende
 }
 ```
 
-This dynamic rendering pattern introduces a major performance benefit when executed within React Server Components: **rendering static CMS content requires no extra interactive JavaScript to run in the browser**.
+This dynamic rendering pattern relies on a key architectural property of React Server Components: **it minimizes the JavaScript shipped to the browser by rendering static presentation components entirely on the server**.
 
-Because slot resolution, registry dispatching, and type checking are executed entirely on the server side, Next.js streams the server-rendered HTML of static presentation components (like `BANNER` and `PARAGRAPH`) directly to the browser. The customer receives lightweight HTML without downloading or executing extra scripts to rebuild the layout in the browser.
+Because slot resolution, registry dispatching, and type checking are executed entirely on the server side, Next.js streams the server-rendered HTML of static components (like `BANNER` and `PARAGRAPH`) directly to the browser without extra client-side hydration scripts. Interactive features or dynamic client components (e.g. adding products to cart, sliding carousels, or loading real-time stock levels) will still leverage `'use client'` hooks, but the baseline presentation framework remains client-JS-free.
 
-The component registry itself—which dynamically resolves type strings to React component imports—remains server-bound. This keeps component resolution explicit at compile time, preserves compile-time type safety across the TypeScript discriminated union, and allows missing component types to fail predictably on the server using standard Error Boundaries.
+The component registry itself—which dynamically resolves type strings to React component imports—remains server-bound. This keeps component resolution explicit at compile time, preserves compile-time type safety across the TypeScript discriminated union, and allows missing component types to fail silently on the server side, logged as a server-side error without crashing the page.
 
 
 
