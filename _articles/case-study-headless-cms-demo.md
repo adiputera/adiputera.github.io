@@ -3,8 +3,8 @@ layout: article
 title: "Building a Headless CMS Demo: Catalog Publishing, Runtime Composition, and Dynamic Forms"
 description: "A technical walkthrough of a headless CMS demo application exploring two-stage catalog publishing, runtime page composition, polymorphic models, and schema-driven forms."
 keywords: "Headless CMS, runtime page composition, Next.js, Spring Boot, polymorphic JPA, cache eviction"
-date: 2026-06-26
-date_modified: 2026-06-26
+date: 2026-06-27
+date_modified: 2026-06-27
 permalink: /case-studies/headless-cms-demo-runtime-composition
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, redis]
@@ -17,8 +17,16 @@ image: /images/articles/case-study-headless-cms-demo/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
-published: false
+published: true
 mermaid: true
+---
+
+## Table of Contents
+{: .no_toc}
+
+* TOC
+{:toc}
+
 ---
 
 ## The Background
@@ -430,6 +438,194 @@ Because slot resolution, registry dispatching, and type checking are executed en
 The component registry itself—which dynamically resolves type strings to React component imports—remains server-bound. This keeps component resolution explicit at compile time, preserves compile-time type safety across the TypeScript discriminated union, and allows missing component types to fail silently on the server side, logged as a server-side error without crashing the page.
 
 
+### The Result
+
+To see these architectural patterns in action, the end-to-end flow of the running application demonstrates how page composition, publishing stages, and metadata-driven schemas operate in practice.
+
+#### 1. Checking the Pages Menu in the CMS Admin Portal
+Upon accessing the CMS Admin UI (running on port `3001`), the pages menu displays the current page tree. Initially, the environment only contains the default homepage.
+
+![CMS Pages Menu Before](/images/articles/case-study-headless-cms-demo/pages-menu-before.webp)
+
+#### 2. Creating a New Page
+I created a new page by specifying its title and slug (e.g., `/new-page`). This page initially begins as a `DRAFT` in the two-stage catalog, isolating it from the public storefront.
+
+![Create New Page Form](/images/articles/case-study-headless-cms-demo/create-new-page.webp)
+
+The newly created draft page then appears in the administration list:
+
+![Pages Menu Page Added](/images/articles/case-study-headless-cms-demo/pages-menu-page-added.webp)
+
+#### 3. Synchronizing the Catalog
+Synchronizing the catalog updates the page stage to `ONLINE`. This action triggers the backend publishing logic, updating the read-optimized storefront projections and invalidating the active storefront cache.
+
+![Pages Menu Page Synced](/images/articles/case-study-headless-cms-demo/pages-menu-page-synced.webp)
+
+#### 4. Accessing the Storefront Page (Blank State)
+Navigating to the Next.js storefront at `http://localhost:3000/new-page` reveals that the slug resolves successfully, rendering a blank canvas. No components are displayed because no layout slots have been configured in the CMS database yet.
+
+![Storefront New Page Blank](/images/articles/case-study-headless-cms-demo/storefront-new-page-blank.webp)
+
+#### 5. Editing Page Structure: Adding Slot 1
+Managing the page layout inside the CMS Admin UI begins with an empty configuration containing no slots.
+
+![Manage Page Blank Canvas](/images/articles/case-study-headless-cms-demo/manage-page-blank.webp)
+
+I registered the first slot (`slot-1`) to define the base layout structure:
+
+![Manage Page Add Slot 1 Blank](/images/articles/case-study-headless-cms-demo/manage-page-add-slot-1-blank.webp)
+
+#### 6. Adding a Banner Component (Schema-Driven Form)
+When adding a component to `slot-1`, I selected the `Hero Banner` component type. 
+
+Crucially, **the CMS Admin UI does not have a hardcoded form for this component**. The input fields (`title`, `imageUrl`, `CTA`, `subtitle`) and their respective data types are dynamically loaded from the backend's metadata API schema. 
+
+![Add New Component Banner Pop Up](/images/articles/case-study-headless-cms-demo/add-new-component-pop-up.webp)
+
+With the properties configured, `slot-1` is saved into the draft catalog layout:
+
+![Manage Page Slot 1 Filled](/images/articles/case-study-headless-cms-demo/manage-pad-slot-1-filled.webp)
+
+#### 7. Viewing the Live Storefront Banner
+After syncing the catalog to `ONLINE` and reloading `/new-page` on the storefront, the Next.js server component fetches the new layout configuration, maps the `BANNER` type string to its registry, and streams the server-rendered banner.
+
+![Storefront New Page Banner Added](/images/articles/case-study-headless-cms-demo/storefront-new-page-banner-added.webp)
+
+#### 8. Adding Slot 2 and a Product Carousel Component
+To append a product list, I registered a second slot (`slot-2`) and selected the `PRODUCT_CAROUSEL` component. The schema-driven form automatically adapted to prompt for the carousel's parameters, such as the query constraints for products.
+
+![Add New Component Product Carousel](/images/articles/case-study-headless-cms-demo/add-new-component-product-carousel.webp)
+
+#### 9. Managing the Page with Two Slots
+The page configuration now defines a structured hierarchy with two active slots:
+
+![Manage Page Slot 2 Added](/images/articles/case-study-headless-cms-demo/manage-page-slot-2-added.webp)
+
+#### 10. Viewing the Carousel on the Storefront
+Once synchronized, refreshing `/new-page` on the storefront fetches the updated slot structure, rendering the dynamic product carousel directly beneath the banner.
+
+![Storefront Page Carousel](/images/articles/case-study-headless-cms-demo/storefront-new-page-carousel-added.webp)
+
+#### 11. Expanding the Component Schema: Adding a Subtitle
+To demonstrate the flexibility of this metadata-driven setup, I added a `subtitle` attribute to the `PRODUCT_CAROUSEL` component. In a traditional CMS development loop, adding a field requires manual additions across the database layer, and custom frontend form rebuilding. 
+
+In this schema-driven approach, the database schema change is still required, but the entire layout and admin UI form generation layers are bypassed; I only needed to declare the new field in the JPA entity and DTO, and update the mapper in the backend:
+
+
+**Component Model Change (`ProductCarouselComponent.java`):**
+```java
+@Size(max = 255)
+@Column(name = "subtitle")
+@CmsField(displayName = "Carousel Subtitle", type = "string", required = false, placeholder = "Featured Products Subtitle")
+private String subtitle;
+```
+
+**DTO Change (`ProductCarouselComponentDTO.java`):**
+```java
+private String subtitle;
+```
+
+**Entity Mapper Change (`EntityMapper.java`):**
+```java
+return ProductCarouselComponentDTO.builder()
+        .id(component.getId())
+        .name(component.getName())
+        .type(component.getType().name())
+        .title(component.getTitle())
+        .subtitle(component.getSubtitle()) // Map the new attribute
+        .productCodes(productCodes)
+        .build();
+```
+
+#### 12. Schema-Driven UI Automatically Recognizes the New Field
+With the metadata-driven model, opening the edit dialog in the CMS Admin UI immediately displays a text input field for the `subtitle` attribute. The admin dashboard required zero code modifications or redeploys; it dynamically generated the field based on the updated JSON schema metadata returned by the backend.
+
+![Edit Component Pop Up Subtitle Added](/images/articles/case-study-headless-cms-demo/edit-component-pop-up-subtitle-added.webp)
+
+#### 13. Data Transmitted Automatically via JSON API
+Upon saving, the CMS dashboard serializes the new `subtitle` property and submits it to the page slots API, as shown in the network request payload below:
+
+![Network Subtitle Automatically Send](/images/articles/case-study-headless-cms-demo/network-subtitle-automatically-send.webp)
+
+#### 14. Implementing Storefront Support
+Although the API now delivers the `subtitle` property, reloading the storefront does not display the text immediately. This is expected—while the database and schema are fully updated, the Next.js storefront component itself must be updated to reference the new field in its presentation layer.
+
+#### 15. The Final Rendered Storefront
+Once the storefront's React component is updated to consume the `subtitle` property, the new subtitle renders successfully on the live site, completing the loop with zero modifications to the CMS UI codebase.
+
+![Storefront After Add Subtitle](/images/articles/case-study-headless-cms-demo/storefront-after-add-subtitle.webp)
+
+#### 16. Developing a New Component Type: `QuoteOfTheDayComponent`
+To further validate the extensibility of this schema-driven architecture, I added a completely new component type: `QuoteOfTheDayComponent`. This component defines two text attributes: `title` and `quote`.
+
+Similar to the product carousel change, I only had to declare the JPA entity, the DTO, and register the mapping inside `EntityMapper.java` in the backend:
+
+**Entity Component (`QuoteOfTheDayComponent.java`):**
+```java
+@Entity
+@Table(name = "quote_of_the_day_components")
+@CmsComponent(displayName = "Quote of the Day", description = "Displays a daily quote")
+public class QuoteOfTheDayComponent extends Component {
+
+    @Size(max = 255)
+    @Column(name = "title")
+    @CmsField(displayName = "Title", type = "string", required = true, placeholder = "Quote of the Day")
+    private String title;
+
+    @Size(max = 1000)
+    @Column(name = "quote", length = 1000)
+    @CmsField(displayName = "Quote", type = "string", required = true, placeholder = "Enter quote here...")
+    private String quote;
+
+    @Override
+    public ComponentType getType() {
+        return ComponentType.QUOTE_OF_THE_DAY;
+    }
+}
+```
+
+**DTO Change (`QuoteOfTheDayComponentDTO.java`):**
+```java
+public class QuoteOfTheDayComponentDTO extends ComponentDTO {
+    private String title;
+    private String quote;
+}
+```
+
+**Entity Mapper Change (`EntityMapper.java`):**
+```java
+private QuoteOfTheDayComponentDTO toQuoteOfTheDayComponentDTO(QuoteOfTheDayComponent component) {
+    return QuoteOfTheDayComponentDTO.builder()
+            .id(component.getId())
+            .uid(component.getUid())
+            .name(component.getName())
+            .type(component.getType().name())
+            .title(component.getTitle())
+            .quote(component.getQuote())
+            .build();
+}
+```
+
+#### 17. CMS Admin UI Automatically Renders the New Component Form
+Because the frontend CMS loads the component list and fields dynamically from the backend schema API, the CMS Admin UI immediately renders the configuration form for the new "Quote of the Day" component without needing any frontend UI code changes.
+
+![CMS Quote of the Day Form](/images/articles/case-study-headless-cms-demo/cms-quote-of-the-day-component.webp)
+
+#### 18. Payload Serialization over JSON API
+When saving the new component to the page layout structure, the attributes are serialized and successfully transmitted to the backend API via the standard page slots payload:
+
+![Network Request Quote of the Day Component](/images/articles/case-study-headless-cms-demo/network-quote-of-the-day-component.webp)
+
+#### 19. Storefront Homepage Before Frontend Development
+Initially, after synchronizing the catalog and accessing the storefront homepage where this component is placed, the component is not displayed. This is because the storefront React component registry does not yet have a mapping or implementation for the `QUOTE_OF_THE_DAY` type. Thanks to the server-side registry fallback, the storefront continues to render the other page components without crashing.
+
+![Storefront Homepage Before Development](/images/articles/case-study-headless-cms-demo/storefront-homepage-before.webp)
+
+#### 20. Storefront Homepage After Frontend Development
+Once I implement the React presentation component and register it in the storefront's `ComponentRenderer` registry, the Quote of the Day component renders successfully on the storefront homepage:
+
+![Storefront Homepage After Development](/images/articles/case-study-headless-cms-demo/storefront-homepage-after.webp)
+
 
 ## What I'd Do Differently
 
@@ -438,7 +634,7 @@ If this architecture evolved beyond a prototype into a production product, a few
 1. **Event-Driven Cache Eviction**: I would implement an event-driven webhook pattern (using Kafka or Redis Pub/Sub) where the CMS Backend publishes a `CatalogSyncedEvent`. This allows the Storefront API to manage its own cache eviction and preserves true service autonomy, replacing the direct Redis pattern deletion shortcut currently used by the CMS backend.
 2. **Fine-Grained Cache Invalidation**: Instead of evicting entire Redis patterns (`pages::*`, `slots::*`) upon editing, a production system should use content-level invalidation keyed by specific page slugs or component IDs. This would prevent the storefront from experiencing database-heavy cache stampedes whenever a single page is edited.
 3. **Workflow Approvals**: The Two-Stage catalog is a great foundation, but enterprise teams require an `IN_REVIEW` stage with role-based access control (RBAC) before syncing to `ONLINE`.
-4. **Build-Time Metadata Scanning**: I would use an Annotation Processor to generate the schema definitions at compile-time to align better with Spring's Ahead-Of-Time (AOT) compilation and GraalVM Native Image optimizations, replacing the runtime Java Reflection scanning (`@PostConstruct`).
+
 
 ## Final Thoughts
 
