@@ -195,15 +195,19 @@ spec:
 If you deploy these resources and inspect your cluster, you can verify that all jobs are running independently while utilizing the exact same image:
 
 ```bash
-$ kubectl get cronjob
-NAME            SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
-cronjob-10s     * * * * *     False     0        12s             2d
-cronjob-30s     * * * * *     False     0        12s             2d
+$ microk8s kubectl get cronjob
+NAME          SCHEDULE    TIMEZONE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+cronjob-10s   * * * * *   <none>     False     1        59s             101s
+cronjob-30s   * * * * *   <none>     False     1        59s             101s
+cronjob-50s   * * * * *   <none>     False     1        59s             101s
 
-$ kubectl describe cronjob cronjob-10s | grep Image
+$ microk8s kubectl describe cronjob cronjob-10s | grep Image
     Image:      k8scron-demo:latest
 
-$ kubectl describe cronjob cronjob-30s | grep Image
+$ microk8s kubectl describe cronjob cronjob-30s | grep Image
+    Image:      k8scron-demo:latest
+
+$ microk8s kubectl describe cronjob cronjob-50s | grep Image
     Image:      k8scron-demo:latest
 ```
 
