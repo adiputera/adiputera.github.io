@@ -3,8 +3,8 @@ layout: article
 title: "Running Multiple Kubernetes CronJobs from a Single Spring Boot Image"
 description: "A technical case study on optimizing CI/CD and maintenance by consolidating multiple Kubernetes CronJobs into a single Spring Boot application image using argument-based routing."
 keywords: "Kubernetes, CronJob, Spring Boot, Docker, CI/CD, microservices, architecture"
-date: 2026-06-26
-date_modified: 2026-06-26
+date: 2026-06-30
+date_modified: 2026-06-30
 permalink: /case-studies/kubernetes-cronjob-spring-boot
 category: case-study
 tags: [architecture, kubernetes, spring-boot, docker]
@@ -17,7 +17,7 @@ image: /images/articles/case-study-k8s-cronjob/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
-published: false
+published: true
 mermaid: true
 ---
 
