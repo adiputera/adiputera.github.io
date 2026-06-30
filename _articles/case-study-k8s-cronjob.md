@@ -32,7 +32,7 @@ If you have dozens of different scheduled tasks, creating dozens of separate Spr
 *   **Code Duplication:** Shared utilities, database repositories, and configuration classes must be duplicated or extracted into a shared library, adding complexity.
 *   **Resource Inefficiency:** Managing dozens of repositories for small, single-purpose scripts is overkill.
 
-Rather than fragmenting the codebase, one practical strategy is to build a single Spring Boot application that acts as a "Cron Runner"—a consolidated project containing all the cron job logic—and use **argument-based routing** at the Kubernetes level to determine which job executes.
+Rather than fragmenting the codebase, one practical strategy is to build a single Spring Boot application that acts as a "Cron Runner" (a consolidated project containing all the cron job logic) and use **argument-based routing** at the Kubernetes level to determine which job executes.
 
 This case study breaks down a Proof of Concept (PoC) demonstrating how to run a single Spring Boot application as multiple distinct Kubernetes CronJobs.
 
@@ -42,7 +42,7 @@ A common question is: *Why use Kubernetes CronJobs at all? Why not just use Spri
 
 The problem with in-memory scheduling emerges when you scale your application. If you deploy three replicas of your application to handle web traffic, all three replicas will independently trigger the `@Scheduled` method at the exact same time. This leads to duplicate data processing, race conditions, and potentially corrupted records.
 
-While you can solve this using distributed locking libraries like ShedLock or Quartz (which rely on a shared database table to manage locks), it adds unnecessary complexity to your stack. By moving scheduling out of the application entirely — letting Kubernetes trigger a fresh, isolated Pod per run instead of relying on an in-memory `@Scheduled` method — the duplicate-trigger problem from replica scaling is eliminated by design, not by coordination. While Kubernetes CronJobs don't provide an absolute exactly-once guarantee (jobs should ideally be idempotent), they effectively solve this scaling issue without requiring complex distributed locking logic or persistent database connections just for scheduling.
+While you can solve this using distributed locking libraries like ShedLock or Quartz (which rely on a shared database table to manage locks), it adds unnecessary complexity to your stack. By moving scheduling out of the application entirely (letting Kubernetes trigger a fresh, isolated Pod per run instead of relying on an in-memory `@Scheduled` method), the duplicate-trigger problem from replica scaling is eliminated by design, not by coordination. While Kubernetes CronJobs don't provide an absolute exactly-once guarantee (jobs should ideally be idempotent), they effectively solve this scaling issue without requiring complex distributed locking logic or persistent database connections just for scheduling.
 
 ## The Architecture: Single Image, Multiple Jobs
 
@@ -91,66 +91,94 @@ spring.main.web-application-type=none
 
 The core of the routing mechanism relies on implementing Spring's `CommandLineRunner`. When the application starts, this interface provides access to the arguments passed via the Docker container's command line. It is crucial to use `CommandLineRunner` (or `ApplicationRunner`) rather than parsing arguments directly in the standard `public static void main` method. In a real-world scenario, your job logic will almost certainly need to call other Spring components (like JPA repositories or API clients). The `CommandLineRunner` is executed only *after* the entire Spring Application Context has been fully initialized, ensuring all your beans are ready to use. This also allows Spring Boot features such as dependency injection, transactions, configuration properties, and logging to be fully initialized before any business logic starts.
 
-*(Note: For this PoC, the conceptual job names from the diagram are simplified to `job-10s`, `job-30s`, etc. to focus on the timing and routing mechanism, rather than real business logic.)*
+For this Proof of Concept, the conceptual job names from the diagram are simplified to `job-10s`, `job-30s`, and `job-50s` to focus on the timing and routing mechanism rather than real business logic.
 
-We use a simple `switch` statement to act as a router:
+To make the routing system more scalable and allow us to add new cron jobs simply by creating new classes without modifying the existing runner code, we implement a dynamic **Job Registry**. We use a custom annotation (`@RegistryKey`) and a common interface (`JobPerformable`) to automatically discover and map jobs.
+
+If your runner only handles two or three simple tasks, a straightforward `switch` statement is often the best choice. It keeps the setup simple without the overhead of custom annotations and interfaces. However, as the number of jobs grows, the registry pattern is much cleaner because it prevents a single runner class from bloating with unrelated business dependencies and imports.
+
+### The Job Interface and Registry
+
+Each job implements `JobPerformable` and is annotated with its unique identifier key:
 
 ```java
-package id.adiputera.demo.k8scron;
-
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+public interface JobPerformable {
+    void perform(String... args) throws Exception;
+}
 
 @Component
+@RegistryKey(key = "job-10s")
+public class Job10sPerformable implements JobPerformable {
+    @Override
+    public void perform(String... args) throws Exception {
+        System.out.println("[JOB-10S] Executing business logic...");
+    }
+}
+```
+
+The `JobRegistry` dynamically collects all beans implementing `JobPerformable` at startup and builds the routing map:
+
+```java
+@Component
+public class JobRegistry {
+    private final Map<String, JobPerformable> registry = new HashMap<>();
+
+    public JobRegistry(List<JobPerformable> jobs) {
+        for (JobPerformable job : jobs) {
+            RegistryKey annotation = AnnotationUtils.findAnnotation(job.getClass(), RegistryKey.class);
+            if (annotation != null) {
+                registry.put(annotation.key(), job);
+            }
+        }
+    }
+
+    public Optional<JobPerformable> getJob(String key) {
+        return Optional.ofNullable(registry.get(key));
+    }
+}
+```
+
+### The Command Line Runner Implementation
+
+The runner (`TaskRunner`) resolves the job from the registry using the first CLI argument and executes it, forwarding the remaining arguments:
+
+```java
+@Component
 public class TaskRunner implements CommandLineRunner {
+    private final JobRegistry jobRegistry;
+
+    public TaskRunner(JobRegistry jobRegistry) {
+        this.jobRegistry = jobRegistry;
+    }
 
     @Override
     public void run(String... args) throws Exception {
         if (args.length == 0) {
-            System.err.println("Error: No job name provided as argument!");
-            System.exit(1);
+            throw new IllegalArgumentException("No job name provided as argument!");
         }
 
         String jobName = args[0];
-        System.out.println("Starting execution for: " + jobName);
+        JobPerformable job = jobRegistry.getJob(jobName)
+                .orElseThrow(() -> new IllegalArgumentException("Unknown job '" + jobName + "'!"));
 
-        try {
-            switch (jobName) {
-                case "job-10s":
-                    System.out.println("[JOB-10S] Executing business logic for 10s delay job...");
-                    // syncDataTask.execute();
-                    break;
-                case "job-30s":
-                    System.out.println("[JOB-30S] Executing business logic for 30s delay job...");
-                    // sendEmailTask.execute();
-                    break;
-                case "job-50s":
-                    System.out.println("[JOB-50S] Executing business logic for 50s delay job...");
-                    break;
-                default:
-                    throw new IllegalArgumentException("Unknown job '" + jobName + "'!");
-            }
+        // Pass remaining arguments to the job
+        String[] jobArgs = new String[args.length - 1];
+        System.arraycopy(args, 1, jobArgs, 0, jobArgs.length);
 
-            System.out.println("Job " + jobName + " completed successfully!");
-            // Application will terminate naturally with exit code 0
-
-        } catch (Exception e) {
-            System.err.println("Job " + jobName + " failed: " + e.getMessage());
-            throw e; // Spring Boot will translate this to a non-zero exit code
-        }
+        job.perform(jobArgs);
     }
 }
 ```
 
 Notice that we let the application terminate naturally on success and throw an exception on failure, rather than using `System.exit()`. This is a Spring Boot best practice. Any uncaught exception propagates to Spring Boot and results in a non-zero process exit code. Kubernetes relies on the container's exit code to determine if the Pod succeeded or failed, ensuring Kubernetes correctly marks the job as `Failed`.
 
-*(Note: If your application uses connection pools or libraries that spawn non-daemon background threads, the JVM might hang instead of terminating naturally when `run()` finishes. If you encounter this, avoid the abrupt `System.exit(0)`. Instead, inject the `ApplicationContext` and use `SpringApplication.exit(context, () -> 0);` to gracefully shut down the Spring context and release all resources.)*
+If your application uses connection pools or libraries that spawn non-daemon background threads, the JVM might hang instead of terminating naturally when `run()` finishes. If you encounter this, avoid the abrupt `System.exit(0)`. Instead, inject the `ApplicationContext` and use `SpringApplication.exit(context, () -> 0);` to gracefully shut down the Spring context and release all resources.
 
 ## The Kubernetes Implementation
 
 On the infrastructure side, we deploy multiple `CronJob` definitions to the cluster. All of them point to the exact same Docker image (`k8scron-demo:latest`), but they override the `args` array to specify their unique identifier.
 
-*(Note: For this demo, we use the `sleep` command in the YAML so I could monitor the job activation and offset execution times. However, this is a fragile design in production: if the job duration plus the sleep offset exceeds the schedule interval, runs might overlap. For production, it's safer to use `concurrencyPolicy: Forbid` in the CronJob spec to prevent overlap rather than relying on manual sleep timing).*
+Kubernetes CronJobs use standard cron syntax, so the minimum scheduling interval is one minute. To demonstrate multiple executions within the same minute, this PoC intentionally offsets each job using `sleep`. In production, this delay is unnecessary and should be removed.
 
 Here is an example of how the identical image is reused across different scheduled intervals:
 
