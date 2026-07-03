@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Building a Headless CMS Demo Part 2: Generic Entity Search, Annotation-Driven Metadata, and Extensible Selection Forms"
-description: "An in-depth look at implementing a domain-agnostic generic search system in Spring Boot using custom annotations and JPA, paired with dynamic frontend search forms in Next.js."
+description: "An in-depth look at implementing a metadata-driven search API in Spring Boot using custom annotations and JPA, paired with dynamic frontend search forms in Next.js."
 keywords: "Headless CMS, generic search, annotation metadata, Spring Boot reflection, JPA Criteria, Next.js dynamic forms"
 date: 2026-06-30
 date_modified: 2026-06-30
@@ -12,8 +12,8 @@ breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "Headless CMS Generic Search"
 snippet: "A technical dive into decoupling search APIs and components in a Headless CMS using annotation-driven reflection and generic Next.js form builders."
-snippet_id: "Penyelaman teknis ke dalam pemisahan API pencarian dan komponen di Headless CMS menggunakan refleksi berbasis anotasi dan pembuat form Next.js generik."
-image: /images/articles/case-study-headless-cms-demo/cover-part-2.webp
+snippet_id: "Pembahasan teknis mendalam mengenai pemisahan API pencarian dan komponen di Headless CMS menggunakan refleksi berbasis anotasi dan pembuat form Next.js generik."
+image: /images/articles/case-study-headless-cms-demo-part-2/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
@@ -35,14 +35,14 @@ In [Part 1 of the Headless CMS case study](/case-studies/headless-cms-demo-runti
 
 While that setup solved page rendering and publishing isolation, a new challenge quickly emerged: **administrative search and item selection**. 
 
-When content editors build landing pages, they frequently need to configure components that link to catalog items—such as a \"Product Carousel\" referencing specific products, a \"Trending Articles\" list referencing editorial content, or a \"Latest Events\" list referencing promotional activities. 
+When content editors build landing pages, they frequently need to configure components that link to catalog items, such as a "Product Carousel" referencing specific products, or a "Trending Articles" list referencing editorial content. 
 
-If we hardcode a custom search endpoint and a unique search modal for every new entity type, we create massive UI code duplication and tight coupling. Every new domain model would require:
+If we hardcode a custom search endpoint and a unique search modal for every new entity type, we create significant UI code duplication and tight coupling. Every new domain model would require:
 1. A new backend REST endpoint for filtering.
 2. A new frontend API client method.
 3. A unique modal component with specialized search inputs and results styling.
 
-To solve this, we implemented an **annotation-driven, generic metadata and search engine**. This system allows the frontend to dynamically query searchable attributes of *any* backend entity and build interactive search filters at runtime, requiring zero frontend code updates when registering new domains.
+To solve this, we implemented an **annotation-driven metadata registry and dynamic search UI**. This system allows the frontend to dynamically query searchable attributes of *any* backend entity and build interactive search filters at runtime, requiring zero frontend code updates when registering new domains.
 
 ---
 
@@ -60,10 +60,10 @@ sequenceDiagram
     Note over API: Scans class annotations<br/>(e.g., @CmsSearchable)
     API-->>UI: Return SearchField list (name, displayName, type)
     
-    Note over UI: Renders query inputs dynamically<br/>based on metadata fields
+    Note over UI: Renders query inputs and operators dynamically<br/>based on metadata fields
     
-    UI->>API: POST /api/cms/items/{type}/search (Criteria Map)
-    Note over API: Translates criteria map<br/>into JPA Query
+    UI->>API: POST /api/cms/items/{type}/search (Criteria List)
+    Note over API: Translates criteria list<br/>into JPA Query
     API->>DB: Query with dynamic WHERE predicates
     DB-->>API: Return Entities
     API-->>UI: Return List<ItemSearchResultDTO> (id, title, subtitle)
@@ -74,7 +74,7 @@ sequenceDiagram
 By decoupling the search interface from the database schema:
 * The backend remains the single source of truth for searchable fields.
 * The frontend admin UI resolves input controls dynamically.
-* The search execution layer queries the correct database tables polymorphicly.
+* The search execution layer routes criteria to domain-specific JPA query builders.
 
 ---
 
@@ -123,16 +123,16 @@ public class Product extends CatalogAwareModel {
 
 ---
 
-## Backend: Schema Reflection & Dynamic Queries
+## Backend: Schema Reflection & Criteria Routing
 
-The backend hosts a single administrative search service (`ItemSearchService`) that exposes metadata and runs criteria-based JPA filters.
+Our backend hosts a single administrative search service (`ItemSearchService`) that exposes metadata and runs criteria-based JPA filters.
 
 ### 1. Reflecting Search Fields
 
-When the frontend asks for metadata of a type, the service scans the target class definition for the annotations and returns a list of fields:
+When the frontend asks for metadata of a type, our service scans the target class definition for `@CmsSearchable` annotations to return a list of fields and dynamically derive query allowlists:
 
 ```java
-// ItemSearchService.java (Part 1 - Metadata Extraction)
+// ItemSearchService.java (Part 1 - Metadata Extraction & Allowlist Resolution)
 @Service
 @RequiredArgsConstructor
 public class ItemSearchService {
@@ -144,12 +144,8 @@ public class ItemSearchService {
         "event", Event.class
     );
 
-    public ItemSearchMetadataDTO getSearchMetadata(String type) {
-        Class<?> clazz = TYPE_TO_CLASS.get(type.toLowerCase());
-        if (clazz == null) return new ItemSearchMetadataDTO(List.of());
-
+    private List<SearchField> getSearchFields(Class<?> clazz) {
         List<SearchField> fields = new ArrayList<>();
-
         if (clazz.isAnnotationPresent(CmsSearchables.class)) {
             CmsSearchables searchables = clazz.getAnnotation(CmsSearchables.class);
             for (CmsSearchable searchable : searchables.value()) {
@@ -159,66 +155,101 @@ public class ItemSearchService {
             CmsSearchable searchable = clazz.getAnnotation(CmsSearchable.class);
             fields.add(new SearchField(searchable.name(), searchable.displayName(), searchable.type()));
         }
+        return fields;
+    }
 
-        return new ItemSearchMetadataDTO(fields);
+    public ItemSearchMetadataDTO getSearchMetadata(String type) {
+        Class<?> clazz = TYPE_TO_CLASS.get(type.toLowerCase());
+        if (clazz == null) return new ItemSearchMetadataDTO(List.of());
+        return new ItemSearchMetadataDTO(getSearchFields(clazz));
+    }
+
+    private Set<String> getAllowedFields(Class<?> clazz) {
+        return getSearchFields(clazz).stream()
+                .map(SearchField::getName)
+                .collect(Collectors.toSet());
     }
 }
 ```
 
 ### 2. Executing Dynamic JPA Queries
 
-To search items, the controller accepts a map of field-value criteria (e.g. `{"name": "MacBook", "code": "MBP"}`) and builds a JPQL query dynamically. 
+To search items, our controller accepts a structured list of criteria, where each criterion specifies a field, an operator (such as `EQUALS`, `CONTAINS`, `GREATER_THAN`, `LESS_THAN`), and a search value.
 
-Standardizing the search output structure into a common `ItemSearchResultDTO` allows the frontend UI to display search listings uniformly without knowing the exact database schema:
+Standardizing our search output structure into a common `ItemSearchResultDTO` allows our frontend UI to display search listings uniformly without knowing the exact database schema. By declaring a polymorphic `toItemSearchResultDTO()` method on our root entity superclass (`ItemModel`) with a default fallback implementation (showing model name, ID, and timestamp), our search service maps results cleanly without type-checking specific domain classes:
 
 ```java
-// ItemSearchService.java (Part 2 - Query Execution)
-public List<ItemSearchResultDTO> searchItems(String type, Map<String, String> criteria) {
+// ItemSearchService.java (Part 2 - Generic Query Execution)
+public List<ItemSearchResultDTO> searchItems(String type, List<SearchCriteria> criteria) {
     Class<?> clazz = TYPE_TO_CLASS.get(type.toLowerCase());
     if (clazz == null) return List.of();
 
-    if (type.equalsIgnoreCase("product")) {
-        return searchProducts(criteria);
-    }
-    // Resolves other entity types similarly...
-    return List.of();
+    return executeSearch(clazz, criteria);
 }
 
-private List<ItemSearchResultDTO> searchProducts(Map<String, String> criteria) {
-    StringBuilder jpql = new StringBuilder("SELECT p FROM Product p WHERE 1=1");
+private ItemSearchResultDTO mapToDTO(Object entity) {
+    if (entity instanceof ItemModel itemModel) {
+        return itemModel.toItemSearchResultDTO();
+    }
+    return null;
+}
+
+private <T> List<ItemSearchResultDTO> executeSearch(Class<T> clazz, List<SearchCriteria> criteria) {
+    Set<String> allowedFields = getAllowedFields(clazz);
+    StringBuilder jpql = new StringBuilder("SELECT x FROM ").append(clazz.getSimpleName()).append(" x WHERE 1=1");
     Map<String, Object> params = new HashMap<>();
 
-    // Map input fields to JPQL queries safely
-    if (criteria.containsKey("name") && !criteria.get("name").trim().isEmpty()) {
-        jpql.append(" AND LOWER(p.name) LIKE :name");
-        params.put("name", "%" + criteria.get("name").trim().toLowerCase() + "%");
-    }
-    if (criteria.containsKey("code") && !criteria.get("code").trim().isEmpty()) {
-        jpql.append(" AND LOWER(p.code) LIKE :code");
-        params.put("code", "%" + criteria.get("code").trim().toLowerCase() + "%");
+    for (int i = 0; i < criteria.size(); i++) {
+        SearchCriteria c = criteria.get(i);
+        String key = c.getField();
+        String value = c.getValue();
+        if (allowedFields.contains(key) && value != null && !value.trim().isEmpty()) {
+            String paramName = key + i;
+            switch (c.getOperator() != null ? c.getOperator() : SearchOperator.CONTAINS) {
+                case EQUALS:
+                    jpql.append(" AND x.").append(key).append(" = :").append(paramName);
+                    params.put(paramName, value.trim());
+                    break;
+                case GREATER_THAN:
+                    jpql.append(" AND x.").append(key).append(" > :").append(paramName);
+                    params.put(paramName, value.trim());
+                    break;
+                case LESS_THAN:
+                    jpql.append(" AND x.").append(key).append(" < :").append(paramName);
+                    params.put(paramName, value.trim());
+                    break;
+                case CONTAINS:
+                default:
+                    jpql.append(" AND x.").append(key).append(" LIKE :").append(paramName);
+                    params.put(paramName, "%" + value.trim() + "%");
+                    break;
+            }
+        }
     }
 
-    Query query = entityManager.createQuery(jpql.toString(), Product.class);
-    params.forEach(query::setParameter);
+    Query query = entityManager.createQuery(jpql.toString(), clazz);
+    for (Map.Entry<String, Object> param : params.entrySet()) {
+        query.setParameter(param.getKey(), param.getValue());
+    }
 
-    List<Product> products = query.getResultList();
-    return products.stream()
-            .map(p -> new ItemSearchResultDTO(p.getCode(), p.getName(), p.getCode() + " - $" + p.getPrice()))
+    @SuppressWarnings("unchecked")
+    List<T> results = query.getResultList();
+    return results.stream()
+            .map(this::mapToDTO)
+            .filter(java.util.Objects::nonNull)
             .collect(Collectors.toList());
 }
 ```
 
-> [!IMPORTANT]
-> *Key Identifier Design Choice*: Notice that the `ItemSearchResultDTO` mapping returns `p.getCode()` as the identifier for a product, while other types like articles return `String.valueOf(a.getId())`. This is a deliberate choice: in our storefront, products are referenced across subsystems and catalog sync transactions by their unique business codes rather than database auto-incrementing primary keys. The generic search UI accommodates this by treating the returned identifier as an opaque token.
+**Differentiating Parameter Names**: We iterate through the criteria list using an indexed `for` loop rather than a standard `for-each` loop. By appending the loop index to the parameter name (e.g., `key + i`), we guarantee that each parameter name is unique. This prevents parameter collisions in the JPQL query if a request contains multiple search constraints targeting the same field (for example, hitting the search API directly with multiple rules for one field, even though the standard Admin UI only renders a single input box per field).
 
-> [!WARNING]
-> *Missing Query Pagination*: In this proof-of-concept implementation, `query.getResultList()` is called directly without pagination limits. For production environments, it is critical to invoke `.setMaxResults(limit)` or pass pagination offsets to prevent loading the entire database table into memory when an empty search query is evaluated at form initialization.
+**Missing Query Pagination**: In our proof-of-concept implementation, we call `query.getResultList()` directly without pagination limits. For production environments, we should invoke `.setMaxResults(limit)` or pass pagination offsets to prevent loading the entire database table into memory when an empty search query is evaluated at form initialization.
 
 ---
 
 ## Frontend: Dynamic Selection Fields
 
-On the frontend, fields are resolved using a schema-driven form builder. When configuring a component, we use the syntax `multiple_items:itemType` (e.g., `multiple_items:product`) to designate a multi-item selection input, and `item:itemType` (e.g., `item:event`) to designate a single-item selection input.
+On the frontend, fields are resolved using a schema-driven form builder. When configuring a component, we use the syntax `multiple_items:{itemType}` (e.g., `multiple_items:product`) to designate a multi-item selection input, and `item:{itemType}` (e.g., `item:event`) to designate a single-item selection input.
 
 ### 1. Suffix Parsing and Metadata Fetching
 
@@ -234,26 +265,38 @@ if (field.type.startsWith('multiple_items:') || field.type.startsWith('item:')) 
   setSearchMetadata(prev => ({ ...prev, [itemType]: meta.data }));
   
   // 2. Load default items (empty search)
-  const res = await cmsApiClient.searchItems(itemType, {});
+  const res = await cmsApiClient.searchItems(itemType, []);
   setSearchResults(prev => ({ ...prev, [itemType]: res.data }));
 }
 ```
 
 ### 2. Rendering Search Filters Dynamically
 
-Because the metadata returns the list of searchable attributes, we iterate over the properties to display custom search query text boxes:
+Because the metadata returns the list of searchable attributes, we iterate over the properties to display custom search operator dropdowns and query text boxes:
 
 ```tsx
 // page.tsx (Field Form Renderer - Simplified)
 {(field.type.startsWith('multiple_items:') || field.type.startsWith('item:')) && (
   <div className="space-y-2 mt-2">
-    {/* 1. Dynamically render search input boxes for each metadata property */}
+    {/* 1. Render dropdown operator and text search inputs for metadata properties */}
     {searchMetadata[itemType]?.fields?.map(metaField => (
-      <input 
-        placeholder={`Search ${metaField.displayName}...`}
-        onChange={(e) => updateSearchCriteria(metaField.name, e.target.value)}
-        /* ... styling ... */
-      />
+      <div key={metaField.name} className="flex gap-2">
+        <select 
+          value={searchCriteria[metaField.name]?.operator || 'CONTAINS'}
+          onChange={(e) => updateSearchOperator(metaField.name, e.target.value)}
+          className="border rounded px-2 py-1"
+        >
+          <option value="CONTAINS">Contains</option>
+          <option value="EQUALS">Equals</option>
+          <option value="GREATER_THAN">Greater Than</option>
+          <option value="LESS_THAN">Less Than</option>
+        </select>
+        <input 
+          placeholder={`Search ${metaField.displayName}...`}
+          onChange={(e) => updateSearchCriteria(metaField.name, e.target.value)}
+          className="border rounded px-2 py-1 flex-1"
+        />
+      </div>
     ))}
     
     {/* 2. Render Selection List based on search results */}
@@ -280,9 +323,9 @@ With this implementation, the search form inputs and filtering behaviors are gen
 
 ---
 
-## Proof of Extensibility
+## Extending the System to New Domains
 
-By isolating domain-specific fields on the backend via annotations and genericizing selection queries, adding a completely new domain type (like `Article` or `Event`) is extremely simple.
+By isolating domain-specific fields on the backend via annotations and standardizing search UI selection flows, adding a completely new domain type (like `Article` or `Event`) is extremely simple.
 
 ### Step 1: Annotating the new Entity on the Backend
 To add an `Article` search, we simply declare `@CmsSearchable` annotations on the `Article.java` class:
@@ -298,7 +341,7 @@ public class Article extends CatalogAwareModel {
 ```
 
 ### Step 2: Defining the CMS Field on the Component
-We define the component's field type using our `multiple_items:itemType` syntax. For example, a `TrendingArticleComponent` is defined with a property `article_ids` of type `multiple_items:article`:
+We define the component's field type using our `multiple_items:{itemType}` syntax. For example, a `TrendingArticleComponent` is defined with a property `article_ids` of type `multiple_items:article`:
 
 ```java
 @Entity
@@ -311,7 +354,7 @@ public class TrendingArticleComponent extends Component {
 }
 ```
 
-Similarly, we can support single-item selection using the `item:itemType` syntax. For instance, a `TopEventComponent` requires only a single event selection:
+Similarly, we can support single-item selection using the `item:{itemType}` syntax. For instance, a `TopEventComponent` requires only a single event selection:
 
 ```java
 @Entity
@@ -329,18 +372,32 @@ public class TopEventComponent extends Component {
 Without writing any frontend React code, creating custom components, or registering new REST endpoints, the Admin UI automatically:
 1. Detects the `multiple_items:article` and `item:event` type tags.
 2. Queries the metadata schema at `/api/cms/items/article/search-metadata` and `/api/cms/items/event/search-metadata`.
-3. Dynamically renders search text boxes labeled *"Search Article Title..."* based on the returned annotations.
-4. Executes searches and intelligently toggles between rendering checkboxes (for `multiple_items`) and radio buttons (for `item`) out of the box.
+3. Dynamically renders operator dropdowns and search text boxes labeled *"Search Article Title..."* based on the returned annotations.
+4. Executes searches and dynamically renders checkboxes (for `multiple_items`) or radio buttons (for `item`) based on the field prefix.
 
-On the backend, because query generation is not yet fully dynamic, the developer still needs to make two minor additions:
-1. Add the `@CmsSearchable` annotations to the new entity class.
-2. Register the class mapping in `TYPE_TO_CLASS` and add a query translation method (e.g. `searchArticles()`) in the search service.
+Here is how the dynamic selection interface renders in the Admin UI for single-item fields (like `TopEventComponent`):
+
+![Single Item Selection Interface](/images/articles/case-study-headless-cms-demo-part-2/single-item.webp)
+
+When an editor interacts with the search filters, the dynamic operator dropdown allows precise querying (`CONTAINS`, `EQUALS`, etc.):
+
+![Single Item Selection with Operator Dropdown](/images/articles/case-study-headless-cms-demo-part-2/single-item-operator-opened.webp)
+
+For multi-item fields (like `TrendingArticleComponent`), the interface renders multiple selection checkboxes:
+
+![Multiple Items Search Interface](/images/articles/case-study-headless-cms-demo-part-2/multiple-items-search.webp)
+
+When searching, the Admin UI inspects the selected operators and transmits structured criteria payloads over the network:
+
+![Network Search Request Payload](/images/articles/case-study-headless-cms-demo-part-2/network-search.webp)
+
+On the backend, because our query generator dynamically inspects annotations to build JPQL queries and our entity superclass (`ItemModel`) polymorphically handles DTO translations, we only need to make two minor additions when registering a new entity:
+1. Add the `@CmsSearchable` annotations to the new entity class and optionally override `toItemSearchResultDTO()` to customize its display labels (if not overridden, it gracefully falls back to displaying the entity name, ID, and creation timestamp).
+2. Register the class mapping in `TYPE_TO_CLASS`.
 
 ---
 
 ## Conclusion
 
-By treating search schemas as reflection-based metadata and building dynamic UI forms, we drastically reduced code maintenance overhead. The frontend remains clean, reusable, and decoupled, while the backend controls entity-level schema rules. 
-
-This model allows a Headless CMS to expand rapidly into new domains, ensuring developers can add content models in minutes while offering editors a uniform and intuitive administration experience.
+By treating search schemas as reflection-based metadata and generating UI forms dynamically, we significantly reduce both frontend and backend maintenance overhead. Because our query execution layer dynamically resolves allowed fields and constructs JPQL queries at runtime, our architecture establishes a clean separation of concerns and provides content editors with a consistent search interface across all entity types without requiring domain-specific query boilerplate.
 
