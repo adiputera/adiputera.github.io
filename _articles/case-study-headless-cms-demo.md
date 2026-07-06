@@ -3,8 +3,8 @@ layout: article
 title: "Building a Headless CMS Demo: Catalog Publishing, Runtime Composition, and Dynamic Forms"
 description: "A technical walkthrough of a headless CMS demo application exploring two-stage catalog publishing, runtime page composition, polymorphic models, and schema-driven forms."
 keywords: "Headless CMS, runtime page composition, Next.js, Spring Boot, polymorphic JPA, cache eviction"
-date: 2026-06-27
-date_modified: 2026-06-27
+date: 2026-07-05
+date_modified: 2026-07-05
 permalink: /case-studies/headless-cms-demo-runtime-composition
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, redis]
