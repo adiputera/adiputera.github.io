@@ -3,8 +3,8 @@ layout: article
 title: "Building a Headless CMS Demo Part 2: Generic Entity Search, Annotation-Driven Metadata, and Extensible Selection Forms"
 description: "An in-depth look at implementing a metadata-driven search API in Spring Boot using custom annotations and JPA, paired with dynamic frontend search forms in Next.js."
 keywords: "Headless CMS, generic search, annotation metadata, Spring Boot reflection, JPA Criteria, Next.js dynamic forms"
-date: 2026-06-12
-date_modified: 2026-06-12
+date: 2026-07-12
+date_modified: 2026-07-12
 permalink: /case-studies/headless-cms-demo-generic-search
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, search]
@@ -17,7 +17,7 @@ image: /images/articles/case-study-headless-cms-demo-part-2/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
-published: true
+published: false
 mermaid: true
 ---
 
