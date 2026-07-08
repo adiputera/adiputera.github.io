@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Building a Headless CMS Demo Part 2: Generic Entity Search, Annotation-Driven Metadata, and Extensible Selection Forms"
+title: "Building a Headless CMS Demo Part 2: Metadata-Driven Entity Search"
 description: "An in-depth look at implementing a metadata-driven search API in Spring Boot using custom annotations and JPA, paired with dynamic frontend search forms in Next.js."
 keywords: "Headless CMS, generic search, annotation metadata, Spring Boot reflection, JPA Criteria, Next.js dynamic forms"
 date: 2026-07-12
@@ -42,7 +42,7 @@ If we hardcode a custom search endpoint and a unique search modal for every new 
 2. A new frontend API client method.
 3. A unique modal component with specialized search inputs and results styling.
 
-To solve this, we implemented an **annotation-driven metadata registry and dynamic search UI**. This system allows the CMS Admin UI to dynamically discover searchable attributes of registered backend entities and build interactive search filters at runtime, without requiring frontend code changes when registering new domains.
+To solve this, we introduced a metadata-driven field model that powers generic entity search today and lays the foundation for additional schema-driven CMS capabilities discussed in later parts of this series. The result is a CMS Admin UI that can dynamically discover searchable attributes of any registered backend entity and build interactive search filters at runtime, without requiring frontend code changes when a new domain is added.
 
 ---
 
@@ -80,7 +80,7 @@ By decoupling the search interface from the database schema:
 
 ## Backend: Annotation-Driven Metadata
 
-To make a Java entity searchable within the CMS Admin UI, we declare schema metadata directly on the entity fields using a unified `@CmsField` annotation. By placing `@CmsField` on entity fields and introducing `searchable = true` and `order` attributes, we consolidate UI form rendering and search schema registration into a single source of truth.
+To make a Java entity searchable within the CMS Admin UI, we declare schema metadata directly on the entity fields using a unified `@CmsField` annotation. By placing `@CmsField` on entity fields and specifying attributes like type, searchable, and order, we consolidate UI form rendering and search schema registration into a single source of truth.
 
 ### 1. The Unified Field Annotation
 
@@ -89,11 +89,38 @@ To make a Java entity searchable within the CMS Admin UI, we declare schema meta
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CmsField {
     String displayName();
-    String type() default "string"; // e.g., "string", "text", "boolean", "number"
-    boolean required() default false;
+    CmsFieldType type() default CmsFieldType.STRING;
     String placeholder() default "";
     boolean searchable() default false;
     int order() default 1;
+    Class<? extends ItemModel> targetEntity() default ItemModel.class;
+    ReferenceCardinality cardinality() default ReferenceCardinality.SINGLE;
+}
+```
+
+One possible implementation is to represent supported field types using a `CmsFieldType` enum, which handles mapping backend model attributes to frontend controls:
+
+```java
+public enum CmsFieldType {
+    STRING,
+    TEXT,
+    NUMBER,
+    BOOLEAN,
+    DATE,
+    DATETIME,
+    ARRAY_STRING,
+    REFERENCE,
+    IMAGE,
+    FILE
+}
+```
+
+For fields representing relations, the `ReferenceCardinality` enum defines whether the field accepts a single item or multiple items:
+
+```java
+public enum ReferenceCardinality {
+    SINGLE,
+    MULTIPLE
 }
 ```
 
@@ -106,17 +133,32 @@ Any entity class can expose its searchable properties to the generic search engi
 @Table(name = "products")
 public class Product extends CatalogAwareModel {
 
-    @CmsField(displayName = "Product Code", searchable = true, order = 1)
+    @CmsField(
+        displayName = "Product Code",
+        type = CmsFieldType.STRING,
+        searchable = true,
+        order = 1
+    )
     @NotBlank(message = "Product code is required")
     @Column(nullable = false)
     private String code;
 
-    @CmsField(displayName = "Product Name", searchable = true, order = 2)
+    @CmsField(
+        displayName = "Product Name",
+        type = CmsFieldType.STRING,
+        searchable = true,
+        order = 2
+    )
     @NotBlank(message = "Product name is required")
     @Column(nullable = false)
     private String name;
 
-    @CmsField(displayName = "Price", type = "number", searchable = true, order = 3)
+    @CmsField(
+        displayName = "Price",
+        type = CmsFieldType.NUMBER,
+        searchable = true,
+        order = 3
+    )
     @NotNull(message = "Price is required")
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
@@ -129,34 +171,55 @@ public class Product extends CatalogAwareModel {
 
 ## Backend: Schema Reflection & Criteria Routing
 
-Our backend hosts a single administrative search service (`ItemSearchService`) that exposes metadata and runs criteria-based JPA filters.
+Our backend separates two concerns: `CmsTypeRegistry` scans and caches entity metadata at application startup, while `ItemSearchService` uses that registry to execute criteria-based JPA queries at request time.
 
-### 1. Runtime Model Discovery & Metadata Extraction
+### 1. The Metadata Registry
 
-In this updated architecture, we eliminated manual model registration by relying on JPA's `EntityManager` metamodel. During application startup (`@PostConstruct`), our service inspects all managed JPA entities and automatically registers any class extending `ItemModel` into an in-memory entity registry.
-
-When the frontend requests search metadata for an entity type, our service looks up the domain class, traverses up its inheritance hierarchy (`while (current != null && current != Object.class)`), and inspects declared fields for `@CmsField(searchable = true)`. It then sorts the discovered fields by their `order` attribute:
+At application startup, `CmsTypeRegistry` scans the JPA metamodel, finds all `ItemModel` subclasses, and caches their metadata into an in-memory map keyed by lowercase type code:
 
 ```java
-// ItemSearchService.java (Part 1 - Dynamic Model Discovery & Field Reflection)
+// CmsTypeRegistry.java
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class CmsTypeRegistry {
+
+    private final EntityManager entityManager;
+    private final Map<String, CmsTypeMetadata> registry = new ConcurrentHashMap<>();
+
+    @PostConstruct
+    public void init() {
+        for (EntityType<?> entityType : entityManager.getMetamodel().getEntities()) {
+            Class<?> javaType = entityType.getJavaType();
+            if (javaType != null && ItemModel.class.isAssignableFrom(javaType)) {
+                String typeCode = javaType.getSimpleName().toLowerCase();
+                registry.put(typeCode, buildTypeMetadata(javaType, typeCode));
+            }
+        }
+        log.info("CmsTypeRegistry initialized: {}", registry.keySet());
+    }
+
+    public CmsTypeMetadata getTypeMetadata(String code) {
+        return code != null ? registry.get(code.toLowerCase()) : null;
+    }
+}
+```
+
+`CmsTypeMetadata` holds the entity class reference alongside the list of reflected field metadata objects built from `@CmsField` annotations. New entity types are picked up automatically at startup with no manual registration code required.
+
+### 2. Runtime Metadata Extraction
+
+When the frontend requests search metadata for an entity type, `ItemSearchService` delegates the class lookup to `CmsTypeRegistry`, then traverses the entity's field hierarchy to collect `SearchField` objects — lightweight DTOs containing `name`, `displayName`, `type`, and `order` — for each `@CmsField(searchable = true)` it finds:
+
+```java
+// ItemSearchService.java (Part 1 - Metadata Lookup & Field Reflection)
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ItemSearchService {
 
     private final EntityManager entityManager;
-    private final Map<String, Class<?>> TYPE_TO_CLASS = new ConcurrentHashMap<>();
-
-    @PostConstruct
-    public void init() {
-        for (EntityType<?> entityType : entityManager.getMetamodel().getEntities()) {
-            Class<?> javaType = entityType.getJavaType();
-            if (ItemModel.class.isAssignableFrom(javaType)) {
-                TYPE_TO_CLASS.put(javaType.getSimpleName().toLowerCase(), javaType);
-            }
-        }
-        log.info("Initialized ItemSearchService with dynamic model map: {}", TYPE_TO_CLASS.keySet());
-    }
+    private final CmsTypeRegistry cmsTypeRegistry;
 
     private List<SearchField> getSearchFields(Class<?> clazz) {
         List<SearchField> fields = new ArrayList<>();
@@ -177,11 +240,11 @@ public class ItemSearchService {
     }
 
     public ItemSearchMetadataDTO getSearchMetadata(String type) {
-        Class<?> clazz = TYPE_TO_CLASS.get(type.toLowerCase());
-        if (clazz == null) {
+        CmsTypeMetadata meta = cmsTypeRegistry.getTypeMetadata(type);
+        if (meta == null) {
             return new ItemSearchMetadataDTO(List.of());
         }
-        return new ItemSearchMetadataDTO(getSearchFields(clazz));
+        return new ItemSearchMetadataDTO(getSearchFields(meta.getEntityClass()));
     }
 
     private Set<String> getAllowedFields(Class<?> clazz) {
@@ -194,9 +257,9 @@ public class ItemSearchService {
 }
 ```
 
-**Reflection Performance & Caching**: In our proof-of-concept implementation, `getSearchFields()` traverses the class hierarchy and uses reflection on every metadata request. This reflection occurs only when metadata is requested and has negligible overhead for typical administrative workloads because, at our current scope, the domain models and declared fields are small. However, because entity metadata is immutable after application startup, production implementations can easily cache these reflected search field lists in a ConcurrentHashMap or eagerly extract them during startup to eliminate repeated reflection overhead during subsequent API calls.
+**Separation of Concerns**: Delegating type lookups to `CmsTypeRegistry` keeps `ItemSearchService` focused on query execution. The `getSearchFields()` method still traverses the class hierarchy via reflection on each metadata request, but because admin search traffic is low-frequency and domain models are small, this overhead is negligible. In high-throughput systems, these reflected field lists could be pre-computed by the registry and stored as part of `CmsTypeMetadata`.
 
-### 2. Generic Query Execution & Dynamic Type Conversion
+### 3. Generic Query Execution & Dynamic Type Conversion
 
 To search items, our controller accepts a structured list of criteria, where each criterion specifies a field, an operator (such as `EQUALS`, `CONTAINS`, `MORE_THAN`, `LESS_THAN`), and a search value.
 
@@ -210,12 +273,12 @@ Because JPQL parameters must match the underlying Java field type, our engine mu
 // ItemSearchService.java (Part 2 - Generic Query Execution & Type Coercion)
 @SuppressWarnings("unchecked")
 public List<ItemSearchResultDTO> searchItems(String type, List<SearchCriteria> criteria) {
-    Class<?> clazz = TYPE_TO_CLASS.get(type.toLowerCase());
-    if (clazz == null) {
+    CmsTypeMetadata meta = cmsTypeRegistry.getTypeMetadata(type);
+    if (meta == null) {
         return List.of();
     }
 
-    return executeSearch(clazz, criteria);
+    return executeSearch(meta.getEntityClass(), criteria);
 }
 
 private ItemSearchResultDTO mapToDTO(Object entity) {
@@ -330,7 +393,7 @@ private <T> List<ItemSearchResultDTO> executeSearch(Class<T> clazz, List<SearchC
 
 **Differentiating Parameter Names**: We iterate through the criteria list using an indexed `for` loop rather than a standard `for-each` loop. By appending the loop index to the parameter name (e.g., `key + i`), we ensure that each parameter name is unique. This prevents parameter collisions in the JPQL query if a request contains multiple search constraints targeting the same field (for example, hitting the search API directly with multiple rules for one field, even though the standard Admin UI only renders a single input box per field).
 
-**Simple Name Collision Risk**: When registering model mappings in `TYPE_TO_CLASS`, our service relies on `javaType.getSimpleName().toLowerCase()` (e.g., `"product"` or `"article"`). If two entities in different packages share the same class name, one will silently overwrite the other in the map. For production applications, this registry should qualify entity keys using full package paths or throw an exception during initialization if a name collision is detected.
+**Simple Name Collision Risk**: `CmsTypeRegistry` keys entity types by `javaType.getSimpleName().toLowerCase()` (e.g., `"product"` or `"article"`). If two entities in different packages share the same class name, one will silently overwrite the other in the registry. For production applications, the registry should qualify entity keys using full package paths or throw an exception during initialization if a collision is detected.
 
 **Production Considerations: Pagination & Sorting**: In our proof-of-concept implementation, we call `query.getResultList()` directly without pagination limits. For production environments, administrative searches typically require both pagination and deterministic sorting (for example, by name or creation date). We should invoke `.setMaxResults(limit)` or pass pagination offsets to prevent loading the entire database table into memory when an empty search query is evaluated at form initialization.
 
@@ -342,16 +405,16 @@ private <T> List<ItemSearchResultDTO> executeSearch(Class<T> clazz, List<SearchC
 
 ## Frontend: Schema-Driven Selection Fields
 
-On the frontend, fields are resolved using a schema-driven form builder. When configuring a component, we use the syntax `multiple_items:{itemType}` (e.g., `multiple_items:product`) to designate a multi-item selection input, and `item:{itemType}` (e.g., `item:event`) to designate a single-item selection input.
+On the frontend, when configuring a component, the form loader dynamically maps fields of type `REFERENCE` to selection inputs based on the target entity type and cardinality, using the schema returned by the backend.
 
-### 1. Suffix Parsing and Metadata Fetching
+### 1. Reference Metadata Fetching
 
-During component initialization, the form loader splits the type string to discover the target item domain, queries its metadata, and fetches default items:
+During component initialization, the form loader checks if a field type is `reference`. The backend's `ComponentSchemaService` serializes the `targetEntity` class into its lowercase simple name when building the component schema (e.g., `Article.class` → `"article"`), which the frontend reads as `field.referenceTarget` to construct the search metadata API call:
 
 ```tsx
 // page.tsx (Component Editor Initializer)
-if (field.type.startsWith('multiple_items:') || field.type.startsWith('item:')) {
-  const itemType = field.type.split(':')[1]; // e.g. "product"
+if (field.type === 'reference') {
+  const itemType = field.referenceTarget; // e.g. "product"
   
   // 1. Fetch metadata schema of target entity
   const meta = await cmsApiClient.getSearchMetadata(itemType);
@@ -392,14 +455,14 @@ Because the metadata returns both attribute names and data types (`string`, `num
 
 ```tsx
 // page.tsx (Field Form Renderer - Conditional Operators by Type)
-{(field.type.startsWith('multiple_items:') || field.type.startsWith('item:')) && (
+{field.type === 'reference' && (
   <div className="space-y-2 mt-2">
     {/* 1. Render dropdown operator and text search inputs for metadata properties */}
-    {searchMetadata[itemType]?.fields?.map(metaField => (
+    {searchMetadata[field.referenceTarget]?.fields?.map(metaField => (
       <div key={metaField.name} className="flex gap-2">
         <select 
-          value={searchCriteria[metaField.name]?.operator || (metaField.type === 'number' ? 'EQUALS' : 'CONTAINS')}
-          onChange={(e) => updateSearchOperator(metaField.name, e.target.value)}
+          value={searchCriteria[field.referenceTarget]?.[metaField.name]?.operator || (metaField.type === 'number' ? 'EQUALS' : 'CONTAINS')}
+          onChange={(e) => updateSearchOperator(field.referenceTarget, metaField.name, e.target.value)}
           className="border rounded px-2 py-1"
         >
           {metaField.type !== 'number' && <option value="CONTAINS">Contains</option>}
@@ -413,7 +476,7 @@ Because the metadata returns both attribute names and data types (`string`, `num
         </select>
         <input 
           placeholder={`Search ${metaField.displayName}...`}
-          onChange={(e) => updateSearchCriteria(metaField.name, e.target.value)}
+          onChange={(e) => updateSearchCriteria(field.referenceTarget, metaField.name, e.target.value)}
           className="border rounded px-2 py-1 flex-1"
         />
       </div>
@@ -421,11 +484,11 @@ Because the metadata returns both attribute names and data types (`string`, `num
     
     {/* 2. Render Selection List based on search results */}
     <div className="selection-list">
-      {searchResults[itemType]?.map(item => {
-        const isMultiple = field.type.startsWith('multiple_items:');
+      {searchResults[field.referenceTarget]?.map(item => {
+        const isMultiple = field.referenceCardinality === 'MULTIPLE';
         return (
           <label key={item.id}>
-            {/* Render Checkbox for 'multiple_items', Radio for 'item' */}
+            {/* Render Checkbox for 'MULTIPLE' cardinality, Radio for 'SINGLE' */}
             <input
               type={isMultiple ? "checkbox" : "radio"}
               onChange={() => handleItemSelection(field.name, item.id, isMultiple)}
@@ -455,16 +518,30 @@ To make an `Article` searchable, we apply `@CmsField(searchable = true)` directl
 @Table(name = "articles")
 public class Article extends CatalogAwareModel {
 
-    @CmsField(displayName = "Title", searchable = true, order = 1)
+    @CmsField(
+        displayName = "Title",
+        type = CmsFieldType.STRING,
+        searchable = true,
+        order = 1
+    )
     @NotBlank(message = "Title is required")
     @Column(nullable = false)
     private String title;
 
-    @CmsField(displayName = "Slug", searchable = true, order = 2)
+    @CmsField(
+        displayName = "Slug",
+        type = CmsFieldType.STRING,
+        searchable = true,
+        order = 2
+    )
     @NotBlank(message = "Slug is required")
     @Column(nullable = false)
     private String slug;
 
+    @CmsField(
+        displayName = "Body",
+        type = CmsFieldType.TEXT
+    )
     @Column(name = "body", columnDefinition = "TEXT")
     private String body;
 
@@ -473,30 +550,44 @@ public class Article extends CatalogAwareModel {
 ```
 
 ### Step 2: Defining the CMS Field on the Component
-We define the component's field type using our `multiple_items:{itemType}` syntax. For example, a `TrendingArticleComponent` is defined with a property `article_ids` of type `multiple_items:article`:
+We define the component's field type using `CmsFieldType.REFERENCE` and specify the target entity class along with the cardinality. The `targetEntity` attribute is typed as `Class<? extends ItemModel>`, so the compiler enforces that only entity classes extending ItemModel can be used as reference targets. For example, a `TrendingArticleComponent` is defined with a property `articleIds` referencing the `Article` entity with multiple cardinality:
 
 ```java
 @Entity
+@Table(name = "trending_article_components")
 @CmsComponent(displayName = "Trending Articles", description = "List of trending articles")
 public class TrendingArticleComponent extends Component {
     private String title;
 
     @Column(name = "article_ids", columnDefinition = "TEXT")
-    @CmsField(displayName = "Articles", type = "multiple_items:article", required = true, placeholder = "Select articles...")
+    @CmsField(
+        displayName = "Articles",
+        type = CmsFieldType.REFERENCE,
+        targetEntity = Article.class,
+        cardinality = ReferenceCardinality.MULTIPLE,
+        placeholder = "Select articles..."
+    )
     private String articleIds; 
 }
 ```
 
-Similarly, we can support single-item selection using the `item:{itemType}` syntax. For instance, a `TopEventComponent` requires only a single event selection:
+Similarly, we support single-item selection. For instance, a `TopEventComponent` references a single `Event` entity:
 
 ```java
 @Entity
+@Table(name = "top_event_components")
 @CmsComponent(displayName = "Top Event", description = "Displays a single featured event")
 public class TopEventComponent extends Component {
     private String title;
 
     @Column(name = "event_id")
-    @CmsField(displayName = "Featured Event", type = "item:event", required = true, placeholder = "Select an event...")
+    @CmsField(
+        displayName = "Featured Event",
+        type = CmsFieldType.REFERENCE,
+        targetEntity = Event.class,
+        cardinality = ReferenceCardinality.SINGLE,
+        placeholder = "Select an event..."
+    )
     private String eventId; 
 }
 ```
@@ -504,10 +595,10 @@ public class TopEventComponent extends Component {
 ### Frontend Extensibility Without Code Changes
 
 Without modifying frontend React code, creating custom components, or registering new REST endpoints, the Admin UI automatically:
-1. Detects the `multiple_items:article` and `item:event` type tags.
+1. Detects the `REFERENCE` type along with target and cardinality details from the schema.
 2. Queries the metadata schema at `/api/cms/items/article/search-metadata` and `/api/cms/items/event/search-metadata`.
 3. Dynamically renders operator dropdowns and search text boxes labeled *"Search Title..."* based on the returned annotations.
-4. Executes searches and dynamically renders checkboxes (for `multiple_items`) or radio buttons (for `item`) based on the field prefix.
+4. Executes searches and dynamically renders checkboxes (for `MULTIPLE` cardinality) or radio buttons (for `SINGLE` cardinality) based on field metadata.
 
 Here is how the dynamic selection interface renders in the Admin UI for single-item fields (like `TopEventComponent`):
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "Building a Headless CMS Demo: Catalog Publishing, Runtime Composition, and Dynamic Forms"
+title: "Building a Headless CMS Demo: Designing a Metadata-Driven Content Platform"
 description: "A technical walkthrough of a headless CMS demo application exploring two-stage catalog publishing, runtime page composition, polymorphic models, and schema-driven forms."
 keywords: "Headless CMS, runtime page composition, Next.js, Spring Boot, polymorphic JPA, cache eviction"
 date: 2026-07-05
