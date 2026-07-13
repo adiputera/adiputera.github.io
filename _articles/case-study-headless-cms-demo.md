@@ -188,19 +188,44 @@ public abstract class Component extends CatalogAwareModel {
 public class BannerComponent extends Component {
     
     @Column(name = "image_url")
-    @CmsField(displayName = "Image URL", type = "image", required = true)
+    @CmsField(
+        displayName = "Image URL",
+        type = CmsFieldType.IMAGE,
+        required = true
+    )
     private String imageUrl;
     
     @Column(name = "title")
-    @CmsField(displayName = "Title", type = "string", required = true)
+    @CmsField(
+        displayName = "Title",
+        type = CmsFieldType.STRING,
+        required = true
+    )
     private String title;
     
     @Column(name = "cta_url")
-    @CmsField(displayName = "CTA URL", type = "string", required = false)
+    @CmsField(
+        displayName = "CTA URL",
+        type = CmsFieldType.STRING,
+        required = false
+    )
     private String ctaUrl;
     
     @Override
     public ComponentType getType() { return ComponentType.BANNER; }
+}
+```
+
+The `@CmsField` annotation is the primary metadata contract between the backend and the CMS Admin UI. It describes how a field should be presented, validated, and interpreted by generic tooling. The `CmsFieldType` enum defines the semantic meaning of the field (for example, `STRING`, `NUMBER`, `IMAGE`, or `REFERENCE`), allowing the frontend to render appropriate controls without hardcoded forms:
+
+```java
+public enum CmsFieldType {
+    STRING,
+    NUMBER,
+    BOOLEAN,
+    IMAGE,
+    REFERENCE
+    .....
 }
 ```
 
@@ -299,7 +324,7 @@ const renderDynamicFields = () => (
 
 Because this form renderer is schema-driven and agnostic to specific component domains, adding a new component (like a `VideoPlayerComponent`) only requires creating the backend Java entity with correct annotations. As long as the field types (like strings, booleans, and image paths) are already known to the frontend registry, there is no need to update the admin frontend codebase. If a new, unknown field type is introduced, frontend development is only required once to map that specific field type to a React component.
 
-By simply setting `@CmsField(type = "image")` on a component entity's backend property, the CMS Admin UI is instructed to substitute a standard text input with a rich, drag-and-drop React `ImageUploader` component.
+By simply setting `@CmsField(type = CmsFieldType.IMAGE)` on a component entity's backend property, the CMS Admin UI is instructed to substitute a standard text input with a rich, drag-and-drop React `ImageUploader` component.
 
 ## Core Design 3: The Product Detail Template Pattern
 
@@ -639,3 +664,9 @@ If this architecture evolved beyond a prototype into a production product, a few
 ## Final Thoughts
 
 Building the editor interface is relatively straightforward. Building the publishing pipeline, synchronization model, cache strategy, and runtime composition is where a CMS becomes an architectural problem rather than a CRUD application.
+
+## What's Next: Metadata-Driven Entity Search
+
+In the upcoming Part 2 of this series, we explore the architectural challenge of administrative search and item selection. When content editors configure components that link to catalog items (like a "Product Carousel" referencing specific products), hardcoding a custom search endpoint and a unique search modal for every new entity type creates significant code duplication.
+
+We will discuss how to solve this by treating the search schema as metadata. This approach allows the CMS Admin UI to dynamically discover searchable attributes of any registered backend entity and build interactive search filters at runtime, all without requiring frontend code changes when a new domain model is added.
