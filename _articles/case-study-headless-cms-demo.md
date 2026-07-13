@@ -7,7 +7,7 @@ date: 2026-07-05
 date_modified: 2026-07-05
 permalink: /case-studies/headless-cms-demo-runtime-composition
 category: case-study
-tags: [architecture, spring-boot, nextjs, cms, redis]
+tags: [architecture, spring-boot, nextjs, cms, redis, headless-cms]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "Headless CMS Demo Architecture"

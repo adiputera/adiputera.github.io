@@ -1,13 +1,13 @@
 ---
 layout: article
 title: "Building a Headless CMS Demo Part 4: Dynamic Form Generation and the Reference Picker"
-description: "How a schema-driven CMS generates complete, type-safe Create and Edit forms at runtime—rendering text inputs, number fields, booleans, and reference pickers from backend metadata without entity-specific UI code."
+description: "How a schema-driven CMS generates complete, type-safe Create and Edit forms at runtime by rendering text inputs, number fields, booleans, and reference pickers from backend metadata without entity-specific UI code."
 keywords: "Headless CMS, dynamic form generation, reference picker, metadata-driven UI, Spring Boot, Next.js, JPA reflection"
-date: 2026-07-20
-date_modified: 2026-07-20
+date: 2026-07-26
+date_modified: 2026-07-26
 permalink: /case-studies/headless-cms-demo-dynamic-forms
 category: case-study
-tags: [architecture, spring-boot, nextjs, cms]
+tags: [architecture, spring-boot, nextjs, cms, headless-cms]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "Headless CMS Dynamic Forms"
@@ -56,9 +56,7 @@ This `fields` array represents the complete schema of a domain entity, including
       "name": "name",
       "displayName": "Product Name",
       "type": "STRING",
-      "requiredOnCreate": true,
-      "requiredOnUpdate": true,
-      "editableOnCreate": true,
+      "required": true,
       "editableOnUpdate": true,
       "placeholder": "Enter product name..."
     },
@@ -66,9 +64,7 @@ This `fields` array represents the complete schema of a domain entity, including
       "name": "price",
       "displayName": "Price",
       "type": "NUMBER",
-      "requiredOnCreate": true,
-      "requiredOnUpdate": true,
-      "editableOnCreate": true,
+      "required": true,
       "editableOnUpdate": true,
       "placeholder": "0.00"
     },
@@ -76,8 +72,7 @@ This `fields` array represents the complete schema of a domain entity, including
       "name": "catalog",
       "displayName": "Catalog",
       "type": "REFERENCE",
-      "requiredOnCreate": true,
-      "editableOnCreate": true,
+      "required": true,
       "editableOnUpdate": false,
       "reference": "id.adiputera.demo.cms.entity.Catalog",
       "referenceCardinality": "SINGLE"
@@ -89,8 +84,8 @@ This `fields` array represents the complete schema of a domain entity, including
 Several field-level attributes shape how the frontend renders and validates inputs:
 
 - **`type`**: Maps to a UI control (`STRING` → text input, `TEXT` → textarea, `NUMBER` → number input, `BOOLEAN` → checkbox, `REFERENCE` → reference picker button).
-- **`requiredOnCreate` / `requiredOnUpdate`**: Controls HTML required attribute and validation messages contextually for each form mode.
-- **`editableOnCreate` / `editableOnUpdate`**: Some fields are writable only at creation time (like catalog assignment) and should be rendered as read-only displays during editing.
+- **`required`**: Controls the HTML required attribute and validation messages for the form field.
+- **`editableOnUpdate`**: Fields are assumed to be editable during creation. Setting `editableOnUpdate = false` makes them create-only, causing the generated edit form to omit them entirely.
 - **`reference`**: The fully qualified class name of the related entity, used to determine which entity type to search inside the reference picker.
 - **`referenceCardinality`**: `SINGLE` renders a radio-button-style picker, while `MULTIPLE` renders a checkbox-based multi-select.
 
@@ -130,9 +125,11 @@ At the center of the `CmsForm` component is a field type renderer. The component
 
 ```tsx
 // CmsForm.tsx (Field Type Renderer)
-{fields.map((field) => {
-  const isRequired = mode === 'create' ? field.requiredOnCreate : field.requiredOnUpdate;
-  const isEditable = mode === 'create' ? field.editableOnCreate : field.editableOnUpdate;
+{fields
+  .filter((field) => mode === 'create' ? true : field.editableOnUpdate)
+  .map((field) => {
+  const isRequired = field.required;
+  const isEditable = mode === 'create' ? true : field.editableOnUpdate;
 
   return (
     <div key={field.name} className="flex flex-col gap-1.5">
@@ -175,7 +172,7 @@ Because every domain entity's form is constructed from the same renderer, no cus
 
 ### Context-Aware Editability
 
-An important detail is how editability is handled per mode. Some fields are intentionally non-editable after creation. For example, assigning a product to a catalog version is a one-time action, and modifying it later could violate data integrity. By annotating these fields with `editableOnUpdate: false` on the backend, `CmsForm` automatically renders them as read-only display elements during editing without any special casing.
+An important detail is how editability is handled per mode. Some fields are intentionally non-editable after creation. For example, assigning a product to a catalog version is a one-time action, and modifying it later could violate data integrity. By annotating these fields with `editableOnUpdate: false` on the backend, `CmsForm` automatically filters them out from the form during editing without any special casing.
 
 ### Payload Serialization Before Submission
 
@@ -200,7 +197,7 @@ fields.forEach((f) => {
 });
 ```
 
-This serialization step ensures the frontend's display-friendly state (labels and IDs together) never leaks into the API payload, keeping the backend contract clean.
+This serialization step ensures the frontend's display-friendly state (labels and IDs together) does not leak into the API payload, keeping the backend contract clean.
 
 ---
 
@@ -208,7 +205,7 @@ This serialization step ensures the frontend's display-friendly state (labels an
 
 The `REFERENCE` field type is the most complex input to handle. When an editor is configuring a `TrendingArticleComponent`, they need to search for and select one or more `Article` records from the database without leaving the form. A raw text input accepting a comma-separated list of IDs would be unusable.
 
-Instead, we implemented a `ReferencePickerModal` component. When an editor clicks "Add Reference" on a reference field, the modal opens and dynamically queries the target entity's own metadata and data listings from the same backend APIs used by the generic data tables in Part 3. The modal is completely generic—it knows only the `referenceType` string and whether it operates in `SINGLE` or `MULTIPLE` selection mode.
+Instead, we implemented a `ReferencePickerModal` component. When an editor clicks "Add Reference" on a reference field, the modal opens and dynamically queries the target entity's own metadata and data listings from the same backend APIs used by the generic data tables in Part 3. The modal is completely generic, as it knows only the `referenceType` string and whether it operates in `SINGLE` or `MULTIPLE` selection mode.
 
 ```mermaid
 sequenceDiagram
@@ -275,7 +272,7 @@ const getRowLabel = (row: CmsRow): string => {
 };
 ```
 
-This heuristic handles the majority of catalog entities without requiring a dedicated `toDisplayLabel()` override on every entity class. For entities where the convention falls short, overriding `toItemSearchResultDTO()` on the backend—as discussed in Part 2—gives developers a clean extension point to supply a custom label.
+This heuristic handles the majority of catalog entities without requiring a dedicated `toDisplayLabel()` override on every entity class. For entities where the convention falls short, overriding `toItemSearchResultDTO()` on the backend (as discussed in Part 2) gives developers a clean extension point to supply a custom label.
 
 ---
 
@@ -324,8 +321,8 @@ The `CmsForm` component intentionally does not attempt to solve:
 
 ## Conclusion
 
-By extending the unified metadata schema with form-specific attributes (`requiredOnCreate`, `editableOnUpdate`, `type`, `reference`, `referenceCardinality`), the same `CmsTypeRegistry` that powers entity discovery and generic data tables in Part 3 now also drives complete Create and Edit interfaces.
+By extending the unified metadata schema with form-specific attributes (`required`, `editableOnUpdate`, `type`, `reference`, `referenceCardinality`), the same `CmsTypeRegistry` that powers entity discovery and generic data tables in Part 3 now also drives complete Create and Edit interfaces.
 
 Adding a new entity to the system continues to remain a backend-only task. Engineers annotate entity fields, and the administration portal automatically provides a discovery card, a data listing page, a create form, an edit form, and a reference picker for any relational links.
 
-This completes the core metadata-driven administration loop: discover, list, create, edit, and delete—all without writing entity-specific frontend code.
+This completes the core metadata-driven administration loop: discover, list, create, edit, and delete. All of this is achieved without writing entity-specific frontend code.

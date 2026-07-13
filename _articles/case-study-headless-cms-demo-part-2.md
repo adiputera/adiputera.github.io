@@ -7,7 +7,7 @@ date: 2026-07-12
 date_modified: 2026-07-12
 permalink: /case-studies/headless-cms-demo-generic-search
 category: case-study
-tags: [architecture, spring-boot, nextjs, cms, search]
+tags: [architecture, spring-boot, nextjs, cms, search, headless-cms]
 breadcrumb: "Case Studies"
 breadcrumb_url: /case-studies/
 breadcrumb_short: "Headless CMS Generic Search"
