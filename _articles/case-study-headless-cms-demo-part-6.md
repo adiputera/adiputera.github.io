@@ -29,21 +29,29 @@ mermaid: true
 
 ---
 
+## Introduction
+
+In [Part 5 of the Headless CMS case study](/case-studies/headless-cms-demo-topological-sync), we resolved relational publishing dependencies using Kahn's topological sorting algorithm over the JPA Metamodel, ensuring safe, ordered synchronization between isolated `STAGED` and `ONLINE` catalogs.
+
+With our core five-part implementation complete, our metadata-driven content loop is fully functional: content editors can compose slot-based layouts, discover backend domain models, search across entity references, create or update records via generic forms, and publish relational graphs to a decoupled Next.js storefront.
+
+Rather than introducing another implementation feature, this final article steps back to evaluate the architecture as a whole. We will examine where the metadata-driven approach succeeds, why adjacent enterprise subsystems were deliberately excluded from the core content model, and how an engineering team matures this foundation into a production-grade platform ecosystem.
+
+---
+
 ## 1. Recap of the Journey
 
 Over the past five parts of this series, we designed and implemented a headless content management system built around runtime introspection and schema composition:
 
 ```mermaid
 flowchart LR
-    P1["Part 1: Runtime Composition"] --> P2["Part 2: Metadata Discovery"]
-    P2 --> P3["Part 3: Generic Search"]
+    P1["Part 1: Runtime Composition"] --> P2["Part 2: Generic Search"]
+    P2 --> P3["Part 3: Generic CRUD"]
     P3 --> P4["Part 4: Dynamic Forms"]
-    P4 --> P5["Part 5: Catalog Sync & Storefront"]
+    P4 --> P5["Part 5: Topological Sync"]
 ```
 
-At this stage, the core content loop is functionally complete. Content editors can discover domain models, create and modify records via dynamically generated forms, publish relational catalogs safely, and serve live pages to a decoupled Next.js storefront.
-
-Rather than diving into another implementation feature, this final article steps back to evaluate the architecture as a whole. We will examine what the project proves, define why the core prototype intentionally stops here, and explore how an engineering team matures this foundation into a production-grade enterprise ecosystem.
+At this stage, our core demonstration codebase proves that treating schema definitions as runtime metadata allows administration interfaces and publishing pipelines to operate without static domain coupling.
 
 ---
 

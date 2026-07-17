@@ -229,7 +229,7 @@ public enum CmsFieldType {
 }
 ```
 
-This ensures referential integrity and strict typing at the database level, unlike dumping everything into a JSONB column. While `JOINED` inheritance does introduce a performance tradeoff—requiring an SQL `JOIN` per subclass on every fetch—this read cost is mitigated by the Redis caching layer on the storefront API. Instead of storing the slots reference on the component itself, the codebase decouples them by using a `slot_components` join table mapped in `Slot` via `@ManyToMany` with `@OrderColumn(name = "sort_order")` keeping components ordered.
+This ensures referential integrity and strict typing at the database level, unlike dumping everything into a JSONB column. While `JOINED` inheritance does introduce a performance trade-off (requiring an SQL `JOIN` per subclass on every fetch), this read cost is mitigated by the Redis caching layer on the storefront API. Instead of storing the slots reference on the component itself, the codebase decouples them by using a `slot_components` join table mapped in `Slot` via `@ManyToMany` with `@OrderColumn(name = "sort_order")` keeping components ordered.
 
 When returning data through the APIs, I used Jackson's `@JsonTypeInfo` and `@JsonSubTypes` to automatically serialize and deserialize the correct subclasses based on the `type` field. This means the frontend receives strongly typed JSON payloads without the backend needing massive `switch` statements during serialization.
 
@@ -460,7 +460,7 @@ This dynamic rendering pattern relies on a key architectural property of React S
 
 Because slot resolution, registry dispatching, and type checking are executed entirely on the server side, Next.js streams the server-rendered HTML of static components (like `BANNER` and `PARAGRAPH`) directly to the browser without extra client-side hydration scripts. Interactive features or dynamic client components (e.g. adding products to cart, sliding carousels, or loading real-time stock levels) will still leverage `'use client'` hooks, but the baseline presentation framework remains client-JS-free.
 
-The component registry itself—which dynamically resolves type strings to React component imports—remains server-bound. This keeps component resolution explicit at compile time, preserves compile-time type safety across the TypeScript discriminated union, and allows missing component types to fail silently on the server side, logged as a server-side error without crashing the page.
+The component registry itself (which dynamically resolves type strings to React component imports) remains server-bound. This keeps component resolution explicit at compile time, preserves compile-time type safety across the TypeScript discriminated union, and allows missing component types to fail silently on the server side, logged as a server-side error without crashing the page.
 
 
 ### The Result
@@ -573,7 +573,7 @@ Upon saving, the CMS dashboard serializes the new `subtitle` property and submit
 ![Network Subtitle Automatically Send](/images/articles/case-study-headless-cms-demo/network-subtitle-automatically-send.webp)
 
 #### 14. Implementing Storefront Support
-Although the API now delivers the `subtitle` property, reloading the storefront does not display the text immediately. This is expected—while the database and schema are fully updated, the Next.js storefront component itself must be updated to reference the new field in its presentation layer.
+Although the API now delivers the `subtitle` property, reloading the storefront does not display the text immediately. This is expected: while the database and schema are fully updated, the Next.js storefront component itself must be updated to reference the new field in its presentation layer.
 
 #### 15. The Final Rendered Storefront
 Once the storefront's React component is updated to consume the `subtitle` property, the new subtitle renders successfully on the live site, completing the loop with zero modifications to the CMS UI codebase.

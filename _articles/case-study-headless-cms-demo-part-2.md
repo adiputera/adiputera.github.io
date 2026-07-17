@@ -2,7 +2,7 @@
 layout: article
 title: "Building a Headless CMS Demo Part 2: Metadata-Driven Entity Search"
 description: "An in-depth look at implementing a metadata-driven search API in Spring Boot using custom annotations and JPA, paired with dynamic frontend search forms in Next.js."
-keywords: "Headless CMS, generic search, annotation metadata, Spring Boot reflection, JPA Criteria, Next.js dynamic forms"
+keywords: "Headless CMS, generic search, annotation metadata, Spring Boot reflection, JPQL dynamic queries, Next.js dynamic forms"
 date: 2026-07-12
 date_modified: 2026-07-12
 permalink: /case-studies/headless-cms-demo-generic-search
@@ -74,7 +74,7 @@ sequenceDiagram
 By decoupling the search interface from the database schema:
 * The backend remains the single source of truth for searchable fields.
 * The frontend admin UI resolves input controls dynamically.
-* The search execution layer routes criteria to domain-specific JPA query builders.
+* The search execution layer routes criteria to a generic, metadata-driven JPQL query builder.
 
 ---
 
@@ -143,7 +143,7 @@ public class Product extends CatalogAwareModel {
 
 ---
 
-## Backend: Schema Reflection & Criteria Routing
+## Backend: Schema Reflection & Dynamic Query Execution
 
 Our backend separates two concerns: `CmsTypeRegistry` scans and caches entity metadata at application startup, while `ItemSearchService` uses that registry to execute criteria-based JPA queries at request time.
 
@@ -266,7 +266,7 @@ private <T> List<T> executeQuery(CmsTypeMetadata meta, List<SearchCriteria> crit
 
 - **Allow-Listing Primary Keys**: `getAllowedFields()` automatically includes `"id"` even without `@CmsField(searchable = true)`, enabling the backend to fetch saved component selections by primary key.
 - **Parameter Name Uniqueness**: Appending the loop index (`key + i`) prevents JPQL parameter collisions when multiple criteria target the same field.
-- **JPQL Injection Protection**: Field names are validated against the annotation-derived allow-list, operators are strongly typed, and search values are bound as named parameters, and are not concatenated into the query string.
+- **JPQL Injection Protection**: Field names are validated against the annotation-derived allow-list, operators are strongly typed, and search values are bound as named parameters rather than concatenated into the query string.
 - **Type Safety**: The `SearchOperator` enum and metadata-based type conversion ensure that numeric fields reject pattern matching operators and parse values correctly.
 
 **Production Considerations**: This implementation focuses on demonstrating the metadata-driven pattern. Production systems should add pagination (`.setMaxResults()`), sorting, and handle edge cases like entity name collisions across packages.
@@ -457,10 +457,10 @@ On the backend, because JPA's metamodel automatically discovers entity classes a
 ## Conclusion
 
 To put the impact of this architecture in perspective, consider the engineering overhead of introducing a new searchable entity (like `Article` or `Event`) into our content system:
-- **Boilerplate Approach**: Typically requires writing a new backend controller and endpoint (~50 lines of Java), a new frontend API client method (~10 lines of TypeScript), and a custom React search modal with input form state management (~150 lines of JSX/CSS). As the number of searchable domain models grows, the amount of repetitive controller, client, and UI code scales linearly.
-- **Dynamic Metadata Approach**: Requires adding exactly **1 annotation property** (`@CmsField(searchable = true)`) on the backend entity. The JPA metamodel dynamically registers the class, the reflection engine constructs the allowlist, and the schema-driven frontend builders automatically draw the search controls and operators at runtime.
+- **Boilerplate Approach**: Requires creating and maintaining separate integration points across the stack for every new entity type: a dedicated backend controller and search endpoint, a frontend API client method, and a custom React search modal with specialized form state management, operator selection, and results rendering. As the number of searchable domain models grows, this approach multiplies code duplication and creates tight coupling between frontend UI components and backend schema definitions.
+- **Dynamic Metadata Approach**: Requires adding a single annotation property (`@CmsField(searchable = true)`) to the backend entity. The JPA metamodel dynamically registers the class, the reflection engine constructs the query allowlist, and the schema-driven frontend builder automatically renders the search controls and operators at runtime.
 
-By treating search schemas as field-level metadata and combining them with JPA metamodel auto-discovery, we remove boilerplate registration maps and reduce the backend integration effort for new domain entities down to field annotations. Because our query execution layer dynamically resolves allowed fields and constructs JPQL queries at runtime, our architecture establishes a clean separation of concerns and provides content editors with a consistent search interface across all entity types without requiring domain-specific query boilerplate.
+By treating search schemas as field-level metadata and combining them with JPA metamodel auto-discovery, we eliminate boilerplate registration maps and reduce backend integration effort to field annotations. Because our query execution layer resolves allowed fields and constructs JPQL queries at runtime, our architecture establishes a clean separation of concerns and provides content editors with a consistent search interface across all entity types without requiring domain-specific query boilerplate.
 
 ---
 

@@ -31,13 +31,13 @@ mermaid: true
 
 ## Introduction
 
-In [Part 3](/case-studies/headless-cms-demo-generic-crud), we established a self-describing backend capable of serving any domain model's schema to the Next.js admin portal. The `CmsTypeRegistry` discovers all `ItemModel` subclasses at startup and the frontend dynamically renders navigation cards and tabular data listings.
+In [Part 3 of the Headless CMS case study](/case-studies/headless-cms-demo-generic-crud), we established a self-describing backend capable of serving any domain model's schema to the Next.js admin portal. The `CmsTypeRegistry` discovers all `ItemModel` subclasses at startup and the frontend dynamically renders navigation cards and tabular data listings.
 
 But listing data is only one direction of the workflow. Administrators also need to create and edit those records. When an editor clicks "Create New" on a discovered entity, the frontend faces a harder problem than rendering a table: it must decide which kind of input control belongs to each field.
 
 A product name deserves a text input. A product price deserves a number input. An `isActive` flag deserves a checkbox. A related article reference deserves a searchable modal with checkboxes. All of this must happen without the frontend containing a single line of code that knows what a `Product`, `Article`, or `Event` actually is.
 
-This case study covers how we extend the metadata engine from Part 3 to power dynamic form generation and a reusable `ReferencePickerModal` for relational field selection.
+This case study covers how we extend the metadata engine from [Part 3](/case-studies/headless-cms-demo-generic-crud) to power dynamic form generation and a reusable `ReferencePickerModal` for relational field selection.
 
 ---
 
@@ -326,3 +326,13 @@ By extending the unified metadata schema with form-specific attributes (`require
 Adding a new entity to the system continues to remain a backend-only task. Engineers annotate entity fields, and the administration portal automatically provides a discovery card, a data listing page, a create form, an edit form, and a reference picker for any relational links.
 
 This completes the core metadata-driven administration loop: discover, list, create, edit, and delete. All of this is achieved without writing entity-specific frontend code.
+
+---
+
+## What's Next?
+
+With discovery, generic tables, and dynamic form generation in place, administrators can model, create, and modify structured content without UI code duplication. However, editing records directly in a production database introduces operational risk: unfinished drafts or unapproved copy would immediately impact shoppers on the live storefront.
+
+As introduced in [Part 1 of this series](/case-studies/headless-cms-demo-runtime-composition), our system uses a dual-catalog architecture (`STAGED` vs. `ONLINE`) and topological publishing to isolate editorial workflows from live customer traffic. But what happens inside the backend when complex relational graphs must be synchronized without breaking foreign-key constraints or creating orphaned references?
+
+In Part 5 of this series, we take a deep dive into the synchronization engine, examining how our backend resolves relational publishing order automatically using Kahn's topological sorting algorithm over the JPA Metamodel and merges entities generically across isolated catalogs.

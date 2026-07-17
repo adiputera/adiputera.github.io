@@ -29,6 +29,16 @@ mermaid: true
 
 ---
 
+## Introduction
+
+In [Part 2 of the Headless CMS case study](/case-studies/headless-cms-demo-generic-search), we discussed how we decoupled administrative search and item selection using annotation-driven reflection (`@CmsField`) and dynamic JPQL query execution. That setup allowed content editors to search and link catalog items across any domain entity without requiring domain-specific REST endpoints or custom modal forms.
+
+While our generic search interface solved relational selection during landing page composition, a broader administrative challenge remained: **managing the domain entities themselves**.
+
+When content editors and administrators interact with a CMS, they need more than just search: they need to browse all available domain models, view records in tabular listings, and create or modify items through structured CRUD interfaces.
+
+---
+
 ## The Architectural Goal: A Frontend Without Domain Knowledge
 
 Traditional content management systems often treat every domain entity as a special case. Every new domain model typically requires changes across both the backend and frontend: new REST endpoints, routing, tables, forms, and another deployment of the administration UI.
@@ -37,7 +47,7 @@ We wanted to build an architecture that avoids this repetitive cycle. The primar
 
 Instead of hardcoding menus and data tables for products, articles, or categories, the Next.js admin portal simply asks the Spring Boot backend what domain models exist. The backend describes its own schema, and the frontend dynamically renders the appropriate navigation, data tables, and management interfaces based on the metadata it receives.
 
-Rather than exposing only data, the backend exposes its own capabilities and schema. That immediately differentiates it from traditional REST APIs. This metadata eventually powers metadata-driven CRUD, dynamic forms, search, and future administrative features.
+Rather than exposing only data, the backend exposes its own capabilities and schema. That immediately differentiates it from traditional REST APIs. This metadata powers the generic search interface discussed in [Part 2](/case-studies/headless-cms-demo-generic-search), drives the dynamic CRUD tables covered in this article, and forms the foundation for dynamic form generation in Part 4.
 
 One critical detail that makes this design reliable is that we are not building generic CRUD over arbitrary, unbounded database tables. We anchor the entire system on a controlled abstraction: the `ItemModel` superclass. Without this shared abstraction, the framework would need to make assumptions about arbitrary JPA entities, making generic CRUD significantly harder to validate and secure. Because every managed entity inherits from this base contract, the backend can safely expose type discovery, schema metadata, searching, and modification through a unified API while still allowing each domain class to define its own specialized attributes.
 
@@ -53,7 +63,7 @@ The hero of this architecture is the `CmsTypeRegistry`. At application startup, 
 sequenceDiagram
     autonumber
     participant UI as Next.js Admin Portal
-    participant API as ItemSearchController
+    participant API as CMS Backend (Spring Boot)
     participant Reg as CmsTypeRegistry
     participant JPA as JPA Metamodel
 
@@ -182,7 +192,7 @@ The React component uses this schema to generate table headers dynamically and m
 </table>
 ```
 
-To populate the rows, the frontend calls a generic POST endpoint (`/api/cms/items/{type}/list`). The backend returns a list of `CmsRowDTO` objects, where each object contains the entity primary key and a flat dictionary (`Record<string, any>`) representing the database fields. A presentation formatter on the frontend checks the runtime data types of these dictionary values, cleanly rendering text strings, numeric prices, boolean status badges, and related entity arrays without requiring custom cell components for different business domains.
+To populate the rows, the frontend calls a generic POST endpoint (`/api/cms/items/{type}/list`). The backend returns a list of `CmsRowDTO` objects, where each object contains the entity primary key (`id`) and a flat dictionary (`values: Record<string, any>`) representing the entity attributes and audit timestamps (such as `createdAt`). A presentation formatter on the frontend checks the runtime data types of these dictionary values, cleanly rendering text strings, numeric prices, boolean status badges, and related entity arrays without requiring custom cell components for different business domains.
 
 ---
 
@@ -194,10 +204,10 @@ We manage this transformation through a structured processing pipeline inside `C
 
 ```mermaid
 flowchart TD
-    A[Raw JSON Payload] --> B[Validation]
-    B -->|Check schema rules| C[Metadata Resolution]
-    C -->|Lookup CmsTypeRegistry| D[Entity Mapping]
-    D -->|Populate Java attributes| E[Persistence]
+    A[Raw JSON Payload & Type Code] --> B[Metadata Resolution]
+    B -->|Lookup CmsTypeRegistry| C[Validation]
+    C -->|Check schema rules| D[Entity Instantiation & Mapping]
+    D -->|Populate Java attributes via GenericEntityMapper| E[Persistence]
     E -->|Save via JPA| F[(Database)]
 ```
 

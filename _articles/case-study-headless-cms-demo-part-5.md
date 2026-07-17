@@ -31,7 +31,7 @@ mermaid: true
 
 ## Introduction
 
-In previous parts of this series, we explored how a metadata-driven CMS backend allows content editors to discover models, list records, and manage data via generic forms without entity-specific frontend code.
+In [Part 4 of the Headless CMS case study](/case-studies/headless-cms-demo-dynamic-forms), we completed our core metadata-driven administration loop, allowing content editors to discover models, list records, and manage data through dynamic Create and Edit forms without writing entity-specific frontend code.
 
 However, modifying records directly in a production database introduces risk. Half-finished edits, unapproved copy, or broken links could immediately impact live storefront shoppers. To isolate editorial work from the live customer experience, our content system uses a dual-catalog pattern:
 
@@ -249,4 +249,14 @@ By combining JPA Metamodel inspection with Kahn's topological sorting algorithm,
 
 When content editors publish changes, the synchronization engine processes entities in their exact prerequisite order, resolving foreign-key references against cached Online records. Once synchronized, the Next.js Storefront consumes those published slot configurations and renders them dynamically through a React component registry.
 
-This completes our five-part exploration of building a modern, metadata-driven headless CMS architecture: from runtime layout composition and self-describing backend schemas to generic UI generation and safe relational publishing.
+This completes our core five-part implementation of building a modern, metadata-driven headless CMS architecture: from runtime layout composition and self-describing backend schemas to generic UI generation and safe relational publishing.
+
+---
+
+## What's Next?
+
+With our core content management loop complete (from runtime layout composition and self-describing backend schemas to generic UI generation and safe relational publishing), we have a functional, end-to-end metadata-driven architecture.
+
+However, moving a system from an architectural demonstration to an enterprise-grade production platform requires evaluating clear boundaries and identifying where adjacent subsystems belong.
+
+In Part 6 of this series, we will conduct an architectural retrospective evaluating where the metadata-driven CMS succeeds, why adjacent capabilities like authentication, search indexing, and audit logging were intentionally excluded from the core entity model, and how the platform evolves into a modular enterprise ecosystem.
