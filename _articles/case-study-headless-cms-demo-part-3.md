@@ -3,8 +3,8 @@ layout: article
 title: "Building a Headless CMS Demo Part 3: The Self-Describing Backend"
 description: "An architectural deep-dive into building a self-describing, metadata-driven backend in Spring Boot that powers dynamic 'All Models' registries and generic CRUD data tables in Next.js."
 keywords: "Headless CMS, self-describing backend, metadata-driven, generic CRUD, Spring Boot reflection, Next.js dynamic tables, JPA Metamodel"
-date: 2026-07-19
-date_modified: 2026-07-19
+date: 2026-07-26
+date_modified: 2026-07-26
 permalink: /case-studies/headless-cms-demo-generic-crud
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, headless-cms]
@@ -17,7 +17,7 @@ image: /images/articles/case-study-headless-cms-demo-part-3/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
-published: false
+published: true
 mermaid: true
 ---
 
