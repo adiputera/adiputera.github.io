@@ -27,6 +27,8 @@ mermaid: true
 * TOC
 {:toc}
 
+> **Note:** This article is part of a series. The implementation shown here was built through vibe coding, and the complete source code is available in the [Headless CMS Demo repository](https://github.com/adiputera/spring-boot-headless-cms-storefront-demo). For full transparency, I also used AI to help draft this article. However, the system architecture, design decisions, and trade-off analysis are my own, developed through brainstorming and iterative discussions with AI.
+
 ---
 
 ## The Background
@@ -43,7 +45,7 @@ Rather than attempting to build a production-ready system, this project serves a
 
 By structuring the CMS around these problems, I eliminated hardcoded frontend layouts. Instead, the CMS dictates what components appear in which "slots." The storefront dynamically resolves the content, maps the component types to a local registry, and renders them. This allows content editors to add a carousel, banner, or text block to a page, and the storefront adapts without frontend redeploys (provided the component type and its fields are already registered in the storefront's registry).
 
-To demonstrate these concepts in action, I built a [Headless CMS Demo Application](https://github.com/adiputera/demo-cms-storefront) using the latest Java and Spring Boot (Java 25 and Spring Boot 4.0) alongside Next.js. This case study covers the architecture and the design trade-offs I made.
+To demonstrate these concepts in action, I built a [Headless CMS Demo Application](https://github.com/adiputera/spring-boot-headless-cms-storefront-demo) using the latest Java and Spring Boot (Java 25 and Spring Boot 4.0) alongside Next.js. This case study covers the architecture and the design trade-offs I made.
 
 ## The Architecture: Two-Stage Catalogs and Read/Write Separation
 

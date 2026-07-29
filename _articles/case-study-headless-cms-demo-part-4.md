@@ -31,6 +31,8 @@ mermaid: true
 
 ## Introduction
 
+> **Note:** This article is part of a series. The implementation shown here was built through vibe coding, and the complete source code is available in the [Headless CMS Demo repository](https://github.com/adiputera/spring-boot-headless-cms-storefront-demo). For full transparency, I also used AI to help draft this article. However, the system architecture, design decisions, and trade-off analysis are my own, developed through brainstorming and iterative discussions with AI.
+
 In [Part 3 of the Headless CMS case study](/case-studies/headless-cms-demo-generic-crud), we established a self-describing backend capable of serving any domain model's schema to the Next.js admin portal. The `CmsTypeRegistry` discovers all `ItemModel` subclasses at startup and the frontend dynamically renders navigation cards and tabular data listings.
 
 But listing data is only one direction of the workflow. Administrators also need to create and edit those records. When an editor clicks "Create New" on a discovered entity, the frontend faces a harder problem than rendering a table: it must decide which kind of input control belongs to each field.

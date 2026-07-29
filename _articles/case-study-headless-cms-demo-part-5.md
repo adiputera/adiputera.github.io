@@ -31,6 +31,8 @@ mermaid: true
 
 ## Introduction
 
+> **Note:** This article is part of a series. The implementation shown here was built through vibe coding, and the complete source code is available in the [Headless CMS Demo repository](https://github.com/adiputera/spring-boot-headless-cms-storefront-demo). For full transparency, I also used AI to help draft this article. However, the system architecture, design decisions, and trade-off analysis are my own, developed through brainstorming and iterative discussions with AI.
+
 In [Part 4 of the Headless CMS case study](/case-studies/headless-cms-demo-dynamic-forms), we completed our core metadata-driven administration loop, allowing content editors to discover models, list records, and manage data through dynamic Create and Edit forms without writing entity-specific frontend code.
 
 However, modifying records directly in a production database introduces risk. Half-finished edits, unapproved copy, or broken links could immediately impact live storefront shoppers. To isolate editorial work from the live customer experience, our content system uses a dual-catalog pattern:

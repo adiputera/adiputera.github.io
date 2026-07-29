@@ -31,6 +31,8 @@ mermaid: true
 
 ## Introduction
 
+> **Note:** This article is part of a series. The implementation shown here was built through vibe coding, and the complete source code is available in the [Headless CMS Demo repository](https://github.com/adiputera/spring-boot-headless-cms-storefront-demo). For full transparency, I also used AI to help draft this article. However, the system architecture, design decisions, and trade-off analysis are my own, developed through brainstorming and iterative discussions with AI.
+
 In [Part 2 of the Headless CMS case study](/case-studies/headless-cms-demo-generic-search), we discussed how we decoupled administrative search and item selection using annotation-driven reflection (`@CmsField`) and dynamic JPQL query execution. That setup allowed content editors to search and link catalog items across any domain entity without requiring domain-specific REST endpoints or custom modal forms.
 
 While our generic search interface solved relational selection during landing page composition, a broader administrative challenge remained: **managing the domain entities themselves**.
