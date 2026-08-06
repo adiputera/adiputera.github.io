@@ -4,7 +4,7 @@ title: "Building a Headless CMS Demo Part 3: The Self-Describing Backend"
 description: "An architectural deep-dive into building a self-describing, metadata-driven backend in Spring Boot that powers dynamic 'All Models' registries and generic CRUD data tables in Next.js."
 keywords: "Headless CMS, self-describing backend, metadata-driven, generic CRUD, Spring Boot reflection, Next.js dynamic tables, JPA Metamodel"
 date: 2026-07-26
-date_modified: 2026-07-26
+date_modified: 2026-08-07
 permalink: /case-studies/headless-cms-demo-generic-crud
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, headless-cms]
@@ -59,7 +59,7 @@ One critical detail that makes this design reliable is that we are not building 
 
 Hardcoding administrative navigation menus does not scale as a platform grows. To make adding a new entity as simple as writing a new JPA class, a metadata-driven backend must be capable of describing itself to clients.
 
-The hero of this architecture is the `CmsTypeRegistry`. At application startup, it inspects the JPA Metamodel to discover all registered entities that extend `ItemModel`. Using the JPA Metamodel avoids manually maintaining entity registrations while ensuring only managed persistence classes are discovered. It scans their class definitions, reads field-level metadata annotations, and constructs an in-memory registry of available content types.
+At the core of this architecture is `CmsTypeRegistry`. At application startup, it inspects the JPA Metamodel to discover all registered entities that extend `ItemModel`. Using the JPA Metamodel avoids manually maintaining entity registrations while ensuring only managed persistence classes are discovered. It scans their class definitions, reads field-level metadata annotations, and constructs an in-memory registry of available content types.
 
 ```mermaid
 sequenceDiagram
@@ -142,7 +142,7 @@ During startup, `CmsTypeRegistry` evaluates the entity metadata once and stores 
 
 ## 2. Schema-Driven Data Tables
 
-The most important architectural decision in our listing design is that there is only one data table component in the entire administration UI. It renders products, articles, categories, promotions, and every future entity by consuming metadata rather than business-specific code.
+Our listing design relies on a single generic data table component across the entire administration UI. It renders products, articles, categories, promotions, and future entity types by consuming backend metadata rather than model-specific code.
 
 When an editor selects an entity from the registry (for example, navigating to `/cms/models/article`), the frontend routes the request to a dynamic catch-all page (`[type]/page.tsx`). The table component has zero static knowledge of domain models. It only understands how to process tabular columns, data rows, and value formatters.
 
@@ -268,6 +268,36 @@ This architecture intentionally does not attempt to solve:
 3. **Bespoke Business Rules**: Validation rules that depend on cross-service API checks, complex mathematical calculations, or historical data comparisons fall outside the scope of simple annotation-driven constraints. Such logic belongs in dedicated service layers rather than generic mappers.
 
 Acknowledging these boundaries keeps the system grounded. By using generic autodiscovery for standard catalog models and reserving custom React interfaces for specialized layouts, engineering teams can maintain a clean, maintainable balance across their platform.
+
+---
+
+## Results
+
+Here is how the self-describing backend and metadata-driven tables look in the CMS admin portal.
+
+### 1. All Models Registry
+
+When navigating to `/cms/models`, the frontend calls `GET /api/cms/items/types`. The backend returns all entities discovered from the JPA Metamodel at application startup, and the UI dynamically renders a navigation card for each model:
+
+![All Models Registry](/images/articles/case-study-headless-cms-demo-part-3/domain_model_registry.webp)
+
+### 2. Article Data Table
+
+Clicking **"See Data →"** on the Article card opens `/cms/models/article`. The table component fetches the schema from `/api/cms/items/article/metadata` and renders the columns (`Title`, `Slug`, `Created At`) along with row action buttons:
+
+![Article Data Table](/images/articles/case-study-headless-cms-demo-part-3/article_list.webp)
+
+Notice that the top search bar shows fields specific to Articles (`Title` and `Slug`), which are driven by the `@CmsField(searchable = true)` metadata from [Part 2](/case-studies/headless-cms-demo-generic-search).
+
+### 3. Product Data Table
+
+Opening `/cms/models/product` reuses the exact same React table component:
+
+![Product Data Table](/images/articles/case-study-headless-cms-demo-part-3/product_list.webp)
+
+Two dynamic behaviors stand out here:
+- **Thumbnail Image Rendering**: When an attribute is defined as `CmsFieldType.IMAGE` in `@CmsField`, the table component renders a thumbnail image preview in the cell instead of displaying the raw URL string.
+- **Dynamic Search Fields**: Because search metadata is driven by `@CmsField` (as detailed in [Part 2](/case-studies/headless-cms-demo-generic-search)), the search bar automatically switches from Article fields (`Title`, `Slug`) to Product fields (`Code`, `Name`, `Approval Status`, `Catalog Version`) without writing any product-specific search UI.
 
 ---
 
