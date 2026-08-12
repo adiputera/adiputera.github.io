@@ -33,10 +33,11 @@
     <link rel="apple-touch-startup-image" href="{{ site.baseurl }}/images/512.png">
 
     <!-- Canonical & Alternates -->
+    {%- assign clean_url = page.url | replace: 'index.html', '' -%}
     {%- if page.canonical_url -%}
     <link rel="canonical" href="{{ page.canonical_url | escape }}" />
     {%- else -%}
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+    <link rel="canonical" href="{{ site.url }}{{ clean_url }}" />
     {%- endif -%}
 
     {%- unless page.layout == 'article' -%}
@@ -102,7 +103,7 @@
     <meta property="og:image:type" content="{{ page.og_image_type | default: site.data.meta.og_defaults.image_type | escape }}" />
     <meta property="og:image:alt" content="{{ current_og_image_alt | escape }}" />
     <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}{{ page.og_type | default: site.data.meta.og_defaults.type }}{% endif %}" />
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:url" content="{{ site.url }}{{ clean_url }}" />
     <meta property="og:locale" content="{% if page.lang == 'id' %}id_ID{% else %}en_US{% endif %}" />
     <meta property="og:site_name" content="{{ site.data.meta.og_defaults.site_name | escape }}" />
 

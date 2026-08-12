@@ -3,8 +3,8 @@ layout: article
 title: "Building a Headless CMS Demo Part 4: Dynamic Form Generation and the Reference Picker"
 description: "How a schema-driven CMS generates complete, type-safe Create and Edit forms at runtime by rendering text inputs, number fields, booleans, and reference pickers from backend metadata without entity-specific UI code."
 keywords: "Headless CMS, dynamic form generation, reference picker, metadata-driven UI, Spring Boot, Next.js, JPA reflection"
-date: 2026-07-26
-date_modified: 2026-07-26
+date: 2026-08-15
+date_modified: 2026-08-15
 permalink: /case-studies/headless-cms-demo-dynamic-forms
 category: case-study
 tags: [architecture, spring-boot, nextjs, cms, headless-cms]
@@ -45,7 +45,7 @@ This case study covers how we extend the metadata engine from [Part 3](/case-stu
 
 ## The Extended Field Metadata Schema
 
-In Part 3, the backend's unified metadata endpoint (`/api/cms/items/{type}/metadata`) exposed two arrays: `columnShown` (for table headers) and `searchable` (for search filter inputs). To support form generation, we extended the same endpoint's response payload with a third array: `fields`.
+In [Part 3](/case-studies/headless-cms-demo-generic-crud), the backend's unified metadata endpoint (`/api/cms/items/{type}/metadata`) exposed two arrays: `columnShown` (for table headers) and `searchable` (for search filter inputs). To support form generation, we extended the same endpoint's response payload with a third array: `fields`.
 
 This `fields` array represents the complete schema of a domain entity, including information not relevant to tables or search filters:
 
@@ -207,7 +207,7 @@ This serialization step ensures the frontend's display-friendly state (labels an
 
 The `REFERENCE` field type is the most complex input to handle. When an editor is configuring a `TrendingArticleComponent`, they need to search for and select one or more `Article` records from the database without leaving the form. A raw text input accepting a comma-separated list of IDs would be unusable.
 
-Instead, we implemented a `ReferencePickerModal` component. When an editor clicks "Add Reference" on a reference field, the modal opens and dynamically queries the target entity's own metadata and data listings from the same backend APIs used by the generic data tables in Part 3. The modal is completely generic, as it knows only the `referenceType` string and whether it operates in `SINGLE` or `MULTIPLE` selection mode.
+Instead, we implemented a `ReferencePickerModal` component. When an editor clicks "Add Reference" on a reference field, the modal opens and dynamically queries the target entity's own metadata and data listings from the same backend APIs used by the generic data tables in [Part 3](/case-studies/headless-cms-demo-generic-crud). The modal is completely generic, as it knows only the `referenceType` string and whether it operates in `SINGLE` or `MULTIPLE` selection mode.
 
 ```mermaid
 sequenceDiagram
@@ -274,7 +274,7 @@ const getRowLabel = (row: CmsRow): string => {
 };
 ```
 
-This heuristic handles the majority of catalog entities without requiring a dedicated `toDisplayLabel()` override on every entity class. For entities where the convention falls short, overriding `toItemSearchResultDTO()` on the backend (as discussed in Part 2) gives developers a clean extension point to supply a custom label.
+This heuristic handles the majority of catalog entities without requiring a dedicated `toDisplayLabel()` override on every entity class. For entities where the convention falls short, overriding `toItemSearchResultDTO()` on the backend (as discussed in [Part 2](/case-studies/headless-cms-demo-generic-search)) gives developers a clean extension point to supply a custom label.
 
 ---
 
@@ -309,21 +309,61 @@ The edit page follows an identical structure, first fetching the current entity 
 
 ---
 
-## Architectural Boundaries
+## Results
 
-Dynamic form generation handles the standard set of administrative field types well. As with the rest of this architecture, it is worth defining where this pattern reaches its limits.
+Here is how dynamic form generation and the reference picker operate in the CMS admin portal.
 
-The `CmsForm` component intentionally does not attempt to solve:
+### 1. Dynamic Form Rendering
 
-1. **WYSIWYG and Rich Text Editing**: Long-form content fields like blog post bodies or HTML sections require dedicated rich text editors (such as TipTap or Quill) that fall outside the scope of a generic schema renderer.
-2. **Nested Inline Editing**: Some UX patterns require editing a parent entity and its children on the same form page simultaneously. The current architecture requires navigating to child entity pages separately.
-3. **Conditional Field Visibility**: If a field should appear or disappear based on the value of another field, that logic cannot currently be expressed through `@CmsField` annotations. It requires either custom frontend components or a richer annotation schema.
+When navigating to create a new component or entity (such as `/cms/models/trendingarticlecomponent/create`), `CmsForm` queries the backend metadata endpoint and dynamically renders input controls based on field type annotations:
+
+![Blank Create Component Form](/images/articles/case-study-headless-cms-demo-part-4/create_new_event_component_blank.webp)
+
+Text fields (`STRING`), reference selection buttons (`REFERENCE`), mandatory fields are rendered without writing model-specific form components.
+
+### 2. Single-Item Reference Selection
+
+Clicking "Select" on a single-cardinality reference field opens `ReferencePickerModal` in `SINGLE` mode:
+
+![Single Item Reference Picker](/images/articles/case-study-headless-cms-demo-part-4/select_reference_single.webp)
+
+Selecting an item sets the active choice and closes the modal. The modal is displayed again when the user clicks "Select" again, now the button "Select" for the choosen one change to "Deselect":
+
+![Single Item Reference Selected](/images/articles/case-study-headless-cms-demo-part-4/select_reference_single_selected.webp)
+
+### 3. Multi-Item Reference Selection
+
+For fields with `MULTIPLE` cardinality, the select button will not autoclose the modal. This allows content editors to select multiple entity items before confirming. The select button for the choosen one change to "Deselect" and if it is deselected, it will go back to "Select". When the editor clicks the "Choose" button, the modal will close and the selected items will be displayed as tags in the form.
+
+![Multiple Items Reference Picker - Not Selected](/images/articles/case-study-headless-cms-demo-part-4/select_reference_multiple_event_not_selected.webp)
+
+![Multiple Items Reference Picker - Selected](/images/articles/case-study-headless-cms-demo-part-4/select_reference_multiple_event_selected.webp)
+
+### 4. Form State & Payload Serialization
+
+Once references are chosen, `CmsForm` displays label from `toItemSearchResultDTO()` of the selected entities, this was covered in [Part 2](/case-studies/headless-cms-demo-generic-search):
+
+![Filled Form with Selected References](/images/articles/case-study-headless-cms-demo-part-4/create_new_event_component_filled.webp)
+
+Before submitting, `CmsForm` serializes reference objects down to raw ID arrays or single ID values:
+
+![Network Request Payload for Component Creation](/images/articles/case-study-headless-cms-demo-part-4/network_create_event_component.webp)
+
+Similarly, submitting a Product uses the same API:
+
+![Network Request Payload for Product Creation](/images/articles/case-study-headless-cms-demo-part-4/network_create_product.webp)
+
+### 5. Table Refresh After Creation
+
+Submitting the form posts the entity payload to `/api/cms/items/{type}` and redirects back to the listing table, where the new record appears immediately:
+
+![Data Table Updated After Entity Creation](/images/articles/case-study-headless-cms-demo-part-4/product_list_after_create.webp)
 
 ---
 
 ## Conclusion
 
-By extending the unified metadata schema with form-specific attributes (`required`, `editableOnUpdate`, `type`, `reference`, `referenceCardinality`), the same `CmsTypeRegistry` that powers entity discovery and generic data tables in Part 3 now also drives complete Create and Edit interfaces.
+By extending the unified metadata schema with form-specific attributes (`required`, `editableOnUpdate`, `type`, `reference`, `referenceCardinality`), the same `CmsTypeRegistry` that powers entity discovery and generic data tables in [Part 3](/case-studies/headless-cms-demo-generic-crud) now also drives complete Create and Edit interfaces.
 
 Adding a new entity to the system continues to remain a backend-only task. Engineers annotate entity fields, and the administration portal automatically provides a discovery card, a data listing page, a create form, an edit form, and a reference picker for any relational links.
 

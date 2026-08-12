@@ -6,8 +6,6 @@ keywords: "SAP Commerce, Hybris, SAP Hybris, Performance Optimization, Caching, 
 date: 2025-10-17
 date_modified: 2026-05-12
 tags: [sap-commerce, performance, caching]
-canonical_url: ""
-canonical_source: ""
 breadcrumb: "Articles"
 breadcrumb_short: "SAP Commerce Performance"
 permalink: /articles/sap-commerce-performance-optimization

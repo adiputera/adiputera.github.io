@@ -6,8 +6,6 @@ keywords: "Java, Enterprise Commerce, Spring Boot, Caching, Performance, CDN, Ca
 date: 2025-12-14
 date_modified: 2025-12-14
 tags: [java, caching, performance]
-canonical_url: ""
-canonical_source: ""
 breadcrumb: "Articles"
 breadcrumb_short: "Enterprise Caching"
 permalink: /articles/enterprise-commerce-multi-layer-caching

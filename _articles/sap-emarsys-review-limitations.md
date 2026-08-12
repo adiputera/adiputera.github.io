@@ -6,8 +6,6 @@ keywords: "SAP Emarsys, Marketing Campaigns, Automation, Web Campaigns, Mobile A
 date: 2026-02-25
 date_modified: 2026-04-30
 tags: [sap-emarsys, sap-engagement-cloud, marketing-automation, integration]
-canonical_url: ""
-canonical_source: ""
 breadcrumb: "Articles"
 breadcrumb_short: "SAP Emarsys Review"
 permalink: /articles/sap-emarsys-review-limitations

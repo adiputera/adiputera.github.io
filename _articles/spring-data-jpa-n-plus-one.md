@@ -15,8 +15,6 @@ image: /images/articles/spring-data-jpa-n-plus-one/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
-canonical_url: ""
-canonical_source: ""
 published: false
 ---
 

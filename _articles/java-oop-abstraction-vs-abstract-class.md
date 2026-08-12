@@ -15,8 +15,6 @@ og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
 snippet_id: "Mengapa prinsip abstraksi dalam OOP tidak sama dengan abstract class, dan bagaimana kita menggunakan abstraksi di setiap level tanpa menyadarinya."
-canonical_url: ""
-canonical_source: ""
 published: true
 ---
 
