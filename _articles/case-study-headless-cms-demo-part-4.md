@@ -17,7 +17,7 @@ image: /images/articles/case-study-headless-cms-demo-part-4/cover.webp
 og_image_width: 1024
 og_image_height: 1024
 og_image_type: image/webp
-published: false
+published: true
 mermaid: true
 ---
 
