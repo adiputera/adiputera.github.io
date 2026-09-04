@@ -8,13 +8,13 @@ summary_html: |
       Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam <strong>arsitektur
       Java &amp; Spring dan platform e-commerce enterprise</strong>.
       Saya telah merancang dan mengirimkan sistem utama untuk Astra Group (IDX:ASII), dengan fokus pada skalabilitas,
-      modernisasi platform, dan integrasi microservices.
+      modernisasi platform, dan integrasi sistem terdistribusi.
   </p>
   <p>
       Merancang platform <a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a> yang memungkinkan tim bisnis mengirim aturan harga, promosi, dan eligibility baru tanpa deploy backend. Engine-nya sengaja dibuat generik: tidak mengenal apa itu Customer atau Product, sehingga aturan baru bisa di-onboard tanpa keterlibatan engineering.
   </p>
   <p>
-      Keahlian saya juga mencakup microservices berbasis Spring dan rekayasa performa (mencapai waktu muat sub-detik). Saya juga telah mengirimkan pipeline CI/CD, migrasi database, dan integrasi SAP enterprise (CDP, Emarsys).
+      Keahlian saya juga mencakup arsitektur terdistribusi berbasis Spring dan rekayasa performa (mencapai waktu muat sub-detik). Saya juga telah mengirimkan pipeline CI/CD, migrasi database, dan integrasi SAP enterprise (CDP, Emarsys).
       Saya berdedikasi pada kepemimpinan engineering, arah teknis, dan membangun sistem yang mudah dipelihara.
   </p>
 key_achievements:
@@ -27,7 +27,7 @@ key_achievements:
   - label: "Performa"
     text: "Mendiagnosis amplifikasi permintaan 10× pada SAP Commerce Accelerator via Datadog dan mengurangi latensi P95 dari 2,1 detik menjadi ~800ms via EHCache full-page caching, memungkinkan penyerapan trafik 3× tanpa penskalaan horizontal."
   - label: "Modernisasi"
-    text: "Memimpin migrasi dari monolit e-commerce lama ke microservices berbasis Spring Boot."
+    text: "Memimpin migrasi dari monolit e-commerce lama ke arsitektur terdistribusi berbasis Spring Boot."
   - label: "Integrasi Enterprise"
     text: "Memberikan integrasi untuk SAP CDP dan Emarsys."
 skills:
@@ -51,7 +51,7 @@ experience:
           - "Menetapkan service boundaries, standar platform, dan strategi evolusi jangka panjang."
       - label: "Modernisasi"
         list:
-          - "Memimpin migrasi dari monolit SAP Commerce ke microservices Spring Boot."
+          - "Memimpin migrasi dari monolit SAP Commerce ke arsitektur terdistribusi berbasis Spring Boot."
           - "Otoritas teknis atas library platform inti yang digunakan 3 tim produk di berbagai domain bisnis."
       - label: "Skalabilitas"
         list:
@@ -60,7 +60,7 @@ experience:
           - "Mengurangi payload gambar hingga 80% melalui layanan image proxy kustom."
       - label: "Keamanan"
         list:
-          - "Merancang kontrol akses JWT/OAuth2 di seluruh microservices menggunakan anotasi @Secured berbasis izin, bukan peran umum."
+          - "Merancang kontrol akses JWT/OAuth2 di seluruh layanan terdistribusi menggunakan anotasi @Secured berbasis izin, bukan peran umum."
           - "Mengimplementasikan cache access-token berbasis Redis (dengan fallback ke DB) dan pemberian peran berbatas waktu."
       - label: "Integrasi"
         list:

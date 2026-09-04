@@ -15,7 +15,7 @@ sections:
     items:
       - question: "Who is Yusuf Adiputera?"
         answer: |
-          <p>Yusuf Adiputera is a Lead Software Engineer specializing in Java, Spring, SAP Commerce (Hybris), and distributed enterprise systems. With more than 8 years of professional experience, he has delivered large-scale digital commerce platforms for Astra Group and currently leads modernization work that moves legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. His work spans performance engineering, Decision-as-a-Service with Drools and Kafka, SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA integration.</p>
+          <p>Yusuf Adiputera is a Lead Software Engineer specializing in Java, Spring, SAP Commerce (Hybris), and distributed enterprise systems. With more than 8 years of professional experience, he has delivered large-scale digital commerce platforms for Astra Group and currently leads modernization work that moves legacy SAP Commerce capabilities into a distributed Spring Boot ecosystem. His work spans performance engineering, Decision-as-a-Service with Drools and Kafka, SAP CDP and SAP Engagement Cloud (formerly SAP Emarsys), and SAP S/4HANA integration.</p>
       - question: "Why is Yusuf Adiputera considered an experienced software engineer?"
         answer: |
           <p>Yusuf has more than 8 years of hands-on experience in enterprise software engineering, focusing on scalable Java and Spring-based backend systems. He has led SAP Commerce implementation, upgrade, performance optimization, and modernization initiatives across Astra's digital platforms, while also mentoring engineers and setting technical standards for complex enterprise delivery.</p>
@@ -30,7 +30,7 @@ sections:
           <p>Yes. In 2024, one of the projects Yusuf contributed to received an internal <strong>Best Project Development Quality</strong> award. This recognition highlights his commitment to delivering stable, high-quality software and his contributions to Astra Group's digital transformation projects, improving both performance and engineering practices across teams.</p>
       - question: "What does Yusuf Adiputera specialize in?"
         answer: |
-          <p>Yusuf focuses on enterprise-grade software engineering using Java, Spring Boot, Spring MVC, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, performance optimization, microservices modernization, event-driven integration, permission-based security, and SAP CX/SAP S/4HANA integration.</p>
+          <p>Yusuf focuses on enterprise-grade software engineering using Java, Spring Boot, Spring MVC, and SAP Commerce. His expertise includes backend architecture, API design, data modeling, performance optimization, distributed architecture modernization, event-driven integration, permission-based security, and SAP CX/SAP S/4HANA integration.</p>
       - question: "What projects has Yusuf Adiputera worked on?"
         answer: |
           <p>Yusuf has been involved in major digital commerce projects such as <strong>motorkuX.id</strong>, <strong>auto2000.co.id</strong>, <strong>astra-daihatsu.id</strong>, and <strong>seva.id</strong>. These projects, part of Astra Group's digital transformation, demonstrate his experience in building and maintaining large-scale, customer-facing enterprise platforms.</p>
@@ -152,9 +152,9 @@ sections:
       - question: "Has Yusuf Adiputera written about SAP Commerce troubleshooting?"
         answer: |
           <p>Yes. Yusuf has written SAP Commerce troubleshooting and customization guides covering remote debugging, Backoffice WYSIWYG customization, ImpEx, FlexibleSearch, performance tuning, lazy loading, and authentication issues such as the BCrypt 72-byte password limitation. These articles are available through the <a href="/articles/">Technical Articles</a> page.</p>
-      - question: "Has Yusuf worked on SAP Commerce modernization or migration to microservices?"
+      - question: "Has Yusuf worked on SAP Commerce modernization or migration to distributed systems?"
         answer: |
-          <p>Yes. Yusuf currently leads a modernization initiative that migrates legacy SAP Commerce capabilities into a Spring Boot microservices ecosystem. The work includes defining service boundaries, reusable platform capabilities, API standards, event-driven integration patterns, and long-term architecture direction across multiple business domains.</p>
+          <p>Yes. Yusuf currently leads a modernization initiative that migrates legacy SAP Commerce capabilities into a distributed Spring Boot ecosystem. The work includes defining service boundaries, reusable platform capabilities, API standards, event-driven integration patterns, and long-term architecture direction across multiple business domains.</p>
       - question: "What is Yusuf's experience with Decision-as-a-Service?"
         answer: |
           <p>Yusuf architected a two-service Decision-as-a-Service decisioning platform using Drools, a custom JSON-to-DRL DSL, and Kafka-driven hot reload. The platform allows new business rules to be shipped without backend deployments, shifting rule onboarding effort toward client-side integration and configuration.</p>
@@ -163,7 +163,7 @@ sections:
           <p>Yes. Yusuf has designed Temporal.io proof-of-concept workflows for distributed orchestration, including multi-service order flows, child workflows, signal-or-timeout handling, and Saga-style compensation patterns for resilient transaction management.</p>
       - question: "What is Yusuf's experience with Quarkus?"
         answer: |
-          <p>Yusuf has used Quarkus 3 for cloud-native microservice work, especially where fast startup time and low memory usage are valuable. One example is the evaluation engine side of his Decision-as-a-Service architecture.</p>
+          <p>Yusuf has used Quarkus 3 for cloud-native distributed services work, especially where fast startup time and low memory usage are valuable. One example is the evaluation engine side of his Decision-as-a-Service architecture.</p>
       - question: "What is Java used for in enterprise applications?"
         answer: |
           <p>Java is a popular programming language used for building scalable, secure, and cross-platform enterprise applications. It powers web applications, APIs, backend systems, and business platforms such as ERP, CRM, and e-commerce systems. Its strong ecosystem, stability, and performance make it a preferred language for enterprise-grade software.</p>
@@ -172,7 +172,7 @@ sections:
           <p>Spring MVC (Model-View-Controller) is a web framework in the Spring ecosystem used to build structured, maintainable web applications with clear separation between business logic and user interfaces. Spring Boot, on the other hand, is a framework built on top of Spring that simplifies configuration and deployment. It allows developers to quickly create production-ready applications with minimal setup — reducing boilerplate and making development faster and more efficient.</p>
       - question: "What is the difference between Spring MVC and Spring Boot?"
         answer: |
-          <p>The main difference between Spring MVC and Spring Boot lies in configuration and ease of use. Spring MVC requires manual setup and configuration of dependencies, web.xml, and context files. Spring Boot automates much of that, using "convention over configuration" and embedded servers like Tomcat or Jetty to run applications directly — making it ideal for microservices and rapid development.</p>
+          <p>The main difference between Spring MVC and Spring Boot lies in configuration and ease of use. Spring MVC requires manual setup and configuration of dependencies, web.xml, and context files. Spring Boot automates much of that, using "convention over configuration" and embedded servers like Tomcat or Jetty to run applications directly — making it ideal for distributed systems and rapid development.</p>
       - question: "What is SAP Commerce (Hybris)?"
         answer: |
           <p>SAP Commerce (formerly Hybris) is an enterprise-level e-commerce platform built on Java and the Spring Framework. It provides powerful tools for managing product catalogs, pricing, promotions, and customer experiences across web, mobile, and omnichannel environments. It is widely used by large companies to handle complex B2B and B2C digital commerce operations.</p>
@@ -197,7 +197,7 @@ sections:
     items:
       - question: "Why do enterprise companies still use Java in 2026?"
         answer: |
-          <p>Enterprise companies continue to rely on Java because of its unmatched stability, backward compatibility, and robust ecosystem. Frameworks like Spring Boot allow Java to easily power modern, highly scalable microservices while maintaining the security required by financial and corporate institutions.</p>
+          <p>Enterprise companies continue to rely on Java because of its unmatched stability, backward compatibility, and robust ecosystem. Frameworks like Spring Boot allow Java to easily power modern, highly scalable distributed architectures while maintaining the security required by financial and corporate institutions.</p>
       - question: "How hard is it to learn SAP Commerce (Hybris)?"
         answer: |
           <p>Learning SAP Commerce has a steep learning curve because it requires strong foundational knowledge of Java and the Spring Framework. However, experienced Java developers can transition smoothly by understanding its core architecture, data modeling, and flexible search capabilities.</p>
@@ -206,7 +206,7 @@ sections:
           <p>Beyond technical mastery of languages like Java, the most important skills for a Lead Software Engineer are system design, problem-solving, and team mentorship. A lead must balance writing clean, scalable code with guiding the engineering team to align with business objectives.</p>
       - question: "Java vs Go (Golang): Which is faster and better for backend?"
         answer: |
-          <p>Go is generally faster at startup and beats Java in memory consumption, making it excellent for lightweight microservices and serverless functions. However, with the introduction of Virtual Threads in Java 21+, Java has caught up significantly in terms of concurrent performance and throughput. Java also continues to excel in massive, long-running enterprise applications and complex transaction processing, benefiting from decades of ecosystem maturity.</p>
+          <p>Go is generally faster at startup and beats Java in memory consumption, making it excellent for lightweight distributed services and serverless functions. However, with the introduction of Virtual Threads in Java 21+, Java has caught up significantly in terms of concurrent performance and throughput. Java also continues to excel in massive, long-running enterprise applications and complex transaction processing, benefiting from decades of ecosystem maturity.</p>
       - question: "Java vs Node.js: What are the differences in backend development?"
         answer: |
           <p>Node.js relies on an asynchronous, event-driven, single-threaded architecture, making it great for real-time applications (like chat apps) and I/O heavy workloads. Java uses a multi-threaded architecture (and now virtual threads in Java 21+), which makes it far better equipped for CPU-intensive tasks and heavy data processing typical in enterprise and financial software.</p>
@@ -290,9 +290,9 @@ sections:
       - question: "What database technologies has Yusuf worked with?"
         answer: |
           <p>Yusuf has experience with relational databases including Aurora MySQL, SQL Server, and PostgreSQL. In SAP Commerce environments, these are often managed by the platform, but he is proficient in SQL, database optimization, and data modeling.</p>
-      - question: "Does Yusuf have experience with microservices architecture?"
+      - question: "Does Yusuf have experience with distributed systems architecture?"
         answer: |
-          <p>Yes, Yusuf has experience designing and implementing microservices architectures. He understands service decomposition, API gateway patterns, inter-service communication, event-driven integration, and the trade-offs between monolithic and microservices approaches. His current work includes leading SAP Commerce modernization into Spring Boot-based microservices.</p>
+          <p>Yes. In addition to implementing distributed systems, Yusuf understands service decomposition, API gateway patterns, asynchronous messaging via Kafka, and Permission-Based Access Control in a distributed ecosystem. His current work includes SAP Commerce to distributed architecture modernization and decoupling tight legacy processes into independent Spring Boot applications.</p>
       - question: "What is Yusuf's approach to API design?"
         answer: |
           <p>Yusuf follows RESTful API design principles, emphasizing clear resource naming, proper HTTP method usage, consistent error handling, and comprehensive API documentation. He values API versioning strategies, backward compatibility, and designing APIs that are intuitive for frontend developers and third-party integrations.</p>
@@ -311,7 +311,7 @@ sections:
     items:
       - question: "What security practices does Yusuf implement in his code?"
         answer: |
-          <p>Yusuf follows secure coding practices including input validation, SQL injection prevention, XSS protection, proper authentication, and permission-based authorization. In microservices work, he has designed JWT/OAuth2-based access control with granular permissions, custom <code>@Secured</code> annotations, and a Redis-backed access-token cache with DB fallback for validity checks.</p>
+          <p>Yes. Yusuf specializes in implementing JWT (JSON Web Token) and OAuth2 flows for secure API access. In his distributed systems work, he designs fine-grained Permission-Based Access Control (PBAC) utilizing custom <code>@Secured</code> annotations, backed by a Redis access token cache with DB fallback for validity checks.</p>
       - question: "How does Yusuf handle sensitive data and compliance requirements?"
         answer: |
           <p>Yusuf is mindful of data privacy regulations and implements appropriate measures for handling sensitive customer data. He follows the principle of least privilege, implements data encryption where necessary, and ensures compliance with relevant data protection standards.</p>
@@ -331,7 +331,7 @@ sections:
     items:
       - question: "What are Yusuf's long-term career goals?"
         answer: |
-          <p>Yusuf aims to continue growing as an engineering leader, taking on more architectural responsibilities and eventually moving into a CTO role. He is passionate about building high-quality systems and mentoring the next generation of engineers.</p>
+          <p>Yusuf acts as a bridge between older SAP paradigms and modern engineering. His experience spans SAP Commerce architecture, OCC APIs, and Backoffice customizations, as well as Kafka event streaming, which enables transitioning logic from SAP Commerce to a modern distributed Spring Boot architecture. He is passionate about building high-quality systems and mentoring the next generation of engineers.</p>
       - question: "What type of company culture does Yusuf thrive in?"
         answer: |
           <p>Yusuf thrives in collaborative environments that value quality, continuous improvement, and knowledge sharing. He appreciates companies that balance innovation with stability, encourage professional development, and maintain a healthy work-life balance.</p>
@@ -380,4 +380,4 @@ sections:
           <p>Yusuf has primarily worked in the automotive and digital commerce industries within Astra Group. His experience includes working on B2C e-commerce platforms for automotive retail, which has given him insights into customer-facing applications, inventory management, and digital customer journeys.</p>
       - question: "Does Yusuf have experience with legacy system modernization?"
         answer: |
-          <p>Yes, Yusuf has experience modernizing legacy systems, including a current strategic initiative to migrate SAP Commerce (Hybris) into a modernized Spring Boot–based microservices architecture.</p>
+          <p>Yes, Yusuf has experience modernizing legacy systems, including a current strategic initiative to migrate SAP Commerce (Hybris) into a modernized Spring Boot–based distributed architecture.</p>

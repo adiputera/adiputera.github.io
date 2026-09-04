@@ -4,8 +4,8 @@ site:
   title: "Yusuf Adiputera – Lead Software Engineer"
   name: "Yusuf Adiputera"
   tagline: "Lead Software Engineer specialized in Java, Distributed Systems, and Enterprise Commerce"
-  description: "Lead Software Engineer with more than 8 years of experience in Java, Microservices, Spring Boot, and Enterprise Commerce. Based in Jakarta, open to relocation."
-  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Java, Spring Boot, SAP Commerce, Hybris, Microservices, Apache Kafka, Drools, Jakarta Developer"
+  description: "Lead Software Engineer with more than 8 years of experience in Java, Distributed Systems, Spring Boot, and Enterprise Commerce. Based in Jakarta, open to relocation."
+  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Java, Spring Boot, SAP Commerce, Hybris, Distributed Systems, Apache Kafka, Drools, Jakarta Developer"
   email: "yusuf@adiputera.id"
   linkedin: "https://www.linkedin.com/in/yusuf-adiputera"
   linkedin_display: "linkedin.com/in/yusuf-adiputera"
@@ -16,7 +16,7 @@ site:
   location: "Jakarta, Indonesia"
   summary_html: |
     <p>I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.</p>
-    <p>I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) and scalable service foundations.</p>
+    <p>I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a distributed Spring Boot ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) and scalable service foundations.</p>
     <p>My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.</p>
     <p>I've also delivered complex database migrations (<a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA to Aurora MySQL</a>), established zero-downtime CI/CD pipelines, and built event-driven integrations using Kafka to connect enterprise systems like SAP CDP and Emarsys.</p>
     <p>As an engineering leader, I act as an internal technical consultant across parallel projects. I enjoy leading engineering teams, mentoring developers, and establishing the technical standards that drive long-term business growth.</p>
@@ -103,7 +103,7 @@ breadcrumb:
 summary: |
   I'm a Lead Software Engineer with more than 8 years of experience specializing in Java and Spring Framework architecture, enterprise e-commerce platforms, and distributed systems. I've designed and delivered enterprise-scale platforms for Astra Group (PT Astra International Tbk, IDX:ASII — Indonesia's largest diversified conglomerate), including seva.id, auto2000.co.id, and motorkux.id.
 
-  I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a Spring Boot microservices ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) and scalable service foundations.
+  I'm currently leading a major modernization initiative migrating a legacy SAP Commerce monolith to a distributed Spring Boot ecosystem. In this role, I design reusable core capabilities, including a dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) and scalable service foundations.
 
   My engineering philosophy heavily emphasizes performance and system reliability. By implementing full-page caching (EHCache) and custom image proxies, I've reduced page load times to sub-second levels and ensured platforms can reliably handle 3× traffic spikes.
 
@@ -117,12 +117,12 @@ skills:
   - category: "Frameworks & Platforms"
     items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud (formerly SAP Emarsys)"
   - category: "Architecture & Integration"
-    items: "Microservices, REST API, Event-Driven Architecture, DSL Design, OAuth2"
+    items: "Distributed Systems, REST API, Event-Driven Architecture, DSL Design, OAuth2"
   - category: "Tools & Infrastructure"
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 
 achievements:
-  - "Leading the enterprise-wide migration from a legacy SAP Commerce monolith to a scalable Spring Boot microservices ecosystem across 3 parallel business domains."
+  - "Leading the enterprise-wide migration from a legacy SAP Commerce monolith to a scalable, distributed Spring Boot ecosystem across 3 parallel business domains."
   - "Led the engineering teams for motorkux.id (2021–Present) and seva.id marketplace (2019–2021)"
   - "Contributed to the core development of the seva.id property platform (2018–2019)"
   - "Received the internal \"Best Project Development Quality\" award (2024)"
@@ -178,7 +178,7 @@ experience:
     end_display: "Present"
     duration: "Apr 2020 - Present"
     description_html: |
-      <p>Lead architecture and evolution of enterprise-scale e-commerce platforms, driving modernization from monolithic SAP Commerce systems to a scalable microservices ecosystem across multiple business domains.</p>
+      <p>Lead architecture and evolution of enterprise-scale e-commerce platforms, driving modernization from monolithic SAP Commerce systems to a scalable distributed ecosystem across multiple business domains.</p>
 
       <h4>Architecture &amp; Platform Ownership</h4>
       <ul>
@@ -190,7 +190,7 @@ experience:
 
       <h4>Platform Modernization</h4>
       <ul>
-        <li>Leading the enterprise-wide migration from SAP Commerce monolith to Spring Boot–based microservices.</li>
+        <li>Leading the enterprise-wide migration from SAP Commerce monolith to a Spring Boot–based distributed architecture.</li>
         <li>Technical authority for the core platform library consumed by 3 product teams across multiple business domains.</li>
         <li>Defined engineering standards and implementation guidelines for distributed systems.</li>
       </ul>
@@ -206,7 +206,7 @@ experience:
 
       <h4>Security &amp; Access Control</h4>
       <ul>
-        <li>Designed JWT/OAuth2-based access control across microservices using a Permission-Based Access Control (PBAC) model, where API endpoints are secured by granular permissions via custom <code>@Secured</code> annotations rather than broad roles.</li>
+        <li>Designed JWT/OAuth2-based access control across distributed services using a Permission-Based Access Control (PBAC) model, where API endpoints are secured by granular permissions via custom <code>@Secured</code> annotations rather than broad roles.</li>
         <li>Implemented a Redis-backed access-token cache with DB fallback for validity checks, and time-bounded role grants.</li>
       </ul>
 
@@ -234,7 +234,7 @@ experience:
         <li>Developed custom promotion engine supporting location-based quota without coupon dependency.</li>
       </ul>
 
-      <p><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Microservices Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
+      <p><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Distributed Systems Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
 
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"

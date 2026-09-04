@@ -22,7 +22,7 @@ sections:
           Commerce (Hybris), dan sistem enterprise terdistribusi. Dengan pengalaman profesional
           lebih dari 8 tahun, Yusuf telah membangun platform digital commerce berskala besar untuk
           Astra Group dan saat ini memimpin modernisasi kapabilitas SAP Commerce legacy ke dalam
-          ekosistem microservices berbasis Spring Boot. Pekerjaannya mencakup performance
+          Commerce lama ke ekosistem terdistribusi berbasis Spring Boot. Pekerjaannya mencakup performance
           engineering, Decision-as-a-Service dengan Drools dan Kafka, SAP CDP, SAP Engagement Cloud
           (formerly SAP Emarsys), serta integrasi SAP S/4HANA.</p>
 
@@ -67,7 +67,7 @@ sections:
         answer: |
           <p>Yusuf berfokus pada enterprise-grade software engineering menggunakan Java, Spring
           Boot, Spring MVC, dan SAP Commerce. Keahliannya meliputi arsitektur backend, desain API,
-          pemodelan data, optimasi performa, modernisasi microservices, integrasi event-driven,
+          pemodelan data, optimasi performa, modernisasi arsitektur terdistribusi, integrasi event-driven,
           keamanan berbasis permission, serta integrasi SAP CX dan SAP S/4HANA.</p>
 
       - question: "Proyek apa saja yang pernah dikerjakan oleh Yusuf Adiputera?"
@@ -385,10 +385,10 @@ sections:
           72-byte. Artikel-artikel tersebut tersedia melalui halaman <a href="/articles/">Technical
           Articles</a>.</p>
 
-      - question: "Apakah Yusuf pernah mengerjakan modernisasi SAP Commerce atau migrasi ke microservices?"
+      - question: "Apakah Yusuf pernah mengerjakan modernisasi SAP Commerce atau migrasi ke arsitektur terdistribusi?"
         answer: |
           <p>Ya. Yusuf saat ini memimpin inisiatif modernisasi yang memigrasikan kapabilitas SAP
-          Commerce legacy ke ekosistem microservices berbasis Spring Boot. Pekerjaan ini mencakup
+          Commerce legacy ke ekosistem terdistribusi berbasis Spring Boot. Pekerjaan ini mencakup
           penentuan service boundary, kapabilitas platform reusable, standar API, pola integrasi
           event-driven, dan arah arsitektur jangka panjang di beberapa domain bisnis.</p>
 
@@ -407,7 +407,7 @@ sections:
 
       - question: "Bagaimana pengalaman Yusuf dengan Quarkus?"
         answer: |
-          <p>Yusuf menggunakan Quarkus 3 untuk pekerjaan microservice cloud-native, terutama ketika
+          <p>Yusuf menggunakan Quarkus 3 untuk pekerjaan layanan terdistribusi cloud-native, terutama ketika
           startup time cepat dan penggunaan memori rendah menjadi penting. Salah satu contohnya
           adalah sisi evaluation engine dalam arsitektur Decision-as-a-Service.</p>
 
@@ -442,7 +442,7 @@ sections:
           context file, sedangkan Spring Boot mengotomatiskan sebagian besar konfigurasi tersebut
           dengan konsep "convention over configuration" dan menyediakan embedded server seperti
           Tomcat
-          atau Jetty — menjadikannya pilihan ideal untuk microservices dan pengembangan cepat.</p>
+          atau Jetty — menjadikannya pilihan ideal untuk sistem terdistribusi dan pengembangan cepat.</p>
 
       - question: "Apa itu SAP Commerce (Hybris)?"
         answer: |
@@ -499,7 +499,7 @@ sections:
         answer: |
           <p>Perusahaan skala enterprise terus mengandalkan Java karena stabilitas, backward
           compatibility, dan ekosistemnya yang sangat kuat. Framework seperti Spring Boot
-          memungkinkan Java untuk dengan mudah mendayagunakan microservices modern yang sangat
+          memungkinkan Java untuk dengan mudah mendayagunakan arsitektur terdistribusi modern yang sangat
           skalabel dengan tetap menjaga standar keamanan yang diwajibkan oleh institusi
           keuangan dan korporasi.</p>
 
@@ -521,7 +521,7 @@ sections:
         answer: |
           <p>Go umumnya lebih cepat saat startup dan mengungguli Java dalam konsumsi memori,
           menjadikannya
-          pilihan luar biasa untuk microservices ringan dan fungsi serverless. Namun, dengan
+          pilihan luar biasa untuk layanan terdistribusi ringan dan fungsi serverless. Namun, dengan
           hadirnya
           Virtual Threads di Java 21+, Java telah menyusul performa dan throughput secara
           signifikan untuk proses konkuren. Java juga terus unggul dalam aplikasi skala enterprise
@@ -701,12 +701,12 @@ sections:
           dikelola oleh platform, namun ia mahir dalam SQL, optimasi database, dan pemodelan
           data.</p>
 
-      - question: "Apakah Yusuf memiliki pengalaman dengan arsitektur microservices?"
+      - question: "Apakah Yusuf memiliki pengalaman dengan arsitektur terdistribusi?"
         answer: |
           <p>Ya, Yusuf memiliki pengalaman merancang dan mengimplementasikan arsitektur
-          microservices. Ia memahami dekomposisi layanan, pola API gateway, komunikasi
+          sistem terdistribusi. Ia memahami dekomposisi layanan, pola API gateway, komunikasi
           antar-layanan, integrasi event-driven, serta trade-off antara pendekatan monolitik dan
-          microservices. Pekerjaannya saat ini mencakup modernisasi SAP Commerce ke microservices
+          sistem terdistribusi. Pekerjaannya saat ini mencakup modernisasi SAP Commerce ke arsitektur terdistribusi
           berbasis Spring Boot.</p>
 
       - question: "Bagaimana pendekatan Yusuf terhadap desain API?"
@@ -745,7 +745,7 @@ sections:
         answer: |
           <p>Yusuf mengikuti praktik coding yang aman termasuk validasi input, pencegahan SQL
           injection, perlindungan XSS, mekanisme autentikasi yang tepat, dan authorization berbasis
-          permission. Dalam pekerjaan microservices, ia merancang kontrol akses JWT/OAuth2 dengan
+          permission. Dalam pekerjaan sistem terdistribusi, ia merancang kontrol akses JWT/OAuth2 dengan
           permission granular, anotasi kustom <code>@Secured</code>, dan cache access-token berbasis
           Redis dengan fallback ke DB untuk pengecekan validitas.</p>
 
@@ -866,4 +866,4 @@ sections:
         answer: |
           <p>Ya, Yusuf memiliki pengalaman memodernisasi sistem legacy, termasuk inisiatif
           strategis saat ini untuk memigrasi SAP Commerce (Hybris) ke dalam arsitektur
-          microservices berbasis Spring Boot yang lebih modern.</p>
+          arsitektur terdistribusi berbasis Spring Boot yang lebih modern.</p>

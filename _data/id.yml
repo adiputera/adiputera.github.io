@@ -4,8 +4,8 @@ site:
   title: "Yusuf Adiputera – Lead Software Engineer"
   name: "Yusuf Adiputera"
   tagline: "Lead Software Engineer berspesialisasi dalam Java, Distributed Systems, dan Enterprise Commerce"
-  description: "Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java, Microservices, Spring Boot, dan Enterprise Commerce. Berlokasi di Jakarta, terbuka untuk relokasi."
-  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Java, Spring Boot, SAP Commerce, Hybris, Microservices, Apache Kafka, Drools, Jakarta Developer"
+  description: "Lead Software Engineer dengan lebih dari 8 tahun pengalaman dalam Java, Distributed Systems, Spring Boot, dan Enterprise Commerce. Berlokasi di Jakarta, terbuka untuk relokasi."
+  keywords: "Yusuf Adiputera, Yusuf Fahmi Adiputera, Lead Software Engineer, Java, Spring Boot, SAP Commerce, Hybris, Distributed Systems, Apache Kafka, Drools, Jakarta Developer"
   email: "yusuf@adiputera.id"
   linkedin: "https://www.linkedin.com/in/yusuf-adiputera"
   linkedin_display: "linkedin.com/in/yusuf-adiputera"
@@ -16,7 +16,7 @@ site:
   location: "Jakarta, Indonesia"
   summary_html: |
     <p>Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Saya telah merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.</p>
-    <p>Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) dan fondasi layanan yang skalabel.</p>
+    <p>Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem terdistribusi Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) dan fondasi layanan yang skalabel.</p>
     <p>Filosofi rekayasa saya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, saya telah mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.</p>
     <p>Saya juga telah mengeksekusi migrasi database yang kompleks (<a href="/case-studies/sap-commerce-hana-to-mysql-migration" class="print-no-link">SAP HANA ke Aurora MySQL</a>), membangun pipeline CI/CD tanpa waktu henti (zero-downtime), dan membangun integrasi event-driven menggunakan Kafka untuk menghubungkan sistem enterprise seperti SAP CDP dan Emarsys.</p>
     <p>Sebagai pemimpin engineering, saya bertindak sebagai konsultan teknis internal di berbagai proyek paralel. Saya senang memimpin tim engineering, membimbing para developer, dan menetapkan standar teknis yang mendorong pertumbuhan bisnis jangka panjang.</p>
@@ -103,7 +103,7 @@ breadcrumb:
 summary: |
   Saya seorang Lead Software Engineer dengan pengalaman lebih dari 8 tahun yang berspesialisasi dalam arsitektur Java dan Spring Framework, platform e-commerce enterprise, dan sistem terdistribusi. Saya telah merancang dan mengirimkan platform berskala enterprise untuk Astra Group (PT Astra International Tbk, IDX:ASII — konglomerat terdiversifikasi terbesar di Indonesia), termasuk seva.id, auto2000.co.id, dan motorkux.id.
 
-  Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem microservices Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) dan fondasi layanan yang skalabel.
+  Saat ini, saya memimpin inisiatif modernisasi besar yang memigrasikan monolit SAP Commerce lama ke ekosistem terdistribusi Spring Boot. Dalam peran ini, saya merancang kapabilitas inti yang dapat digunakan kembali, termasuk dynamic rules engine (<a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a>) dan fondasi layanan yang skalabel.
 
   Filosofi rekayasa saya sangat menekankan pada performa dan keandalan sistem. Dengan mengimplementasikan full-page caching (EHCache) dan proxy gambar kustom, saya telah mengurangi waktu muat halaman (page load) menjadi sub-detik dan memastikan platform dapat menangani lonjakan trafik 3× lipat secara andal.
 
@@ -117,12 +117,12 @@ skills:
   - category: "Framework & Platform"
     items: "SAP Commerce (Hybris), Spring Boot, Spring MVC, Quarkus 3, Azure Function App, SAP Customer Data Platform (SAP CDP), SAP Engagement Cloud (formerly SAP Emarsys)"
   - category: "Arsitektur & Integrasi"
-    items: "Microservices, REST API, Event-Driven Architecture, DSL Design, OAuth2"
+    items: "Distributed Systems, REST API, Event-Driven Architecture, DSL Design, OAuth2"
   - category: "Infrastruktur & Alat"
     items: "Kafka, Apache Solr, Drools, Redis, Azure DevOps, Jenkins, Docker, AKS, Git"
 
 achievements:
-  - "Memimpin migrasi skala enterprise dari monolit SAP Commerce lama ke ekosistem microservices Spring Boot yang scalable di 3 domain bisnis paralel."
+  - "Memimpin migrasi skala enterprise dari monolit SAP Commerce lama ke ekosistem terdistribusi Spring Boot yang scalable di 3 domain bisnis paralel."
   - "Memimpin tim engineering untuk pengembangan motorkux.id (2021–Sekarang) dan seva.id marketplace (2019–2021)"
   - "Berkontribusi pada pengembangan inti platform seva.id property (2018–2019)"
   - "Menerima penghargaan internal \"Best Project Development Quality\" (2024)"
@@ -178,7 +178,7 @@ experience:
     end_display: "Sekarang"
     duration: "Apr 2020 - Sekarang"
     description_html: |
-      <p>Memimpin arsitektur dan evolusi platform <i>e-commerce</i> skala enterprise, mendorong modernisasi dari sistem monolit SAP Commerce ke ekosistem <i>microservices</i> yang scalable di berbagai domain bisnis.</p>
+      <p>Memimpin arsitektur dan evolusi platform <i>e-commerce</i> skala enterprise, mendorong modernisasi dari sistem monolit SAP Commerce ke ekosistem terdistribusi yang scalable di berbagai domain bisnis.</p>
 
       <h4>Arsitektur &amp; Kepemilikan Platform</h4>
       <ul>
@@ -190,7 +190,7 @@ experience:
 
       <h4>Modernisasi Platform</h4>
       <ul>
-        <li>Memimpin migrasi skala enterprise dari monolit SAP Commerce ke <i>microservices</i> berbasis Spring Boot.</li>
+        <li>Memimpin migrasi skala enterprise dari monolit SAP Commerce ke arsitektur terdistribusi berbasis Spring Boot.</li>
         <li>Otoritas teknis atas <i>library</i> platform inti yang digunakan 3 tim produk di berbagai domain bisnis.</li>
         <li>Mendefinisikan standar engineering dan pedoman implementasi untuk <i>distributed systems</i>.</li>
       </ul>
@@ -206,7 +206,7 @@ experience:
 
       <h4>Keamanan &amp; Kontrol Akses</h4>
       <ul>
-        <li>Merancang kontrol akses berbasis JWT/OAuth2 di seluruh <i>microservices</i> menggunakan model Permission-Based Access Control (PBAC), di mana <i>endpoint</i> API diamankan berdasarkan izin spesifik melalui anotasi kustom <code>@Secured</code>, bukan peran secara umum.</li>
+        <li>Merancang kontrol akses berbasis JWT/OAuth2 di seluruh layanan terdistribusi menggunakan model Permission-Based Access Control (PBAC), di mana <i>endpoint</i> API diamankan berdasarkan izin spesifik melalui anotasi kustom <code>@Secured</code>, bukan peran secara umum.</li>
         <li>Mengimplementasikan cache access-token berbasis Redis dengan fallback ke DB untuk pengecekan validitas, dan pemberian peran berbatas waktu.</li>
       </ul>
 
@@ -234,7 +234,7 @@ experience:
         <li>Mengembangkan <i>promotion engine</i> kustom yang mendukung kuota berbasis lokasi tanpa ketergantungan kupon.</li>
       </ul>
 
-      <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Microservices Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
+      <p class="tech-stack"><strong>Technology Stack:</strong> Java, Spring Boot, Spring MVC, Distributed Systems Architecture, SAP Commerce (Hybris), Drools, EHCache, Kafka, Redis, SAP CDP, SAP Emarsys, Azure DevOps, Jenkins, Docker, AKS, Azure Function App, TypeScript.</p>
 
   - title: "Tech Lead & DevOps Engineer"
     company: "PT Astra International Tbk (via PT Xsis Mitra Utama)"

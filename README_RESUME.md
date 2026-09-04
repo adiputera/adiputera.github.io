@@ -12,11 +12,11 @@
 
 Yusuf is a Lead Software Engineer specializing in enterprise e-commerce platforms, distributed systems, and SAP Commerce (Hybris) architecture, with more than 8 years of professional experience in building scalable, high-performance systems within the SAP ecosystem.
 
-He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes SAP Commerce development, Spring-based microservices architecture, secure Permission-Based Access Control (PBAC), and enterprise system integration across the SAP CX landscape.
+He leads architecture design and delivery of enterprise-scale platforms, focusing on system scalability, platform modernization, and long-term technical strategy. His expertise includes SAP Commerce development, Spring-based distributed architecture, secure Permission-Based Access Control (PBAC), and enterprise system integration across the SAP CX landscape.
 
 Yusuf has led multiple large-scale SAP Commerce implementations and platform upgrades across Astra Group digital platforms, including seva.id, auto2000.co.id, astra-daihatsu.id, and motorkux.id. He led the end-to-end development of motorkux.id from analysis through production launch and continues to drive platform evolution based on business and technical requirements.
 
-He is currently leading a strategic modernization initiative to migrate SAP Commerce into a Spring Boot–based microservices architecture, designing core system architecture and reusable platform capabilities including a dynamic rules engine (rules-as-a-service) and scalable service foundation.
+He is currently leading a strategic modernization initiative to migrate SAP Commerce into a Spring Boot–based distributed architecture, designing core system architecture and reusable platform capabilities including a dynamic rules engine (decision-as-a-service) and scalable service foundation.
 
 His work emphasizes performance and scalability engineering, including full-page caching architecture, storefront optimization, and infrastructure improvements enabling the platform to handle significant traffic spikes with high reliability.
 
@@ -68,12 +68,12 @@ Lead architecture and delivery of enterprise-scale SAP Commerce (Hybris) e-comme
 - Won internal “Best Project Development Quality” award (2024).
 
 #### Platform Modernization & Architecture (on going)
-- Leading enterprise modernization initiative to migrate SAP Commerce platform to Spring Boot–based microservices architecture.
+- Leading enterprise modernization initiative to migrate SAP Commerce platform to Spring Boot–based distributed architecture.
 - Designed core system architecture supporting multiple business domains and supervising 3 parallel rewrite projects.
 - Defined service boundaries, architecture standards, and implementation guidelines.
 - Designed secure Permission-Based Access Control (PBAC) model for service authorization and resource protection.
 
-#### Rule Engine Platform (Rules-as-a-Service)
+#### Rule Engine Platform (Decision-as-a-Service)
 - Designed dynamic rule engine using Drools enabling client-defined conditions and actions without code deployment.
 - Built reusable rules platform decoupling business logic from application services.
 - Implemented flexible rule model not tightly coupled to domain objects.
@@ -107,7 +107,7 @@ Lead architecture and delivery of enterprise-scale SAP Commerce (Hybris) e-comme
 - Platform upgrade and deployment strategy
 - Performance optimization and scalability improvements
 
-**Technology Stack:** SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Microservices Architecture, Drools, EHCache, JSP, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA.
+**Technology Stack:** SAP Commerce (Hybris), Java, Spring MVC, Spring Boot, Distributed Architecture, Drools, EHCache, JSP, SAP CDP, SAP Engagement Cloud (formerly SAP Emarsys), SAP S/4HANA.
 
 ---
 ### Bootcamp Trainer  
@@ -356,7 +356,7 @@ Java is used for building scalable, secure, and cross-platform enterprise applic
 Spring MVC is a web framework for building structured, maintainable applications. Spring Boot builds on it to simplify configuration and deployment, enabling developers to create production-ready apps quickly.
 
 **44. What is the difference between Spring MVC and Spring Boot?**
-Spring MVC requires manual setup and configuration, while Spring Boot automates it with embedded servers like Tomcat or Jetty, making it ideal for microservices and rapid development.
+Spring MVC requires manual setup and configuration, while Spring Boot automates it with embedded servers like Tomcat or Jetty, making it ideal for distributed systems and rapid development.
 
 **45. What is SAP Commerce (Hybris)?**
 SAP Commerce (Hybris) is an enterprise-level e-commerce platform built on Java and Spring. It provides tools for managing product catalogs, pricing, promotions, and omnichannel experiences for large B2B and B2C operations.

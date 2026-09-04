@@ -8,13 +8,13 @@ summary_html: |
       I'm a Lead Software Engineer with more than 8 years of experience specializing in <strong>Java &amp; Spring architecture
       and enterprise e-commerce platforms</strong>.
       I've been designing and delivering major systems for Astra Group (IDX:ASII), with a focus on scalability,
-      platform modernization, and microservices integration.
+      platform modernization, and distributed systems integration.
   </p>
   <p>
       Designed a <a href="/case-studies/decision-as-a-service" class="print-no-link">Decision-as-a-Service</a> platform that lets business teams ship new pricing, promotion, and eligibility rules without backend deploys. The engine is intentionally generic: it doesn't know what a Customer or Product is, so new rules onboard without engineering work.
   </p>
   <p>
-      My expertise also spans Spring-based microservices and performance engineering (achieving sub-second load times). I've delivered CI/CD pipelines, database migrations, and enterprise SAP integrations (CDP, Emarsys).
+      My expertise also spans Spring-based distributed architecture and performance engineering (achieving sub-second load times). I've delivered CI/CD pipelines, database migrations, and enterprise SAP integrations (CDP, Emarsys).
       I'm dedicated to engineering leadership, technical direction, and building maintainable systems.
   </p>
 key_achievements:
@@ -27,7 +27,7 @@ key_achievements:
   - label: "Performance"
     text: "Diagnosed 10× request amplification on SAP Commerce Accelerator via Datadog and reduced P95 latency from 2.1s to ~800ms via EHCache full-page caching, enabling 3× traffic absorption without horizontal scaling."
   - label: "Modernization"
-    text: "Leading the migration from legacy e-commerce monoliths to Spring Boot–based microservices."
+    text: "Leading the migration from legacy e-commerce monoliths to a Spring Boot–based distributed architecture."
   - label: "Enterprise Integration"
     text: "Delivered integrations for SAP CDP and Emarsys."
 skills:
@@ -51,7 +51,7 @@ experience:
           - "Established service boundaries, platform standards, and long-term evolution strategy."
       - label: "Modernization"
         list:
-          - "Leading the migration from SAP Commerce monolith to Spring Boot microservices."
+          - "Leading the migration from SAP Commerce monolith to a Spring Boot-based distributed architecture."
           - "Technical authority for the core platform library consumed by 3 product teams across multiple business domains."
       - label: "Scalability"
         list:
@@ -60,7 +60,7 @@ experience:
           - "Reduced image payload by up to 80% through custom image proxy service."
       - label: "Security"
         list:
-          - "Designed JWT/OAuth2 access control across microservices using permission-based @Secured annotations rather than broad roles."
+          - "Designed JWT/OAuth2 access control across distributed services using permission-based @Secured annotations rather than broad roles."
           - "Implemented a Redis-backed access-token cache (with DB fallback) and time-bounded role grants."
       - label: "Integration"
         list:
